@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport"
+          content="width=device-width" />
     <title>Mozilla splash page</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+          rel="stylesheet" />
+    <link href="style.css"
+          rel="stylesheet" />
   </head>
+
   <body>
     <header>
       <h1>Mozilla</h1>
       <!-- insert <img> element, link to the small
           version of the Firefox logo -->
-      <img src="firefox-logo-only-120.png" alt="Firefox logo" />
+      <img src="firefox-logo-only-120.png"
+           alt="Firefox logo" />
     </header>
 
     <main>
       <article>
         <!-- insert iframe from youtube -->
-        <iframe
-          width="400"
-          height="225"
-          src="https://www.youtube.com/embed/ojcNcvb1olg"
-          title="YouTube video player"
-          allow="encrypted-media; picture-in-picture"
-          allowfullscreen
-        >
+        <iframe width="400"
+                height="225"
+                src="https://www.youtube.com/embed/ojcNcvb1olg"
+                title="YouTube video player"
+                allow="encrypted-media; picture-in-picture"
+                allowfullscreen>
         </iframe>
         <h2>Rocking the free web</h2>
 
@@ -44,32 +48,28 @@
       <div class="further-info">
         <!-- insert images with srcsets and sizes -->
         <a href="https://www.mozilla.org/en-US/firefox/new/">
-          <img
-            srcset="firefox-logo-only-120.png 120w, firefox-logo-only-400.png 400w"
-            sizes="(max-width: 500px) 120px, 400px"
-            src="firefox-logo-only-400.png"
-            alt="Firefox logo in RGB"
-          />
+          <img srcset="firefox-logo-only-120.png 120w, firefox-logo-only-400.png 400w"
+               sizes="(max-width: 500px) 120px, 400px"
+               src="firefox-logo-only-400.png"
+               alt="Firefox logo in RGB" />
         </a>
         <a href="https://www.mozilla.org/">
-          <img
-            srcset="mozilla-dinosaur-head-120.png 120w, mozilla-dinosaur-head-400.png 400w"
-            sizes="(max-width: 500px) 120px, 400px"
-            src="mozilla-dinosaur-head-400.png"
-            alt="Mozilla dinosaur head"
-          />
+          <img srcset="mozilla-dinosaur-head-120.png 120w, mozilla-dinosaur-head-400.png 400w"
+               sizes="(max-width: 500px) 120px, 400px"
+               src="mozilla-dinosaur-head-400.png"
+               alt="Mozilla dinosaur head" />
         </a>
 
         <a href="https://addons.mozilla.org/">
-          <img
-            srcset="firefox-addons-120.jpg 120w, firefox-addons-400.jpg 400w"
-            sizes="(max-width: 500px) 120px, 400px"
-            src="firefox-addons-400.jpg"
-            alt="Firefox addons"
-          />
+          <img srcset="firefox-addons-120.jpg 120w, firefox-addons-400.jpg 400w"
+               sizes="(max-width: 500px) 120px, 400px"
+               src="firefox-addons-400.jpg"
+               alt="Firefox addons" />
         </a>
         <a href="https://developer.mozilla.org/en-US/">
-          <img srcset="mdn.svg" src="mdn.svg" alt="MOzilla Developer Network" />
+          <img srcset="mdn.svg"
+               src="mdn.svg"
+               alt="MOzilla Developer Network" />
         </a>
         <div class="clearfix"></div>
       </div>
@@ -77,11 +77,17 @@
       <div class="red-panda">
         <!-- insert picture element -->
         <picture>
-          <source type="image/jpg" media="(max-width: 600px)" srcset="red-panda-600.jpg" />
-          <source type="image/jpg" media="(min-width: 601px)" srcset="red-panda-1200.jpg" />
-          <img src="red-panda-1200.jpg" alt="Red panda" />
+          <source type="image/jpg"
+                  media="(max-width: 600px)"
+                  srcset="red-panda-600.jpg" />
+          <source type="image/jpg"
+                  media="(min-width: 601px)"
+                  srcset="red-panda-1200.jpg" />
+          <img src="red-panda-1200.jpg"
+               alt="Red panda" />
         </picture>
       </div>
     </main>
   </body>
+
 </html>
