@@ -109,7 +109,8 @@
                         </dd>
                         <dt><code>rel</code></dt>
                         <dd>
-                            <p>The relationship of the linked URL as space-separated link types.</p>
+                            <p>The relationship of the linked URL as space-separated link types. The value is a space-separated list of link types values. The
+                                default relationship, if no other is given, is void. Use this attribute only if the <code>href</code> attribute is present.</p>
                             <dl>
                                 <dt><code>alternate</code></dt>
                                 <dd>
@@ -209,11 +210,13 @@
                             <p>Where to display the linked URL, as the name for a <em>browsing context</em> (a tab, window, or <code>&lt;iframe&gt;</code>). The
                                 following keywords have special meanings for where to load the URL:</p>
                             <ul>
-                                <li><code>_self</code>: the current browsing context. (Default)</li>
-                                <li><code>_blank</code>: usually a new tab, but users can configure browsers to open a new window instead.</li>
-                                <li><code>_parent</code>: the parent browsing context of the current one. If no parent, behaves as <code>_self</code>.</li>
-                                <li><code>_top</code>: the top-most browsing context (the "highest" context that is an ancestor of the current one). If no
-                                    ancestors, behaves as <code>_self</code>.</li>
+                                <li><code>_self</code>: Show the resource in the current browsing context. (Default)</li>
+                                <li><code>_blank</code>: Show the resource in a new unnamed browsing context, usually a new tab, but users can configure
+                                    browsers to open a new window instead.</li>
+                                <li><code>_parent</code>: Show the resource in the parent browsing context of the current one, if the current page is inside a
+                                    frame. If there is no parent, behaves the same as <code>_self</code>.</li>
+                                <li><code>_top</code>: Show resource in the top-most browsing context (the browsing context that is an ancestor of the current
+                                    one and has no parent). If there are no parents, behaves the same as <code>_self</code>.</li>
                             </ul>
                         </dd>
                         <dt><code>type</code></dt>
