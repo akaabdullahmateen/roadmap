@@ -209,6 +209,84 @@
                         </tbody>
                     </table>
                 </section>
+                <section>
+                    <h2>Usage notes</h2>
+                    <p>Browsers do not all support the same file types and audio codecs; you can provide multiple sources inside nested
+                        <code>&lt;source&gt;</code> elements, and the browser will then use the first one it understand.</p>
+                    <p>Other usage notes:</p>
+                    <ul>
+                        <li>If you do not specify the <code>controls</code> attribute, the audio player would not include the browser's default controls. You
+                            can, however, create your own custom controls using JavaScript and the <code>HTMLMediaElement</code> API.</li>
+                        <li>To allow precise control over your audio content, <code>HTMLMediaElement</code> fire many different events. This also provides a way
+                            to monitor the audio's fetching process so you can watch for errors or detect when enough is available to begin to play or
+                            manipulate it.</li>
+                        <li>You can also use the Web Audio API to directly generate and manipulate audio streams from JavaScript code rather than streaming
+                            pre-existing audio files.</li>
+                        <li><code>&lt;audio&gt;</code> elements can not have subtitles or captions associated with them in the same way that
+                            <code>&lt;video&gt;</code> elements can. However, there are workarounds.</li>
+                    </ul>
+                    <section>
+                        <h3>Styling with CSS</h3>
+                        <p>The <code>&lt;audio&gt;</code> element has no intrinsic visual output of its own unless the <code>controls</code> attribute is
+                            specified, in which case the browser's default controls are shown.</p>
+                        <p>The default controls have a <code>display</code> value of <code>inline</code> by default, and it is often a good idea that you set
+                            the value to <code>block</code> to improve control over positioning and layout, unless you want it to sit within a text block or
+                            similar.</p>
+                        <p>You can style the default controls with properties that affect the block as a single unit, so for example, you can give it a
+                            <code>border</code> and <code>border-radius</code>, <code>padding</code>, <code>margin</code>, etc. You can not however style the
+                            individual components inside the audio player (e.g. change the button size or icons, change the font, etc), and the controls are
+                            different across the different browsers.</p>
+                        <p>To get a consistent look and feel across browsers, you will need to create custom controls; these can be markup and styled in
+                            whatever way you want, and then JavaScript can be used along with the <code>HTMLMediaElement</code> API to wire up their
+                            functionality.</p>
+                    </section>
+                    <section>
+                        <h3>Detecting addition and removal of tracks</h3>
+                        <p>You can detect when tracks are added to and removed from an <code>&lt;audio&gt;</code> element using the <code>addtrack</code> and
+                            <code>removetrack</code> events. However, these events are not sent directly to the <code>&lt;audio&gt;</code> element itself.
+                            Instead they are sent to the track list object within the <code>&lt;audio&gt;</code> element's <code>HTMLMediaElement</code> that
+                            corresponds to the type of track that was added to the element.</p>
+                        <dl>
+                            <dt><code>HTMLMediaElement.audioTracks</code></dt>
+                            <dd>
+                                <p>An <code>AudioTrackList</code> containing all of the media element's audio tracks. You can add a listener for
+                                    <code>addtrack</code> to this object to be alerted when new audio tracks are added to the element.</p>
+                            </dd>
+                            <dt><code>HTMLMediaElement.videoTracks</code></dt>
+                            <dd>
+                                <p>Add an <code>addtrack</code> event listener to this <code>videoTrackList</code> object to be informed when video tracks are
+                                    added to the element.</p>
+                            </dd>
+                            <dt><code>HTMLMediaElement.textTracks</code></dt>
+                            <dd>
+                                <p>Add an <code>addtrack</code> event listener to this <code>textTrackList</code> object to be informed when new text tracks are
+                                    added to the element.</p>
+                            </dd>
+                        </dl>
+                        <section>
+                            <h4>Note:</h4>
+                            <p>Even though it is an <code>&lt;audio&gt;</code> element, it still has video and text tracks, and can in fact be used to present
+                                video, although the user interface implications can be odd.</p>
+                        </section>
+                    </section>
+                </section>
+                <section>
+                    <h2>Accessibility concerns</h2>
+                    <p>Audio with spoken dialog should provide both captions and transcripts that accurately describe its content. Captions, which are specified
+                        using WebVTT, allow people who are experiencing hearing loss to understand an audio recording's content as the recording is being
+                        played, while transcripts allow people who need additional time to be able to review the recording's content at a pace and format that
+                        is comfortable for them.</p>
+                    <p>If automatic captioning services are used, it is important to review the generated content to ensure it accurately represents the source
+                        audio.</p>
+                    <p>The <code>&lt;audio&gt;</code> element doesn't directly support WebVTT. You will have to find a library or framework that provides the
+                        capability for you, or write the code to display captions yourself. One option is to play your audio using a <code>&lt;video&gt;</code>
+                        element, which does support WebVTT. </p>
+                    <p>In addition to spoken dialog, subtitles and transcripts should also identify music and sound effects that communicate important
+                        information. This includes emotion and tone. Square brackets are often used to provide tone and emotional insight to the viewer; this
+                        can help establish the mood otherwise provided using music, nonverbal sounds and crucial sound effects, and so forth.</p>
+                    <p>Also it's a good practice to provide some content (such as the direct download link) as a fallback for viewers who use a browser in which
+                        the <code>&lt;audio&gt;</code> element is not supported</p>
+                </section>
             </article>
         </main>
         <footer></footer>
