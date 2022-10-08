@@ -1,295 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible"
-              content="IE=edge">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0">
-        <title>&lt;audio&gt;: The Embed Audio element</title>
-        <link rel="stylesheet"
-              href="style.css">
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>&lt;audio&gt;: The Embed Audio element</title>
+    <link rel="stylesheet"
+          href="style.css">
+  </head>
 
-    <body>
-        <header></header>
-        <main>
-            <article>
-                <h1>&lt;audio&gt;: The Embed Audio element</h1>
-                <section>
-                    <p>The <code>&lt;audio&gt;</code> HTML element is used to embed sound content in documents. It may contain one or more audio sources,
-                        represented using the <code>src</code> attribute or <code>&lt;source&gt;</code> element: the browser will choose the most suitable one.
-                        It can also be the destination for streamed media, using a <code>MediaStream</code>.</p>
-                    <p>In a similar manner to the <code>&lt;img&gt;</code> element, we include a path to the media we want to embed inside the <code>src</code>
-                        attribute; we can include other attributes to specify information such as whether we want it to autoplay and loop, whether want to show
-                        the browser's default audio controls, etc.</p>
-                    <p>The content inside the opening and closing <code>&lt;audio&gt;&lt;/audio&gt;</code> tags is shown as fallback in browsers that do not
-                        support the element.</p>
-                </section>
-                <section>
-                    <h2>Attributes</h2>
-                    <p>This element's attributes include the <a href="../global-attributes/index.html"
-                           title="Global Attributes"
-                           hreflang="en"
-                           target="_blank">global attributes</a>.</p>
-                    <dl>
-                        <dt><code>autoplay</code></dt>
-                        <dd>
-                            <p>A boolean attribute: if specified, the audio will automatically begin playback as soon as it can do so, without waiting for the
-                                entire audio file to finish downloading.</p>
-                            <section>
-                                <h3>Note:</h3>
-                                <p>Sites that automatically play audio (or videos with an audio track) can be an unpleasant experience for users, so should be
-                                    avoided when possible. If you must offer autoplay functionality, you should make it opt-in (requiring a user to specifically
-                                    enable it). However, this can be useful when creating media elements whose source will be set at a later time, under user
-                                    control. See the <a href="../../guides/autoplay"
-                                       title="Autoplay Guide"
-                                       hreflang="en"
-                                       target="_blank">autoplay guide</a> for additional information about how to properly use autoplay.</p>
-                            </section>
-                        </dd>
-                        <dt><code>controls</code></dt>
-                        <dd>
-                            <p>If this attribute is present, the browser will offer controls to allow the user to control audio playback, including volume,
-                                seeking, and pause/resume playback.</p>
-                        </dd>
-                        <dt><code>crossorigin</code></dt>
-                        <dd>
-                            <p>This enumerated attribute indicates whether to use CORS to fetch the related audio file. CORS-enabled resources can be reused in
-                                the <code>&lt;canvas&gt;</code> element without being <em>tainted</em>. When not present, the resource is fetched without a CORS
-                                request (i.e. without sending the <code>Origin:</code> HTTP header), preventing its non-tainted use in
-                                <code>&lt;canvas&gt;</code> elements. If invalid, it is handled as if the enumerated keyword <code>anonymous</code> was used.
-                                The allowed values are:</p>
-                            <dl>
-                                <dt><code>anonymous</code></dt>
-                                <dd>
-                                    <p>Sends a cross-origin request without a credential. In other words, it sends the <code>Origin:</code> HTTP header without
-                                        a cookie, X.509 certificate, or performing HTTP Basic authentication. If the server does not give credentials to the
-                                        origin site (by not setting the <code>Access-Control-Allow-Origin:</code> HTTP header), the resource will be
-                                        <em>tainted</em>, and its usage restricted.</p>
-                                </dd>
-                                <dt><code>use-credentials</code></dt>
-                                <dd>
-                                    <p>Sends a cross-origin request with a credential. In other words, it sends the <code>Origin:</code> HTTP header with a
-                                        cookie, a certificate, or performing HTTP Basic authentication. If the server does not give credentials to the origin
-                                        site (through <code>Access-Control-Allow-Origin:</code> header), the resource will be <em>tainted</em> and its usage
-                                        restricted.</em></p>
-                                </dd>
-                            </dl>
-                        </dd>
-                        <dt><code>loop</code></dt>
-                        <dd>
-                            <p>A boolean attribute: if specified, the audio player will automatically seek back to the start upon reaching the end of the audio.
-                            </p>
-                        </dd>
-                        <dt><code>muted</code></dt>
-                        <dd>
-                            <p>A boolean attribute that indicates whether the audio will be initially silenced. Its default value is <code>false</code>.</p>
-                        </dd>
-                        <dt><code>preload</code></dt>
-                        <dd>
-                            <p>This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user
-                                experience. The default value is different for each browser. The spec advises it to be set to <code>metadata</code>. It may have
-                                one of following values:</p>
-                            <ul>
-                                <li><code>none</code>: Indicates that the audio should not be preloaded.</li>
-                                <li><code>metadata</code>: Indicates that only audio metadata (e.g. length) is fetched.</li>
-                                <li><code>auto</code>: Indicates that the whole audio file can be downloaded, even if the user is not expected to use it.</li>
-                                <li><em>empty string</em>: A synonym of the <code>auto</code> value.</li>
-                            </ul>
-                            <section>
-                                <h3>Note:</h3>
-                                <ul>
-                                    <li>The <code>autoplay</code> attribute has precedence over <code>preload</code>. If <code>autoplay</code> is specified, the
-                                        browser would obviously need to start downloading the audio for playback.</li>
-                                    <li>The browser is not forced by the specification to follow the value of this attribute; it is merely a hint.</li>
-                                </ul>
-                            </section>
-                        </dd>
-                        <dt><code>src</code></dt>
-                        <dd>
-                            <p>The URL of the audio to embed. This is subject to HTTP access controls. This is optional; you may instead use the
-                                <code>&lt;source&gt;</code> element within the audio block to specify the audio to embed.</p>
-                        </dd>
-                    </dl>
-                </section>
-                <section>
-                    <h2>Events</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Event name</th>
-                                <th scope="col">Fired when</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>audioprocess</code></td>
-                                <td>The input buffer of a <code>ScriptProcessNode</code> is ready to be processed.</td>
-                            </tr>
-                            <tr>
-                                <td><code>canplay</code></td>
-                                <td>The browser can play the media, but estimates that not enough data has been loaded to play the media up to its end without
-                                    having to stop for further buffering of content.</td>
-                            </tr>
-                            <tr>
-                                <td><code>canplaythrough</code></td>
-                                <td>The browser estimates that it can play the media up to its end without stopping for content buffering.</td>
-                            </tr>
-                            <tr>
-                                <td><code>complete</code></td>
-                                <td>The rendering of an <code>OfflineAudioContext</code> is terminated.</td>
-                            </tr>
-                            <tr>
-                                <td><code>durationchange</code></td>
-                                <td>The <code>duration</code> attribute has been updated.</td>
-                            </tr>
-                            <tr>
-                                <td><code>emptied</code></td>
-                                <td>The media has become empty; for example, this event is sent if the media has already been loaded (or partially loaded), and
-                                    the <code>HTMLMediaElement.load</code> method is called to reload it.</td>
-                            </tr>
-                            <tr>
-                                <td><code>ended</code></td>
-                                <td>Playback has stopped because the end of the media was reached.</td>
-                            </tr>
-                            <tr>
-                                <td><code>loadeddata</code></td>
-                                <td>The first frame of the media has finished loading.</td>
-                            </tr>
-                            <tr>
-                                <td><code>loadedmetadata</code></td>
-                                <td>The metadata has been loaded.</td>
-                            </tr>
-                            <tr>
-                                <td><code>pause</code></td>
-                                <td>Playback has been paused.</td>
-                            </tr>
-                            <tr>
-                                <td><code>play</code></td>
-                                <td>Playback has begun.</td>
-                            </tr>
-                            <tr>
-                                <td><code>playing</code></td>
-                                <td>Playback is ready to start after having been paused or delayed due to lack of data.</td>
-                            </tr>
-                            <tr>
-                                <td><code>ratechange</code></td>
-                                <td>The playback rate has changed.</td>
-                            </tr>
-                            <tr>
-                                <td><code>seeked</code></td>
-                                <td>A <em>seek</em> operation completed</td>
-                            </tr>
-                            <tr>
-                                <td><code>seeking</code></td>
-                                <td>A <em>seek</em> operation began.</td>
-                            </tr>
-                            <tr>
-                                <td><code>stalled</code></td>
-                                <td>The user agent is trying to fetch media data, but data is unexpectedly not forthcoming.</td>
-                            </tr>
-                            <tr>
-                                <td><code>suspend</code></td>
-                                <td>Media data loading has been suspended.</td>
-                            </tr>
-                            <tr>
-                                <td><code>timeupdate</code></td>
-                                <td>The time indicated by the <code>currentTime</code> attribute has been updated.</td>
-                            </tr>
-                            <tr>
-                                <td><code>volumechange</code></td>
-                                <td>The volume has changed.</td>
-                            </tr>
-                            <tr>
-                                <td><code>waiting</code></td>
-                                <td>Playback has stopped because of a temporary lack of data.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-                <section>
-                    <h2>Usage notes</h2>
-                    <p>Browsers do not all support the same file types and audio codecs; you can provide multiple sources inside nested
-                        <code>&lt;source&gt;</code> elements, and the browser will then use the first one it understand.</p>
-                    <p>Other usage notes:</p>
-                    <ul>
-                        <li>If you do not specify the <code>controls</code> attribute, the audio player would not include the browser's default controls. You
-                            can, however, create your own custom controls using JavaScript and the <code>HTMLMediaElement</code> API.</li>
-                        <li>To allow precise control over your audio content, <code>HTMLMediaElement</code> fire many different events. This also provides a way
-                            to monitor the audio's fetching process so you can watch for errors or detect when enough is available to begin to play or
-                            manipulate it.</li>
-                        <li>You can also use the Web Audio API to directly generate and manipulate audio streams from JavaScript code rather than streaming
-                            pre-existing audio files.</li>
-                        <li><code>&lt;audio&gt;</code> elements can not have subtitles or captions associated with them in the same way that
-                            <code>&lt;video&gt;</code> elements can. However, there are workarounds.</li>
-                    </ul>
-                    <section>
-                        <h3>Styling with CSS</h3>
-                        <p>The <code>&lt;audio&gt;</code> element has no intrinsic visual output of its own unless the <code>controls</code> attribute is
-                            specified, in which case the browser's default controls are shown.</p>
-                        <p>The default controls have a <code>display</code> value of <code>inline</code> by default, and it is often a good idea that you set
-                            the value to <code>block</code> to improve control over positioning and layout, unless you want it to sit within a text block or
-                            similar.</p>
-                        <p>You can style the default controls with properties that affect the block as a single unit, so for example, you can give it a
-                            <code>border</code> and <code>border-radius</code>, <code>padding</code>, <code>margin</code>, etc. You can not however style the
-                            individual components inside the audio player (e.g. change the button size or icons, change the font, etc), and the controls are
-                            different across the different browsers.</p>
-                        <p>To get a consistent look and feel across browsers, you will need to create custom controls; these can be markup and styled in
-                            whatever way you want, and then JavaScript can be used along with the <code>HTMLMediaElement</code> API to wire up their
-                            functionality.</p>
-                    </section>
-                    <section>
-                        <h3>Detecting addition and removal of tracks</h3>
-                        <p>You can detect when tracks are added to and removed from an <code>&lt;audio&gt;</code> element using the <code>addtrack</code> and
-                            <code>removetrack</code> events. However, these events are not sent directly to the <code>&lt;audio&gt;</code> element itself.
-                            Instead they are sent to the track list object within the <code>&lt;audio&gt;</code> element's <code>HTMLMediaElement</code> that
-                            corresponds to the type of track that was added to the element.</p>
-                        <dl>
-                            <dt><code>HTMLMediaElement.audioTracks</code></dt>
-                            <dd>
-                                <p>An <code>AudioTrackList</code> containing all of the media element's audio tracks. You can add a listener for
-                                    <code>addtrack</code> to this object to be alerted when new audio tracks are added to the element.</p>
-                            </dd>
-                            <dt><code>HTMLMediaElement.videoTracks</code></dt>
-                            <dd>
-                                <p>Add an <code>addtrack</code> event listener to this <code>videoTrackList</code> object to be informed when video tracks are
-                                    added to the element.</p>
-                            </dd>
-                            <dt><code>HTMLMediaElement.textTracks</code></dt>
-                            <dd>
-                                <p>Add an <code>addtrack</code> event listener to this <code>textTrackList</code> object to be informed when new text tracks are
-                                    added to the element.</p>
-                            </dd>
-                        </dl>
-                        <section>
-                            <h4>Note:</h4>
-                            <p>Even though it is an <code>&lt;audio&gt;</code> element, it still has video and text tracks, and can in fact be used to present
-                                video, although the user interface implications can be odd.</p>
-                        </section>
-                    </section>
-                </section>
-                <section>
-                    <h2>Accessibility concerns</h2>
-                    <p>Audio with spoken dialog should provide both captions and transcripts that accurately describe its content. Captions, which are specified
-                        using WebVTT, allow people who are experiencing hearing loss to understand an audio recording's content as the recording is being
-                        played, while transcripts allow people who need additional time to be able to review the recording's content at a pace and format that
-                        is comfortable for them.</p>
-                    <p>If automatic captioning services are used, it is important to review the generated content to ensure it accurately represents the source
-                        audio.</p>
-                    <p>The <code>&lt;audio&gt;</code> element doesn't directly support WebVTT. You will have to find a library or framework that provides the
-                        capability for you, or write the code to display captions yourself. One option is to play your audio using a <code>&lt;video&gt;</code>
-                        element, which does support WebVTT. </p>
-                    <p>In addition to spoken dialog, subtitles and transcripts should also identify music and sound effects that communicate important
-                        information. This includes emotion and tone. Square brackets are often used to provide tone and emotional insight to the viewer; this
-                        can help establish the mood otherwise provided using music, nonverbal sounds and crucial sound effects, and so forth.</p>
-                    <p>Also it's a good practice to provide some content (such as the direct download link) as a fallback for viewers who use a browser in which
-                        the <code>&lt;audio&gt;</code> element is not supported</p>
-                </section>
-            </article>
-        </main>
-        <footer></footer>
-    </body>
+  <body>
+    <header></header>
+    <main>
+      <article>
+        <h1>&lt;audio&gt;: The Embed Audio element</h1>
+        <section>
+          <p>The <code>&lt;audio&gt;</code> HTML element is used to embed sound content in documents. It may contain one or more audio sources, represented using the
+            <code>src</code> attribute or <code>&lt;source&gt;</code> element: the browser will choose the most suitable one. It can also be the destination for streamed media,
+            using a <code>MediaStream</code>.</p>
+          <p>In a similar manner to the <code>&lt;img&gt;</code> element, we include a path to the media we want to embed inside the <code>src</code> attribute; we can include
+            other attributes to specify information such as whether we want it to autoplay and loop, whether want to show the browser's default audio controls, etc.</p>
+          <p>The content inside the opening and closing <code>&lt;audio&gt;&lt;/audio&gt;</code> tags is shown as fallback in browsers that do not support the element.</p>
+        </section>
+        <section>
+          <h2>Attributes</h2>
+          <p>This element's attributes include the <a href="../global-attributes/index.html"
+               title="Global Attributes"
+               hreflang="en"
+               target="_blank">global attributes</a>.</p>
+          <dl>
+            <dt><code>autoplay</code></dt>
+            <dd>
+              <p>A boolean attribute: if specified, the audio will automatically begin playback as soon as it can do so, without waiting for the entire audio file to finish
+                downloading.</p>
+              <section>
+                <h3>Note:</h3>
+                <p>Sites that automatically play audio (or videos with an audio track) can be an unpleasant experience for users, so should be avoided when possible. If you must
+                  offer autoplay functionality, you should make it opt-in (requiring a user to specifically enable it). However, this can be useful when creating media elements
+                  whose source will be set at a later time, under user control. See the <a href="../../guides/autoplay"
+                     title="Autoplay Guide"
+                     hreflang="en"
+                     target="_blank">autoplay guide</a> for additional information about how to properly use autoplay.</p>
+              </section>
+            </dd>
+            <dt><code>controls</code></dt>
+            <dd>
+              <p>If this attribute is present, the browser will offer controls to allow the user to control audio playback, including volume, seeking, and pause/resume playback.
+              </p>
+            </dd>
+            <dt><code>crossorigin</code></dt>
+            <dd>
+              <p>This enumerated attribute indicates whether to use CORS to fetch the related audio file. CORS-enabled resources can be reused in the <code>&lt;canvas&gt;</code>
+                element without being <em>tainted</em>. When not present, the resource is fetched without a CORS request (i.e. without sending the <code>Origin:</code> HTTP
+                header), preventing its non-tainted use in <code>&lt;canvas&gt;</code> elements. If invalid, it is handled as if the enumerated keyword <code>anonymous</code> was
+                used. The allowed values are:</p>
+              <dl>
+                <dt><code>anonymous</code></dt>
+                <dd>
+                  <p>Sends a cross-origin request without a credential. In other words, it sends the <code>Origin:</code> HTTP header without a cookie, X.509 certificate, or
+                    performing HTTP Basic authentication. If the server does not give credentials to the origin site (by not setting the <code>Access-Control-Allow-Origin:</code>
+                    HTTP header), the resource will be <em>tainted</em>, and its usage restricted.</p>
+                </dd>
+                <dt><code>use-credentials</code></dt>
+                <dd>
+                  <p>Sends a cross-origin request with a credential. In other words, it sends the <code>Origin:</code> HTTP header with a cookie, a certificate, or performing HTTP
+                    Basic authentication. If the server does not give credentials to the origin site (through <code>Access-Control-Allow-Origin:</code> header), the resource will
+                    be <em>tainted</em> and its usage restricted.</em></p>
+                </dd>
+              </dl>
+            </dd>
+            <dt><code>loop</code></dt>
+            <dd>
+              <p>A boolean attribute: if specified, the audio player will automatically seek back to the start upon reaching the end of the audio. </p>
+            </dd>
+            <dt><code>muted</code></dt>
+            <dd>
+              <p>A boolean attribute that indicates whether the audio will be initially silenced. Its default value is <code>false</code>.</p>
+            </dd>
+            <dt><code>preload</code></dt>
+            <dd>
+              <p>This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user experience. The default value is
+                different for each browser. The spec advises it to be set to <code>metadata</code>. It may have one of following values:</p>
+              <ul>
+                <li><code>none</code>: Indicates that the audio should not be preloaded.</li>
+                <li><code>metadata</code>: Indicates that only audio metadata (e.g. length) is fetched.</li>
+                <li><code>auto</code>: Indicates that the whole audio file can be downloaded, even if the user is not expected to use it.</li>
+                <li><em>empty string</em>: A synonym of the <code>auto</code> value.</li>
+              </ul>
+              <section>
+                <h3>Note:</h3>
+                <ul>
+                  <li>The <code>autoplay</code> attribute has precedence over <code>preload</code>. If <code>autoplay</code> is specified, the browser would obviously need to start
+                    downloading the audio for playback.</li>
+                  <li>The browser is not forced by the specification to follow the value of this attribute; it is merely a hint.</li>
+                </ul>
+              </section>
+            </dd>
+            <dt><code>src</code></dt>
+            <dd>
+              <p>The URL of the audio to embed. This is subject to HTTP access controls. This is optional; you may instead use the <code>&lt;source&gt;</code> element within the
+                audio block to specify the audio to embed.</p>
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Events</h2>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Event name</th>
+                <th scope="col">Fired when</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>audioprocess</code></td>
+                <td>The input buffer of a <code>ScriptProcessNode</code> is ready to be processed.</td>
+              </tr>
+              <tr>
+                <td><code>canplay</code></td>
+                <td>The browser can play the media, but estimates that not enough data has been loaded to play the media up to its end without having to stop for further buffering
+                  of content.</td>
+              </tr>
+              <tr>
+                <td><code>canplaythrough</code></td>
+                <td>The browser estimates that it can play the media up to its end without stopping for content buffering.</td>
+              </tr>
+              <tr>
+                <td><code>complete</code></td>
+                <td>The rendering of an <code>OfflineAudioContext</code> is terminated.</td>
+              </tr>
+              <tr>
+                <td><code>durationchange</code></td>
+                <td>The <code>duration</code> attribute has been updated.</td>
+              </tr>
+              <tr>
+                <td><code>emptied</code></td>
+                <td>The media has become empty; for example, this event is sent if the media has already been loaded (or partially loaded), and the
+                  <code>HTMLMediaElement.load</code> method is called to reload it.</td>
+              </tr>
+              <tr>
+                <td><code>ended</code></td>
+                <td>Playback has stopped because the end of the media was reached.</td>
+              </tr>
+              <tr>
+                <td><code>loadeddata</code></td>
+                <td>The first frame of the media has finished loading.</td>
+              </tr>
+              <tr>
+                <td><code>loadedmetadata</code></td>
+                <td>The metadata has been loaded.</td>
+              </tr>
+              <tr>
+                <td><code>pause</code></td>
+                <td>Playback has been paused.</td>
+              </tr>
+              <tr>
+                <td><code>play</code></td>
+                <td>Playback has begun.</td>
+              </tr>
+              <tr>
+                <td><code>playing</code></td>
+                <td>Playback is ready to start after having been paused or delayed due to lack of data.</td>
+              </tr>
+              <tr>
+                <td><code>ratechange</code></td>
+                <td>The playback rate has changed.</td>
+              </tr>
+              <tr>
+                <td><code>seeked</code></td>
+                <td>A <em>seek</em> operation completed</td>
+              </tr>
+              <tr>
+                <td><code>seeking</code></td>
+                <td>A <em>seek</em> operation began.</td>
+              </tr>
+              <tr>
+                <td><code>stalled</code></td>
+                <td>The user agent is trying to fetch media data, but data is unexpectedly not forthcoming.</td>
+              </tr>
+              <tr>
+                <td><code>suspend</code></td>
+                <td>Media data loading has been suspended.</td>
+              </tr>
+              <tr>
+                <td><code>timeupdate</code></td>
+                <td>The time indicated by the <code>currentTime</code> attribute has been updated.</td>
+              </tr>
+              <tr>
+                <td><code>volumechange</code></td>
+                <td>The volume has changed.</td>
+              </tr>
+              <tr>
+                <td><code>waiting</code></td>
+                <td>Playback has stopped because of a temporary lack of data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>Usage notes</h2>
+          <p>Browsers do not all support the same file types and audio codecs; you can provide multiple sources inside nested <code>&lt;source&gt;</code> elements, and the browser
+            will then use the first one it understand.</p>
+          <p>Other usage notes:</p>
+          <ul>
+            <li>If you do not specify the <code>controls</code> attribute, the audio player would not include the browser's default controls. You can, however, create your own
+              custom controls using JavaScript and the <code>HTMLMediaElement</code> API.</li>
+            <li>To allow precise control over your audio content, <code>HTMLMediaElement</code> fire many different events. This also provides a way to monitor the audio's fetching
+              process so you can watch for errors or detect when enough is available to begin to play or manipulate it.</li>
+            <li>You can also use the Web Audio API to directly generate and manipulate audio streams from JavaScript code rather than streaming pre-existing audio files.</li>
+            <li><code>&lt;audio&gt;</code> elements can not have subtitles or captions associated with them in the same way that <code>&lt;video&gt;</code> elements can. However,
+              there are workarounds.</li>
+          </ul>
+          <section>
+            <h3>Styling with CSS</h3>
+            <p>The <code>&lt;audio&gt;</code> element has no intrinsic visual output of its own unless the <code>controls</code> attribute is specified, in which case the browser's
+              default controls are shown.</p>
+            <p>The default controls have a <code>display</code> value of <code>inline</code> by default, and it is often a good idea that you set the value to <code>block</code> to
+              improve control over positioning and layout, unless you want it to sit within a text block or similar.</p>
+            <p>You can style the default controls with properties that affect the block as a single unit, so for example, you can give it a <code>border</code> and
+              <code>border-radius</code>, <code>padding</code>, <code>margin</code>, etc. You can not however style the individual components inside the audio player (e.g. change
+              the button size or icons, change the font, etc), and the controls are different across the different browsers.</p>
+            <p>To get a consistent look and feel across browsers, you will need to create custom controls; these can be markup and styled in whatever way you want, and then
+              JavaScript can be used along with the <code>HTMLMediaElement</code> API to wire up their functionality.</p>
+          </section>
+          <section>
+            <h3>Detecting addition and removal of tracks</h3>
+            <p>You can detect when tracks are added to and removed from an <code>&lt;audio&gt;</code> element using the <code>addtrack</code> and <code>removetrack</code> events.
+              However, these events are not sent directly to the <code>&lt;audio&gt;</code> element itself. Instead they are sent to the track list object within the
+              <code>&lt;audio&gt;</code> element's <code>HTMLMediaElement</code> that corresponds to the type of track that was added to the element.</p>
+            <dl>
+              <dt><code>HTMLMediaElement.audioTracks</code></dt>
+              <dd>
+                <p>An <code>AudioTrackList</code> containing all of the media element's audio tracks. You can add a listener for <code>addtrack</code> to this object to be alerted
+                  when new audio tracks are added to the element.</p>
+              </dd>
+              <dt><code>HTMLMediaElement.videoTracks</code></dt>
+              <dd>
+                <p>Add an <code>addtrack</code> event listener to this <code>videoTrackList</code> object to be informed when video tracks are added to the element.</p>
+              </dd>
+              <dt><code>HTMLMediaElement.textTracks</code></dt>
+              <dd>
+                <p>Add an <code>addtrack</code> event listener to this <code>textTrackList</code> object to be informed when new text tracks are added to the element.</p>
+              </dd>
+            </dl>
+            <section>
+              <h4>Note:</h4>
+              <p>Even though it is an <code>&lt;audio&gt;</code> element, it still has video and text tracks, and can in fact be used to present video, although the user interface
+                implications can be odd.</p>
+            </section>
+          </section>
+        </section>
+        <section>
+          <h2>Accessibility concerns</h2>
+          <p>Audio with spoken dialog should provide both captions and transcripts that accurately describe its content. Captions, which are specified using WebVTT, allow people
+            who are experiencing hearing loss to understand an audio recording's content as the recording is being played, while transcripts allow people who need additional time
+            to be able to review the recording's content at a pace and format that is comfortable for them.</p>
+          <p>If automatic captioning services are used, it is important to review the generated content to ensure it accurately represents the source audio.</p>
+          <p>The <code>&lt;audio&gt;</code> element doesn't directly support WebVTT. You will have to find a library or framework that provides the capability for you, or write the
+            code to display captions yourself. One option is to play your audio using a <code>&lt;video&gt;</code> element, which does support WebVTT. </p>
+          <p>In addition to spoken dialog, subtitles and transcripts should also identify music and sound effects that communicate important information. This includes emotion and
+            tone. Square brackets are often used to provide tone and emotional insight to the viewer; this can help establish the mood otherwise provided using music, nonverbal
+            sounds and crucial sound effects, and so forth.</p>
+          <p>Also it's a good practice to provide some content (such as the direct download link) as a fallback for viewers who use a browser in which the
+            <code>&lt;audio&gt;</code> element is not supported</p>
+        </section>
+      </article>
+    </main>
+    <footer></footer>
+  </body>
 
 </html>
