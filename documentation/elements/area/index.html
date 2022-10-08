@@ -202,14 +202,12 @@
             </dd>
             <dt><code>target</code></dt>
             <dd>
-              <p>Where to display the linked URL, as the name for a <em>browsing context</em> (a tab, window, or <code>&lt;iframe&gt;</code>). The following keywords have special
-                meanings for where to load the URL:</p>
+              <p>A <strong>keyword</strong> or <strong>author-defined name</strong> of the browsing context (a tab, window, or <code>&lt;iframe&gt;</code>) to show the results of
+                navigation to the linked URL. The following keywords have special meanings for where to load the URL:</p>
               <ul>
                 <li><code>_self</code>: Show the resource in the current browsing context. (Default)</li>
-                <li><code>_blank</code>: Show the resource in a new unnamed browsing context, usually a new tab, but users can configure browsers to open a new window instead.
-                  Setting <code>target="_blank"</code> on <code>&lt;area&gt;</code> implicitly provides the same <code>rel</code> behavior as setting <code>rel="noopener"</code>
-                  which does not set <code>window.opener</code>. </li>
-                <li><code>_parent</code>: Show the resource in the parent browsing context of the current one, if the current page is inside a frame. If there is no parent, behaves
+                <li><code>_blank</code>: Show the resource in a new unnamed browsing context, usually a new tab, but users can configure browsers to open a new window instead.</li>
+                <li><code>_parent</code>: Show the resource in the parent browsing context of the current one, if the current page is inside a frame. If there is no parent, acts
                   the same as <code>_self</code>.</li>
                 <li><code>_top</code>: Show resource in the top-most browsing context (the browsing context that is an ancestor of the current one and has no parent). If there are
                   no parents, behaves the same as <code>_self</code>.</li>
