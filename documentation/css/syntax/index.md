@@ -32,3 +32,9 @@ As an element on the page may be matched by several selectors, and therefore by 
 > **Note:** It is important to note if a ruleset characterized by a group of selectors is a kind of shorthand replacing rulesets with a single selector each, this does not apply to the validity of the ruleset itself.
 >
 > This leads to an important consequence: if one single basic selector is invalid, like when using an unknown pseudo-element or pseudo-class, the whole _selector_ is invalid and therefore, the entire rule is invalid (and hence, ignored).
+
+## CSS statements
+
+Rulesets are the main building block of a stylesheet, which often consists of only a big list of them. But there is other information that a web author wants to convey in a stylesheet, like the character set, other external stylesheets to import, font face, or list counter descriptions, and many more. It will use other and specific kinds of statements to do that.
+
+A **statement** is a building block that begins with any non-space character and ends at the first closing brace or semicolon (outside a string, non-escaped and not included into another `{}`, `()`, or `[]` pair).
