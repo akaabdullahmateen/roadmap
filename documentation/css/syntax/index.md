@@ -42,4 +42,10 @@ A **statement** is a building block that begins with any non-space character and
 There are two kinds of statements:
 
 - **Rulesets:** Rules that associate a collection of CSS declarations to a condition described by a selector.
-- **At-rules:** Rules that start with an _at sign_, '`@`' (`U+0040 COMMERCIAL AT`), followed by an identifier and then continuing up to the end of the statement, that is up to the next semicolon (`;`) outside of a block, or the end of the next block.
+- **At-rules:** Rules that start with an _at sign_, '`@`' (`U+0040 COMMERCIAL AT`), followed by an identifier and then continuing up to the end of the statement, that is up to the next semicolon (`;`) outside of a block, or the end of the next block. Each type of at-rules, defined by the identifier, may have its own internal syntax, and semantics of course. They are used to convey meta-data information (like `@charset` or `import`), conditional information (like `@media` or `@document`), or descriptive information (like `@font-face`).
+
+Any statement which is not a ruleset or an at-rule is invalid and ignored.
+
+### Nested statements
+
+There is another group of statements - the **nested statements**. These are statements that can be used in a specific subset of at-rules - the _conditional group rules_. These statements only apply if a specific condition is matched: the `@media` at-rule is applied only if the device, on which the browser runs, matches the expressed condition; the `@document` at-rule content is applied only if the current page matches some conditions, and so on. In CSS1 and CSS2.1, only _rulesets_ could be used inside conditional group rules. That was very restrictive, and this restriction was lifted in CSS Conditionals Level 3. Now, though still experimental and not supported by every browser, conditional group rules can contain a wider range of content: rulesets but also some, but not all, at-rules.
