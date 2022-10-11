@@ -38,3 +38,8 @@ As an element on the page may be matched by several selectors, and therefore by 
 Rulesets are the main building block of a stylesheet, which often consists of only a big list of them. But there is other information that a web author wants to convey in a stylesheet, like the character set, other external stylesheets to import, font face, or list counter descriptions, and many more. It will use other and specific kinds of statements to do that.
 
 A **statement** is a building block that begins with any non-space character and ends at the first closing brace or semicolon (outside a string, non-escaped and not included into another `{}`, `()`, or `[]` pair).
+
+There are two kinds of statements:
+
+- **Rulesets:** Rules that associate a collection of CSS declarations to a condition described by a selector.
+- **At-rules:** Rules that start with an _at sign_, '`@`' (`U+0040 COMMERCIAL AT`), followed by an identifier and then continuing up to the end of the statement, that is up to the next semicolon (`;`) outside of a block, or the end of the next block.
