@@ -23,15 +23,13 @@ p {
 <p>This paragraph has <em>emphasized text</em> in it.</p>
 ```
 
-{{EmbedLiveSample("","",40)}}
-
-The words "emphasized text" will appear green, since the `em` element has inherited the value of the [`color`](/en-US/docs/Web/CSS/color) property from the `p` element. It does _not_ get the initial value of the property (which is the color that is used for the root element when the page specifies no color).
+The phrase `emphasized text` will appear green, since the `em` element has inherited the value of the `color` property from its parent: `p` element. It does _not_ get the initial value of the property (which is the color that is used for the root element when the page specifies no color).
 
 ## Non-inherited properties
 
-When no value for a **non-inherited property** has been specified on an element, the element gets the [initial value](/en-US/docs/Web/CSS/initial_value) of that property (as specified in the property's summary).
+When no value for a **non-inherited property** has been specified on an element, the element gets the initial value of that property (as specified in the property's summary).
 
-A typical example of a non-inherited property is the {{ Cssxref("border") }} property. Consider the following style rules and the markup:
+A typical example of a non-inherited property is the `border` property. Consider the following style rules and the markup:
 
 ```css
 p {
@@ -43,15 +41,19 @@ p {
 <p>This paragraph has <em>emphasized text</em> in it.</p>
 ```
 
-{{EmbedLiveSample("","",40)}}
+The phrase `emphasized text` will not have another border, since the initial value of `border-style` is `none`. If you do want `em` to inherit the border's computed value of its parent: `p` element; you can use the `inherit` keyword.
 
-The words "emphasized text" will not have another border (since the initial value of [`border-style`](/en-US/docs/Web/CSS/border-style) is `none`).
+```css
+em {
+  border: inherit;
+}
+```
 
 ## Notes
 
-The [`inherit`](/en-US/docs/Web/CSS/inherit) keyword allows authors to explicitly specify inheritance. It works on both inherited and non-inherited properties.
+The `inherit` keyword allows authors to explicitly specify inheritance. It works on both inherited and non-inherited properties.
 
-You can control inheritance for all properties at once using the [`all`](/en-US/docs/Web/CSS/all) shorthand property, which applies its value to all properties. For example:
+You can control inheritance for all properties at once using the `all` shorthand property, which applies its value to all properties. For example:
 
 ```css
 p {
@@ -61,26 +63,4 @@ p {
 }
 ```
 
-This reverts the style of the paragraphs' [`font`](/en-US/docs/Web/CSS/font) property to the user agent's default unless a user stylesheet exists, in which case that is used instead. Then it doubles the font size and applies a [`font-weight`](/en-US/docs/Web/CSS/font-weight) of `"bold"`.
-
-### Overriding inheritance, an example
-
-Using our previous example with [`border`](/en-US/docs/Web/CSS/border), if we explicitly set the inheritance with `inherit`, we get the following:
-
-```css
-p {
-  border: medium solid;
-}
-
-em {
-  border: inherit;
-}
-```
-
-```html
-<p>This paragraph has <em>emphasized text</em> in it.</p>
-```
-
-{{EmbedLiveSample("","",40)}}
-
-We can see here another border around the word "emphasized text".
+This reverts the style of the paragraph's `font` property to the user agent's default, unless a user stylesheet exists, in which case that is used instead. Then it doubles the font size and applies a `font-weight` of `bold`.
