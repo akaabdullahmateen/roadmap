@@ -41,7 +41,7 @@ input:focus,
 
 The `[type="password"]` selector in the above selector list, with a specificity weight of `0-1-0`, applies the `color: blue` declaration to all password input types.
 
-All inputs, no matter the type, when receiving focus, match the second selector in the list, `input:focus`, with a specificity weight of `0-1-1`; this weight is made up of the `:focus` pseudo-class (0-1-0) and the `input` type (0-0-1). If the password input has focus, it will match `input:focus`, and the specificity weight for the `color: blue` style declaration will be `0-1-1`. When that password doesn't have focus, the specificity weight remains at `0-1-0`.
+All inputs, no matter the type, when receiving focus, match the second selector in the list, `input:focus`, with a specificity weight of `0-1-1`; this weight is made up of the `:focus` pseudo-class (`0-1-0`) and the `input` type (`0-0-1`). If the password input has focus, it will match `input:focus`, and the specificity weight for the `color: blue` style declaration will be `0-1-1`. When that password doesn't have focus, the specificity weight remains at `0-1-0`.
 
 The specificity for a required input nested in an element with attribute `id="myApp"` is `1-2-1`, based on one ID, two pseudo-classes, and one element type.
 
@@ -105,7 +105,7 @@ input.myClass {
 
 ### The `:is()` and `:not()` exceptions
 
-The matches-any pseudo-class {{CSSxRef(":is", ":is()")}} and the negation pseudo-class {{CSSxRef(":not", ":not()")}} are _not_ considered as pseudo-classes in the specificity weight calculation. They themselves don't add any weight to the specificity equation. However, the selector parameters passed into the pseudo-class parenthesis are part of the specificity algorithm; the weight of the matches-any and negation pseudo-class in the specificity value calculation is the weight of the parameter's [weight](#selector_weight_categories).
+The matches-any pseudo-class `:is()` and the negation pseudo-class `:not()` are _not_ considered as pseudo-classes in the specificity weight calculation. They themselves don't add any weight to the specificity equation. However, the selector parameters passed into the pseudo-class parenthesis are part of the specificity algorithm; the weight of the matches-any and negation pseudo-class in the specificity value calculation is the weight of the parameter's weight.
 
 ```css
 p {
@@ -149,7 +149,7 @@ a:not(#fakeId#fakeId#fakeID) {
 }
 ```
 
-In this example, all links will be blue, unless overridden by a link declaration with 3 or more IDs, a color value matching an `a` includes the [`!important` flag](#the-important-exception), or if the link has an [inline style](#inline-styles) color declaration. If you use such a technique, add a comment to explain why the hack was needed.
+In this example, all links will be blue, unless overridden by a link declaration with 3 or more IDs, a color value matching an `a` includes the `!important` flag, or if the link has an inline style color declaration. If you use such a technique, add a comment to explain why the hack was needed.
 
 ### Inline styles
 
@@ -169,21 +169,21 @@ p[style*="purple"] {
 }
 ```
 
-Make sure to include a comment with every inclusion of the important flag so code maintainers understand why a CSS anti-pattern was used.
+Make sure to include a comment with every inclusion of the `!important` flag so code maintainers understand why a CSS anti-pattern was used.
 
 ### The `!important` exception
 
-CSS declarations marked as important override any other declarations within the same cascade layer and origin. Although technically, [`!important`](/en-US/docs/Web/CSS/important) has nothing to do with specificity, it interacts directly with specificity and the cascade. It reverses the [cascade](/en-US/docs/Web/CSS/Cascade) order of stylesheets.
+CSS declarations marked as `!important` override any other declarations within the same cascade layer and origin. Although technically, `!important` has nothing to do with specificity, it interacts directly with specificity and the cascade. It reverses the cascade order of stylesheets.
 
 If declarations from the same origin and cascade layer conflict and one property value has the `!important` flag set, the important declaration is applied no matter the specificity. When conflicting declarations from the same origin and cascade layer with the `!important` flag are applied to the same element, the declaration with a greater specificity is applied.
 
 Using `!important` to override specificity is considered a **bad practice** and should be avoided for this purpose. Understanding and effectively using specificity and the cascade can remove any need for the `!important` flag.
 
-Instead of using `!important` to override foreign CSS (from external libraries, like Bootstrap or normalize.css), import the third-party scripts directly into [cascade layers](/en-US/docs/Web/CSS/@layer). If you must use `!important` in your CSS, comment your usage so future code maintainers know why the declaration was marked important and know not to override it. But definitely, don't use `!important` when writing plugins or frameworks that other developers will need to incorporate without being able to control.
+Instead of using `!important` to override foreign CSS (from external libraries, like Bootstrap or normalize.css), import the third-party scripts directly into cascade layers. If you must use `!important` in your CSS, comment your usage so future code maintainers know why the declaration was marked important and know not to override it. But definitely, don't use `!important` when writing plugins or frameworks that other developers will need to incorporate without being able to control.
 
 ### The `:where()` exception
 
-The specificity-adjustment pseudo-class {{CSSxRef(":where", ":where()")}} always has its specificity replaced with zero, `0-0-0`. It enables making CSS selectors very specific in what element is targeted without any increase to specificity.
+The specificity-adjustment pseudo-class `:where()` always has its specificity replaced with zero, `0-0-0`. It enables making CSS selectors very specific in what element is targeted without any increase to specificity.
 
 In creating third-party CSS to be used by developers who don't have access to edit your CSS, it's considered a good practice to create CSS with the lowest possible specificity. For example, if your theme includes the following CSS:
 
@@ -295,9 +295,9 @@ To remove the perceived need for `!important`, you can do one of the following:
 
 All these methods are covered in preceding sections.
 
-If you're unable to remove `!important` flags from an authors style sheet, the only solution to overriding the important styles is by using `!important`. Creating a [cascade layer](/en-US/docs/Web/CSS/@layer) of important declaration overrides is an excellent solution. Two ways of doing this include:
+If you're unable to remove `!important` flags from an authors style sheet, the only solution to overriding the important styles is by using `!important`. Creating a cascade layer of important declaration overrides is an excellent solution. Two ways of doing this include:
 
-#### Method #1
+#### Method 1
 
 1. Create a separate, short style sheet containing only important declarations specifically overriding any important declarations you were unable to remove.
 2. Import this stylesheet as the first import in your CSS using `layer()`, including the `@import` statement, before linking to other stylesheets. This is to ensure that the important overrides is imported as the first layer.
@@ -308,7 +308,7 @@ If you're unable to remove `!important` flags from an authors style sheet, the o
 </style>
 ```
 
-#### Method #2
+#### Method 2
 
 1. At the beginning of your stylesheet declarations, create a named cascade layer, like so:
 
@@ -347,7 +347,7 @@ html h1 {
 
 The `<h1>` elements will be purple because when declarations have the same specificity, the last declared selector has precedence.
 
-### Directly targeted elements vs. inherited styles
+### Directly targeted elements versus inherited styles
 
 Styles for a directly targeted element will always take precedence over inherited styles, regardless of the specificity of the inherited rule. Given the following CSS and HTML:
 
@@ -371,75 +371,14 @@ h1 {
 
 The `h1` will be purple because the `h1` selector targets the element specifically, while the green is inherited from the `#parent` declarations.
 
-## Examples
-
-In the following CSS, we have three selectors targeting {{HTMLElement('input')}} elements to set a color. For a given input, the specificity weight of the color declaration having precedence is the matching selector with the greatest weight:
-
-```css
-#myElement input.myClass {
-  color: red;
-} /* 1-1-1 */
-input[type="password"]:required {
-  color: blue;
-} /* 0-2-1 */
-html body main input {
-  color: green;
-} /* 0-0-4 */
-```
-
-If the above selectors all target the same input, the input will be red, as the first declaration has the highest value in the _ID_ column.
-
-The last selector has four _TYPE_ components. While it has the highest integer value, no matter how many elements and pseudo-elements are included, even if there were 150, TYPE components never have precedence over _CLASS_ components. The column values are compared starting from left to right when column values are equal.
-
-Had we converted the id selector in the example code above to an attribute selector, the first two selectors would have the same specificity, as shown below:
-
-```css
-[id="myElement"] input.myClass {
-  color: red;
-} /* 0-2-1 */
-input[type="password"]:required {
-  color: blue;
-} /* 0-2-1 */
-```
-
-When multiple declarations have equal specificity, the last declaration found in the CSS is applied to the element. If both selectors match the same {{HTMLElement('input')}}, the color will be blue.
-
 ## Additional notes
 
 A few things to remember about specificity:
 
-1. Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. Specificity only matters for declarations of the same importance and same origin and [cascade layer](/en-US/docs/Web/CSS/@layer). If matching selectors are in different origins, the [cascade](/en-US/docs/Web/CSS/Cascade) determines which declaration takes precedence.
+1. Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. Specificity only matters for declarations of the same importance and same origin and cascade layer. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
 
 2. When two selectors in the same cascade layer and origin have the same specificity, proximity is important; the last selector wins.
 
-3. As per CSS rules, [directly targeted elements](#directly_targeted_elements_vs._inherited_styles) will always take precedence over rules which an element inherits from its ancestor.
+3. As per CSS rules, directly targeted elements will always take precedence over rules which an element inherits from its ancestor.
 
-4. [Proximity of elements](#tree_proximity_ignorance) in the document tree has no effect on the specificity.
-
-## Specifications
-
-{{Specifications}}
-
-## See also
-
-- ["Specificity" in "Cascade and inheritance"](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance#specificity_2)
-- [SpeciFISHity](https://specifishity.com)
-- [Specificity Calculator](https://specificity.keegan.st/): An interactive website to test and understand your own CSS rules
-- [_ID-CLASS-TYPE_ exercise](https://estelle.github.io/CSS/selectors/exercises/specificity.html) a specificity quiz
-- CSS key concepts:
-  - [CSS syntax](/en-US/docs/Web/CSS/Syntax)
-  - [At-rules](/en-US/docs/Web/CSS/At-rule)
-  - [Comments](/en-US/docs/Web/CSS/Comments)
-  - [Inheritance](/en-US/docs/Web/CSS/inheritance)
-  - [Box model](/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
-  - [Layout modes](/en-US/docs/Web/CSS/Layout_mode)
-  - [Visual formatting models](/en-US/docs/Web/CSS/Visual_formatting_model)
-  - [Margin collapsing](/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)
-  - Values
-    - [Initial values](/en-US/docs/Web/CSS/initial_value)
-    - [Computed values](/en-US/docs/Web/CSS/computed_value)
-    - [Used values](/en-US/docs/Web/CSS/used_value)
-    - [Actual values](/en-US/docs/Web/CSS/actual_value)
-  - [Value definition syntax](/en-US/docs/Web/CSS/Value_definition_syntax)
-  - [Shorthand properties](/en-US/docs/Web/CSS/Shorthand_properties)
-  - [Replaced elements](/en-US/docs/Web/CSS/Replaced_element)
+4. Proximity of elements in the document tree has no effect on the specificity.
