@@ -9,9 +9,9 @@ CSS properties can be categorized in two types:
 
 ## Inherited properties
 
-When no value for an **inherited property** has been specified on an element, the element gets the [computed value](/en-US/docs/Web/CSS/computed_value) of that property on its parent element. Only the root element of the document gets the [initial value](/en-US/docs/Web/CSS/initial_value) given in the property's summary.
+When no value for an **inherited property** has been specified on an element, the element gets the computed value of that property on its parent element. Only the root element of the document gets the initial value given in the property's summary.
 
-A typical example of an inherited property is the [`color`](/en-US/docs/Web/CSS/color) property. Consider the following style rules and the markup:
+A typical example of an inherited property is the `color` property. Consider the following style rules and the markup:
 
 ```css
 p {
