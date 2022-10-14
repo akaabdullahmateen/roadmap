@@ -387,17 +387,17 @@ Only CSS property/value pair declarations participate in the cascade. This means
 
 For the most part, the properties and descriptors defined in at-rules don't participate in the cascade. Only at-rules as a whole participate in the cascade. For example, within a `@font-face` rule, font names are identified by `font-family` descriptors. If several `@font-face` rules with the same descriptor are defined, only the most appropriate `@font-face`, as a whole, is considered. If more than one are identically appropriate, the entire `@font-face` declarations are compared using steps 1, 2, and 4 of the algorithm (there is no specificity when it comes to at-rules).
 
-While the declarations contained in most at-rules — such as those in {{cssxref("@media")}}, {{cssxref("@document")}}, or {{cssxref("@supports")}} — participate in the cascade, the at-rule may make an entire selector not relevant, as we saw with the print style in the [basic example](#basic-example).
+While the declarations contained in most at-rules — such as those in `@media`, `@document`, or `@supports` — participate in the cascade, the at-rule may make an entire selector not relevant, as we saw with the print style in the basic example.
 
-Declarations in {{cssxref("@keyframes")}} don't participate in the cascade. As with `@font-face`, only the `@keyframes` as a whole is selected via the cascade algorithm. The [precedence order of animation is described below](#css-animations-and-the-cascade).
+Declarations in `@keyframes` don't participate in the cascade. As with `@font-face`, only the `@keyframes` as a whole is selected via the cascade algorithm. The precedence order of animation is described below.
 
-When it comes to {{cssxref("@import")}}, the `@import` doesn't participate itself in the cascade, but all of the imported styles do participate. If the `@import` defines a [named or anonymous layer](/en-US/docs/Web/CSS/@layer), the contents of the imported stylesheet are placed into the specified layer. All other CSS imported with `@import` is which is treated as the last declared layer. This was discussed above.
+When it comes to `@import`, the `@import` doesn't participate itself in the cascade, but all of the imported styles do participate. If the `@import` defines a named or anonymous layer, the contents of the imported stylesheet are placed into the specified layer. All other CSS imported with `@import` is, which is treated as the last declared layer.
 
-Finally, {{cssxref("@charset")}} obeys specific algorithms and isn't affected by the cascade algorithm.
+Finally, `@charset` obeys specific algorithms and isn't affected by the cascade algorithm.
 
 ## CSS animations and the cascade
 
-[CSS animations](/en-US/docs/Web/CSS/CSS_Animations), using {{ cssxref("@keyframes")}} at-rules, define animations between states. Keyframes don't cascade, meaning that at any given time CSS takes values from only one single {{cssxref("@keyframes")}}, and never mixes multiple ones together.
+CSS animations, using `@keyframes` at-rules, define animations between states. Keyframes don't cascade, meaning that at any given time CSS takes values from only one single `@keyframes`, and never mixes multiple ones together.
 
 If the several keyframe animations are defined with the same animation name, the last defined `@keyframes` in the origin and layer with the greatest precedence. Only one `@keyframes` definition is used, even if the `@keyframes` animate different property. `@keyframes` with the same name are never combined.
 
@@ -438,10 +438,10 @@ p {
 
 In this example, there are three separate animation declaration named `repeatedName`. When `animation: infinite 5s alternate repeatedName` is applied to the paragraph, only one animation is applied: the keyframe animation defined in the unlayered CSS takes precedence over the layered keyframe animation declarations based on origin and cascade layer precedence order. In this example, only the element's font size will be animated.
 
-> **Note:** There are no important animations, as property declarations in a {{cssxref('@keyframes')}} block that contain `!important` as part of the value are ignored.
+> **Note:** There are no important animations. The property declarations in a `@keyframes` block that contain `!important` as part of the value are ignored.
 
 ## Resetting styles
 
-After your content has finished altering styles, it may find itself in a situation where it needs to restore them to a known state. This may happen in cases of animations, theme changes, and so forth. The CSS property {{cssxref("all")}} lets you quickly set (almost) everything in CSS back to a known state.
+After your content has finished altering styles, it may find itself in a situation where it needs to restore them to a known state. This may happen in cases of animations, theme changes, and so forth. The CSS property `all` lets you quickly set (almost) everything in CSS back to a known state.
 
 `all` lets you opt to immediately restore all properties to any of their initial (default) state, the state inherited from the previous level of the cascade, a specific origin (the user-agent stylesheet, the author stylesheet, or the user stylesheet), or even to clear the values of the properties entirely.
