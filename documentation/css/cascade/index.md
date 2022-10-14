@@ -383,7 +383,7 @@ Now that we have a better understanding of origin type and cascade layer precede
 
 ## Which CSS entities participate in the cascade
 
-Only CSS property/value pair declarations participate in the cascade. This means that at-rules containing entities other than declarations, such as a `@font-face` rule containing _descriptors_, don't participate in the cascade.
+Only CSS property / value pair declarations participate in the cascade. This means that at-rules containing entities other than declarations, such as a `@font-face` rule containing _descriptors_, don't participate in the cascade.
 
 For the most part, the properties and descriptors defined in at-rules don't participate in the cascade. Only at-rules as a whole participate in the cascade. For example, within a `@font-face` rule, font names are identified by `font-family` descriptors. If several `@font-face` rules with the same descriptor are defined, only the most appropriate `@font-face`, as a whole, is considered. If more than one are identically appropriate, the entire `@font-face` declarations are compared using steps 1, 2, and 4 of the algorithm (there is no specificity when it comes to at-rules).
 
