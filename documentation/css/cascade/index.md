@@ -213,8 +213,8 @@ and then in the body of the document we have inline styles:
 <p style="line-height: 1.6em; text-decoration: overline !important;">Hello</p>
 ```
 
-In the CSS code block above, three cascade layers named "A", "B", and "C", were created, in that order. Three stylesheets were imported directly into layers and two were imported without creating or being assigned to a layer.
-The "All unlayered styles" in the list below (normal author style precedence - order 4) includes styles from these two stylesheets and the additional unlayered CSS style blocks. In addition, there are two inline styles, a normal `line-height` declaration and an important `text-decoration` declaration:
+In the CSS code block above, three cascade layers named "_A_", "_B_", and "_C_", were created, in that order. Three stylesheets were imported directly into layers and two were imported without creating or being assigned to a layer.
+The "_All unlayered styles_" in the list below (normal author style precedence - order 4) includes styles from these two stylesheets and the additional unlayered CSS style blocks. In addition, there are two inline styles, a normal `line-height` declaration and an important `text-decoration` declaration:
 
 | Order (low to high) | Author style         | Importance   |
 | ------------------- | -------------------- | ------------ |
@@ -231,7 +231,7 @@ The "All unlayered styles" in the list below (normal author style precedence - o
 | 11                  | inline `style`       | `!important` |
 | 12                  | transitions          |              |
 
-In all origin types, the non important styles contained in layers have the lowest precedence. In our example, the normal styles associated with the first declared layer (A) have lower precedence than normal styles in the second declared layer (B), which have lower precedence than normal styles in the third declared layer (C). These layered styles have lower precedence than all normal unlayered styles, which includes normal styles from `unlayeredStyles.css`, `moreUnlayeredStyles.css`, and the `color` of `p` in the `<style>` itself.
+In all origin types, the non-important styles contained in layers have the lowest precedence. In our example, the normal styles associated with the first declared layer (A) have lower precedence than normal styles in the second declared layer (B), which have lower precedence than normal styles in the third declared layer (C). These layered styles have lower precedence than all normal unlayered styles, which includes normal styles from `unlayeredStyles.css`, `moreUnlayeredStyles.css`, and the `color` of `p` in the `<style>` itself.
 
 If any of the layered styles in A, B, or C, have selectors with higher specificity matching an element, similar to `:root body p { color: black;}`, it doesn't matter. Those declarations are removed from consideration because of _origin_; normal layered styles have less precedence than normal unlayered styles. If, however, the more specific selector `:root body p { color: black;}` was found in `unlayeredStyles.css`, as both _origin and importance_ have the same precedence, _specificity_ would mean the more specific, black declaration would win.
 
@@ -277,7 +277,7 @@ p {
 }
 ```
 
-Now the paragraph will be blue. The `!important` in the earliest declared layer takes precedence of subsequent layers and unlayered important declarations. If the inline style contained !important, such as `<p style="color: black !important">`, again the paragraph would be black. Inline importance does take precedence over all other author declared `!important` declarations, no matter the specificity.
+Now the paragraph will be blue. The `!important` in the earliest declared layer takes precedence of subsequent layers and unlayered important declarations. If the inline style contained `!important`, such as `<p style="color: black !important">`, again the paragraph would be black. Inline importance does take precedence over all other author declared `!important` declarations, no matter the specificity.
 
 > **Note:** `!important` reverses the precedence of cascade layers. For this reason, rather than using `!important` to override external styles, import frameworks, third party styles, widget stylesheets, etc., into layers, demoting their precedence. `!important` should only be used sparingly, if ever, to guard required styles against later overrides, in the first declared layer.
 
@@ -285,43 +285,107 @@ Styles that are transitioning take precedence over all important styles, no matt
 
 ## Complete cascade order
 
-Now that we have a better understanding of origin type and cascade layer precedence, we realize the table in [Cascading order](#cascading_order) could have more accurately been represented by the following table:
+Now that we have a better understanding of origin type and cascade layer precedence, we realize the table in _Cascading order_ could have more accurately been represented by the following table:
 
 <table>
-<thead>
-  <tr><th>Precedence Order <br/>(low to high)</th><th>Style Origin</th><th>Importance</th></tr>
-</thead>
-<tbody>
-  <tr><td rowspan="3">1</td><td>user-agent - first declared layer</td><td rowspan="3">normal</td></tr>
-  <tr><td>user-agent - last declared layer</td></tr>
-  <tr><td>user-agent - unlayered styles</td></tr>
-  <tr><td rowspan="3">2</td><td>user - first declared layer</td><td rowspan="3">normal</td></tr>
-  <tr><td>user - last declared layer</td></tr>
-  <tr><td>user - unlayered styles</td></tr>
-  <tr><td rowspan="4">3</td><td>author - first declared layer</td><td rowspan="4">normal</td></tr>
-  <tr><td>author - last declared layer</td></tr>
-  <tr><td>author - unlayered styles</td></tr>
-  <tr><td>inline <code>style</code></td></tr>
-  <tr><td>4</td><td>animations</td><td></td></tr>
-  <tr><td rowspan="4">5</td><td>author - unlayered styles</td><td rowspan="4"><code>!important</code></td></tr>
-  <tr><td>author - last declared layer</td></tr>
-  <tr><td>author - first declared layer</td></tr>
-  <tr><td>inline <code>style</code></td></tr>
-  <tr><td rowspan="3">6</td><td>user - unlayered styles</td><td rowspan="3"><code>!important</td></tr>
-  <tr><td>user - last declared layer</td></tr>
-  <tr><td>user - first declared layer</td></tr>
-  <tr><td rowspan="3">7</td><td>user-agent - unlayered styles</td><td rowspan="3"><code>!important</code></td></tr>
-  <tr><td>user-agent - last declared layer</td></tr>
-  <tr><td>user-agent - first declared layer</td></tr>
-  <tr><td>8</td><td>transitions</td><td></td></tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Precedence Order <br/>(low to high)</th>
+      <th>Style Origin</th>
+      <th>Importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">1</td>
+      <td>user-agent - first declared layer</td>
+      <td rowspan="3">normal</td>
+    </tr>
+    <tr>
+      <td>user-agent - last declared layer</td>
+    </tr>
+    <tr>
+      <td>user-agent - unlayered styles</td>
+    </tr>
+    <tr>
+      <td rowspan="3">2</td>
+      <td>user - first declared layer</td>
+      <td rowspan="3">normal</td>
+    </tr>
+    <tr>
+      <td>user - last declared layer</td>
+    </tr>
+    <tr>
+      <td>user - unlayered styles</td>
+    </tr>
+    <tr>
+      <td rowspan="4">3</td>
+      <td>author - first declared layer</td>
+      <td rowspan="4">normal</td>
+    </tr>
+    <tr>
+      <td>author - last declared layer</td>
+    </tr>
+    <tr>
+      <td>author - unlayered styles</td>
+    </tr>
+    <tr>
+      <td>inline <code>style</code></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>animations</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="4">5</td>
+      <td>author - unlayered styles</td>
+      <td rowspan="4"><code>!important</code></td>
+    </tr>
+    <tr>
+      <td>author - last declared layer</td>
+    </tr>
+    <tr>
+      <td>author - first declared layer</td>
+    </tr>
+    <tr>
+      <td>inline <code>style</code></td>
+    </tr>
+    <tr>
+      <td rowspan="3">6</td>
+      <td>user - unlayered styles</td>
+      <td rowspan="3"><code>!important</td>
+    </tr>
+    <tr>
+      <td>user - last declared layer</td>
+    </tr>
+    <tr>
+      <td>user - first declared layer</td>
+    </tr>
+    <tr>
+      <td rowspan="3">7</td>
+      <td>user-agent - unlayered styles</td>
+      <td rowspan="3"><code>!important</code></td>
+    </tr>
+    <tr>
+      <td>user-agent - last declared layer</td>
+    </tr>
+    <tr>
+      <td>user-agent - first declared layer</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>transitions</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 ## Which CSS entities participate in the cascade
 
-Only CSS property/value pair declarations participate in the cascade. This means that [at-rules](/en-US/docs/Web/CSS/At-rule) containing entities other than declarations, such as a {{ cssxref("@font-face")}} rule containing _descriptors_, don't participate in the cascade.
+Only CSS property/value pair declarations participate in the cascade. This means that at-rules containing entities other than declarations, such as a `@font-face` rule containing _descriptors_, don't participate in the cascade.
 
-For the most part, the properties and descriptors defined in at-rules don't participate in the cascade. Only at-rules as a whole participate in the cascade. For example, within a `@font-face` rule, font names are identified by [`font-family`](/en-US/docs/Web/CSS/@font-face/font-family) descriptors. If several `@font-face` rules with the same descriptor are defined, only the most appropriate `@font-face`, as a whole, is considered. If more than one are identically appropriate, the entire `@font-face` declarations are compared using steps 1, 2, and 4 of the algorithm (there is no specificity when it comes to at-rules).
+For the most part, the properties and descriptors defined in at-rules don't participate in the cascade. Only at-rules as a whole participate in the cascade. For example, within a `@font-face` rule, font names are identified by `font-family` descriptors. If several `@font-face` rules with the same descriptor are defined, only the most appropriate `@font-face`, as a whole, is considered. If more than one are identically appropriate, the entire `@font-face` declarations are compared using steps 1, 2, and 4 of the algorithm (there is no specificity when it comes to at-rules).
 
 While the declarations contained in most at-rules — such as those in {{cssxref("@media")}}, {{cssxref("@document")}}, or {{cssxref("@supports")}} — participate in the cascade, the at-rule may make an entire selector not relevant, as we saw with the print style in the [basic example](#basic-example).
 
@@ -381,29 +445,3 @@ In this example, there are three separate animation declaration named `repeatedN
 After your content has finished altering styles, it may find itself in a situation where it needs to restore them to a known state. This may happen in cases of animations, theme changes, and so forth. The CSS property {{cssxref("all")}} lets you quickly set (almost) everything in CSS back to a known state.
 
 `all` lets you opt to immediately restore all properties to any of their initial (default) state, the state inherited from the previous level of the cascade, a specific origin (the user-agent stylesheet, the author stylesheet, or the user stylesheet), or even to clear the values of the properties entirely.
-
-## Specifications
-
-{{Specifications}}
-
-## See also
-
-- [A very simple introduction to the CSS cascade](/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-- CSS key concepts:
-  - [CSS syntax](/en-US/docs/Web/CSS/Syntax)
-  - [At-rules](/en-US/docs/Web/CSS/At-rule)
-  - [Comments](/en-US/docs/Web/CSS/Comments)
-  - [Specificity](/en-US/docs/Web/CSS/Specificity)
-  - [Inheritance](/en-US/docs/Web/CSS/inheritance)
-  - [Box model](/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
-  - [Layout modes](/en-US/docs/Web/CSS/Layout_mode)
-  - [Visual formatting models](/en-US/docs/Web/CSS/Visual_formatting_model)
-  - [Margin collapsing](/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)
-  - Values
-    - [Initial values](/en-US/docs/Web/CSS/initial_value)
-    - [Computed values](/en-US/docs/Web/CSS/computed_value)
-    - [Used values](/en-US/docs/Web/CSS/used_value)
-    - [Actual values](/en-US/docs/Web/CSS/actual_value)
-  - [Value definition syntax](/en-US/docs/Web/CSS/Value_definition_syntax)
-  - [Shorthand properties](/en-US/docs/Web/CSS/Shorthand_properties)
-  - [Replaced elements](/en-US/docs/Web/CSS/Replaced_element)
