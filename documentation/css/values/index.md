@@ -1,19 +1,4 @@
----
-title: CSS values and units
-slug: Web/CSS/CSS_Values_and_Units
-page-type: guide
-tags:
-  - CSS
-  - Guide
-  - Reference
-  - values and units
-spec-urls:
-  - https://drafts.csswg.org/css-values/
-  - https://drafts.csswg.org/css-color/
-  - https://drafts.csswg.org/css-images/
----
-
-{{CSSRef}}
+# Values
 
 Every CSS declaration includes a property / value pair. Depending on the property, the value can include a single integer or keyword, to a series of keywords and values with or without units. There are a common set of data types — values and units — that CSS properties accept. Below is an overview of most of these data types. Refer to the page for each value type for more detailed information.
 
