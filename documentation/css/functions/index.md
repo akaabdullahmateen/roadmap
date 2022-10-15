@@ -177,7 +177,7 @@ The `font-variant-alternates` property controls the use of alternate glyphs, the
 
 ## Shape functions
 
-The following functions may be used as values for the {{cssxref("&lt;basic-shape&gt;")}} data type, which is used in the {{cssxref("clip-path")}}, {{cssxref("offset-path")}}, and {{cssxref("shape-outside")}} properties.
+The following functions may be used as values for the `<basic-shape>` data type, which is used in the `clip-path`, `offset-path`, and `shape-outside` properties.
 
 | Function    | Description                                               |
 | ----------- | --------------------------------------------------------- |
