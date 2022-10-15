@@ -136,7 +136,7 @@ Functions which specify different color representations. These may be used anywh
 
 ## Image functions
 
-These functions may be used wherever an {{cssxref("&lt;image&gt;")}} is valid as the value for a property.
+These functions may be used wherever an `<image>` is valid as the value for a property.
 
 | Function                      | Description                                                                                                                                                                                                          |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
