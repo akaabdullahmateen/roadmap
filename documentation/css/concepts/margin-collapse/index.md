@@ -4,11 +4,11 @@ The _top_ and _bottom_ margins of blocks are sometimes combined (collapsed) into
 
 Margin collapsing occurs in three basic cases:
 
-| Case                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Adjacent siblings                            | The margins of adjacent siblings are collapsed (except when the latter sibling needs to be _cleared_ past floats).                                                                                                                                                                                                                                                                                                                                                 |
+| Case | Description |
+| ---- | ----------- |
+| Adjacent siblings | The margins of adjacent siblings are collapsed (except when the latter sibling needs to be _cleared_ past floats). |
 | No content separating parent and descendants | If there is no border, padding, inline part, _block formatting context_ created, or _clearance_ to separate the `margin-top` of a block from the `margin-top` of one or more of its descendant blocks; or no border, padding, inline content, `height`, or `min-height` to separate the `margin-bottom` of a block from the `margin-bottom` of one or more of its descendant blocks, then those margins collapse. The collapsed margin ends up outside the parent. |
-| Empty blocks                                 | If there is no border, padding, inline content, `height` or `min-height` to separate a block's `margin-top` from its `margin-bottom`, then its top and bottom margins collapse.                                                                                                                                                                                                                                                                                    |
+| Empty blocks | If there is no border, padding, inline content, `height` or `min-height` to separate a block's `margin-top` from its `margin-bottom`, then its top and bottom margins collapse. |
 
 Some things to note:
 
