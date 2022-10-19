@@ -20,6 +20,7 @@ A block formatting context is created by at least one of the following:
 - Having `column-span``: all` should always create a new formatting context, even when the `column-span: all` element is not contained by a multi-column container.
 
 Formatting contexts affect layout, but typically, we create a new block formatting context for the positioning and clearing floats rather than changing the layout, because an element that establishes a new block formatting context will:
+
 - contain internal floats.
 - exclude external floats.
 - suppress _margin collapsing_.
