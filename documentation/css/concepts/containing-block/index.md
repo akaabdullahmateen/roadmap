@@ -32,7 +32,7 @@ The process for identifying the containing block depends entirely on the value o
    4. A `contain` value of `paint` (e.g. `contain: paint;`)
    5. A `backdrop-filter` other than `none` (e.g. `backdrop-filter: blur(10px);`)
 
-> **Note:** The containing block in which the root element `html` resides is a rectangle called the **initial containing block**. It has the dimensions of the viewport (for continuous media) or the page area (for paged media).
+> **Note:** The containing block in which the root element `<html>` resides is a rectangle called the **initial containing block**. It has the dimensions of the viewport (for continuous media) or the page area (for paged media).
 
 ## Calculating percentage values from the containing block
 
