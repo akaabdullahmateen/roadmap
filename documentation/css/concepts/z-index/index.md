@@ -30,7 +30,7 @@ The background and border of non-positioned block is completely unaffected by fl
 1. The background and borders of the root element.
 2. Descendent non-positioned blocks, in order of appearance in the HTML.
 3. Floating blocks.
-4. _Descendent non-positioned inline elements_.
+4. _Descendent non-positioned inline blocks_.
 5. Descendent positioned blocks, in order of appearance in the HTML.
 
 > **Note:** If a declaration with `opacity` property is applied to a non-positioned block, then something strange happens: the background and border of that block pops up above the positioned blocks. This is due to a peculiar part of the specification: applying an `opacity` value creates a new stacking context.
