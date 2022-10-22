@@ -35,6 +35,26 @@ The background and border of non-positioned block is completely unaffected by fl
 
 > **Note:** If a declaration with `opacity` property is applied to a non-positioned block, then something strange happens: the background and border of that block pops up above the positioned blocks. This is due to a peculiar part of the specification: applying an `opacity` value creates a new stacking context.
 
+## Using `z-index`
+
+Besides default stacking, if you want to create a custom stacking order, you can use the `z-index` property on a _positioned_ element.
+
+The `z-index` property can be specified with an integer value (positive, zero, or negative), which represents the position of the element along an imaginary z-axis. If you are not familiar with the z-axis, imagine the page as a stack of layers, each one having a number. Layers are rendered in numerical order, with larger numbers above smaller numbers:
+
+
+| Layer                   | Description                                           |
+| ----------------------- | ----------------------------------------------------- |
+| Bottom layer            | Farthest from the observer                            |
+| Negative indexed layers | Layers with negative `z-index` values                 |
+| Default rendering layer | Layer 0: applied when no `z-index` value is specified |
+| Positive indexed layers | Layers with positive `z-index` values                 |
+| Top layer               | Closest to the observer                               |
+
+> **Note:**
+>
+> - When no `z-index` property is specified, elements are rendered on the default rendering layer 0.
+> - If several elements share the same `z-index` value (thus are placed on the same layer), stacking rules explained in the previous section apply.
+
 ## Stacking context
 
 The **stacking context** is a three-dimensional conceptualization of HTML elements along an imaginary z-axis relative to the user, who is assumed to be facing the viewport or the webpage. HTML elements occupy this space in priority order based on element attributes.
