@@ -68,9 +68,9 @@ A stacking context is formed, anywhere in the document, by any element in the fo
 - Root element of the document (`<html>`).
 - Element with a `position` value `absolute` or `relative` and `z-index` value other than `auto`.
 - Element with a `position` value `fixed` or `sticky` (sticky for all mobile browsers, but not older desktop).
-- Element that is a child of a [flex](/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) container, with `z-index` value other than `auto`.
+- Element that is a child of a `flex` container, with `z-index` value other than `auto`.
 - Element that is a child of a `grid` container, with `z-index` value other than `auto`.
-- Element with an `opacity` value less than `1` (See [the specification for opacity](https://www.w3.org/TR/css-color-3/#transparency)).
+- Element with an `opacity` value less than `1`.
 - Element with a `mix-blend-mode` value other than `normal`.
 - Element with any of the following properties with value other than `none`:
 
@@ -81,13 +81,11 @@ A stacking context is formed, anywhere in the document, by any element in the fo
   - `clip-path`
   - `mask` / `mask-image` / `mask-border`
 
-- Element with an {{cssxref("isolation")}} value `isolate`.
-- Element with a {{cssxref("will-change")}} value specifying any property that would create a stacking context on non-initial value (see [this post](https://dev.opera.com/articles/css-will-change-property/)).
-- Element with a {{cssxref("contain")}} value of `layout`, or `paint`, or a composite value that includes either of them (i.e. `contain: strict`, `contain: content`).
+- Element with an `isolation` value `isolate`.
+- Element with a `will-change` value specifying any property that would create a stacking context on non-initial value.
+- Element with a `contain` value of `layout`, or `paint`, or a composite value that includes either of them (for example, `contain: strict`, `contain: content`).
 
-Within a stacking context, child elements are stacked according to the same rules explained just above. Importantly, the `z-index` values of its child stacking contexts only have meaning in this parent. Stacking contexts are treated atomically as a single unit in the parent stacking context.
-
-In summary:
+Within a stacking context, child elements are stacked according to the same rules explained just above. Importantly, the `z-index` values of its child stacking contexts only have meaning in this parent. Stacking contexts are treated atomically as a single unit in the parent stacking context. In summary:
 
 - Stacking contexts can be contained in other stacking contexts, and together create a hierarchy of stacking contexts.
 - Each stacking context is completely independent of its siblings: only descendant elements are considered when stacking is processed.
