@@ -59,9 +59,9 @@ The `z-index` property can be specified with an integer value (positive, zero, o
 
 The **stacking context** is a three-dimensional conceptualization of HTML elements along an imaginary z-axis relative to the user, who is assumed to be facing the viewport or the webpage. HTML elements occupy this space in priority order based on element attributes.
 
-### The stacking context
-
 The rendering order of certain elements is influenced by their `z-index` value. This occurs because these elements have special properties which cause them to form a _stacking context_.
+
+### Conditions
 
 A stacking context is formed, anywhere in the document, by any element in the following scenarios:
 
