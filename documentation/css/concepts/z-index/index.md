@@ -41,7 +41,6 @@ Besides default stacking, if you want to create a custom stacking order, you can
 
 The `z-index` property can be specified with an integer value (positive, zero, or negative), which represents the position of the element along an imaginary z-axis. If you are not familiar with the z-axis, imagine the page as a stack of layers, each one having a number. Layers are rendered in numerical order, with larger numbers above smaller numbers:
 
-
 | Layer                   | Description                                           |
 | ----------------------- | ----------------------------------------------------- |
 | Bottom layer            | Farthest from the observer                            |
@@ -61,7 +60,7 @@ The **stacking context** is a three-dimensional conceptualization of HTML elemen
 
 The rendering order of certain elements is influenced by their `z-index` value. This occurs because these elements have special properties which cause them to form a _stacking context_.
 
-### Conditions
+### Description
 
 A stacking context is formed, anywhere in the document, by any element in the following scenarios:
 
