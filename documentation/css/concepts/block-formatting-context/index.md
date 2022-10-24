@@ -50,11 +50,3 @@ A newer value of `display` lets us create a new BFC without any other potentiall
 With `display: flow-root;` on the `<div>`, everything inside that container participates in the block formatting context of that container, and floats will not poke out of the bottom of the element.
 
 The value name of `flow-root` makes sense when you understand you are creating something that acts like the `root` element (`<html>` element in browser) in terms of how it creates a new context for the flow layout inside it.
-
-### Exclude external floats
-
-In the following example, we are using `display:flow-root` and floats to implement double columns layout. We are able to do this because an element in the normal flow that establishes a new BFC does not overlap the margin box of any floats in the same block formatting context as the element itself.
-
-Rather than inline-blocks with width:\<percentage>, in this case we don't have to specify the width of the right div.
-
-Note that flexbox is a more efficient way to implement multi-column layout in modern CSS.
