@@ -26,27 +26,3 @@ Formatting contexts affect layout, but typically, we create a new block formatti
 - suppress _margin collapsing_.
 
 > **Note:** A Flex / Grid container (`display: flex / grid / inline-flex / inline-grid`) establishes a new Flex / Grid formatting context, which is similar to block formatting context except layout. There is no floating children available inside a flex / grid container, but exclude external floats and suppress margin collapsing still works.
-
-## Examples
-
-### Contain internal floats
-
-Make float content and alongside content the same height.
-
-Let's have a look at a couple of these in order to see the effect creating a new BFC.
-
-In the following example, we have a floated element inside a `<div>` with a `border` applied. The content of that `<div>` has floated alongside the floated element. As the content of the float is taller than the content alongside it, the border of the `<div>` now runs through the float. As explained in the [guide to in-flow and out of flow elements](/en-US/docs/Web/CSS/CSS_Flow_Layout/In_Flow_and_Out_of_Flow), the float has been taken out of flow so the `background` and `border` of the `<div>` only contain the content and not the float.
-
-**using `overflow: auto`**
-
-Setting `overflow: auto` or set other values than the initial value of `overflow: visible` created a new BFC containing the float. Our `<div>` now becomes a mini-layout inside our layout. Any child element will be contained inside it.
-
-The problem with using `overflow` to create a new BFC is that the `overflow` property is meant for telling the browser how you want to deal with overflowing content. There are some occasions in which you will find you get unwanted scrollbars or clipped shadows when you use this property purely to create a BFC. In addition, it is potentially not readable for a future developer, as it might not be obvious why you used `overflow` for this purpose. If you use `overflow`, it is a good idea to comment the code to explain.
-
-**using `display: flow-root`**
-
-A newer value of `display` lets us create a new BFC without any other potentially problematic side-effects. Using `display: flow-root` on the containing block creates a new BFC .
-
-With `display: flow-root;` on the `<div>`, everything inside that container participates in the block formatting context of that container, and floats will not poke out of the bottom of the element.
-
-The value name of `flow-root` makes sense when you understand you are creating something that acts like the `root` element (`<html>` element in browser) in terms of how it creates a new context for the flow layout inside it.
