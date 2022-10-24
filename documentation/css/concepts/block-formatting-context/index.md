@@ -65,4 +65,4 @@ You can create a new BFC to avoid [margin collapsing](/en-US/docs/Web/CSS/CSS_Bo
 
 #### Margin collapsing example
 
-In this example we have two adjacent {{HTMLElement("div")}} elements, which each have a vertical margin of `10px`. Because of margin collapsing, the vertical gap between them is 10 pixels, not the 20 we might expect.
+In this example we have two adjacent `<div>` elements, which each have a vertical margin of `10px`. Because of margin collapsing, the vertical gap between them is 10 pixels, not the 20 we might expect.
