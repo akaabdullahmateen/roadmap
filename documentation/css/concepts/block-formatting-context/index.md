@@ -58,7 +58,3 @@ In the following example, we are using `display:flow-root` and floats to impleme
 Rather than inline-blocks with width:\<percentage>, in this case we don't have to specify the width of the right div.
 
 Note that flexbox is a more efficient way to implement multi-column layout in modern CSS.
-
-### Prevent margin collapsing
-
-You can create a new BFC to avoid [margin collapsing](/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing) between two neighbor elements.
