@@ -1,44 +1,31 @@
----
-title: Block formatting context
-slug: Web/Guide/CSS/Block_formatting_context
-tags:
-  - CSS
-  - Guide
-  - NeedsBeginnerUpdate
-  - NeedsExample
-  - Reference
-  - Web
-spec-urls: https://drafts.csswg.org/css-display/#block-formatting-context
----
+# Block formatting context
 
-{{CSSRef}}
-
-A **block formatting context** (BFC) is a part of a visual CSS rendering of a web page. It's the region in which the layout of block boxes occurs and in which floats interact with other elements.
+A **block formatting context** (BFC) is part of the visual CSS rendering of a web page. It is the region in which the layout of block boxes occurs and in which floats interact with other elements.
 
 A block formatting context is created by at least one of the following:
 
 - The root element of the document (`<html>`).
-- Floats (elements where {{ cssxref("float") }} isn't `none`).
-- Absolutely positioned elements (elements where {{ cssxref("position") }} is `absolute` or `fixed`).
-- Inline-blocks (elements with {{ cssxref("display") }}`: inline-block`).
-- Table cells (elements with {{ cssxref("display") }}`: table-cell`, which is the default for HTML table cells).
-- Table captions (elements with {{ cssxref("display") }}`: table-caption`, which is the default for HTML table captions).
-- Anonymous table cells implicitly created by the elements with {{ cssxref("display") }}`: table`, `table-row`, `table-row-group`, `table-header-group`, `table-footer-group` (which is the default for HTML tables, table rows, table bodies, table headers, and table footers, respectively), or `inline-table`.
-- Block elements where {{ cssxref("overflow") }} has a value other than `visible` and `clip`.
-- {{ cssxref("display") }}`: flow-root`.
-- Elements with {{ cssxref("contain") }}`: layout`, `content`, or `paint`.
-- Flex items (direct children of the element with {{ cssxref("display") }}`: flex` or `inline-flex`) if they are neither [flex](/en-US/docs/Glossary/Flex_Container) nor [grid](/en-US/docs/Glossary/Grid_Container) nor [table](/en-US/docs/Web/CSS/CSS_Table) containers themselves.
-- Grid items (direct children of the element with {{ cssxref("display") }}`: grid` or `inline-grid`) if they are neither [flex](/en-US/docs/Glossary/Flex_Container) nor [grid](/en-US/docs/Glossary/Grid_Container) nor [table](/en-US/docs/Web/CSS/CSS_Table) containers themselves.
-- Multicol containers (elements where {{ cssxref("column-count") }} or {{ cssxref("column-width") }} isn't `auto`, including elements with `column-count: 1`).
-- {{ cssxref("column-span") }}`: all` should always create a new formatting context, even when the `column-span: all` element isn't contained by a multicol container ([Spec change](https://github.com/w3c/csswg-drafts/commit/a8634b96900279916bd6c505fda88dda71d8ec51), [Chrome bug](https://bugs.chromium.org/p/chromium/issues/detail?id=709362)).
+- Floats (elements where `float` is not `none`).
+- Absolutely positioned elements (elements where `position` is `absolute` or `fixed`).
+- Inline-blocks (elements with `display: inline-block`).
+- Table cells (elements with `display: table-cell`, which is the default for HTML table cells).
+- Table captions (elements with `display: table-caption`, which is the default for HTML table captions).
+- Anonymous table cells implicitly created by the elements with `display: table / table-row / table-row-group / table-header-group / table-footer-group` (which is the default for HTML tables, table rows, table bodies, table headers, and table footers, respectively), or `inline-table`.
+- Block elements where `overflow` has a value other than `visible` and `clip`.
+- `display``: flow-root`.
+- Elements with `contain: layout / content / paint`.
+- Flex items (direct children of the element with `display: flex / inline-flex`) if they are neither `flex` nor `grid` containers themselves.
+- Grid items (direct children of the element with `display: grid / inline-grid`) if they are neither `flex` nor `grid` containers themselves.
+- Multi-column containers (elements where `column-count` or `column-width` is not `auto`, including elements with `column-count: 1`).
+- Having `column-span``: all` should always create a new formatting context, even when the `column-span: all` element is not contained by a multi-column container.
 
 Formatting contexts affect layout, but typically, we create a new block formatting context for the positioning and clearing floats rather than changing the layout, because an element that establishes a new block formatting context will:
 
 - contain internal floats.
 - exclude external floats.
-- suppress [margin collapsing](/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing).
+- suppress _margin collapsing_.
 
-> **Note:** A Flex/Grid container({{ cssxref("display") }}: flex/grid/inline-flex/inline-grid) establishes a new Flex/Grid formatting context, which is similar to block formatting context except layout. There's no floating children available inside a flex/grid container, but exclude external floats and suppress margin collapsing still works.
+> **Note:** A Flex / Grid container (`display: flex / grid / inline-flex / inline-grid`) establishes a new Flex / Grid formatting context, which is similar to block formatting context except layout. There is no floating children available inside a flex / grid container, but exclude external floats and suppress margin collapsing still works.
 
 ## Examples
 
@@ -64,102 +51,9 @@ With `display: flow-root;` on the `<div>`, everything inside that container part
 
 The value name of `flow-root` makes sense when you understand you are creating something that acts like the `root` element (`<html>` element in browser) in terms of how it creates a new context for the flow layout inside it.
 
-#### HTML
-
-```html
-<section>
-  <div class="box">
-    <div class="float">I am a floated box!</div>
-    <p>I am content inside the container.</p>
-  </div>
-</section>
-<section>
-  <div class="box" style="overflow:auto">
-    <div class="float">I am a floated box!</div>
-    <p>I am content inside the <code>overflow:auto</code> container.</p>
-  </div>
-</section>
-<section>
-  <div class="box" style="display:flow-root">
-    <div class="float">I am a floated box!</div>
-    <p>I am content inside the <code>display:flow-root</code> container.</p>
-  </div>
-</section>
-```
-
-#### CSS
-
-```css
-section {
-  height: 150px;
-}
-.box {
-  background-color: rgb(224, 206, 247);
-  border: 5px solid rebeccapurple;
-}
-.box[style] {
-  background-color: aliceblue;
-  border: 5px solid steelblue;
-}
-.float {
-  float: left;
-  width: 200px;
-  height: 100px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid black;
-  padding: 10px;
-}
-```
-
-{{EmbedLiveSample("Contain_internal_floats", 200, 480)}}
-
 ### Exclude external floats
 
 In the following example, we are using `display:flow-root` and floats to implement double columns layout. We are able to do this because an element in the normal flow that establishes a new BFC does not overlap the margin box of any floats in the same block formatting context as the element itself.
-
-#### HTML
-
-```html
-<section>
-  <div class="float">Try to resize this outer float</div>
-  <div class="box"><p>Normal</p></div>
-</section>
-<section>
-  <div class="float">Try to resize this outer float</div>
-  <div class="box" style="display:flow-root">
-    <p><code>display:flow-root</code></p>
-  </div>
-</section>
-```
-
-#### CSS
-
-```css
-section {
-  height: 150px;
-}
-.box {
-  background-color: rgb(224, 206, 247);
-  border: 5px solid rebeccapurple;
-}
-.box[style] {
-  background-color: aliceblue;
-  border: 5px solid steelblue;
-}
-.float {
-  float: left;
-  overflow: hidden; /* required by resize:both */
-  resize: both;
-  margin-right: 25px;
-  width: 200px;
-  height: 100px;
-  background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid black;
-  padding: 10px;
-}
-```
-
-{{EmbedLiveSample("Exclude_external_floats", 200, 330)}}
 
 Rather than inline-blocks with width:\<percentage>, in this case we don't have to specify the width of the right div.
 
@@ -172,86 +66,3 @@ You can create a new BFC to avoid [margin collapsing](/en-US/docs/Web/CSS/CSS_Bo
 #### Margin collapsing example
 
 In this example we have two adjacent {{HTMLElement("div")}} elements, which each have a vertical margin of `10px`. Because of margin collapsing, the vertical gap between them is 10 pixels, not the 20 we might expect.
-
-```html
-<div class="blue"></div>
-<div class="red"></div>
-```
-
-```css
-.blue,
-.red {
-  height: 50px;
-  margin: 10px 0;
-}
-
-.blue {
-  background: blue;
-}
-
-.red {
-  background: red;
-}
-```
-
-{{EmbedLiveSample("Margin collapsing example", 120, 170)}}
-
-#### Preventing margin collapsing
-
-In this example we wrap the second `<div>` in an outer one, to create a new BFC and prevent margin collapsing.
-
-```html
-<div class="blue"></div>
-<div class="outer">
-  <div class="red"></div>
-</div>
-```
-
-```css
-.blue,
-.red {
-  height: 50px;
-  margin: 10px 0;
-}
-
-.blue {
-  background: blue;
-}
-
-.red {
-  background: red;
-}
-
-.outer {
-  overflow: hidden;
-  background: transparent;
-}
-```
-
-{{EmbedLiveSample("Preventing margin collapsing", 120, 170)}}
-
-## Specifications
-
-{{Specifications}}
-
-## See also
-
-- {{ cssxref("float") }}, {{ cssxref("clear") }}
-- CSS key concepts:
-  - [CSS syntax](/en-US/docs/Web/CSS/Syntax)
-  - [At-rules](/en-US/docs/Web/CSS/At-rule)
-  - [Comments](/en-US/docs/Web/CSS/Comments)
-  - [Specificity](/en-US/docs/Web/CSS/Specificity)
-  - [Inheritance](/en-US/docs/Web/CSS/inheritance)
-  - [Box model](/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
-  - [Layout modes](/en-US/docs/Web/CSS/Layout_mode)
-  - [Visual formatting models](/en-US/docs/Web/CSS/Visual_formatting_model)
-  - [Margin collapsing](/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing)
-  - Values
-    - [Initial values](/en-US/docs/Web/CSS/initial_value)
-    - [Computed values](/en-US/docs/Web/CSS/computed_value)
-    - [Used values](/en-US/docs/Web/CSS/used_value)
-    - [Actual values](/en-US/docs/Web/CSS/actual_value)
-  - [Value definition syntax](/en-US/docs/Web/CSS/Value_definition_syntax)
-  - [Shorthand properties](/en-US/docs/Web/CSS/Shorthand_properties)
-  - [Replaced elements](/en-US/docs/Web/CSS/Replaced_element)
