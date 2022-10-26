@@ -25,4 +25,4 @@ Formatting contexts affect layout, but typically, we create a new block formatti
 - exclude external floats.
 - suppress _margin collapsing_.
 
-> **Note:** A flex / Grid container (`display: flex / grid / inline-flex / inline-grid`) establishes a new Flex / Grid formatting context, which is similar to block formatting context except layout. There is no floating children available inside a flex / grid container, but exclude external floats and suppress margin collapsing still works.
+> **Note:** A flex / grid container (`display: flex / grid / inline-flex / inline-grid`) establishes a new Flex / Grid formatting context, which is similar to block formatting context except layout. There is no floating children available inside a flex / grid container, but exclude external floats and suppress margin collapsing still works.
