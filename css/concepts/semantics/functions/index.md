@@ -1,4 +1,4 @@
-# Functions
+# Functional notation
 
 **CSS functional notation** is a type of _CSS value_ that can represent more complex data types or invoke special data processing or calculations.
 
