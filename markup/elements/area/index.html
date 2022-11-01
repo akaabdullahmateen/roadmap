@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;area&gt;: The Image Map Area element</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <header></header>
+    <main>
+      <article>
+        <h1>&lt;area&gt;: The Image Map Area element</h1>
+        <section>
+          <p>The <code>&lt;area&gt;</code> <abbr title="HyperText Markup Language">HTML</abbr> (Hyper Text Markup Language) element defines an area inside an image map that has
+            predefined clickable areas. An image map allows geometric areas on image to be associated with hypertext link. This element is used only within a
+            <code>&lt;map&gt;</code> element.</p>
+        </section>
+        <section>
+          <h2>Attributes</h2>
+          <p>This element's attributes include the <a href="../global-attributes/index.html" title="Global Attributes" hreflang="en" target="_blank">global attributes</a>.</p>
+          <dl>
+            <dt><code>alt</code></dt>
+            <dd>
+              <p>A text string alternative to display on browsers that do not display images. The text should be phrased so that it presents the user with the same kind of choice
+                as the image would offer when displayed without the alternative text. This attribute is required only if the <code>href</code> attribute is used.</p>
+            </dd>
+            <dt><code>coords</code></dt>
+            <dd>
+              <p>The <code>coords</code> attribute details the coordinates of the <code>shape</code> attribute in size, shape, and placement of an <code>&lt;area&gt;</code>. This
+                attribute must not be used if <code>shape</code> is set to default. The values are numbers in CSS pixels.</p>
+              <ul>
+                <li><code>rect</code>: the value is <code>x1, y1, x2, y2</code>. The value specifies the coordinates of the top-left and bottom-right corner of the rectangle. For
+                  example, in <code>&lt;area shape="rect" coords="0,0,253,27" href="#" alt="Mozilla"&gt;</code> the coordinates are <code>0,0</code> and <code>253,27</code>,
+                  indicating the top-left and bottom-right corners of the rectangle, respectively.</li>
+                <li><code>circle</code>: the value is <code>x,y,radius</code>. Value specifies the coordinates of the circle center and the radius. For example,
+                  <code>&lt;area shape="circle" coords="130,136,60" href="#" target="_blank" alt="MDN"&gt;</code>.</li>
+                <li><code>poly</code>: the value is <code>x1,y1,x2,y2,..,xn,yn</code>. Value specifies the coordinates of the edges of the polygon. If the first and last
+                  coordinates pairs are not the same, the browser will add the last coordinate pair to close the polygon.</li>
+              </ul>
+            </dd>
+            <dt><code>download</code></dt>
+            <dd>
+              <p>Causes the browser to treat the linked URL as a download. Can be used with or without a value:</p>
+              <ul>
+                <li>Without a value, the browser will suggest a filename/extension, generated from various sources: <ul>
+                    <li>The <code>Content-Disposition</code> HTTP header</li>
+                    <li>The final segment in the URL path</li>
+                    <li>The media type (from the <code>Content-Type</code> header, the start of a <code>data:</code> URL, or <code>Blob.type</code> for a <code>blob:</code> URL)
+                    </li>
+                  </ul>
+                </li>
+                <li>Defining a value suggests it as a filename. <code>/</code> and <code>\</code> characters are converted to underscores <code>_</code>. Filesystems may forbid
+                  other characters in filenames, so browsers will adjust the suggested name if necessary. </li>
+              </ul>
+              <section>
+                <h3>Note:</h3>
+                <ul>
+                  <li><code>download</code> only works for same-origin URLs, or the <code>blob:</code> and <code>data:</code> schemes.</li>
+                  <li>How browsers treat downloads varies by browsers, user settings, and other factors. The user may be prompted before a download starts, or the file may be saved
+                    automatically, or it may open automatically, either in an external application or in the browser itself.</li>
+                  <li>If the <code>Content-Disposition</code> header has different information from the <code>download</code> attribute, resulting behavior may differ: <ul>
+                      <li>If the header specifies a <code>filename</code>, it takes priority over a filename specified in the <code>download</code> attribute. </li>
+                      <li>If the header specifies a disposition of <code>inline</code>, Chrome and Firefox prioritize the attribute and treat it as a download. Old Firefox versions
+                        (before 82) prioritize the header and will display the content inline.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+            </dd>
+            <dt><code>href</code></dt>
+            <dd>
+              <p>The hyperlink target for the area. Its value is a valid URL. This attribute may be omitted; if so, the <code>&lt;area&gt;</code> does not represent a hyperlink.
+                Links are not restricted to HTTP-based URLs - they can use any URL scheme supported by browsers: </p>
+              <ul>
+                <li>Sections of a page with fragment URLs</li>
+                <li>Pieces of media files with media fragments</li>
+                <li>Telephone numbers with <code>tel:</code> URLs</li>
+                <li>Email addresses with <code>mailto:</code> URLs</li>
+                <li>Web browsers may not support other URL schemes, web sites can with <code>registerProtocolHandler()</code></li>
+              </ul>
+            </dd>
+            <dt><code>ping</code></dt>
+            <dd>Contains a space-separated list of URLs to which, when the hyperlink is followed, <code>POST</code> requests with the body <code>PING</code> will be sent by the
+              browser (in the background). Typically used for tracking.</dd>
+            <dt><code>referrerpolicy</code></dt>
+            <dd>
+              <p>How much of the referrer to send when following the link.</p>
+              <ul>
+                <li><code>no-referrer</code>: The <code>Referer</code> header will not be sent.</li>
+                <li><code>no-referrer-when-downgrade</code>: The <code>Referer</code> header will not be sent to origins without TLS (HTTPS). </li>
+                <li><code>origin</code>: The sent referrer will be limited to the origin of the referring page: its scheme, host, and port.</li>
+                <li><code>origin-when-cross-origin</code>: The referrer sent to other origins will be limited to the scheme, host, and port. Navigations on the same origin will
+                  still include the path.</li>
+                <li><code>same-origin</code>: A referrer will be sent for same origin, but cross-origin requests will contain no referrer information.</li>
+                <li><code>strict-origin</code>: Only send the origin of the document as the referrer when the protocol security level stays the same (HTTPS→HTTPS), but do not send
+                  it to a less secure destination (HTTPS→HTTP).</li>
+                <li><code>strict-origin-when-cross-origin</code>(default): Send a full URL when performing a same-origin request, only send the origin when the protocol security
+                  level stays the same (HTTPS→HTTPS), and send no header to a less secure destination (HTTPS→HTTP).</li>
+                <li><code>unsafe-url</code>: The referrer will include the origin and the path (but not the fragment, password, or username). <strong>This value is unsafe</strong>,
+                  because it leaks origin from TLS-protected resources to insecure origin. </li>
+              </ul>
+            </dd>
+            <dt><code>rel</code></dt>
+            <dd>
+              <p>For anchors containing <code>href</code> attribute, this attribute specifies the relationship of the target object to the link object. The value is a
+                space-separated list of link types values. The values and their semantics will be registered by some authority that might have meaning to the document author. The
+                default relationship, if no other is given, is void. Use this attribute only if the <code>href</code> attribute is present.</p>
+              <dl>
+                <dt><code>alternate</code></dt>
+                <dd>
+                  <p>The link defines an alternative page, of one of these types:</p>
+                  <ul>
+                    <li>For another medium, like a handheld device (if the <code>media</code> attribute is set)</li>
+                    <li>In another language (if the <code>hreflang</code> attribute is set)</li>
+                    <li>In another format, such as a PDF (if the <code>type</code> attribute is set)</li>
+                    <li>A combination of these</li>
+                  </ul>
+                </dd>
+                <dt><code>author</code></dt>
+                <dd>
+                  <p>Defines a hyperlink to a page describing the author or providing a way to contact the author.</p>
+                  <p><strong>Note:</strong> This may be a <code>mailto:</code> hyperlink, but this is not recommended on public pages as robot harvesters will quickly lead to a lot
+                    of spam sent to the address. In that case, it is better to lead to a page containing the contact form.</p>
+                </dd>
+                <dt><code>bookmark</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink is a permalink for the nearest ancestor <code>article</code>. If none, it is a permalink for the <code>section</code> that the
+                    element is most closely associated to. </p>
+                  <p>This allows for bookmarking a single article in a page containing multiple articles, such as on a monthly summary blog page, or a blog aggregator.</p>
+                </dd>
+                <dt><code>external</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to a resource outside the site of the current page; that is, following the link will make the user leave the site.</p>
+                </dd>
+                <dt><code>help</code></dt>
+                <dd>
+                  <p>It indicates that the hyperlink leads to a resource giving further help about the parent of the element, and its descendants. </p>
+                </dd>
+                <dt><code>license</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to a document describing the licensing information. If not inside the <code>&lt;head&gt;</code> element, the standard does
+                    not distinguish between a hyperlink applying to a specific part of the document or to the document as a whole. Only the data on the page can indicate this. </p>
+                </dd>
+                <dt><code>next</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to the <em>next</em> resource of the <em>sequence</em> the current page is in.</p>
+                </dd>
+                <dt><code>nofollow</code></dt>
+                <dd>
+                  <p>Indicates that the linked document is not endorsed by the author of this one; for example, if it has no control over it, if it is a bad example, or if there is
+                    a commercial relationship between the two (sold link). This link type may be used by some search engines that use popularity ranking techniques.</p>
+                </dd>
+                <dt><code>noopener</code></dt>
+                <dd>
+                  <p>Instructs the browser to open the link without granting the new browsing context access to the document that opened it - by not setting the
+                    <code>Window.opener</code> property on the opened window (it returns <code>null</code>).</p>
+                  <p>This is especially useful when opening untrusted links, in order to ensure that they cannot tamper with the originating document via the
+                    <code>Window.opener</code> property, while still providing the <code>Referer</code> HTTP header (unless <code>noreferrer</code> is used as well). </p>
+                  <p>Note that when <code>noopener</code> is used, non-empty target names other than <code>_top</code>, <code>_self</code>, and <code>_parent</code> are all treated
+                    like <code>_blank</code> in terms of deciding whether to open a new window/tab. </p>
+                </dd>
+                <dt><code>noreferrer</code></dt>
+                <dd>
+                  <p>Prevents the browser, when navigating to another page, to send this page address, or any other value, as referrer via the <code>Referer</code> HTTP header. (In
+                    Firefox, before Firefox 37, this worked only in links found in pages. Links clicked in the UI, like "Open in a new tab" via the contextual menu, ignored this).
+                  </p>
+                </dd>
+                <dt><code>prev</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to the <em>preceding</em> resource of the <em>sequence</em> the current page is in. </p>
+                  <p>Although recognized, the synonym <code>previous</code> is incorrect and must be avoided.</p>
+                </dd>
+                <dt><code>search</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink references a document whose interface is specially designed for searching in the document, or site, and its resources.</p>
+                  <p>If the <code>type</code> attribute is set to <code>application/opensearchdescription+xml</code> the resource is an OpenSearch plugin that can be easily added
+                    to the interface of some browsers like Firefox or Internet Explorer.</p>
+                </dd>
+                <dt><code>tag</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink refers to a document describing a <em>tag</em> that applies to this document.</p>
+                  <p><strong>Note:</strong> This link type should not be set on links to a member of a tag cloud as these do not apply to a single document but to a set of pages.
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+            <dt><code>shape</code></dt>
+            <dd>
+              <p>The shape of the associated hot spot. The specification for HTML defines the values <code>rect</code>, which defines a rectangular region; <code>circle</code>,
+                which defines a circular region; <code>poly</code>, which defines a polygon; and <code>default</code>, which includes the entire region beyond any defined shapes.
+              </p>
+            </dd>
+            <dt><code>target</code></dt>
+            <dd>
+              <p>A <strong>keyword</strong> or <strong>author-defined name</strong> of the browsing context (a tab, window, or <code>&lt;iframe&gt;</code>) to show the results of
+                navigation to the linked URL. The following keywords have special meanings for where to load the URL:</p>
+              <ul>
+                <li><code>_self</code>: Show the resource in the current browsing context. (Default)</li>
+                <li><code>_blank</code>: Show the resource in a new unnamed browsing context, usually a new tab, but users can configure browsers to open a new window instead.</li>
+                <li><code>_parent</code>: Show the resource in the parent browsing context of the current one, if the current page is inside a frame. If there is no parent, acts
+                  the same as <code>_self</code>.</li>
+                <li><code>_top</code>: Show resource in the top-most browsing context (the browsing context that is an ancestor of the current one and has no parent). If there are
+                  no parents, behaves the same as <code>_self</code>.</li>
+              </ul>
+            </dd>
+          </dl>
+        </section>
+      </article>
+    </main>
+    <footer></footer>
+  </body>
+
+</html>

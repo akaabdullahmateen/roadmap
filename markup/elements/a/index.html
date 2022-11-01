@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;a&gt;: The Anchor element</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <header></header>
+    <main>
+      <article>
+        <h1>&lt;a&gt;: The Anchor element</h1>
+        <section>
+          <p>The <code>&lt;a&gt;</code> HTML element (or anchor element), with its href attribute, creates a hyperlink to web pages, files, email addresses, locations in the same
+            page, or anything else a URL can address</p>
+          <p>Content within each <code>&lt;a&gt;</code> should indicate the link's destination. If the href attribute is present, pressing the enter key while focused on the
+            <code>&lt;a&gt;</code> element will activate it.</p>
+        </section>
+        <section>
+          <h2>Attributes</h2>
+          <p>This element's attributes include the <a href="../global-attributes/index.html" title="Global Attributes" target="_blank" hreflang="en">global attributes</a>.</p>
+          <dl>
+            <dt><code>download</code></dt>
+            <dd>
+              <p>Causes the browser to treat the linked URL as a download. Can be used with or without a value:</p>
+              <ul>
+                <li>Without a value, the browser will suggest a filename/extension, generated from various sources: <ul>
+                    <li>The <code>Content-Disposition</code> HTTP header</li>
+                    <li>The final segment in the URL path</li>
+                    <li>The media type (from the <code>Content-Type</code> header, the start of a <code>data:</code> URL, or <code>Blob.type</code> for a <code>blob:</code> URL)
+                    </li>
+                  </ul>
+                </li>
+                <li>Defining a value suggests it as a filename. <code>/</code> and <code>\</code> characters are converted to underscores <code>_</code>. Filesystems may forbid
+                  other characters in filenames, so browsers will adjust the suggested name if necessary. </li>
+              </ul>
+              <section>
+                <h3>Note:</h3>
+                <ul>
+                  <li><code>download</code> only works for same-origin URLs, or the <code>blob:</code> and <code>data:</code> schemes.</li>
+                  <li>How browsers treat downloads varies by browsers, user settings, and other factors. The user may be prompted before a download starts, or the file may be saved
+                    automatically, or it may open automatically, either in an external application or in the browser itself.</li>
+                  <li>If the <code>Content-Disposition</code> header has different information from the <code>download</code> attribute, resulting behavior may differ: <ul>
+                      <li>If the header specifies a <code>filename</code>, it takes priority over a filename specified in the <code>download</code> attribute. </li>
+                      <li>If the header specifies a disposition of <code>inline</code>, Chrome and Firefox prioritize the attribute and treat it as a download. Old Firefox versions
+                        (before 82) prioritize the header and will display the content inline.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+            </dd>
+            <dt><code>href</code></dt>
+            <dd>
+              <p>The URL that the hyperlink points to. Links are not restricted to HTTP-based URLs - they can use any URL scheme supported by browsers:</p>
+              <ul>
+                <li>Sections of a page with fragment URLs</li>
+                <li>Pieces of media files with media fragments</li>
+                <li>Telephone numbers with <code>tel:</code> URLs</li>
+                <li>Email addresses with <code>mailto:</code> URLs</li>
+                <li>Web browsers may not support other URL schemes, web sites can with <code>registerProtocolHandler()</code></li>
+              </ul>
+            </dd>
+            <dt><code>hreflang</code></dt>
+            <dd>
+              <p>Hints at the human language of the linked URL. No built-in functionality. Allowed values are the same as the global <code>lang</code> attribute. </p>
+            </dd>
+            <dt><code>ping</code></dt>
+            <dd>
+              <p>A space-separated list of URLs. When the link is followed, the browser will send <code>POST</code> requests with the body <code>PING</code> to the URLs. Typically
+                for tracking. </p>
+            </dd>
+            <dt><code>referrerpolicy</code></dt>
+            <dd>
+              <p>How much of the referrer to send when following the link.</p>
+              <ul>
+                <li><code>no-referrer</code>: The <code>Referer</code> header will not be sent.</li>
+                <li><code>no-referrer-when-downgrade</code>: The <code>Referer</code> header will not be sent to origins without TLS (HTTPS). </li>
+                <li><code>origin</code>: The sent referrer will be limited to the origin of the referring page: its scheme, host, and port.</li>
+                <li><code>origin-when-cross-origin</code>: The referrer sent to other origins will be limited to the scheme, host, and port. Navigations on the same origin will
+                  still include the path.</li>
+                <li><code>same-origin</code>: A referrer will be sent for same origin, but cross-origin requests will contain no referrer information.</li>
+                <li><code>strict-origin</code>: Only send the origin of the document as the referrer when the protocol security level stays the same (HTTPS→HTTPS), but do not send
+                  it to a less secure destination (HTTPS→HTTP).</li>
+                <li><code>strict-origin-when-cross-origin</code>(default): Send a full URL when performing a same-origin request, only send the origin when the protocol security
+                  level stays the same (HTTPS→HTTPS), and send no header to a less secure destination (HTTPS→HTTP).</li>
+                <li><code>unsafe-url</code>: The referrer will include the origin and the path (but not the fragment, password, or username). <strong>This value is unsafe</strong>,
+                  because it leaks origin from TLS-protected resources to insecure origin. </li>
+              </ul>
+            </dd>
+            <dt><code>rel</code></dt>
+            <dd>
+              <p>The relationship of the linked URL as space-separated link types. The value is a space-separated list of link types values. The default relationship, if no other
+                is given, is void. Use this attribute only if the <code>href</code> attribute is present.</p>
+              <dl>
+                <dt><code>alternate</code></dt>
+                <dd>
+                  <p>The link defines an alternative page, of one of these types:</p>
+                  <ul>
+                    <li>For another medium, like a handheld device (if the <code>media</code> attribute is set)</li>
+                    <li>In another language (if the <code>hreflang</code> attribute is set)</li>
+                    <li>In another format, such as a PDF (if the <code>type</code> attribute is set)</li>
+                    <li>A combination of these</li>
+                  </ul>
+                </dd>
+                <dt><code>author</code></dt>
+                <dd>
+                  <p>Defines a hyperlink to a page describing the author or providing a way to contact the author.</p>
+                  <p><strong>Note:</strong> This may be a <code>mailto:</code> hyperlink, but this is not recommended on public pages as robot harvesters will quickly lead to a lot
+                    of spam sent to the address. In that case, it is better to lead to a page containing the contact form.</p>
+                </dd>
+                <dt><code>bookmark</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink is a permalink for the nearest ancestor <code>article</code>. If none, it is a permalink for the <code>section</code> that the
+                    element is most closely associated to. </p>
+                  <p>This allows for bookmarking a single article in a page containing multiple articles, such as on a monthly summary blog page, or a blog aggregator.</p>
+                </dd>
+                <dt><code>external</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to a resource outside the site of the current page; that is, following the link will make the user leave the site.</p>
+                </dd>
+                <dt><code>help</code></dt>
+                <dd>
+                  <p>It indicates that the hyperlink leads to a resource giving further help about the parent of the element, and its descendants.</p>
+                </dd>
+                <dt><code>license</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to a document describing the licensing information. If not inside the <code>&lt;head&gt;</code> element, the standard does
+                    not distinguish between a hyperlink applying to a specific part of the document or to the document as a whole. Only the data on the page can indicate this. </p>
+                </dd>
+                <dt><code>me</code></dt>
+                <dd>
+                  <p>Indicates that the current document is represented by the person to which the <code>me</code> value links. The <code>me</code> value is commonly used in
+                    distributed forms of verification. </p>
+                </dd>
+                <dt><code>next</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to the <em>next</em> resource of the <em>sequence</em> the current page is in.</p>
+                </dd>
+                <dt><code>nofollow</code></dt>
+                <dd>
+                  <p>Indicates that the linked document is not endorsed by the author of this one; for example, if it has no control over it, if it is a bad example, or if there is
+                    a commercial relationship between the two (sold link). This link type may be used by some search engines that use popularity ranking techniques.</p>
+                </dd>
+                <dt><code>noopener</code></dt>
+                <dd>
+                  <p>Instructs the browser to open the link without granting the new browsing context access to the document that opened it - by not setting the
+                    <code>Window.opener</code> property on the opened window (it returns <code>null</code>).</p>
+                  <p>This is especially useful when opening untrusted links, in order to ensure that they cannot tamper with the originating document via the
+                    <code>Window.opener</code> property, while still providing the <code>Referer</code> HTTP header (unless <code>noreferrer</code> is used as well). </p>
+                  <p>Note that when <code>noopener</code> is used, non-empty target names other than <code>_top</code>, <code>_self</code>, and <code>_parent</code> are all treated
+                    like <code>_blank</code> in terms of deciding whether to open a new window/tab. </p>
+                </dd>
+                <dt><code>noreferrer</code></dt>
+                <dd>
+                  <p>Prevents the browser, when navigating to another page, to send this page address, or any other value, as referrer via the <code>Referer</code> HTTP header. (In
+                    Firefox, before Firefox 37, this worked only in links found in pages. Links clicked in the UI, like "Open in a new tab" via the contextual menu, ignored this).
+                  </p>
+                </dd>
+                <dt><code>prev</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink leads to the <em>preceding</em> resource of the <em>sequence</em> the current page is in. </p>
+                  <p>Although recognized, the synonym <code>previous</code> is incorrect and must be avoided.</p>
+                </dd>
+                <dt><code>search</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink references a document whose interface is specially designed for searching in the document, or site, and its resources.</p>
+                  <p>If the <code>type</code> attribute is set to <code>application/opensearchdescription+xml</code> the resource is an OpenSearch plugin that can be easily added
+                    to the interface of some browsers like Firefox or Internet Explorer.</p>
+                </dd>
+                <dt><code>tag</code></dt>
+                <dd>
+                  <p>Indicates that the hyperlink refers to a document describing a <em>tag</em> that applies to this document.</p>
+                  <p><strong>Note:</strong> This link type should not be set on links to a member of a tag cloud as these do not apply to a single document but to a set of pages.
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+            <dt><code>target</code></dt>
+            <dd>
+              <p>A <strong>keyword</strong> or <strong>author-defined name</strong> of the browsing context (a tab, window, or <code>&lt;iframe&gt;</code>) to show the results of
+                navigation to the linked URL. The following keywords have special meanings for where to load the URL:</p>
+              <ul>
+                <li><code>_self</code>: Show the resource in the current browsing context. (Default)</li>
+                <li><code>_blank</code>: Show the resource in a new unnamed browsing context, usually a new tab, but users can configure browsers to open a new window instead.</li>
+                <li><code>_parent</code>: Show the resource in the parent browsing context of the current one, if the current page is inside a frame. If there is no parent, acts
+                  the same as <code>_self</code>.</li>
+                <li><code>_top</code>: Show resource in the top-most browsing context (the browsing context that is an ancestor of the current one and has no parent). If there are
+                  no parents, behaves the same as <code>_self</code>.</li>
+              </ul>
+            </dd>
+            <dt><code>type</code></dt>
+            <dd>
+              <p>Hints at the linked URL's format with a MIME type. No built-in functionality is provided, however.</p>
+              <table>
+                <caption>Common media types listed. For an exhaustive list, see the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml" target="blank"
+                    rel="external noopener noreferrer" title="IANA Media Types" hreflang="en">IANA list of MIME types</a>.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">File Extension</th>
+                    <th scope="col">Document Name</th>
+                    <th scope="col">MIME Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.aac</code></td>
+                    <td>AAC: Advanced Audio Coding</td>
+                    <td>audio/aac</td>
+                  </tr>
+                  <tr>
+                    <td><code>.avi</code></td>
+                    <td>AVI: Audio Video Interleave</td>
+                    <td>video/x-msvideo</td>
+                  </tr>
+                  <tr>
+                    <td><code>.avif</code></td>
+                    <td>AVIF: AV1 Image File Format</td>
+                    <td>image/avif</td>
+                  </tr>
+                  <tr>
+                    <td><code>.bin</code></td>
+                    <td>Raw Binary Data</td>
+                    <td>application/octet-stream</td>
+                  </tr>
+                  <tr>
+                    <td><code>.bmp</code></td>
+                    <td>Windows OS/2 Bitmap Graphics</td>
+                    <td>image/bmp</td>
+                  </tr>
+                  <tr>
+                    <td><code>.css</code></td>
+                    <td>CSS: Cascading Style Sheets</td>
+                    <td>text/css</td>
+                  </tr>
+                  <tr>
+                    <td><code>.csv</code></td>
+                    <td>CSV: Comma Separated Values</td>
+                    <td>text/csv</td>
+                  </tr>
+                  <tr>
+                    <td><code>.doc</code></td>
+                    <td>Microsoft Word</td>
+                    <td>application/msword</td>
+                  </tr>
+                  <tr>
+                    <td><code>.docx</code></td>
+                    <td>Microsoft Word (OpenXML)</td>
+                    <td>application/vnd.openxmlformats-officedocument.wordprocessingml.document</td>
+                  </tr>
+                  <tr>
+                    <td><code>.eot</code></td>
+                    <td>Microsoft Embedded OpenType Fonts</td>
+                    <td>application/vnd.ms-fontobject</td>
+                  </tr>
+                  <tr>
+                    <td><code>.gif</code></td>
+                    <td>GIF: Graphics Interchange Format</td>
+                    <td>image/gif</td>
+                  </tr>
+                  <tr>
+                    <td><code>.html</code></td>
+                    <td>HTML: HyperText Markup Language</td>
+                    <td>text/html</td>
+                  </tr>
+                  <tr>
+                    <td><code>.ico</code></td>
+                    <td>Icon format</td>
+                    <td>image/vnd.microsoft.icon</td>
+                  </tr>
+                  <tr>
+                    <td><code>.jar</code></td>
+                    <td>JAR: Java Archive</td>
+                    <td>application/java-archive</td>
+                  </tr>
+                  <tr>
+                    <td><code>.jpg</code>, <code>.jpeg</code></td>
+                    <td>JPEG: Joint Photographic Experts Group</td>
+                    <td>image/jpeg</td>
+                  </tr>
+                  <tr>
+                    <td><code>.js</code></td>
+                    <td>JavaScript</td>
+                    <td>text/javascript</td>
+                  </tr>
+                  <tr>
+                    <td><code>.json</code></td>
+                    <td>JSON: JavaScript Object Notation</td>
+                    <td>application/json</td>
+                  </tr>
+                  <tr>
+                    <td><code>manifest.json</code></td>
+                    <td>JSON Manifest</td>
+                    <td>application/manifest+json</td>
+                  </tr>
+                  <tr>
+                    <td><code>.md</code></td>
+                    <td>Markdown</td>
+                    <td>text/markdown</td>
+                  </tr>
+                  <tr>
+                    <td><code>.mp3</code></td>
+                    <td>MP3: MPEG-3</td>
+                    <td>audio/mp3</td>
+                  </tr>
+                  <tr>
+                    <td><code>.mp4</code></td>
+                    <td>MP4: MPEG-4 [H.264/AVC]</td>
+                    <td>video/mp4</td>
+                  </tr>
+                  <tr>
+                    <td><code>.mpeg</code></td>
+                    <td>MPEG: Moving Picture Experts Group</td>
+                    <td>video/mpeg</td>
+                  </tr>
+                  <tr>
+                    <td><code>.oga</code></td>
+                    <td>OGG audio</td>
+                    <td>audio/ogg</td>
+                  </tr>
+                  <tr>
+                    <td><code>.ogv</code></td>
+                    <td>OGG video</td>
+                    <td>video/ogg</td>
+                  </tr>
+                  <tr>
+                    <td><code>.otf</code></td>
+                    <td>OTF: Open Type Font</td>
+                    <td>font/otf</td>
+                  </tr>
+                  <tr>
+                    <td><code>.pdf</code></td>
+                    <td>PDF: Portable Document Format</td>
+                    <td>application/pdf</td>
+                  </tr>
+                  <tr>
+                    <td><code>.png</code></td>
+                    <td>PNG: Portable Network Graphics</td>
+                    <td>image/png</td>
+                  </tr>
+                  <tr>
+                    <td><code>.ppt</code></td>
+                    <td>Microsoft PowerPoint</td>
+                    <td>application/vnd.ms-powerpoint</td>
+                  </tr>
+                  <tr>
+                    <td><code>.pptx</code></td>
+                    <td>Microsoft PowerPoint (OpenXML)</td>
+                    <td>application/vnd.openxmlformats-officedocument.presentationml.presentation</td>
+                  </tr>
+                  <tr>
+                    <td><code>.rar</code></td>
+                    <td>RAR archive</td>
+                    <td>application/vnd.rar</td>
+                  </tr>
+                  <tr>
+                    <td><code>.sh</code></td>
+                    <td>Bourne Shell Script</td>
+                    <td>application/x-sh</td>
+                  </tr>
+                  <tr>
+                    <td><code>.svg</code></td>
+                    <td>SVG: Scalable Vector Graphics</td>
+                    <td>image/svg+xml</td>
+                  </tr>
+                  <tr>
+                    <td><code>.tar</code></td>
+                    <td>TAR: Tape Archive</td>
+                    <td>application/x-tar</td>
+                  </tr>
+                  <tr>
+                    <td><code>.ttf</code></td>
+                    <td>TTF: TrueType Font</td>
+                    <td>font/ttf</td>
+                  </tr>
+                  <tr>
+                    <td><code>.txt</code></td>
+                    <td>Plain Text</td>
+                    <td>text/plain</td>
+                  </tr>
+                  <tr>
+                    <td><code>.vtt</code></td>
+                    <td>WebVTT</td>
+                    <td>text/vtt</td>
+                  </tr>
+                  <tr>
+                    <td><code>.wav</code></td>
+                    <td>WAV: Waveform Audio Format</td>
+                    <td>audio/wav</td>
+                  </tr>
+                  <tr>
+                    <td><code>.weba</code></td>
+                    <td>WEBM: Web Multimedia Audio</td>
+                    <td>audio/webm</td>
+                  </tr>
+                  <tr>
+                    <td><code>.webm</code></td>
+                    <td>WEBM: Web Multimedia Video</td>
+                    <td>video/webm</td>
+                  </tr>
+                  <tr>
+                    <td><code>.webp</code></td>
+                    <td>WEBP: Web Picture</td>
+                    <td>image/webp</td>
+                  </tr>
+                  <tr>
+                    <td><code>.woff</code></td>
+                    <td>WOFF: Web Open Font Format</td>
+                    <td>font/woff</td>
+                  </tr>
+                  <tr>
+                    <td><code>.woff2</code></td>
+                    <td>WOFF2: Web Open Font Format 2</td>
+                    <td>font/woff2</td>
+                  </tr>
+                  <tr>
+                    <td><code>.xhtml</code></td>
+                    <td>XHTML: Extensible HyperText Markup Language</td>
+                    <td>application/xhtml+xml</td>
+                  </tr>
+                  <tr>
+                    <td><code>.xls</code></td>
+                    <td>Microsoft Excel</td>
+                    <td>application/vnd.ms-excel</td>
+                  </tr>
+                  <tr>
+                    <td><code>.xlsx</code></td>
+                    <td>Microsoft Excel (OpenXML)</td>
+                    <td>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</td>
+                  </tr>
+                  <tr>
+                    <td><code>.xml</code></td>
+                    <td>XML: Extensible Markup Language</td>
+                    <td>text/xml</td>
+                  </tr>
+                  <tr>
+                    <td><code>.zip</code></td>
+                    <td>Zip archive</td>
+                    <td>application/zip</td>
+                  </tr>
+                </tbody>
+              </table>
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Security and Privacy</h2>
+          <p><code>&lt;a&gt;</code> elements can have consequences for user's security and privacy. Using <code>target="_blank"</code> without <code>rel="noopener"</code> and
+            <code>rel="noreferrer"</code> makes the website vulnerable to <code>window.opener</code> API exploitation attacks, although note that, in newer browser versions setting
+            <code>target="_blank"</code> implicitly provides the same protection as setting <code>rel="noopener"</code>.</p>
+        </section>
+        <section>
+          <h2>Accessibility concerns</h2>
+          <section>
+            <h3>Strong link text</h3>
+            <p><strong>The content inside a link should indicate where the link goes</strong>, even out of context. A sadly common mistake is to only link the words "click here" or
+              "here". Assistive software has shortcuts to list all links on a page; repetitive instances of "click here" is not very helpful to a visually-impaired person using
+              such a tool. However, strong link text benefits all users - the "list all links" shortcut emulates how sighted users quickly scan pages.</p>
+          </section>
+          <section>
+            <h3><code>onclick</code> events</h3>
+            <p>Anchor elements are often abused as fake buttons by setting their <code>href</code> to <code>#</code> or <code>javascript:void(0)</code> to prevent the page from
+              refreshing, then listening to their <code>click</code> events.</p>
+            <p>These bogus <code>href</code> cause unexpected behavior when copying/dragging links, opening links in a new tab/window, bookmarking, or when JavaScript is loading,
+              errors, or is disabled. They also convey incorrect semantics to assistive technologies, like screen readers. </p>
+            <p>Use a <code>&lt;button&gt;</code> instead. In general, <strong>you should only use a hyperlink for navigation to a real URL</strong>. </p>
+          </section>
+          <section>
+            <h3>External links and linking to non-HTML resources</h3>
+            <p>Links that open in a new tab/window via <code>target="_blank"</code>, or links that point to a download file should indicate what will happen when the link is
+              followed.</p>
+            <p>People experiencing low vision conditions, navigating with the aid of screen reading technology, or with cognitive concerns may be confused when a new tab, window,
+              or application opens unexpectedly. Older screen-reading software may not even announce the behavior.</p>
+            <p>If an icon is used to signify link behavior, make sure it has a descriptive <code>alt</code> text.</p>
+          </section>
+          <section>
+            <h3>Skip links</h3>
+            <p>A <strong>skip link</strong> is a link placed as early as possible in <code>&lt;body&gt;</code> content that points to the beginning of the page's main content.
+              Usually, CSS hides a skip link offscreen until focused.</p>
+            <p>Skip links let keyboard users bypass content repeated throughout multiple pages, such as header navigation. Skip links are especially useful for people who navigate
+              with the aid of assistive technology such as switch control, voice command, or mouth sticks/head wands, where the act of moving through repetitive links can be
+              laborious.</p>
+          </section>
+          <section>
+            <h3>Size and proximity</h3>
+            <p>Interactive elements, like links, should provide an area large enough that it is easy to activate them. This helps a variety of people, including those with motor
+              control issues and those using imprecise inputs such as touchscreens. <strong>A minimum of 44x44 CSS pixels is recommended</strong>.</strong></p>
+            <p>Text-only links in prose content are exempt from this requirement, but it is still a good idea to make sure enough text is hyperlinked to be easily activated.</p>
+            <p>Interactive elements, like links, placed in close visual proximity should have space separating them. Spacing helps people with motor control issues, who may
+              otherwise accidentally activate the wrong interactive content. Spacing may be created using CSS properties like <code>margin</code>.</p>
+          </section>
+        </section>
+      </article>
+    </main>
+    <footer></footer>
+  </body>
+
+</html>

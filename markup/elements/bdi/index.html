@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;bdi&gt;: The Bidirectional Isolate element</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <header></header>
+    <main>
+      <article>
+        <h1>&lt;bdi&gt;: The Bidirectional Isolate element</h1>
+        <section>
+          <p>The <code>&lt;bdi&gt;</code> HTML element tells the browser's directional algorithm to treat the text it contains in isolation from its surrounding text. It is
+            particularly useful when a website dynamically inserts some text and does not know the directionality of the text being inserted.</p>
+          <p>Bidirectional text is text that may contain both sequences of characters that are arranged left-to-right (LTR) and sequences of characters that are arranged
+            right-to-left (RTL), such as an Arabic quotation embedded in an English string. Browsers implement the Unicode Bidirectional Algorithm to handle this. In this
+            algorithm, characters are given an implicit directionality: for example, Latin characters are treated as LTR while Arabic characters are treated as RTL. Some other
+            characters (such as spaces and punctuations) are treated as neutral and are assigned directionality based on that of their surrounding characters.</p>
+          <p>Usually, the bidirectional algorithm will do the right thing without the author having to provide any special markup but, occasionally, the algorithm needs help. That
+            is where <code>&lt;bdi&gt;</code> comes in.</p>
+          <p>The <code>&lt;bdi&gt;</code> element is used to wrap a span of text and instructs the bidirectional algorithm to treat this text in isolation from its surroundings.
+            This work in two ways:</p>
+          <ul>
+            <li>The directionality of text embedded in <code>&lt;bdi&gt;</code> <em>does not influence</em> the directionality of the surrounding text.</li>
+            <li>The directionality of text embedded in <code>&lt;bdi&gt;</code> <em>is not influenced by</em> the directionality of the surrounding text.</li>
+          </ul>
+          <p>For example, consider some text like: <code>EMBEDDED-TEXT - 1st place</code>. If <code>EMBEDDED-TEXT</code> is LTR, this works fine. But if <code>EMBEDDED-TEXT</code>
+            is RTL, then <code>- 1</code> will be treated as RTL text (because it consists of neutral and weak characters). The result will be garbled:
+            <code>1 - EMBEDDED-TEXTst place</code>. If you know the directionality of <code>EMBEDDED-TEXT</code> in advance, you can fix this problem by wrapping
+            <code>EMBEDDED-TEXT</code> in a <code>&lt;span&gt;</code> with the <code>dir</code> attribute set to the known directionality. But if you do not know the directionality
+            - for example, because <code>EMBEDDED-TEXT</code> is being read from a database or entered by the user - you should use <code>&lt;bdi&gt;</code> to prevent the
+            directionality of <code>EMBEDDED-TEXT</code> from affecting its surroundings.</p>
+          <p>Though the same visual affect can be achieved using the CSS rule <code>unicode-bidi : isolate</code> on a <code>&lt;span&gt;</code> or another text-formatting element,
+            HTML authors should not use this approach because it is not semantic and browsers are allowed to ignore CSS styling.</p>
+          <p>Embedding the characters in <code>&lt;span dir="auto"&gt;</code> has the same affect as using <code>&lt;bdi&gt;</code>, but its semantics are less clear.</p>
+        </section>
+        <section>
+          <h2>Attributes</h2>
+          <p>Like all other HTML elements, this element supports the <a href="../global-attributes/index.html" target="_blank" title="Global Attributes" hreflang="en">global
+              attributes</a>, except that the <code>dir</code> attribute behaves differently than normal: it defaults to <code>auto</code>, meaning its value is never inherited
+            from the parent element. This means that unless you specify a value of either <code>rtl</code> or <code>ltr</code> for <code>dir</code>, the user agent will determine
+            the correct directionality to use based on the contents of the <code>&lt;bdi&gt;</code>.</p>
+        </section>
+      </article>
+    </main>
+    <footer></footer>
+  </body>
+
+</html>
