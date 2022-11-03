@@ -68,9 +68,9 @@
 
 ## Images
 
-| Markdown                   | HTML                                     | Render                   |
-| -------------------------- | ---------------------------------------- | ------------------------ |
-| `![Text](assets/logo.png)` | `<img src="assets/logo.png" alt="Text">` | ![Text](assets/logo.png) |
+| Markdown                     | HTML                                       | Render                     |
+| ---------------------------- | ------------------------------------------ | -------------------------- |
+| `![Text](assets/sample.png)` | `<img src="assets/sample.png" alt="Text">` | ![Text](assets/sample.png) |
 
 ---
 
@@ -191,9 +191,9 @@
 
 ### Image links
 
-| Markdown                                                  | HTML                                                                                                                            | Render                                                  |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `[![Text](assets/logo.png)](https://example.com "Title")` | <pre>&lt;a href="https://example.com" title="Title"&gt;<br>    &lt;img src="assets/logo.png" alt="Text"&gt;<br>&lt;/a&gt;</pre> | [![Text](assets/logo.png)](https://example.com "Title") |
+| Markdown                                                    | HTML                                                                                                                              | Render                                                    |
+| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `[![Text](assets/sample.png)](https://example.com "Title")` | <pre>&lt;a href="https://example.com" title="Title"&gt;<br>    &lt;img src="assets/sample.png" alt="Text"&gt;<br>&lt;/a&gt;</pre> | [![Text](assets/sample.png)](https://example.com "Title") |
 
 ### Section links
 
