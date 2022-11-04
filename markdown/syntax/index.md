@@ -1,10 +1,8 @@
 # Markdown: Syntax
 
----
-
+<!-- omit in toc -->
 ## Table of contents
 
-- [Table of contents](#table-of-contents)
 - [Headings](#headings)
 - [Paragraphs](#paragraphs)
 - [Images](#images)
@@ -43,8 +41,6 @@
   - [Footnotes](#footnotes)
   - [Emoji](#emoji)
 
----
-
 ## Headings
 
 | Markdown         | HTML               | Render           |
@@ -56,15 +52,11 @@
 | `##### Heading`  | `<h5>Heading</h5>` | <h5>Heading</h5> |
 | `###### Heading` | `<h6>Heading</h6>` | <h6>Heading</h6> |
 
----
-
 ## Paragraphs
 
 | Markdown                                                            | HTML               | Render           |
 | ------------------------------------------------------------------- | ------------------ | ---------------- |
 | **`U+000A END OF LINE`**<br>`Paragraph`<br>**`U+000A END OF LINE`** | `<p>Paragraph</p>` | <p>Paragraph</p> |
-
----
 
 ## Images
 
@@ -72,16 +64,12 @@
 | ---------------------------- | ------------------------------------------ | -------------------------- |
 | `![Text](assets/sample.png)` | `<img src="assets/sample.png" alt="Text">` | ![Text](assets/sample.png) |
 
----
-
 ## Tables
 
 | Markdown                                                                              | HTML                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Render                                                                                                                                                                                                                                |
 | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <pre>\| Header \| Header \|<br>\| ------ \| ------ \|<br>\| Item   \| Item   \|</pre> | <pre>&lt;table&gt;<br>    &lt;thead&gt;<br>        &lt;tr&gt;<br>            &lt;th&gt;Header&lt;/th&gt;<br>            &lt;th&gt;Header&lt;/th&gt;<br>        &lt;/tr&gt;<br>    &lt;/thead&gt;<br>    &lt;tbody&gt;<br>        &lt;tr&gt;<br>            &lt;td&gt;Item&lt;/td&gt;<br>            &lt;td&gt;Item&lt;/td&gt;<br>        &lt;/tr&gt;<br>    &lt;/tbody&gt;<br>&lt;/table&gt;</pre>                                                                                                               | <table><thead><tr><th>Header</th><th>Header</th></tr></thead><tbody><tr><td>Item</td><td>Item</td></tr></tbody></table>                                                                                                               |
 | <pre>\| Header \| Header \|<br>\| :----: \| -----: \|<br>\| Item   \| Item   \|</pre> | <pre>&lt;table&gt;<br>    &lt;thead&gt;<br>        &lt;tr&gt;<br>            &lt;th style="text-align: center;"&gt;Header&lt;/th&gt;<br>            &lt;th style="text-align: right;"&gt;Header&lt;/th&gt;<br>        &lt;/tr&gt;<br>    &lt;/thead&gt;<br>    &lt;tbody&gt;<br>        &lt;tr&gt;<br>            &lt;td style="text-align: center;"&gt;Item&lt;/td&gt;<br>            &lt;td style="text-align: right;"&gt;Item&lt;/td&gt;<br>        &lt;/tr&gt;<br>    &lt;/tbody&gt;<br>&lt;/table&gt;</pre> | <table><thead><tr><th style="text-align: center;">Header</th><th style="text-align: right;">Header</th></tr></thead><tbody><tr><td style="text-align: center;">Item</td><td style="text-align: right;">Item</td></tr></tbody></table> |
-
----
 
 ## Text styles
 
@@ -123,8 +111,6 @@
 | --------------- | ------------------------ | ------------- |
 | `^Superscript^` | `<sup>Superscript</sup>` | ^Superscript^ |
 
----
-
 ## Lists
 
 ### Ordered lists
@@ -157,8 +143,6 @@
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
 | <pre>`- [x]` Task<br>`- [ ]` Task</pre> | <pre>&lt;input type="checkbox" id="checkbox1" checked="true"&gt;<br>&lt;label for="checkbox1"&gt;Task&lt;/label&gt;<br>&lt;br&gt;<br>&lt;input type="checkbox" id="checkbox2"&gt;<br>&lt;label for="checkbox2"&gt;Task&lt;/label&gt;</pre> | - [x] Task<br>- [ ] Task |
 
----
-
 ## Code
 
 ### Inline code fragments
@@ -178,8 +162,6 @@
 | Markdown                | HTML              | Render          |
 | ----------------------- | ----------------- | --------------- |
 | **`U+0009 TAB`** `Code` | `<pre>Code</pre>` | <pre>Code</pre> |
-
----
 
 ## Links
 
@@ -214,8 +196,6 @@
 | -------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------- |
 | <pre>[Link][1]<br>[1]: https://example.com "Title"</pre> | `<a href="https://example.com" title="Title">Link</a>` | [Link](https://example.com "Title") |
 
----
-
 ## Blockquotes
 
 ### Continuous blockquotes
@@ -230,8 +210,6 @@
 | Markdown                                        | HTML                                                                                                                | Render                                                       |
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | <pre>&gt; Quote<br>&gt;<br>&gt;&gt; Quote</pre> | <pre>&lt;blockquote&gt;<br>    Quote<br>    &lt;blockquote&gt;Quote&lt;/blockquote&gt;<br>&lt;/blockquote&gt;</pre> | <blockquote>Quote<blockquote>Quote</blockquote></blockquote> |
-
----
 
 ## Control elements
 
@@ -253,8 +231,6 @@
 | ------------------ | ------------------ | ---------------- |
 | `<!-- Comment -->` | `<!-- Comment -->` | <!-- Comment --> |
 
----
-
 ## Extended elements
 
 ### Footnotes
@@ -271,4 +247,3 @@
 | --------- | ----------- | ------- |
 | `:smile:` | `&#128516;` | :smile: |
 
----
