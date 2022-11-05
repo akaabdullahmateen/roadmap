@@ -7,7 +7,7 @@
 - [Paragraphs](#paragraphs)
 - [Images](#images)
 - [Tables](#tables)
-- [Text styles](#text-styles)
+- [Typefaces](#typefaces)
   - [Bold](#bold)
   - [Italic](#italic)
   - [Strikethrough](#strikethrough)
@@ -71,7 +71,7 @@
 | <pre>\| Header \| Header \|<br>\| ------ \| ------ \|<br>\| Item   \| Item   \|</pre> | <pre>&lt;table&gt;<br>    &lt;thead&gt;<br>        &lt;tr&gt;<br>            &lt;th&gt;Header&lt;/th&gt;<br>            &lt;th&gt;Header&lt;/th&gt;<br>        &lt;/tr&gt;<br>    &lt;/thead&gt;<br>    &lt;tbody&gt;<br>        &lt;tr&gt;<br>            &lt;td&gt;Item&lt;/td&gt;<br>            &lt;td&gt;Item&lt;/td&gt;<br>        &lt;/tr&gt;<br>    &lt;/tbody&gt;<br>&lt;/table&gt;</pre>                                                                                                               | <table><thead><tr><th>Header</th><th>Header</th></tr></thead><tbody><tr><td>Item</td><td>Item</td></tr></tbody></table>                                                                                                               |
 | <pre>\| Header \| Header \|<br>\| :----: \| -----: \|<br>\| Item   \| Item   \|</pre> | <pre>&lt;table&gt;<br>    &lt;thead&gt;<br>        &lt;tr&gt;<br>            &lt;th style="text-align: center;"&gt;Header&lt;/th&gt;<br>            &lt;th style="text-align: right;"&gt;Header&lt;/th&gt;<br>        &lt;/tr&gt;<br>    &lt;/thead&gt;<br>    &lt;tbody&gt;<br>        &lt;tr&gt;<br>            &lt;td style="text-align: center;"&gt;Item&lt;/td&gt;<br>            &lt;td style="text-align: right;"&gt;Item&lt;/td&gt;<br>        &lt;/tr&gt;<br>    &lt;/tbody&gt;<br>&lt;/table&gt;</pre> | <table><thead><tr><th style="text-align: center;">Header</th><th style="text-align: right;">Header</th></tr></thead><tbody><tr><td style="text-align: center;">Item</td><td style="text-align: right;">Item</td></tr></tbody></table> |
 
-## Text styles
+## Typefaces
 
 ### Bold
 
