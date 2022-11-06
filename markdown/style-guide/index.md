@@ -17,6 +17,7 @@
     - [Active and passive voice](#active-and-passive-voice)
     - [Verb agreements](#verb-agreements)
   - [Nouns and pronouns](#nouns-and-pronouns)
+    - [Nouns](#nouns)
 - [Unbiased communication](#unbiased-communication)
 
 ## Acronyms
@@ -174,15 +175,21 @@
 
 In the present tense, the action is happening now. The present tense is often easier to read and understand than the past or future tense. It is the best choice for most content.
 
-| Present Simple                 | Simple Past                 | Simple Future                 |
-| ------------------------------ | --------------------------- | ----------------------------- |
-| I *read*.                      | I *read*.                   | I *will read*.                |
-| **Present Continuous**         | **Past Continuous**         | **Future Continuous**         |
-| I *am reading*.                | I *was reading*.            | I *will be reading*.          |
-| **Present Perfect**            | **Past Perfect**            | **Future Perfect**            |
-| I *have read*.                 | I *had read*.               | I *will have read*.           |
-| **Present Perfect Continuous** | **Past Perfect Continuous** | **Future Perfect Continuous** |
-| I *have been reading*.         | I *had been reading*.       | I *will have been reading*.   |
+| Tense                          | Example                   |
+| ------------------------------ | ------------------------- |
+| **Simple Present**             | I read.                   |
+| **Simple Past**                | I read.                   |
+| **Simple Future**              | I will read.              |
+| **Present Continuous**         | I am reading.             |
+| **Past Continuous**            | I was reading.            |
+| **Future Continuous**          | I will be reading.        |
+| **Present Perfect**            | I have read.              |
+| **Past Perfect**               | I had read.               |
+| **Future Perfect**             | I will have read.         |
+| **Present Perfect Continuous** | I have been reading.      |
+| **Past Perfect Continuous**    | I had been reading.       |
+| **Future Perfect Continuous**  | I will have been reading. |
+
 
 #### Moods of verb
 
@@ -219,7 +226,7 @@ Verbs have singular and plural forms. Use the verb that agrees with the subject 
 
 ### Nouns and pronouns
 
-
+#### Nouns 
 
 ## Unbiased communication
 
