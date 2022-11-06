@@ -43,10 +43,10 @@
 
 ## Capitalization
 
-- Use sentence-style capitalization; that means everything is lowercase except the first word of a sentence, heading, title, UI label, standalone phrase, and proper nouns.
+- Use sentence-style capitalization, whereby everything is lowercase except the first word of a sentence and proper nouns.
 - Always capitalize the first word of a new sentence. Transform sentences that starts with a word that is always lowercase.
-- Do not use all uppercase for emphasis; instead use italic typeface.
-- For design element, do not all lowercase; although all uppercase is used occasionally.
+- Use italic typeface for emphasis, instead of all uppercase.
+- For design element, do not use all lowercase, although all uppercase is used occasionally.
 - Do not use internal capitalization unless it is part of a brand name.
 - Do not capitalize the spelled out form of an acronym unless it is a proper noun.
 - When words are joined by a slash, capitalize the word after the slash if the word before the slash is capitalized.
@@ -83,7 +83,7 @@
 - Design code for reuse. Help developers determine what to modify. Add comments to explain details, but do not overdo by stating the obvious things.
 - Show expected output, either in a separate section after the code example or by using code comments within the code example.
 - Consider accessibility requirements for code that creates user interface.
-- Write secure code; always validate user input, never hard-code passwords in code, and use code analysis tools to detect security issues.
+- Write secure code. Always validate user input, never hard-code passwords in code, and use code analysis tools to detect security issues.
 - Show exception handling only when it is intrinsic to the example. Do not catch exceptions thrown when invalid arguments are passed to parameters.
 - Always compile and test your code before providing them as examples.
 
@@ -231,7 +231,7 @@ Verbs have singular and plural forms. Use the verb that agrees with the subject 
 | ---------------------------------------------- | --------------------------- | ------------------------------------------- |
 | A group of things                              | Singular                    | A group of things is called a collection.   |
 | Two or more singular things connected by *and* | Plural                      | Thing and thing are called two things.      |
-| Two or more singular things connected by *or*  | SingulaBarr                 | Thing or thing is called a thing.           |
+| Two or more singular things connected by *or*  | Singular                    | Thing or thing is called a thing.           |
 | Singular and plural things connected by *or*   | *Match the closest subject* | Thing or things are called thing or things. |
 
 ### Nouns
@@ -278,7 +278,7 @@ In grammar, *person* refers to the point of view represented by a statement and 
 
 ### Format
 
-- In body text, use cardinal numbers to represent integers from zero through nine, and use numerals for negative integers and integers greater nine; this applies to numbers representing date or time.
+- In body text, use cardinal numbers to represent integers from zero through nine, and use numerals for negative integers and integers greater nine. This applies to numbers representing date or time.
 - If one item requires a numeral, use numerals for all other items of that type.
 - When two numbers that refer to different concepts must appear together, use cardinal number for the first, and numeral for the latter.
 - Do not start sentences with a numeral. Either add a modifier before the number or use its cardinal form. However, it is acceptable to start list items with a numeral, if appropriate.
