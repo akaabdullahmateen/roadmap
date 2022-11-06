@@ -16,8 +16,12 @@
     - [Moods of verb](#moods-of-verb)
     - [Active and passive voice](#active-and-passive-voice)
     - [Verb agreements](#verb-agreements)
-  - [Nouns and pronouns](#nouns-and-pronouns)
-    - [Nouns](#nouns)
+  - [Nouns](#nouns)
+    - [Capitalization](#capitalization-1)
+    - [Plural form](#plural-form)
+  - [Pronouns](#pronouns)
+    - [Person](#person)
+    - [Appropriateness](#appropriateness)
 - [Unbiased communication](#unbiased-communication)
 
 ## Acronyms
@@ -224,9 +228,45 @@ Verbs have singular and plural forms. Use the verb that agrees with the subject 
 | Two or more singular things connected by *or*  | Singular                    | Thing or thing is called a thing.           |
 | Singular and plural things connected by *or*   | *Match the closest subject* | Thing or things are called thing or things. |
 
-### Nouns and pronouns
+### Nouns
 
-#### Nouns 
+#### Capitalization
+
+| Noun            | Definition                                    | Capitalization |
+| --------------- | --------------------------------------------- | -------------- |
+| **Proper noun** | Unique name of a person, place, or thing.     | Title-style    |
+| **Common noun** | Typical concept of a person, place, or thing. | Lowercase      |
+
+#### Plural form
+
+| Noun                  | Plural form               | Example                            |
+| --------------------- | ------------------------- | ---------------------------------- |
+| Nouns ending in *s*   | Add *es*                  | Biases                             |
+| Singular abbreviation | Add *s*                   | DBMSs                              |
+| Plural abbreviation   | *Already plural*          | MFC (Microsoft Foundation Classes) |
+| Single letter         | Add an apostrophe and *s* | *x*'s                              |
+| Number                | Add *s*                   | 1950s                              |
+| Variable              | *Already plural*          | *x* minutes                        |
+
+### Pronouns
+
+#### Person
+
+In grammar, *person* refers to the point of view represented by a statement and determines which pronoun to use.
+
+| Person            | Preference | Example       |
+| ----------------- | ---------- | ------------- |
+| **First person**  | Medium     | I, me, my     |
+| **Second person** | Highest    | You, your     |
+| **Third person**  | Lowest     | He, she, they |
+
+#### Appropriateness
+
+- Use gender-neutral alternatives for common terms and generic references.
+- Refer to a person's role instead of identifying them by a pronoun.
+- When writing about a real person, use the pronouns that person prefers.
+- The pronoun *they* can be used a non-binary pronoun for someone who prefers it.
+- Collective nouns like *group* take a singular pronoun. Do not use plural pronoun unless the emphasis is on the individuals in the group.
 
 ## Unbiased communication
 
