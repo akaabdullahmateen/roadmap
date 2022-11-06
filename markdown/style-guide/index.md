@@ -10,6 +10,13 @@
   - [Text formatting](#text-formatting)
 - [Final publishing review](#final-publishing-review)
 - [Global communication](#global-communication)
+- [Grammar](#grammar)
+  - [Verbs](#verbs)
+    - [Verb tense](#verb-tense)
+    - [Moods of verb](#moods-of-verb)
+    - [Active and passive voice](#active-and-passive-voice)
+    - [Verb agreements](#verb-agreements)
+  - [Nouns and pronouns](#nouns-and-pronouns)
 - [Unbiased communication](#unbiased-communication)
 
 ## Acronyms
@@ -158,6 +165,61 @@
 - Avoid idioms, colloquial expressions, culture-specific references, and modifier stacks.
 - Keep adjectives and adverbs close to the words they modify, and avoid linking more than three phrases or clauses by using coordinate conjunctions.
 - Use one word for a concept and use it consistently. Avoid using synonyms to refer to the same concept or feature, and do not use the same word to refer to multiple concepts or features.
+
+## Grammar
+
+### Verbs
+
+#### Verb tense
+
+In the present tense, the action is happening now. The present tense is often easier to read and understand than the past or future tense. It is the best choice for most content.
+
+| Present Simple                 | Simple Past                 | Simple Future                 |
+| ------------------------------ | --------------------------- | ----------------------------- |
+| I *read*.                      | I *read*.                   | I *will read*.                |
+| **Present Continuous**         | **Past Continuous**         | **Future Continuous**         |
+| I *am reading*.                | I *was reading*.            | I *will be reading*.          |
+| **Present Perfect**            | **Past Perfect**            | **Future Perfect**            |
+| I *have read*.                 | I *had read*.               | I *will have read*.           |
+| **Present Perfect Continuous** | **Past Perfect Continuous** | **Future Perfect Continuous** |
+| I *have been reading*.         | I *had been reading*.       | I *will have been reading*.   |
+
+#### Moods of verb
+
+The mood of the verb expresses the author's intent. Use the indicative mood most of the time. Do not switch moods within a sentence.
+
+| Mood            | Usage                                                        | Example                                     |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| **Indicative**  | Factual statements, questions, assertions, and explanations. | English is the most widely used language.   |
+| **Imperative**  | Instructions, procedures, direct commands, requests.         | Use English language.                       |
+| **Subjunctive** | Wishes, hypotheses, and suggestions.                         | We recommend that you use English language. |
+
+#### Active and passive voice
+
+Voice is either active or passive. Use the active voice most of the time.
+
+- In active voice, the subject performs the action.
+- In passive voice, the subject is the receiver of the action.
+
+| Voice       | Usage                                                           | Example                               |
+| ----------- | --------------------------------------------------------------- | ------------------------------------- |
+| **Active**  | Most of the content.                                            | You are not able to find the website. |
+| **Passive** | Errors, warnings, or notifications to avoid blaming the reader. | The website can not be found.         |
+
+#### Verb agreements
+
+Verbs have singular and plural forms. Use the verb that agrees with the subject of the sentence in number.
+
+| Subject                                        | Verb                        | Example                                     |
+| ---------------------------------------------- | --------------------------- | ------------------------------------------- |
+| A group of things                              | Singular                    | A group of things is called a collection.   |
+| Two or more singular things connected by *and* | Plural                      | Thing and thing are called two things.      |
+| Two or more singular things connected by *or*  | Singular                    | Thing or thing is called a thing.           |
+| Singular and plural things connected by *or*   | *Match the closest subject* | Thing or things are called thing or things. |
+
+### Nouns and pronouns
+
+
 
 ## Unbiased communication
 
