@@ -22,6 +22,12 @@
   - [Pronouns](#pronouns)
     - [Person](#person)
     - [Appropriateness](#appropriateness)
+- [Numbers](#numbers)
+  - [Format](#format)
+  - [Numerals](#numerals)
+  - [Digit grouping](#digit-grouping)
+  - [Ordinal numbers](#ordinal-numbers)
+  - [Fractions](#fractions)
 - [Unbiased communication](#unbiased-communication)
 
 ## Acronyms
@@ -31,7 +37,7 @@
 - If you have to use an acronym, provide its expansion on first use.
 - Do not introduce acronyms that are used just once.
 - Avoid using acronyms in titles and headings.
-- Lowercase all words in the spelled-out form of an acronym except for proper nouns.
+- Lowercase all words in the spelled out form of an acronym except for proper nouns.
 - Add lowercase 's' to make an acronym plural. If the acronym stands for a plural noun, do not add an 's'.
 - Avoid the possessive form unless an acronym refers to a person or an organization.
 
@@ -42,7 +48,7 @@
 - Do not use all uppercase for emphasis; instead use italic typeface.
 - For design element, do not all lowercase; although all uppercase is used occasionally.
 - Do not use internal capitalization unless it is part of a brand name.
-- Do not capitalize the spelled-out form of an acronym unless it is a proper noun.
+- Do not capitalize the spelled out form of an acronym unless it is a proper noun.
 - When words are joined by a slash, capitalize the word after the slash if the word before the slash is capitalized.
 - If a title or heading includes a colon, capitalize the first word after it.
 - In programming languages, follow the traditional capitalization of keywords and other special terms.
@@ -107,7 +113,7 @@
 | **Folder names**            | Regular      | Lowercase      | Hyphen         | `/home/user/my-documents/` |
 | **Functions**               | Bold         | Camelcase      | None           | **`printError()`**         |
 | **Handles**                 | Regular      | Uppercase      | None           | `HWND`                     |
-| **Keywords**                | Bold         | Lowercase      | None           | **`break`**                |
+| **Keywords**                | Bold         | Lowercase Bar  | None           | **`break`**                |
 | **Logical operators**       | Bold         | Uppercase      | None           | **`AND`**                  |
 | **Macros**                  | Bold         | Uppercase      | None           | **`IFDEF`**                |
 | **Markup elements**         | Bold         | Lowercase      | None           | **`<body>`**               |
@@ -158,7 +164,7 @@
 - In forms that collect user name information, provide fields for *First name* and *Last name*. The *Title* and *Middle name* fields should be optional.
 - In forms that collect user address information, provide long enough field that can include address appropriate for a variety of locale. Use *State / Province*, *Country / Region*, and *Postal code* fields to accommodate various locale and disputed territories.
 - In forms that collect user contact information, provide enough space in *Email* and *Phone number* fields to accommodate long email addresses and phone numbers.
-- Use the date format *month date, year* with *month* spelled-out with its name and both *date* and *year* are numerals.
+- Use the date format *month date, year* with *month* spelled out with its name and both *date* and *year* are numerals.
 - Use the time format *hour:minute:second (UTC+hh:mm)* with *hour*, *minute*, *second*, *hh*, and *mm* as numerals padded with zeroes.
 - Support browsers likely to be used by the relevant audience. Design content so fonts can be substituted if the specified font is not available, and use standard HTML tags instead of proprietary tags.
 - Minimize load time by keeping page size small and include text-only versions for larger content. Design pages so text loads first, followed by graphics, so pages are usable before they are finished loading.
@@ -225,7 +231,7 @@ Verbs have singular and plural forms. Use the verb that agrees with the subject 
 | ---------------------------------------------- | --------------------------- | ------------------------------------------- |
 | A group of things                              | Singular                    | A group of things is called a collection.   |
 | Two or more singular things connected by *and* | Plural                      | Thing and thing are called two things.      |
-| Two or more singular things connected by *or*  | Singular                    | Thing or thing is called a thing.           |
+| Two or more singular things connected by *or*  | SingulaBarr                 | Thing or thing is called a thing.           |
 | Singular and plural things connected by *or*   | *Match the closest subject* | Thing or things are called thing or things. |
 
 ### Nouns
@@ -267,6 +273,68 @@ In grammar, *person* refers to the point of view represented by a statement and 
 - When writing about a real person, use the pronouns that person prefers.
 - The pronoun *they* can be used a non-binary pronoun for someone who prefers it.
 - Collective nouns like *group* take a singular pronoun. Do not use plural pronoun unless the emphasis is on the individuals in the group.
+
+## Numbers
+
+### Format
+
+- In body text, use cardinal numbers to represent integers from zero through nine, and use numerals for negative integers and integers greater nine; this applies to numbers representing date or time.
+- If one item requires a numeral, use numerals for all other items of that type.
+- When two numbers that refer to different concepts must appear together, use cardinal number for the first, and numeral for the latter.
+- Do not start sentences with a numeral. Either add a modifier before the number or use its cardinal form. However, it is acceptable to start list items with a numeral, if appropriate.
+- Use numerals for dates instead of ordinal numbers. To avoid confusion, always spell out the name of the month.
+- Use an en dash, not a hyphen, to represent the minus sign for negative numbers in text.
+- Hyphenate words of a compound cardinal number. However, prefer to use numerals for numbers outside the range of zero through nine.
+- In most cases, use *from* and *through* to describe a range of numbers. However, use en dash in a range if space is an issue.
+- In general, do not abbreviate *thousand*, *million*, and *billion* as *K*, *M*, and *G*. Spell out *thousand*, *million*, and *billion*, or use the entire numeral.
+- If you must use the abbreviations, always capitalize *K*, *M*, and *G*. Do not place a space between the number and the abbreviation. Avoid using abbreviations with non-integers.
+
+### Numerals
+
+| Scenario      | Note                         | Example         |
+| ------------- | ---------------------------- | --------------- |
+| Measurements  | Includes zero through nine   | 3 centimeters   |
+| Instructions  | None                         | Enter **5**     |
+| Large numbers | Greater than 999,999         | 7 million       |
+| Dimensions    | Prefer *x* over *by*         | 4 x 4 tile      |
+| Time          | Append *AM* or *PM*          | 10:45 AM        |
+| Percentages   | Prefer *percentage* over *%* | 50 percent      |
+| Coordinates   | None                         | row 3, column 5 |
+| Indices       | None                         | Chapter 12      |
+
+### Digit grouping
+
+- Use the US system of decimal separation, whereby a comma is placed after every third digits of the integer part, and a period is used to denote the radix point.
+- Use digit grouping in integers that have more than four digits. If readability is concerned for 4-digit numbers, use a space to isolate the most significant digit.
+- Do not use digit grouping delimiters for numerals that designate page numbers, addresses, phone numbers, verification codes, or is to be read by a machine.
+- Do not use digit grouping for the fractional part of a number. If readability is concerned, use a full space between groups of three digits.
+- In base-2 number system, use a full space between groups of four digits, corresponding to a nibble or a hexadecimal digit.
+- In base-16 number system, use a full space between groups of two digits, corresponding to an 8-bit byte.
+- Use hyphens, not parenthesis, spaces or periods, to separate parts of a phone number.
+
+### Ordinal numbers
+
+| Numeral | Cardinal number | Ordinal number |
+| ------- | --------------- | -------------- |
+| 1       | One             | First          |
+| 2       | Two             | Second         |
+| 3       | Three           | Third          |
+| 4       | Four            | Fourth         |
+| 5       | Five            | Fifth          |
+| 6       | Six             | Sixth          |
+| 7       | Seven           | Seventh        |
+| 8       | Eight           | Eighth         |
+| 9       | Nine            | Ninth          |
+| 10      | Ten             | Tenth          |
+
+### Fractions
+
+- Express fractions in words, as symbols, or as decimals, whichever is the most appropriate.
+- In tables, align decimals on the decimal point.
+- Add a zero before the decimal point for decimal fractions without an integer part.
+- Do not use numerals separated by a forward slash to express fractions, unless it is the required format for a mathematical input.
+- Hyphenate spelled out fractions. Connect the numerator and denominator with a hyphen unless either already contains a hyphen, in which case, prefer to use the decimal format.
+- In measurements where the unit of measurement is spelled out, use the plural form when the quantity is a decimal fraction. Use the singular form only when the quantity is exactly unity.
 
 ## Unbiased communication
 
