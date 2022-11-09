@@ -28,6 +28,10 @@
   - [Digit grouping](#digit-grouping)
   - [Ordinal numbers](#ordinal-numbers)
   - [Fractions](#fractions)
+- [Procedures](#procedures)
+  - [Writing instructions](#writing-instructions)
+  - [Describing interactions](#describing-interactions)
+  - [Text formatting](#text-formatting-1)
 - [Unbiased communication](#unbiased-communication)
 
 ## Acronyms
@@ -335,6 +339,73 @@ In grammar, *person* refers to the point of view represented by a statement and 
 - Do not use numerals separated by a forward slash to express fractions, unless it is the required format for a mathematical input.
 - Hyphenate spelled out fractions. Connect the numerator and denominator with a hyphen unless either already contains a hyphen, in which case, prefer to use the decimal format.
 - In measurements where the unit of measurement is spelled out, use the plural form when the quantity is a decimal fraction. Use the singular form only when the quantity is exactly unity.
+
+## Procedures
+
+### Writing instructions
+
+- Use consistent procedure formatting, heading style, and sentence structures so the content is easily scannable.
+- Use imperative verb form and complete sentences for instructions.
+- Use sentence-style capitalization and place a period at the end of each instruction.
+- For procedures instructing actions, limit the steps to be fewer than seven. Try to fit all the steps on the same visual screen.
+- Abbreviate simple sequences by using the greater-than symbol. Include a space before and after the symbol, and do not make the symbol bold typeface.
+
+### Describing interactions
+
+Users interact with products using various input methods. Therefore, use generic verbs that work with any input method. Do not use input-specific verbs, such as *click* or *swipe*.
+
+| Verb                          | Usage                                   | Example                                   |
+| ----------------------------- | --------------------------------------- | ----------------------------------------- |
+| **Open**                      | Opening a file or folder.               | Open **Folder**.                          |
+| **Close**                     | Closing a file or folder.               | Close **Window**.                         |
+| **Go to**                     | Opening a website.                      | Go to **File**.                           |
+| **Leave**                     | Leaving a website.                      | Leave this page.                          |
+| **Select**                    | Selecting a specific item.              | Select **Shift+Enter**.                   |
+| **Select and hold**           | Pressing and holding an element.        | Select and hold the button.               |
+| **>**                         | Separating sequential steps.            | Select **Accounts** > **Add an account**. |
+| **Clear**                     | Clearing the selection from a checkbox. | Clear the **Agreement** checkbox.         |
+| **Choose**                    | Choosing an option.                     | Choose **Font**.                          |
+| **Switch, turn on, turn off** | Toggling a switch.                      | Turn on **Focus mode**.                   |
+| **Enter**                     | Typing or selecting a value.            | Enter the **Domain name**.                |
+| **Move, drag**                | Moving from one place to another.       | Move the tile.                            |
+| **Zoom, zoom in, zoom out**   | Changing the magnification.             | Zoom in to see details.                   |
+
+### Text formatting
+
+| **Element**                 | **Typeface** | **Case**       | **Separation** | **Example**                 |
+| --------------------------- | ------------ | -------------- | -------------- | --------------------------- |
+| **Blades**                  | Bold         | Sentence-style | None           | **Audit logs**              |
+| **Buttons**                 | Bold         | Sentence-style | None           | **Save as**                 |
+| **Checkboxes**              | Bold         | Sentence-style | None           | **Match case**              |
+| **Command-line commands**   | Bold         | Lowercase      | None           | **`mkdir`**                 |
+| **Command-line options**    | Bold         | None           | None           | **`--verbose`**             |
+| **Commands**                | Bold         | Sentence-style | None           | **Tools**                   |
+| **Database names**          | Bold         | None           | None           | **`SQLite`**                |
+| **Device and port names**   | Regular      | Uppercase      | None           | USB                         |
+| **Dialog boxes**            | Bold         | Sentence-style | None           | **Warning**                 |
+| **Error messages**          | Regular      | Sentence-style | None           | *Syntax error*              |
+| **File attributes**         | Regular      | Lowercase      | None           | **`attrib`**                |
+| **File extensions**         | Regular      | Lowercase      | None           | `.txt`                      |
+| **File names**              | Regular      | Lowercase      | Hyphen         | `article-condensed.txt`     |
+| **Folder names**            | Regular      | Lowercase      | Hyphen         | `/home/user/my-documents/`  |
+| **Key combinations**        | Bold         | Sentence-style | Plus           | **Shift+F1**                |
+| **Macros**                  | Bold         | Uppercase      | None           | **`IFDEF`**                 |
+| **Markup elements**         | Bold         | Lowercase      | None           | **`<body>`**                |
+| **Mathematical constants**  | Italic       | Uppercase      | None           | *`PI`*                      |
+| **Menus**                   | Bold         | Sentence-style | None           | **Tools**                   |
+| **Palettes**                | Bold         | Sentence-style | None           | **Colors**                  |
+| **Panes**                   | Bold         | Sentence-style | None           | **Styles**                  |
+| **Placeholders**            | Italic       | None           | None           | *`Password`*                |
+| **Products and trademarks** | Regular      | Title-style    | None           | Mozilla Firefox             |
+| **Slashes**                 | Regular      | None           | None           | Backslash (`\`)             |
+| **Strings**                 | Regular      | Sentence-style | None           | "Accept the Privacy Policy" |
+| **Tabs**                    | Bold         | Sentence-style | None           | **Design**                  |
+| **Toggles**                 | Bold         | Sentence-style | None           | **Turn on high contrast**   |
+| **URLs**                    | Regular      | Lowercase      | None           | `www.example.com`           |
+| **User input**              | Regular      | None           | None           | *`password`*                |
+| **Vocabulary**              | Italic       | None           | None           | *Stacking context*          |
+| **Windows**                 | Regular      | Sentence-style | None           | New Window                  |
+| **XML schema elements**     | Bold         | Lowercase      | None           | **`xml:space`**             |
 
 ## Unbiased communication
 
