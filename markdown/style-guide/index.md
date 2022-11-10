@@ -21,6 +21,7 @@
     - [Plural form](#plural-form)
   - [Pronouns](#pronouns)
     - [Person](#person)
+    - [Possessive pronouns](#possessive-pronouns)
     - [Appropriateness](#appropriateness)
 - [Numbers](#numbers)
   - [Format](#format)
@@ -32,6 +33,16 @@
   - [Writing instructions](#writing-instructions)
   - [Describing interactions](#describing-interactions)
   - [Text formatting](#text-formatting-1)
+- [Punctuation](#punctuation)
+  - [Formatting punctuation](#formatting-punctuation)
+  - [Apostrophes](#apostrophes)
+  - [Colons](#colons)
+  - [Commas](#commas)
+  - [Dashes and hyphens](#dashes-and-hyphens)
+    - [Em dashes](#em-dashes)
+    - [En dashes](#en-dashes)
+    - [Hyphens](#hyphens)
+  - [Ellipsis](#ellipsis)
 - [Unbiased communication](#unbiased-communication)
 
 ## Acronyms
@@ -270,6 +281,18 @@ In grammar, *person* refers to the point of view represented by a statement and 
 | **Second person** | Highest    | You, your     |
 | **Third person**  | Lowest     | He, she, they |
 
+#### Possessive pronouns
+
+| Subject | Possessive pronoun | Possessive adjective |
+| ------- | ------------------ | -------------------- |
+| I       | Mine               | My                   |
+| We      | Ours               | Our                  |
+| You     | Yours              | Your                 |
+| He      | His                | His                  |
+| She     | Hers               | Her                  |
+| It      | Its                | Its                  |
+| They    | Theirs             | Their                |
+
 #### Appropriateness
 
 - Use gender-neutral alternatives for common terms and generic references.
@@ -406,6 +429,84 @@ Users interact with products using various input methods. Therefore, use generic
 | **Vocabulary**              | Italic       | None           | None           | *Stacking context*          |
 | **Windows**                 | Regular      | Sentence-style | None           | New Window                  |
 | **XML schema elements**     | Bold         | Lowercase      | None           | **`xml:space`**             |
+
+## Punctuation
+
+### Formatting punctuation
+
+- In general, format punctuation in the same font-style as the main content of a sentence or phrase.
+- In instructions that reference elements, if the punctuation is part of the element, such as punctuation that the user must type, format the punctuation the same as the element.
+- In instructions that reference elements, if the punctuation is not part of the element, format the punctuation the same as the main text.
+- Format parenthesis and brackets in the font style of the main text rather than the font style of the text enclosed within parenthesis or brackets.
+
+### Apostrophes
+
+- Use an apostrophe to form the possessive case of nouns.
+- To form the possessive case of singular nouns, add an apostrophe and an *s*, even if the noun ends in *s*, *x*, or *z*.
+- To form the possessive case of plural nouns, that end in *s*, add only an apostrophe.
+- Use an apostrophe to indicate missing letters in a contraction.
+- Do not use an apostrophe for the possessive case of *it*, instead use the possessive pronoun of *it*, which is *its*.
+- Do not use an apostrophe with a possessive pronoun.
+- Do not use an apostrophe to form the plural of a singular noun.
+
+### Colons
+
+- Include a colon at the end of a phrase that directly introduces a list.
+- Use colons sparingly at the end of a statement followed by a second statement that expands on it. Most of the time, two separate sentences are more readable compared to a single sentence consisting of two statements connected by a colon.
+- When you use colon in a sentence, lowercase the word that follows it unless the colon introduces a direct quotation or the first word after the colon is a proper noun.
+- When you use colon in a title or heading, capitalize the word that follows it.
+
+### Commas
+
+- Use a comma before the conjunction in a list of three or more items. The comma that comes before the conjunction is known as the Oxford or serial comma. However, if a series contains more than three items or the items are long, consider using an unordered list to improve readability.
+- Use a comma following an introductory phrase.
+- Use a comma to join independent clauses with a conjunction. However, if the sentence is long or complex, consider rewriting as two sentences.
+- Use a comma in a series of two or more adjectives that precede a noun, if the order of the adjectives can be reversed or if they can be separated by *and* without changing the meaning.
+- Use a comma to surround the year when you use a full date within a sentence.
+- Do not use a comma to join independent clauses when you do not use a conjunction. Use a semicolon instead.
+- Do not use a comma between verbs in a compound predicate. A compound predicate has two actions or verbs applying to a single subject.
+- Do not use a comma between a month and the year when the specific date is not mentioned.
+
+### Dashes and hyphens
+
+#### Em dashes
+
+- Use an *em dash* (`—`) to set off a parenthetical phrase with more emphasis than parenthesis provide. Add spaces on each side of an *em dash*.
+- Use one *em dash* on each side of a phrase embedded in a sentence.
+- Use one *em dash* to set off a phrase at the end of a sentence.
+- Do not use an *em dash* in place of a bullet character in a list.
+- Do not use an *em dash* to indicate an empty cell in a table.
+
+#### En dashes
+
+- Use an *en dash* (`–`) to indicate a range of numbers.
+- Use an *en dash* as a symbol for the minus sign in expressions and negative numbers.
+- Use an *en dash* instead of a hyphen in a compound modifier when one element of the modifier is an open compound.
+- Use an *en dash* instead of a hyphen when two or more elements are made up of hyphenated compounds, which is a rare occurrence.
+- Do not use an *en dash* to indicate an empty cell in a table.
+- Do not add spaces on either side of an *en dash*, unless used as a minus sign or a time stamp appearing in the user interface.
+- Do not use an *en dash* for a range of times, in text. Instead use *to* for indicating the range.
+
+#### Hyphens
+
+- Do not hyphenate a predicate adjective. A predicate adjective complements the subject of a sentence and follows a linking verb.
+- In compound words that precede and modify a noun as a unit, do not hyphenate *very* or an adverb ending in *ly*, when it precedes another modifier.
+- Hyphenate two or more words that precedes and modify a noun as a unit if confusion might result without the hyphen, one of the words is a past or present participle, or the modifier is a number or single letter plus a noun or participle.
+- Do not use suspended compound modifiers unless space is limited. Instead spell out the entire phrase.
+- If you use a suspended compound modifier, include a hyphen with both adjectives. The first hyphen is followed by a space.
+- Do not form suspended compound modifiers from one-word adjectives.
+- Hyphenate compound words when one of the words is abbreviated, with the exception of compound words that are registered in a dictionary.
+- Hyphenate compound numerals and fractions.
+- Use an *en dash* instead of a hyphen in a compound modifier when one element of the modifier is an open compound.
+- Use an *en dash* instead of a hyphen when two or more elements are made up of hyphenated compounds, which is a rare occurrence.
+- Avoid creating new words by adding prefixes to existing words. In general do not include a hyphen after the prefixes: *auto-*, *co-*, *cyber-*, *exa-*, *giga-*, *kilo-*, *mega-*, *micro-*, *non-*, *pre-*, *re-*, *sub-*, *tera-*, and *un-*.
+- Use a hyphen between a prefix and a stem word if a confusing word results without a hyphen, or if the stem word begins with a capital letter.
+- Do not use a hyphen when adding a prefix to a stem word results in a double vowel and each vowel is pronounced.
+- Capitalize any part of a hyphenated compound word that would be capitalized if there was no hyphen.
+
+### Ellipsis
+
+
 
 ## Unbiased communication
 
