@@ -506,7 +506,16 @@ Users interact with products using various input methods. Therefore, use generic
 
 ### Ellipsis
 
-
+- Do not use an ellipsis (`…`) except in the situations described or to indicate omitted code in technical content.
+- It is acceptable to use an ellipsis to indicate a pause in conversational user interface messages.
+- When there is an ellipsis in user interface, do not include it in instructions or procedures.
+- In quoted material, use an ellipsis to indicate omitted text.
+- If the ellipsis replaces text within a sentence, include a space before and after the ellipsis.
+- If the ellipsis replaces the end of a quoted sentence, include a space before and after the ellipsis, and follow it with a closing period.
+- It is acceptable to use an ellipsis in multiple-part callouts, especially with screenshots or graphics in documentation. However, ensure that the path through the callouts is clear.
+- If the callout ends with additional punctuation, insert a space between the punctuation mark and the ellipsis.
+- Insert a space followed by an ellipsis at the end of a phrase that continues later. Insert an ellipsis followed by a space at the beginning of a phrase that is continued from a previous phrase.
+- If you are using a font that does not have an ellipsis character, use three periods with no space between them.
 
 ## Unbiased communication
 
