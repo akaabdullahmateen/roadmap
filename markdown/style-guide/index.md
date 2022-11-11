@@ -45,7 +45,15 @@
   - [Ellipsis](#ellipsis)
   - [Periods](#periods)
   - [Quotation marks](#quotation-marks)
+  - [Semicolons](#semicolons)
+  - [Slashes](#slashes)
+- [Responsive content](#responsive-content)
+- [Scannable content](#scannable-content)
+- [Search and writing](#search-and-writing)
+- [Text formatting](#text-formatting-2)
 - [Unbiased communication](#unbiased-communication)
+- [URLs and web addresses](#urls-and-web-addresses)
+- [Word choice](#word-choice)
 
 ## Acronyms
 
@@ -536,6 +544,23 @@ Users interact with products using various input methods. Therefore, use generic
 - Refer to *quotation marks*, *opening quotation marks*, and *closing quotation marks*, instead of *quote marks*, *quotes*, *open or close quotation marks*, or *beginning or ending quotation marks*.
 - Place other punctuation outside of quotation marks, including commas and periods, except when the punctuation is part of the quoted material.
 
+### Semicolons
+
+- Sentences that contain semicolons are often complex. Try to simplify the sentence, by breaking it into multiple sentences or a list, in order to eliminate the semicolon.
+- Use a semicolon between two independent clauses that are not joined by a conjunction.
+- Use a semicolon between contrasting statements that are not joined by a conjunction.
+- Use a semicolon to separate items in a series that contains commas or other punctuation. However, it is better to break such a complex series of items into a list.
+
+### Slashes
+
+## Responsive content
+
+## Scannable content
+
+## Search and writing
+
+## Text formatting
+
 ## Unbiased communication
 
 - Use gender-neutral alternatives for common terms and generic references.
@@ -547,3 +572,6 @@ Users interact with products using various input methods. Therefore, use generic
 - Do not use terms that are slang, profane, derogatory, carry unconscious racial bias, or associated with military action, politics, or historical events.
 - Use title-style capitalization for Asian, Black, White, African American, Hispanic, Latin, Native American, Alaska Native, Native Hawaiian, Pacific Islander, and Indigenous Peoples.
 
+## URLs and web addresses
+
+## Word choice
