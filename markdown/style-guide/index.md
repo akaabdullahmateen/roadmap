@@ -529,7 +529,12 @@ Users interact with products using various input methods. Therefore, use generic
 
 ### Quotation marks
 
-- In most content, use double quotation marks (`""`) instead of single quotation marks (`''`).
+- In most content, use double quotation marks (`" "`) instead of single quotation marks (`' '`).
+- In printed content, use curly quotation marks (`“ ”`) except in user input and code samples, which call for straight quotation marks (`" "`).
+- If your project style sheet requires straight quotation marks with sans serif fonts, such as in headings, follow the style sheet.
+- In online content, use straight quotation marks.
+- Refer to *quotation marks*, *opening quotation marks*, and *closing quotation marks*, instead of *quote marks*, *quotes*, *open or close quotation marks*, or *beginning or ending quotation marks*.
+- Place other punctuation outside of quotation marks, including commas and periods, except when the punctuation is part of the quoted material.
 
 ## Unbiased communication
 
