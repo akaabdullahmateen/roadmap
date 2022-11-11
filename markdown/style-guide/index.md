@@ -43,6 +43,8 @@
     - [En dashes](#en-dashes)
     - [Hyphens](#hyphens)
   - [Ellipsis](#ellipsis)
+  - [Periods](#periods)
+  - [Quotation marks](#quotation-marks)
 - [Unbiased communication](#unbiased-communication)
 
 ## Acronyms
@@ -516,6 +518,18 @@ Users interact with products using various input methods. Therefore, use generic
 - If the callout ends with additional punctuation, insert a space between the punctuation mark and the ellipsis.
 - Insert a space followed by an ellipsis at the end of a phrase that continues later. Insert an ellipsis followed by a space at the beginning of a phrase that is continued from a previous phrase.
 - If you are using a font that does not have an ellipsis character, use three periods with no space between them.
+
+### Periods
+
+- Do not use end punctuation in headings, headlines, subheadings, user interface titles, user interface text, or short items in a list.
+- End all sentences with a period, even if it contains only two words. Put one space after a period.
+- When a phrase ending with a colon introduces an unordered list, if one or more list items completes the introductory phrase preceding the colon, use a period after every list item.
+- When a phrase ending with a colon introduces an unordered list, if all list items are short phrases, do not end them with periods, even if they form a complete sentence together with the list introduction.
+- When a phrase ending with a colon introduces an unordered list, if one or more list items are complete sentences, use a period after every item, even if the list item contains three or fewer words.
+
+### Quotation marks
+
+- In most content, use double quotation marks (`""`) instead of single quotation marks (`''`).
 
 ## Unbiased communication
 
