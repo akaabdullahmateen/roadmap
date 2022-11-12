@@ -562,6 +562,16 @@ Users interact with products using various input methods. Therefore, use generic
 
 ## Responsive content
 
+- If you are writing for the web, assume your content will be viewed on a variety of devices, especially those with small screen sizes.
+- Try to write sentences and paragraphs that are short enough to read on mobile screen without scrolling.
+- Try to keep headings to one, short line, and use short words. Multiple line headings wrap on smaller screens, taking more of the already scarce vertical space.
+- Short sections, consisting of heading and its associated text, are easier to read on small screens. Short sections also make it easier for users to stop reading and later pick up where they left off.
+- Choose simple images and crop extraneous details. Always describe the image using *alt* text if it conveys useful information.
+- Provide a way for users to open an infographic in an application that can enlarge specific areas. Organize infographics in compact sections that users can magnify and view on small screen. Alternatively, present individual sections of the infographic within text, and provide a link to the full infographic.
+- Simplify charts and graphs so readers can easily read the whole thing on a small screen. Craft very short chart titles, metric labels, and axis labels.
+- Limit the number of columns in tables and keep the text in each cell brief, ideally one line. Tables with more than a few narrow columns may be hard to read. Too much text in a cell may cause a table to exceed the height of a mobile screen.
+- Consider how content will flow on a smaller screen. Typically content on the right side of the page moves below content on the left side. Make sure it still makes sense.
+
 ## Scannable content
 
 ## Search and writing
