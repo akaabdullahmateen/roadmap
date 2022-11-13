@@ -49,6 +49,7 @@
   - [Slashes](#slashes)
 - [Responsive content](#responsive-content)
 - [Scannable content](#scannable-content)
+  - [Headings](#headings)
 - [Search and writing](#search-and-writing)
 - [Text formatting](#text-formatting-2)
 - [Unbiased communication](#unbiased-communication)
@@ -573,6 +574,21 @@ Users interact with products using various input methods. Therefore, use generic
 - Consider how content will flow on a smaller screen. Typically content on the right side of the page moves below content on the left side. Make sure it still makes sense.
 
 ## Scannable content
+
+- Content on the first screen (also called *above the fold*) compels user whether to scroll further. So keep it short, engaging, and useful, keeping in mind that what appears above the fold varies by device and screen resolution.
+- In left-to-right languages, people often read in an *F* shape, giving the most attention to the upper-left corner of a page. Therefore, place the most important information and call-to-action elements in that area.
+- Write short headings, short sentences, and short paragraphs that are easy to read and scan. Use short, simple words and get to the point immediately.
+- Include navigation within long documents. Break the content into multiple sections and include a table of contents with links to the subheadings. Also, add *Back to top* links at the end of sections.
+- Consistent writing, design, and formatting create patterns, which help users comprehend more efficiently. Place important keywords near the beginning of headings, table entries, and paragraphs, so they are easy to spot. Use text formatting consistently, and apply the same sentence structure to similar information.
+- Keep paragraphs short, usually three to seven lines, and add large enough spacing between paragraphs, at least half of the font size.
+
+### Headings
+
+- Think of headings as an outline that break text logically into smaller sections.
+- The top-level headings divide the content into major subjects. Make them as specific as you can.
+- When there is excessive content to cover under a top-level heading, look for two or more distinct topics, and use second-level heading to break the large section into more scannable chunks. If the content can not be divided into at least two distinct topics, skip the second-level headings.
+- Avoid having two headings consecutively without text in between, as that might indicate redundance in headings or bad organization of content. But do not insert filler text just to separate the headings.
+- 
 
 ## Search and writing
 
