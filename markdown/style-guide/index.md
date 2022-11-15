@@ -644,6 +644,15 @@ Users interact with products using various input methods. Therefore, use generic
 
 ## Search and writing
 
+- Identify keywords that the users search with and apply to your content.
+- Use keywords early and often in the content, without being contrived or repetitive.
+- Place keywords in titles, headings, subheadings, summaries, overviews, introductions, page descriptions, paragraph text, link text, image *alt* text, and table *alt* text.
+- If the content is video, audio, or images, include keywords in nearby text descriptions and in *alt* text.
+- Write short link text, usually four or fewer words, that is descriptive and includes keywords.
+- If the link works, use the title or description of the target page as link text.
+- Link to background and related information rather than summarizing it.
+- Never create backlinks just to improve search engine ranking. Search practices that are insensible for the content rarely work and often backfire.
+
 ## Text formatting
 
 ## Unbiased communication
