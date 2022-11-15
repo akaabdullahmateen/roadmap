@@ -50,6 +50,8 @@
 - [Responsive content](#responsive-content)
 - [Scannable content](#scannable-content)
   - [Headings](#headings)
+  - [Lists](#lists)
+  - [Tables](#tables)
 - [Search and writing](#search-and-writing)
 - [Text formatting](#text-formatting-2)
 - [Unbiased communication](#unbiased-communication)
@@ -588,7 +590,57 @@ Users interact with products using various input methods. Therefore, use generic
 - The top-level headings divide the content into major subjects. Make them as specific as you can.
 - When there is excessive content to cover under a top-level heading, look for two or more distinct topics, and use second-level heading to break the large section into more scannable chunks. If the content can not be divided into at least two distinct topics, skip the second-level headings.
 - Avoid having two headings consecutively without text in between, as that might indicate redundance in headings or bad organization of content. But do not insert filler text just to separate the headings.
-- 
+- Use headings judiciously. One heading level is usually plenty for a page or two of content.
+- Keep headings short and put the most important keywords at the beginning. This is especially critical for blogs and social media due to search engine optimization.
+- Make children headings more specific and detailed than its parent.
+- Use parallel sentence structure for all headings. Use noun phrases for top-level headings, verb phrases for second-level headings, and infinitive phrases for headings in instructions.
+- Consider infinitive phrases for headings related to tasks or instructions. For headings that are not related to tasks, use noun phrases.
+- Do not use ampersands or plus signs in headings unless referring to user interface that contains them or space is limited.
+- Avoid hyphens in headings. In resized windows or mobile devices, they can result in awkward line breaks.
+- Avoid abbreviating *versus* in regular content headings. Use the abbreviation *vs.* in sports coverage and *v.* in legal documents.
+- Use sentence-style capitalization for headings, where the first word, any proper noun, and the first word after a colon is capitalized, and everything else is lowercase.
+- Do not end headings with a period. A question mark or exclamation mark may be occasionally used if needed.
+- Break two-line headings in a way that makes sense and balances the length of the two lines. Break after punctuation or at the end of a complete phrase.
+- Keep adjectives and prepositions with the words they modify.
+- Keep hyphenated words and compound proper nouns on the same line.
+- Provide extra space above headings and less space below them. Close proximity between the heading and text that follows it communicates their relation.
+- Do not use extra line breaks to increase heading spacing, especially in web content.
+- Use bold formatting for run-in headings and make sure the first few words of the paragraph are interesting and introduce the paragraphs content.
+- Consider repeating common phrases, such as *Note*, as run-in headings to call attention to helpful but nonessential information.
+
+### Lists
+
+- A list should have at least two but no more than seven items. Each item should be fairly short. The user should be able to see at least two, preferably three, items at a glance. It is acceptable to have a couple of short paragraphs as a list item.
+- Make all the items in a list consistent in structure.
+- Use a bulleted list for things that have something in common but do not appear in a particular order.
+- Use a numbered list for procedures, instructions, sequential items, or prioritized items.
+- Introduce a list with a heading, complete sentence, or sentence fragment that ends with a colon.
+- If you introduce a list with a heading, do not use explanatory text, colon, or period after the heading.
+- Begin each list item with a capital letter unless all items begin with lowercase words.
+- Do not use semicolons, commas, or conjunctions at the end of list items.
+- Do not use periods at the end of list items unless they are complete sentences, even if the complete sentence is short.
+- If the list is introduced by a sentence fragment that ends with a colon, end all items with a period if any item forms a complete sentence when combined with the introduction.
+- Do not use periods if all items have three or fewer words or if the items are user interface text, headings, or strings.
+- In user interface, where lists are series of radio buttons or checkboxes inside dialog boxes or settings pages, unless they are complete sentences, do not use punctuation for each item in a list. If punctuation is necessary for clarity, use punctuation consistently in all lists on the same section.
+
+### Tables
+
+- Do not use tables, instead of lists, just to present a single column of similar items.
+- Include a table title or brief introduction, if necessary, to show the purpose of the table.
+- Make entries in a table parallel. Make all the items within a column noun or a phrase that starts with a verb.
+- Place information that identifies the contents of a row in the leftmost column of the table.
+- Do not leave a cell blank or use an *em dash* to indicate that there is no entry for that cell. Instead, use *Not applicable* or *None*.
+- Limit the number of columns and keep the text in each cell brief, ideally one line.
+- Balance row height by increasing the width of columns with excessive text and reducing the width of columns with minimal text.
+- Style the headings in header row to distinguish it from the rest of the table.
+- Make headings precise and specific. Do not use a generic word when a more specific word can be used.
+- Do not organize a table so that the column headings form a complete sentence when combined with the cell contents, as this can cause difficulty in localization.
+- In long tables, make sure the header row is always visible.
+- Use sentence-style capitalization for the table title and each column heading.
+- Use sentence-style capitalization for the text in cells unless it is a keyword that is always lowercase.
+- If there is text that introduces the table, it should be a complete sentence that ends with a period, instead of a colon.
+- Do not use ellipses at the end of column headings.
+- For the text in cells, use periods or other punctuation only if the cells contain complete sentences or a mixture of fragments and sentences.
 
 ## Search and writing
 
