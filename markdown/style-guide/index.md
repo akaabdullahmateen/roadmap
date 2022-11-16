@@ -2,35 +2,27 @@
 
 <!-- omit in toc -->
 ## Table of contents
-- [Acronyms](#acronyms)
-- [Capitalization](#capitalization)
-- [Developer content](#developer-content)
-  - [Reference documentation](#reference-documentation)
-  - [Code examples](#code-examples)
-- [Final publishing review](#final-publishing-review)
-- [Global communication](#global-communication)
-- [Grammar](#grammar)
-  - [Verbs](#verbs)
-    - [Verb tense](#verb-tense)
-    - [Moods of verb](#moods-of-verb)
-    - [Active and passive voice](#active-and-passive-voice)
-    - [Verb agreements](#verb-agreements)
-  - [Nouns](#nouns)
-    - [Capitalization](#capitalization-1)
-    - [Plural form](#plural-form)
-  - [Pronouns](#pronouns)
-    - [Person](#person)
-    - [Possessive pronouns](#possessive-pronouns)
-    - [Appropriateness](#appropriateness)
-- [Numbers](#numbers)
-  - [Format](#format)
-  - [Numerals](#numerals)
-  - [Digit grouping](#digit-grouping)
-  - [Ordinal numbers](#ordinal-numbers)
-  - [Fractions](#fractions)
-- [Procedures](#procedures)
-  - [Writing instructions](#writing-instructions)
-  - [Describing interactions](#describing-interactions)
+- [Content](#content)
+  - [Headings](#headings)
+  - [Lists](#lists)
+  - [Tables](#tables)
+  - [Images](#images)
+  - [Text](#text)
+    - [Final publishing review](#final-publishing-review)
+  - [Acronyms](#acronyms)
+  - [URLs and web addresses](#urls-and-web-addresses)
+  - [Numbers](#numbers)
+    - [Format](#format)
+    - [Numerals](#numerals)
+    - [Digit grouping](#digit-grouping)
+    - [Ordinal numbers](#ordinal-numbers)
+    - [Fractions](#fractions)
+  - [Procedures](#procedures)
+    - [Writing instructions](#writing-instructions)
+    - [Describing interactions](#describing-interactions)
+  - [Developer content](#developer-content)
+    - [Reference documentation](#reference-documentation)
+    - [Code examples](#code-examples)
 - [Punctuation](#punctuation)
   - [Formatting punctuation](#formatting-punctuation)
   - [Apostrophes](#apostrophes)
@@ -45,75 +37,170 @@
   - [Quotation marks](#quotation-marks)
   - [Semicolons](#semicolons)
   - [Slashes](#slashes)
-- [Responsive content](#responsive-content)
-- [Scannable content](#scannable-content)
-  - [Headings](#headings)
-  - [Lists](#lists)
-  - [Tables](#tables)
-- [Search and writing](#search-and-writing)
-- [Text formatting](#text-formatting)
-- [Unbiased communication](#unbiased-communication)
-- [URLs and web addresses](#urls-and-web-addresses)
-- [Word choice](#word-choice)
+- [Grammar](#grammar)
+  - [Verbs](#verbs)
+    - [Verb tense](#verb-tense)
+    - [Moods of verb](#moods-of-verb)
+    - [Active and passive voice](#active-and-passive-voice)
+    - [Verb agreements](#verb-agreements)
+  - [Nouns](#nouns)
+    - [Capitalization](#capitalization)
+    - [Plural form](#plural-form)
+  - [Pronouns](#pronouns)
+    - [Person](#person)
+    - [Possessive pronouns](#possessive-pronouns)
+    - [Appropriateness](#appropriateness)
+- [Design](#design)
+  - [Spacing](#spacing)
+  - [Text formatting](#text-formatting)
 
-## Acronyms
+## Content
 
-- Do not create acronyms for brand, product, or feature names.
-- Only use acronyms that the audience is familiar with.
-- If you have to use an acronym, provide its expansion on first use.
-- Do not introduce acronyms that are used just once.
-- Avoid using acronyms in titles and headings.
-- Lowercase all words in the spelled out form of an acronym except for proper nouns.
-- Add lowercase 's' to make an acronym plural. If the acronym stands for a plural noun, do not add an 's'.
-- Avoid the possessive form unless an acronym refers to a person or an organization.
+- Content on the first screen (also called *above the fold*) compels user whether to scroll further. So keep it short, engaging, and useful, keeping in mind that what appears above the fold varies by device and screen resolution.
+- In left-to-right languages, people often read in an *F* shape, giving the most attention to the upper-left corner of a page. Therefore, place the most important information and call-to-action elements in that area.
+- Write short headings, short sentences, and short paragraphs that are easy to read and scan. Use short, simple words and get to the point immediately.
+- Include navigation within long documents. Break the content into multiple sections and include a table of contents with links to the subheadings. Also, add *Back to top* links at the end of sections.
+- Consistent writing, design, and formatting create patterns, which help users comprehend more efficiently. Place important keywords near the beginning of headings, table entries, and paragraphs, so they are easy to spot. Use text formatting consistently, and apply the same sentence structure to similar information.
+- Keep paragraphs short, usually three to seven lines, and add large enough spacing between paragraphs, at least half of the font size.
+- If you are writing for the web, assume your content will be viewed on a variety of devices, especially those with small screen sizes.
+- Try to write sentences and paragraphs that are short enough to read on mobile screen without scrolling.
+- Try to keep headings to one, short line, and use short words. Multiple line headings wrap on smaller screens, taking more of the already scarce vertical space.
+- Short sections, consisting of heading and its associated text, are easier to read on small screens. Short sections also make it easier for users to stop reading and later pick up where they left off.
+- Choose simple images and crop extraneous details. Always describe the image using *alt* text if it conveys useful information.
+- Provide a way for users to open an infographic in an application that can enlarge specific areas. Organize infographics in compact sections that users can magnify and view on small screen. Alternatively, present individual sections of the infographic within text, and provide a link to the full infographic.
+- Simplify charts and graphs so readers can easily read the whole thing on a small screen. Craft very short chart titles, metric labels, and axis labels.
+- Limit the number of columns in tables and keep the text in each cell brief, ideally one line. Tables with more than a few narrow columns may be hard to read. Too much text in a cell may cause a table to exceed the height of a mobile screen.
+- Consider how content will flow on a smaller screen. Typically content on the right side of the page moves below content on the left side. Make sure it still makes sense.
 
-## Capitalization
+### Headings
 
+- Think of headings as an outline that break text logically into smaller sections.
+- The top-level headings divide the content into major subjects. Make them as specific as you can.
+- When there is excessive content to cover under a top-level heading, look for two or more distinct topics, and use second-level heading to break the large section into more scannable chunks. If the content can not be divided into at least two distinct topics, skip the second-level headings.
+- Avoid having two headings consecutively without text in between, as that might indicate redundance in headings or bad organization of content. But do not insert filler text just to separate the headings.
+- Use headings judiciously. One heading level is usually plenty for a page or two of content.
+- Keep headings short and put the most important keywords at the beginning. This is especially critical for blogs and social media due to search engine optimization.
+- Make children headings more specific and detailed than its parent.
+- Use parallel sentence structure for all headings. Use noun phrases for top-level headings, verb phrases for second-level headings, and infinitive phrases for headings in instructions.
+- Consider infinitive phrases for headings related to tasks or instructions. For headings that are not related to tasks, use noun phrases.
+- Do not use ampersands or plus signs in headings unless referring to user interface that contains them or space is limited.
+- Avoid hyphens in headings. In resized windows or mobile devices, they can result in awkward line breaks.
+- Avoid abbreviating *versus* in regular content headings. Use the abbreviation *vs.* in sports coverage and *v.* in legal documents.
+- Use sentence-style capitalization for headings, where the first word, any proper noun, and the first word after a colon is capitalized, and everything else is lowercase.
+- Do not end headings with a period. A question mark or exclamation mark may be occasionally used if needed.
+- Break two-line headings in a way that makes sense and balances the length of the two lines. Break after punctuation or at the end of a complete phrase.
+- Keep adjectives and prepositions with the words they modify.
+- Keep hyphenated words and compound proper nouns on the same line.
+- Provide extra space above headings and less space below them. Close proximity between the heading and text that follows it communicates their relation.
+- Do not use extra line breaks to increase heading spacing, especially in web content.
+- Use bold formatting for run-in headings and make sure the first few words of the paragraph are interesting and introduce the paragraphs content.
+- Consider repeating common phrases, such as *Note*, as run-in headings to call attention to helpful but nonessential information.
+- If a title or heading includes a colon, capitalize the first word after it.
+
+### Lists
+
+- A list should have at least two but no more than seven items. Each item should be fairly short. The user should be able to see at least two, preferably three, items at a glance. It is acceptable to have a couple of short paragraphs as a list item.
+- Make all the items in a list consistent in structure.
+- Use a bulleted list for things that have something in common but do not appear in a particular order.
+- Use a numbered list for procedures, instructions, sequential items, or prioritized items.
+- Introduce a list with a heading, complete sentence, or sentence fragment that ends with a colon.
+- If you introduce a list with a heading, do not use explanatory text, colon, or period after the heading.
+- Begin each list item with a capital letter unless all items begin with lowercase words.
+- Do not use semicolons, commas, or conjunctions at the end of list items.
+- Do not use periods at the end of list items unless they are complete sentences, even if the complete sentence is short.
+- If the list is introduced by a sentence fragment that ends with a colon, end all items with a period if any item forms a complete sentence when combined with the introduction.
+- Do not use periods if all items have three or fewer words or if the items are user interface text, headings, or strings.
+- In user interface, where lists are series of radio buttons or checkboxes inside dialog boxes or settings pages, unless they are complete sentences, do not use punctuation for each item in a list. If punctuation is necessary for clarity, use punctuation consistently in all lists on the same section.
+
+### Tables
+
+- Do not use tables, instead of lists, just to present a single column of similar items.
+- Include a table title or brief introduction, if necessary, to show the purpose of the table.
+- Make entries in a table parallel. Make all the items within a column noun or a phrase that starts with a verb.
+- Place information that identifies the contents of a row in the leftmost column of the table.
+- Do not leave a cell blank or use an *em dash* to indicate that there is no entry for that cell. Instead, use *Not applicable* or *None*.
+- Limit the number of columns and keep the text in each cell brief, ideally one line.
+- Balance row height by increasing the width of columns with excessive text and reducing the width of columns with minimal text.
+- Style the headings in header row to distinguish it from the rest of the table.
+- Make headings precise and specific. Do not use a generic word when a more specific word can be used.
+- Do not organize a table so that the column headings form a complete sentence when combined with the cell contents, as this can cause difficulty in localization.
+- In long tables, make sure the header row is always visible.
+- Use sentence-style capitalization for the table title and each column heading.
+- Use sentence-style capitalization for the text in cells unless it is a keyword that is always lowercase.
+- If there is text that introduces the table, it should be a complete sentence that ends with a period, instead of a colon.
+- Do not use ellipses at the end of column headings.
+- For the text in cells, use periods or other punctuation only if the cells contain complete sentences or a mixture of fragments and sentences.
+
+### Images
+
+- Choose colors carefully as some colors might have religious, cultural, or political significance. However, neutral and brand colors are fine.
+- Choose images that are appropriate worldwide by avoiding holiday, major landmarks, signs, and other art that is relevant to only a particular group of people.
+- Limit graphics and animations on web as some regions have low internet bandwidth.
+- Write descriptive alt text for images for accessibility to visually-impaired people and people who are unaware of the context for the image.
+- Store art in separate files and link to it within the document. Localizers can modify art that is not embedded within a document.
+- Check restrictions on imported content in regions where the content will be used. Be especially careful with maps, which might have an improper treatment of a disputed area, and art that is not owned or in public domain, which might require license agreements.
+
+### Text
+
+- Consider how fictitious scenarios may be perceived in other cultures, and avoid mentioning real places, people, and technology or standards that are not used worldwide.
 - Use sentence-style capitalization, whereby everything is lowercase except the first word of a sentence and proper nouns.
 - Always capitalize the first word of a new sentence. Transform sentences that starts with a word that is always lowercase.
 - Use italic typeface for emphasis, instead of all uppercase.
 - For design element, do not use all lowercase, although all uppercase is used occasionally.
 - Do not use internal capitalization unless it is part of a brand name.
-- Do not capitalize the spelled out form of an acronym unless it is a proper noun.
 - When words are joined by a slash, capitalize the word after the slash if the word before the slash is capitalized.
-- If a title or heading includes a colon, capitalize the first word after it.
-- In programming languages, follow the traditional capitalization of keywords and other special terms.
+- Support browsers likely to be used by the relevant audience. Design content so fonts can be substituted if the specified font is not available, and use standard HTML tags instead of proprietary tags.
+- Minimize load time by keeping page size small and include text-only versions for larger content. Design pages so text loads first, followed by graphics, so pages are usable before they are finished loading.
+- Support multiple languages, and reading from both right-to-left and left-to-right. Allow space for text expansion due to translation and localization.
+- Comply with local laws and license restrictions when international delivery in concerned.
+- Only link to websites that are accessible and useful worldwide. If a link must be included that is not globally relevant, provide informant notice.
+- Write short, simple sentences. Punctuating a sentence with more than a few commas and end punctuation usually indicates a complex sentence. Consider breaking it into multiple sentences or replacing with lists and tables.
+- Use active voice and indicative mood for descriptions. Use imperative mood in procedures.
+- Avoid idioms, colloquial expressions, culture-specific references, and modifier stacks.
+- Keep adjectives and adverbs close to the words they modify, and avoid linking more than three phrases or clauses by using coordinate conjunctions.
+- Use sentence-style capitalization, which means to capitalize only the first word of a sentence or phrase and proper nouns.
+- Do not use all-uppercase text, although it is used sometimes in user interface as a design choice.
+- Do not use all-lowercase text, although it is acceptable if used in list or table items where the text is always lowercase.
+- Use left-alignment for text, where text has an even left margin and an erratic right margin.
+- Do not use center-alignment for text, although it is used sometimes in user interface as a design choice.
+- Avoid awkward situations where text fragments are orphans, which occur when the first line of a paragraph appears by itself at the bottom of a page, widows, which occur when the last line of a paragraph contains only one word or appears alone on the next page, and lines that end with hyphens.
+- Do not suppress line spacing. Never reduce line spacing, instead of editing the text, to fit more text on a page.
+- Identify keywords that the users search with and apply to your content.
+- Use keywords early and often in the content, without being contrived or repetitive.
+- Place keywords in titles, headings, subheadings, summaries, overviews, introductions, page descriptions, paragraph text, link text, image *alt* text, and table *alt* text.
+- If the content is video, audio, or images, include keywords in nearby text descriptions and in *alt* text.
+- Write short link text, usually four or fewer words, that is descriptive and includes keywords.
+- If the link works, use the title or description of the target page as link text.
+- Link to background and related information rather than summarizing it.
+- Never create backlinks just to improve search engine ranking. Search practices that are insensible for the content rarely work and often backfire.
+- Use gender-neutral alternatives for common terms and generic references.
+- Refer to a person's role instead of identifying them by a pronoun.
+- When writing about a real person, use the pronouns that person prefers.
+- Represent diverse perspectives and circumstances, and be inclusive of everyone.
+- Avoid stereotypes and mentions of politically disputed topics.
+- Do not make generalization about a specific group of people or place, even if it is positive or neutral.
+- Do not use terms that are slang, profane, derogatory, carry unconscious racial bias, or associated with military action, politics, or historical events.
+- Use title-style capitalization for Asian, Black, White, African American, Hispanic, Latin, Native American, Alaska Native, Native Hawaiian, Pacific Islander, and Indigenous Peoples.
+- Do not use contractions. If there is need to use contractions, do not mix contractions and their spelled out equivalents on the same screen.
+- Never form a contraction from a noun and a verb, and avoid ambiguous or awkward contractions.
+- Use simple words with precise meaning, and remove words that do not add substance.
+- Choose simple verbs without modifiers. Avoid weak and vague verbs, whenever possible.
+- Do not use a phrase with two or three words when a single equivalent word is enough.
+- Choose words that have one clear meaning.
+- Omit unnecessary adverbs unless they are important to the meaning of the sentence.
+- Use one term consistently to represent one concept.
+- Be careful with words that can be both nouns and verbs. Use the sentence structure and context to eliminate ambiguity.
+- Do not create a new word from an existing word, or apply a new meaning to an ordinary word. If a new term must be created, verify that it is not already being used to mean something else.
+- Be careful with common words that have industry-specific uses. Assume users know the common definition of the word rather than the industry-specific definition. If an industry-specific definition must be used, define the word in context.
+- Do not use a technical word when a common word is better understood. If a technical word must be used, define the word in context.
+- If a content is targeted towards a professional audience, use the terminology their industry uses.
+- When the spelling of an English word varies by locale, use the US spelling.
+- Avoid non-English words and Latin abbreviations for common English phrases.
+- Prefer *and other {generic class}* over *etc.*, *for example* over *e.g.*, and *that is* over *i.e.*, unless space is limited.
+- Do not use *and so on* at the end of a phrase that begins with *for example*, *such as*, or *like*.
+- Use one word for a concept and use it consistently. Avoid using synonyms to refer to the same concept or feature, and do not use the same word to refer to multiple concepts or features.
 
-## Developer content
-
-### Reference documentation
-
-| Section                      | Description                                                                                                                                                                                                                                                                                                                 |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title and description**    | In title, use the name of a programming element followed by the element type. If the name is shared by multiple elements, add a differentiator or category in parenthesis. Provide concise sentences describing the element. If possible, explain what the element does or represents without repeating the element name.   |
-| **Declaration / syntax**     | The code signature that defines the element. This section might also provide usage syntax. If the technology can be used with multiple programming languages, provide syntax for each language.                                                                                                                             |
-| **Parameters**               | If the element has parameters, provide a description of each parameter and its data type. If appropriate, indicate whether the parameter is required or optional and whether it represents input or output. Provide as much useful detail as possible. Do not just repeat the words in the parameter name or the data type. |
-| **Property value**           | A description of the value for a property or field. If the property or field has a default value, describe that as well. Include the data type of the property value is applicable.                                                                                                                                         |
-| **Return value**             | If the element returns a value, describe the value and information about its data type. If the value is a Boolean that indicates the presence of a condition, describe the condition.                                                                                                                                       |
-| **Exceptions / error codes** | If the element can throw exceptions or raise error codes, when called, list them and describe the conditions under which they occur.                                                                                                                                                                                        |
-| **Remarks**                  | Additional information about the element and important details that may not be obvious from its syntax, parameters, or return value. It might explain what the element does in more detail, compare it with similar elements, and identify potential issues in its use.                                                     |
-| **Example**                  | A code example that illustrates how to use the programming element.                                                                                                                                                                                                                                                         |
-| **Requirements**             | Languages or platform requirements for using the element.                                                                                                                                                                                                                                                                   |
-| **Permissions**              | Security permissions that apply to the element, if required.                                                                                                                                                                                                                                                                |
-| **See also**                 | References or links to more information about element usage, related elements, or other relevant articles.                                                                                                                                                                                                                  |
-
-### Code examples
-
-- Create concise examples that exemplify key development tasks. Start with simple examples and build up complexity after you cover common scenarios.
-- Prioritize frequently used elements and elements that may be difficult to use or understand.
-- Do not use code examples to illustrate obvious points or fictitious scenarios.
-- Create code examples that are easy to scan and understand. Reserve complicated examples for tutorials or walkthroughs, where you can provide a stepwise explanation of how the example works.
-- Add an introduction to describe the scenario and explain anything that might not be obvious from the code. List the requirements and dependencies for using or running the example.
-- Provide an easy way for developers to copy or run the code. If the code example demonstrates interactive or animated features, consider providing a way to the developers to run the example directly from your content page.
-- Use appropriate keywords, linking strategies, and other search engine optimization (SEO) techniques to improve the visibility and usability of the code examples.
-- Design code for reuse. Help developers determine what to modify. Add comments to explain details, but do not overdo by stating the obvious things.
-- Show expected output, either in a separate section after the code example or by using code comments within the code example.
-- Consider accessibility requirements for code that creates user interface.
-- Write secure code. Always validate user input, never hard-code passwords in code, and use code analysis tools to detect security issues.
-- Show exception handling only when it is intrinsic to the example. Do not catch exceptions thrown when invalid arguments are passed to parameters.
-- Always compile and test your code before providing them as examples.
-
-## Final publishing review
+#### Final publishing review
 
 - **Hit the mark.** Review the project brief and make sure the objective and key points are clear.
 - **Get a second opinion.** Find someone unrelated to the work to offer feedback.
@@ -124,145 +211,35 @@
 - **Pay attention to the spell checker.** Eliminate spelling errors, but spell checkers can not understand context so some warnings or suggestions might be misleading.
 - **Take a break.** Leave the finished piece alone for a day. Read it again tomorrow — you may see things you missed.
 
-## Global communication
+### Acronyms
 
-- Choose colors carefully as some colors might have religious, cultural, or political significance. However, neutral and brand colors are fine.
-- Choose images that are appropriate worldwide by avoiding holiday, major landmarks, signs, and other art that is relevant to only a particular group of people.
-- Limit graphics and animations on web as some regions have low internet bandwidth.
-- Write descriptive alt text for images for accessibility to visually-impaired people and people who are unaware of the context for the image.
-- Store art in separate files and link to it within the document. Localizers can modify art that is not embedded within a document.
-- Check restrictions on imported content in regions where the content will be used. Be especially careful with maps, which might have an improper treatment of a disputed area, and art that is not owned or in public domain, which might require license agreements.
-- Use title-style capitalization for currency names. Prefer *US Dollars* as a currency when neutral depiction of monetary value is concerned.
-- When referencing to specific amounts of money, use the currency code followed by the amount with a space.
-- Consider how fictitious scenarios may be perceived in other cultures, and avoid mentioning real places, people, and technology or standards that are not used worldwide.
-- In forms that collect user name information, provide fields for *First name* and *Last name*. The *Title* and *Middle name* fields should be optional.
-- In forms that collect user address information, provide long enough field that can include address appropriate for a variety of locale. Use *State / Province*, *Country / Region*, and *Postal code* fields to accommodate various locale and disputed territories.
-- In forms that collect user contact information, provide enough space in *Email* and *Phone number* fields to accommodate long email addresses and phone numbers.
-- Use the date format *month date, year* with *month* spelled out with its name and both *date* and *year* are numerals.
-- Use the time format *hour:minute:second (UTC+hh:mm)* with *hour*, *minute*, *second*, *hh*, and *mm* as numerals padded with zeroes.
-- Support browsers likely to be used by the relevant audience. Design content so fonts can be substituted if the specified font is not available, and use standard HTML tags instead of proprietary tags.
-- Minimize load time by keeping page size small and include text-only versions for larger content. Design pages so text loads first, followed by graphics, so pages are usable before they are finished loading.
-- Support multiple languages, and reading from both right-to-left and left-to-right. Allow space for text expansion due to translation and localization.
-- Comply with local laws and license restrictions when international delivery in concerned.
-- Only link to websites that are accessible and useful worldwide. If a link must be included that is not globally relevant, provide informant notice.
-- Write short, simple sentences. Punctuating a sentence with more than a few commas and end punctuation usually indicates a complex sentence. Consider breaking it into multiple sentences or replacing with lists and tables.
-- Use active voice and indicative mood for descriptions. Use imperative mood in procedures.
-- Avoid idioms, colloquial expressions, culture-specific references, and modifier stacks.
-- Keep adjectives and adverbs close to the words they modify, and avoid linking more than three phrases or clauses by using coordinate conjunctions.
-- Use one word for a concept and use it consistently. Avoid using synonyms to refer to the same concept or feature, and do not use the same word to refer to multiple concepts or features.
+- Do not create acronyms for brand, product, or feature names.
+- Only use acronyms that the audience is familiar with.
+- If you have to use an acronym, provide its expansion on first use.
+- Do not introduce acronyms that are used just once.
+- Avoid using acronyms in titles and headings.
+- Lowercase all words in the spelled out form of an acronym except for proper nouns.
+- Add lowercase 's' to make an acronym plural. If the acronym stands for a plural noun, do not add an 's'.
+- Avoid the possessive form unless an acronym refers to a person or an organization.
+- Do not capitalize the spelled out form of an acronym unless it is a proper noun.
 
-## Grammar
+### URLs and web addresses
 
-### Verbs
+- In content for a general audience, use *address* rather than *URL*. In content for a technical audience, do not spell out *URL* on first mention. If there is reason to spell out *URL*, use *uniform resource locator*.
+- Use *a*, instead of *an*, as an article for *URL*.
+- Do not include *`https://`* in URL. Include the protocol only if it is something other than HTTP.
+- Do not include the trailing slash at the end of a URL.
+- Use lowercase for URLs, email addresses, and newsgroup addresses.
+- If there is reason to capitalize a URL, only capitalize the first letter, and omit *`https://www`*.
+- Use *of* instead of *for* to describe the relationship of the word *URL* to a resource.
+- Use the preposition *at* with the location of a specific address.
+- If there is confusion about the period at the end of a sentence being part of the URL, use trailing icons or other styling to set the URL off.
+- Write brief and specific link text, using title or description of a page rather than a generic phrase.
+- In *alt* text for a graphic that links to another location, state clearly that the graphic is a link.
 
-#### Verb tense
+### Numbers
 
-In the present tense, the action is happening now. The present tense is often easier to read and understand than the past or future tense. It is the best choice for most content.
-
-| Tense                          | Example                   |
-| ------------------------------ | ------------------------- |
-| **Simple Present**             | I read.                   |
-| **Simple Past**                | I read.                   |
-| **Simple Future**              | I will read.              |
-| **Present Continuous**         | I am reading.             |
-| **Past Continuous**            | I was reading.            |
-| **Future Continuous**          | I will be reading.        |
-| **Present Perfect**            | I have read.              |
-| **Past Perfect**               | I had read.               |
-| **Future Perfect**             | I will have read.         |
-| **Present Perfect Continuous** | I have been reading.      |
-| **Past Perfect Continuous**    | I had been reading.       |
-| **Future Perfect Continuous**  | I will have been reading. |
-
-
-#### Moods of verb
-
-The mood of the verb expresses the author's intent. Use the indicative mood most of the time. Do not switch moods within a sentence.
-
-| Mood            | Usage                                                        | Example                                     |
-| --------------- | ------------------------------------------------------------ | ------------------------------------------- |
-| **Indicative**  | Factual statements, questions, assertions, and explanations. | English is the most widely used language.   |
-| **Imperative**  | Instructions, procedures, direct commands, requests.         | Use English language.                       |
-| **Subjunctive** | Wishes, hypotheses, and suggestions.                         | We recommend that you use English language. |
-
-#### Active and passive voice
-
-Voice is either active or passive. Use the active voice most of the time.
-
-- In active voice, the subject performs the action.
-- In passive voice, the subject is the receiver of the action.
-
-| Voice       | Usage                                                           | Example                               |
-| ----------- | --------------------------------------------------------------- | ------------------------------------- |
-| **Active**  | Most of the content.                                            | You are not able to find the website. |
-| **Passive** | Errors, warnings, or notifications to avoid blaming the reader. | The website can not be found.         |
-
-#### Verb agreements
-
-Verbs have singular and plural forms. Use the verb that agrees with the subject of the sentence in number.
-
-| Subject                                        | Verb                        | Example                                     |
-| ---------------------------------------------- | --------------------------- | ------------------------------------------- |
-| A group of things                              | Singular                    | A group of things is called a collection.   |
-| Two or more singular things connected by *and* | Plural                      | Thing and thing are called two things.      |
-| Two or more singular things connected by *or*  | Singular                    | Thing or thing is called a thing.           |
-| Singular and plural things connected by *or*   | *Match the closest subject* | Thing or things are called thing or things. |
-
-### Nouns
-
-#### Capitalization
-
-| Noun            | Definition                                    | Capitalization |
-| --------------- | --------------------------------------------- | -------------- |
-| **Proper noun** | Unique name of a person, place, or thing.     | Title-style    |
-| **Common noun** | Typical concept of a person, place, or thing. | Lowercase      |
-
-#### Plural form
-
-| Noun                  | Plural form               | Example                            |
-| --------------------- | ------------------------- | ---------------------------------- |
-| Nouns ending in *s*   | Add *es*                  | Biases                             |
-| Singular abbreviation | Add *s*                   | DBMSs                              |
-| Plural abbreviation   | *Already plural*          | MFC (Microsoft Foundation Classes) |
-| Single letter         | Add an apostrophe and *s* | *x*'s                              |
-| Number                | Add *s*                   | 1950s                              |
-| Variable              | *Already plural*          | *x* minutes                        |
-
-### Pronouns
-
-#### Person
-
-In grammar, *person* refers to the point of view represented by a statement and determines which pronoun to use.
-
-| Person            | Preference | Example       |
-| ----------------- | ---------- | ------------- |
-| **First person**  | Medium     | I, me, my     |
-| **Second person** | Highest    | You, your     |
-| **Third person**  | Lowest     | He, she, they |
-
-#### Possessive pronouns
-
-| Subject | Possessive pronoun | Possessive adjective |
-| ------- | ------------------ | -------------------- |
-| I       | Mine               | My                   |
-| We      | Ours               | Our                  |
-| You     | Yours              | Your                 |
-| He      | His                | His                  |
-| She     | Hers               | Her                  |
-| It      | Its                | Its                  |
-| They    | Theirs             | Their                |
-
-#### Appropriateness
-
-- Use gender-neutral alternatives for common terms and generic references.
-- Refer to a person's role instead of identifying them by a pronoun.
-- When writing about a real person, use the pronouns that person prefers.
-- The pronoun *they* can be used a non-binary pronoun for someone who prefers it.
-- Collective nouns like *group* take a singular pronoun. Do not use plural pronoun unless the emphasis is on the individuals in the group.
-
-## Numbers
-
-### Format
+#### Format
 
 - In body text, use cardinal numbers to represent integers from zero through nine, and use numerals for negative integers and integers greater nine. This applies to numbers representing date or time.
 - If one item requires a numeral, use numerals for all other items of that type.
@@ -274,8 +251,12 @@ In grammar, *person* refers to the point of view represented by a statement and 
 - In most cases, use *from* and *through* to describe a range of numbers. However, use en dash in a range if space is an issue.
 - In general, do not abbreviate *thousand*, *million*, and *billion* as *K*, *M*, and *G*. Spell out *thousand*, *million*, and *billion*, or use the entire numeral.
 - If you must use the abbreviations, always capitalize *K*, *M*, and *G*. Do not place a space between the number and the abbreviation. Avoid using abbreviations with non-integers.
+- Use title-style capitalization for currency names. Prefer *US Dollars* as a currency when neutral depiction of monetary value is concerned.
+- When referencing to specific amounts of money, use the currency code followed by the amount with a space.
+- Use the date format *month date, year* with *month* spelled out with its name and both *date* and *year* are numerals.
+- Use the time format *hour:minute:second (UTC+hh:mm)* with *hour*, *minute*, *second*, *hh*, and *mm* as numerals padded with zeroes.
 
-### Numerals
+#### Numerals
 
 | Scenario      | Note                         | Example         |
 | ------------- | ---------------------------- | --------------- |
@@ -288,7 +269,7 @@ In grammar, *person* refers to the point of view represented by a statement and 
 | Coordinates   | None                         | row 3, column 5 |
 | Indices       | None                         | Chapter 12      |
 
-### Digit grouping
+#### Digit grouping
 
 - Use the US system of decimal separation, whereby a comma is placed after every third digits of the integer part, and a period is used to denote the radix point.
 - Use digit grouping in integers that have more than four digits. If readability is concerned for 4-digit numbers, use a space to isolate the most significant digit.
@@ -298,7 +279,7 @@ In grammar, *person* refers to the point of view represented by a statement and 
 - In base-16 number system, use a full space between groups of two digits, corresponding to an 8-bit byte.
 - Use hyphens, not parenthesis, spaces or periods, to separate parts of a phone number.
 
-### Ordinal numbers
+#### Ordinal numbers
 
 | Numeral | Cardinal number | Ordinal number |
 | ------- | --------------- | -------------- |
@@ -313,7 +294,7 @@ In grammar, *person* refers to the point of view represented by a statement and 
 | 9       | Nine            | Ninth          |
 | 10      | Ten             | Tenth          |
 
-### Fractions
+#### Fractions
 
 - Express fractions in words, as symbols, or as decimals, whichever is the most appropriate.
 - In tables, align decimals on the decimal point.
@@ -322,9 +303,9 @@ In grammar, *person* refers to the point of view represented by a statement and 
 - Hyphenate spelled out fractions. Connect the numerator and denominator with a hyphen unless either already contains a hyphen, in which case, prefer to use the decimal format.
 - In measurements where the unit of measurement is spelled out, use the plural form when the quantity is a decimal fraction. Use the singular form only when the quantity is exactly unity.
 
-## Procedures
+### Procedures
 
-### Writing instructions
+#### Writing instructions
 
 - Use consistent procedure formatting, heading style, and sentence structures so the content is easily scannable.
 - Use imperative verb form and complete sentences for instructions.
@@ -332,7 +313,7 @@ In grammar, *person* refers to the point of view represented by a statement and 
 - For procedures instructing actions, limit the steps to be fewer than seven. Try to fit all the steps on the same visual screen.
 - Abbreviate simple sequences by using the greater-than symbol. Include a space before and after the symbol, and do not make the symbol bold typeface.
 
-### Describing interactions
+#### Describing interactions
 
 Users interact with products using various input methods. Therefore, use generic verbs that work with any input method. Do not use input-specific verbs, such as *click* or *swipe*.
 
@@ -351,6 +332,41 @@ Users interact with products using various input methods. Therefore, use generic
 | **Enter**                     | Typing or selecting a value.            | Enter the **Domain name**.                |
 | **Move, drag**                | Moving from one place to another.       | Move the tile.                            |
 | **Zoom, zoom in, zoom out**   | Changing the magnification.             | Zoom in to see details.                   |
+
+### Developer content
+
+#### Reference documentation
+
+| Section                      | Description                                                                                                                                                                                                                                                                                                                 |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title and description**    | In title, use the name of a programming element followed by the element type. If the name is shared by multiple elements, add a differentiator or category in parenthesis. Provide concise sentences describing the element. If possible, explain what the element does or represents without repeating the element name.   |
+| **Declaration / syntax**     | The code signature that defines the element. This section might also provide usage syntax. If the technology can be used with multiple programming languages, provide syntax for each language.                                                                                                                             |
+| **Parameters**               | If the element has parameters, provide a description of each parameter and its data type. If appropriate, indicate whether the parameter is required or optional and whether it represents input or output. Provide as much useful detail as possible. Do not just repeat the words in the parameter name or the data type. |
+| **Property value**           | A description of the value for a property or field. If the property or field has a default value, describe that as well. Include the data type of the property value is applicable.                                                                                                                                         |
+| **Return value**             | If the element returns a value, describe the value and information about its data type. If the value is a Boolean that indicates the presence of a condition, describe the condition.                                                                                                                                       |
+| **Exceptions / error codes** | If the element can throw exceptions or raise error codes, when called, list them and describe the conditions under which they occur.                                                                                                                                                                                        |
+| **Remarks**                  | Additional information about the element and important details that may not be obvious from its syntax, parameters, or return value. It might explain what the element does in more detail, compare it with similar elements, and identify potential issues in its use.                                                     |
+| **Example**                  | A code example that illustrates how to use the programming element.                                                                                                                                                                                                                                                         |
+| **Requirements**             | Languages or platform requirements for using the element.                                                                                                                                                                                                                                                                   |
+| **Permissions**              | Security permissions that apply to the element, if required.                                                                                                                                                                                                                                                                |
+| **See also**                 | References or links to more information about element usage, related elements, or other relevant articles.                                                                                                                                                                                                                  |
+
+#### Code examples
+
+- Create concise examples that exemplify key development tasks. Start with simple examples and build up complexity after you cover common scenarios.
+- Prioritize frequently used elements and elements that may be difficult to use or understand.
+- Do not use code examples to illustrate obvious points or fictitious scenarios.
+- Create code examples that are easy to scan and understand. Reserve complicated examples for tutorials or walkthroughs, where you can provide a stepwise explanation of how the example works.
+- Add an introduction to describe the scenario and explain anything that might not be obvious from the code. List the requirements and dependencies for using or running the example.
+- Provide an easy way for developers to copy or run the code. If the code example demonstrates interactive or animated features, consider providing a way to the developers to run the example directly from your content page.
+- Use appropriate keywords, linking strategies, and other search engine optimization (SEO) techniques to improve the visibility and usability of the code examples.
+- Design code for reuse. Help developers determine what to modify. Add comments to explain details, but do not overdo by stating the obvious things.
+- Show expected output, either in a separate section after the code example or by using code comments within the code example.
+- Consider accessibility requirements for code that creates user interface.
+- Write secure code. Always validate user input, never hard-code passwords in code, and use code analysis tools to detect security issues.
+- Show exception handling only when it is intrinsic to the example. Do not catch exceptions thrown when invalid arguments are passed to parameters.
+- Always compile and test your code before providing them as examples.
+- In programming languages, follow the traditional capitalization of keywords and other special terms.
 
 ## Punctuation
 
@@ -472,105 +488,118 @@ Users interact with products using various input methods. Therefore, use generic
 - Use a slash between the numerator and denominator of fractions in equations that occur in text.
 - Do not use a slash as a substitute for *or*. If the user interface uses a slash in this way, follow the interface in describing the label, but use *or* to describe the action in text. However, it is acceptable to use *country / region* and *ZIP code / postal code* in situations where space is limited.
 
-## Responsive content
+## Grammar
 
-- If you are writing for the web, assume your content will be viewed on a variety of devices, especially those with small screen sizes.
-- Try to write sentences and paragraphs that are short enough to read on mobile screen without scrolling.
-- Try to keep headings to one, short line, and use short words. Multiple line headings wrap on smaller screens, taking more of the already scarce vertical space.
-- Short sections, consisting of heading and its associated text, are easier to read on small screens. Short sections also make it easier for users to stop reading and later pick up where they left off.
-- Choose simple images and crop extraneous details. Always describe the image using *alt* text if it conveys useful information.
-- Provide a way for users to open an infographic in an application that can enlarge specific areas. Organize infographics in compact sections that users can magnify and view on small screen. Alternatively, present individual sections of the infographic within text, and provide a link to the full infographic.
-- Simplify charts and graphs so readers can easily read the whole thing on a small screen. Craft very short chart titles, metric labels, and axis labels.
-- Limit the number of columns in tables and keep the text in each cell brief, ideally one line. Tables with more than a few narrow columns may be hard to read. Too much text in a cell may cause a table to exceed the height of a mobile screen.
-- Consider how content will flow on a smaller screen. Typically content on the right side of the page moves below content on the left side. Make sure it still makes sense.
+### Verbs
 
-## Scannable content
+#### Verb tense
 
-- Content on the first screen (also called *above the fold*) compels user whether to scroll further. So keep it short, engaging, and useful, keeping in mind that what appears above the fold varies by device and screen resolution.
-- In left-to-right languages, people often read in an *F* shape, giving the most attention to the upper-left corner of a page. Therefore, place the most important information and call-to-action elements in that area.
-- Write short headings, short sentences, and short paragraphs that are easy to read and scan. Use short, simple words and get to the point immediately.
-- Include navigation within long documents. Break the content into multiple sections and include a table of contents with links to the subheadings. Also, add *Back to top* links at the end of sections.
-- Consistent writing, design, and formatting create patterns, which help users comprehend more efficiently. Place important keywords near the beginning of headings, table entries, and paragraphs, so they are easy to spot. Use text formatting consistently, and apply the same sentence structure to similar information.
-- Keep paragraphs short, usually three to seven lines, and add large enough spacing between paragraphs, at least half of the font size.
+In the present tense, the action is happening now. The present tense is often easier to read and understand than the past or future tense. It is the best choice for most content.
 
-### Headings
+| Tense                          | Example                   |
+| ------------------------------ | ------------------------- |
+| **Simple Present**             | I read.                   |
+| **Simple Past**                | I read.                   |
+| **Simple Future**              | I will read.              |
+| **Present Continuous**         | I am reading.             |
+| **Past Continuous**            | I was reading.            |
+| **Future Continuous**          | I will be reading.        |
+| **Present Perfect**            | I have read.              |
+| **Past Perfect**               | I had read.               |
+| **Future Perfect**             | I will have read.         |
+| **Present Perfect Continuous** | I have been reading.      |
+| **Past Perfect Continuous**    | I had been reading.       |
+| **Future Perfect Continuous**  | I will have been reading. |
 
-- Think of headings as an outline that break text logically into smaller sections.
-- The top-level headings divide the content into major subjects. Make them as specific as you can.
-- When there is excessive content to cover under a top-level heading, look for two or more distinct topics, and use second-level heading to break the large section into more scannable chunks. If the content can not be divided into at least two distinct topics, skip the second-level headings.
-- Avoid having two headings consecutively without text in between, as that might indicate redundance in headings or bad organization of content. But do not insert filler text just to separate the headings.
-- Use headings judiciously. One heading level is usually plenty for a page or two of content.
-- Keep headings short and put the most important keywords at the beginning. This is especially critical for blogs and social media due to search engine optimization.
-- Make children headings more specific and detailed than its parent.
-- Use parallel sentence structure for all headings. Use noun phrases for top-level headings, verb phrases for second-level headings, and infinitive phrases for headings in instructions.
-- Consider infinitive phrases for headings related to tasks or instructions. For headings that are not related to tasks, use noun phrases.
-- Do not use ampersands or plus signs in headings unless referring to user interface that contains them or space is limited.
-- Avoid hyphens in headings. In resized windows or mobile devices, they can result in awkward line breaks.
-- Avoid abbreviating *versus* in regular content headings. Use the abbreviation *vs.* in sports coverage and *v.* in legal documents.
-- Use sentence-style capitalization for headings, where the first word, any proper noun, and the first word after a colon is capitalized, and everything else is lowercase.
-- Do not end headings with a period. A question mark or exclamation mark may be occasionally used if needed.
-- Break two-line headings in a way that makes sense and balances the length of the two lines. Break after punctuation or at the end of a complete phrase.
-- Keep adjectives and prepositions with the words they modify.
-- Keep hyphenated words and compound proper nouns on the same line.
-- Provide extra space above headings and less space below them. Close proximity between the heading and text that follows it communicates their relation.
-- Do not use extra line breaks to increase heading spacing, especially in web content.
-- Use bold formatting for run-in headings and make sure the first few words of the paragraph are interesting and introduce the paragraphs content.
-- Consider repeating common phrases, such as *Note*, as run-in headings to call attention to helpful but nonessential information.
 
-### Lists
+#### Moods of verb
 
-- A list should have at least two but no more than seven items. Each item should be fairly short. The user should be able to see at least two, preferably three, items at a glance. It is acceptable to have a couple of short paragraphs as a list item.
-- Make all the items in a list consistent in structure.
-- Use a bulleted list for things that have something in common but do not appear in a particular order.
-- Use a numbered list for procedures, instructions, sequential items, or prioritized items.
-- Introduce a list with a heading, complete sentence, or sentence fragment that ends with a colon.
-- If you introduce a list with a heading, do not use explanatory text, colon, or period after the heading.
-- Begin each list item with a capital letter unless all items begin with lowercase words.
-- Do not use semicolons, commas, or conjunctions at the end of list items.
-- Do not use periods at the end of list items unless they are complete sentences, even if the complete sentence is short.
-- If the list is introduced by a sentence fragment that ends with a colon, end all items with a period if any item forms a complete sentence when combined with the introduction.
-- Do not use periods if all items have three or fewer words or if the items are user interface text, headings, or strings.
-- In user interface, where lists are series of radio buttons or checkboxes inside dialog boxes or settings pages, unless they are complete sentences, do not use punctuation for each item in a list. If punctuation is necessary for clarity, use punctuation consistently in all lists on the same section.
+The mood of the verb expresses the author's intent. Use the indicative mood most of the time. Do not switch moods within a sentence.
 
-### Tables
+| Mood            | Usage                                                        | Example                                     |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| **Indicative**  | Factual statements, questions, assertions, and explanations. | English is the most widely used language.   |
+| **Imperative**  | Instructions, procedures, direct commands, requests.         | Use English language.                       |
+| **Subjunctive** | Wishes, hypotheses, and suggestions.                         | We recommend that you use English language. |
 
-- Do not use tables, instead of lists, just to present a single column of similar items.
-- Include a table title or brief introduction, if necessary, to show the purpose of the table.
-- Make entries in a table parallel. Make all the items within a column noun or a phrase that starts with a verb.
-- Place information that identifies the contents of a row in the leftmost column of the table.
-- Do not leave a cell blank or use an *em dash* to indicate that there is no entry for that cell. Instead, use *Not applicable* or *None*.
-- Limit the number of columns and keep the text in each cell brief, ideally one line.
-- Balance row height by increasing the width of columns with excessive text and reducing the width of columns with minimal text.
-- Style the headings in header row to distinguish it from the rest of the table.
-- Make headings precise and specific. Do not use a generic word when a more specific word can be used.
-- Do not organize a table so that the column headings form a complete sentence when combined with the cell contents, as this can cause difficulty in localization.
-- In long tables, make sure the header row is always visible.
-- Use sentence-style capitalization for the table title and each column heading.
-- Use sentence-style capitalization for the text in cells unless it is a keyword that is always lowercase.
-- If there is text that introduces the table, it should be a complete sentence that ends with a period, instead of a colon.
-- Do not use ellipses at the end of column headings.
-- For the text in cells, use periods or other punctuation only if the cells contain complete sentences or a mixture of fragments and sentences.
+#### Active and passive voice
 
-## Search and writing
+Voice is either active or passive. Use the active voice most of the time.
 
-- Identify keywords that the users search with and apply to your content.
-- Use keywords early and often in the content, without being contrived or repetitive.
-- Place keywords in titles, headings, subheadings, summaries, overviews, introductions, page descriptions, paragraph text, link text, image *alt* text, and table *alt* text.
-- If the content is video, audio, or images, include keywords in nearby text descriptions and in *alt* text.
-- Write short link text, usually four or fewer words, that is descriptive and includes keywords.
-- If the link works, use the title or description of the target page as link text.
-- Link to background and related information rather than summarizing it.
-- Never create backlinks just to improve search engine ranking. Search practices that are insensible for the content rarely work and often backfire.
+- In active voice, the subject performs the action.
+- In passive voice, the subject is the receiver of the action.
 
-## Text formatting
+| Voice       | Usage                                                           | Example                               |
+| ----------- | --------------------------------------------------------------- | ------------------------------------- |
+| **Active**  | Most of the content.                                            | You are not able to find the website. |
+| **Passive** | Errors, warnings, or notifications to avoid blaming the reader. | The website can not be found.         |
 
-- Use sentence-style capitalization, which means to capitalize only the first word of a sentence or phrase and proper nouns.
-- Do not use all-uppercase text, although it is used sometimes in user interface as a design choice.
-- Do not use all-lowercase text, although it is acceptable if used in list or table items where the text is always lowercase.
-- Use left-alignment for text, where text has an even left margin and an erratic right margin.
-- Do not use center-alignment for text, although it is used sometimes in user interface as a design choice.
-- Avoid awkward situations where text fragments are orphans, which occur when the first line of a paragraph appears by itself at the bottom of a page, widows, which occur when the last line of a paragraph contains only one word or appears alone on the next page, and lines that end with hyphens.
-- Do not suppress line spacing. Never reduce line spacing, instead of editing the text, to fit more text on a page.
+#### Verb agreements
+
+Verbs have singular and plural forms. Use the verb that agrees with the subject of the sentence in number.
+
+| Subject                                        | Verb                        | Example                                     |
+| ---------------------------------------------- | --------------------------- | ------------------------------------------- |
+| A group of things                              | Singular                    | A group of things is called a collection.   |
+| Two or more singular things connected by *and* | Plural                      | Thing and thing are called two things.      |
+| Two or more singular things connected by *or*  | Singular                    | Thing or thing is called a thing.           |
+| Singular and plural things connected by *or*   | *Match the closest subject* | Thing or things are called thing or things. |
+
+### Nouns
+
+#### Capitalization
+
+| Noun            | Definition                                    | Capitalization |
+| --------------- | --------------------------------------------- | -------------- |
+| **Proper noun** | Unique name of a person, place, or thing.     | Title-style    |
+| **Common noun** | Typical concept of a person, place, or thing. | Lowercase      |
+
+#### Plural form
+
+| Noun                  | Plural form               | Example                            |
+| --------------------- | ------------------------- | ---------------------------------- |
+| Nouns ending in *s*   | Add *es*                  | Biases                             |
+| Singular abbreviation | Add *s*                   | DBMSs                              |
+| Plural abbreviation   | *Already plural*          | MFC (Microsoft Foundation Classes) |
+| Single letter         | Add an apostrophe and *s* | *x*'s                              |
+| Number                | Add *s*                   | 1950s                              |
+| Variable              | *Already plural*          | *x* minutes                        |
+
+### Pronouns
+
+#### Person
+
+In grammar, *person* refers to the point of view represented by a statement and determines which pronoun to use.
+
+| Person            | Preference | Example       |
+| ----------------- | ---------- | ------------- |
+| **First person**  | Medium     | I, me, my     |
+| **Second person** | Highest    | You, your     |
+| **Third person**  | Lowest     | He, she, they |
+
+#### Possessive pronouns
+
+| Subject | Possessive pronoun | Possessive adjective |
+| ------- | ------------------ | -------------------- |
+| I       | Mine               | My                   |
+| We      | Ours               | Our                  |
+| You     | Yours              | Your                 |
+| He      | His                | His                  |
+| She     | Hers               | Her                  |
+| It      | Its                | Its                  |
+| They    | Theirs             | Their                |
+
+#### Appropriateness
+
+- Use gender-neutral alternatives for common terms and generic references.
+- Refer to a person's role instead of identifying them by a pronoun.
+- When writing about a real person, use the pronouns that person prefers.
+- The pronoun *they* can be used a non-binary pronoun for someone who prefers it.
+- Collective nouns like *group* take a singular pronoun. Do not use plural pronoun unless the emphasis is on the individuals in the group.
+
+## Design
+
+### Spacing
 
 | Font size                      | Line spacing |
 | ------------------------------ | ------------ |
@@ -578,6 +607,7 @@ Users interact with products using various input methods. Therefore, use generic
 | Subheadings (14-36 points)     | 110% minimum |
 | Headings (36 points or larger) | 120% maximum |
 
+### Text formatting
 
 | Element                     | Typeface | Case           | Separation      | Example                           |
 | --------------------------- | -------- | -------------- | --------------- | --------------------------------- |
@@ -648,49 +678,3 @@ Users interact with products using various input methods. Therefore, use generic
 | **White papers**            | Regular  | Title-style    | None            | The Evolution of Malware          |
 | **Windows**                 | Regular  | Sentence-style | None            | New Window                        |
 | **XML schema elements**     | Bold     | Lowercase      | None            | **`xml:space`**                   |
-
-## Unbiased communication
-
-- Use gender-neutral alternatives for common terms and generic references.
-- Refer to a person's role instead of identifying them by a pronoun.
-- When writing about a real person, use the pronouns that person prefers.
-- Represent diverse perspectives and circumstances, and be inclusive of everyone.
-- Avoid stereotypes and mentions of politically disputed topics.
-- Do not make generalization about a specific group of people or place, even if it is positive or neutral.
-- Do not use terms that are slang, profane, derogatory, carry unconscious racial bias, or associated with military action, politics, or historical events.
-- Use title-style capitalization for Asian, Black, White, African American, Hispanic, Latin, Native American, Alaska Native, Native Hawaiian, Pacific Islander, and Indigenous Peoples.
-
-## URLs and web addresses
-
-- In content for a general audience, use *address* rather than *URL*. In content for a technical audience, do not spell out *URL* on first mention. If there is reason to spell out *URL*, use *uniform resource locator*.
-- Use *a*, instead of *an*, as an article for *URL*.
-- Do not include *`https://`* in URL. Include the protocol only if it is something other than HTTP.
-- Do not include the trailing slash at the end of a URL.
-- Use lowercase for URLs, email addresses, and newsgroup addresses.
-- If there is reason to capitalize a URL, only capitalize the first letter, and omit *`https://www`*.
-- Use *of* instead of *for* to describe the relationship of the word *URL* to a resource.
-- Use the preposition *at* with the location of a specific address.
-- If there is confusion about the period at the end of a sentence being part of the URL, use trailing icons or other styling to set the URL off.
-- Write brief and specific link text, using title or description of a page rather than a generic phrase.
-- In *alt* text for a graphic that links to another location, state clearly that the graphic is a link.
-
-## Word choice
-
-- Do not use contractions. If there is need to use contractions, do not mix contractions and their spelled out equivalents on the same screen.
-- Never form a contraction from a noun and a verb, and avoid ambiguous or awkward contractions.
-- Use simple words with precise meaning, and remove words that do not add substance.
-- Choose simple verbs without modifiers. Avoid weak and vague verbs, whenever possible.
-- Do not use a phrase with two or three words when a single equivalent word is enough.
-- Choose words that have one clear meaning.
-- Omit unnecessary adverbs unless they are important to the meaning of the sentence.
-- Use one term consistently to represent one concept.
-- Be careful with words that can be both nouns and verbs. Use the sentence structure and context to eliminate ambiguity.
-- Do not create a new word from an existing word, or apply a new meaning to an ordinary word. If a new term must be created, verify that it is not already being used to mean something else.
-- Be careful with common words that have industry-specific uses. Assume users know the common definition of the word rather than the industry-specific definition. If an industry-specific definition must be used, define the word in context.
-- Do not use a technical word when a common word is better understood. If a technical word must be used, define the word in context.
-- If a content is targeted towards a professional audience, use the terminology their industry uses.
-- When the spelling of an English word varies by locale, use the US spelling.
-- Avoid non-English words and Latin abbreviations for common English phrases.
-- Prefer *and other {generic class}* over *etc.*, *for example* over *e.g.*, and *that is* over *i.e.*, unless space is limited.
-- Do not use *and so on* at the end of a phrase that begins with *for example*, *such as*, or *like*.
-- 
