@@ -7,7 +7,6 @@
 - [Developer content](#developer-content)
   - [Reference documentation](#reference-documentation)
   - [Code examples](#code-examples)
-  - [Text formatting](#text-formatting)
 - [Final publishing review](#final-publishing-review)
 - [Global communication](#global-communication)
 - [Grammar](#grammar)
@@ -32,7 +31,6 @@
 - [Procedures](#procedures)
   - [Writing instructions](#writing-instructions)
   - [Describing interactions](#describing-interactions)
-  - [Text formatting](#text-formatting-1)
 - [Punctuation](#punctuation)
   - [Formatting punctuation](#formatting-punctuation)
   - [Apostrophes](#apostrophes)
@@ -53,7 +51,7 @@
   - [Lists](#lists)
   - [Tables](#tables)
 - [Search and writing](#search-and-writing)
-- [Text formatting](#text-formatting-2)
+- [Text formatting](#text-formatting)
 - [Unbiased communication](#unbiased-communication)
 - [URLs and web addresses](#urls-and-web-addresses)
 - [Word choice](#word-choice)
@@ -114,58 +112,6 @@
 - Write secure code. Always validate user input, never hard-code passwords in code, and use code analysis tools to detect security issues.
 - Show exception handling only when it is intrinsic to the example. Do not catch exceptions thrown when invalid arguments are passed to parameters.
 - Always compile and test your code before providing them as examples.
-
-### Text formatting
-
-| **Element**                 | **Typeface** | **Case**       | **Separation**  | **Example**                       |
-| --------------------------- | ------------ | -------------- | --------------- | --------------------------------- |
-| **Attributes**              | Bold         | Lowercase      | None            | **`href`**                        |
-| **Classes**                 | Bold         | Pascalcase     | None            | **`LinkedList`**                  |
-| **Code samples**            | Regular      | None           | None            | `int main() { return 0; }`        |
-| **Command-line commands**   | Bold         | Lowercase      | None            | **`mkdir`**                       |
-| **Command-line options**    | Bold         | None           | None            | **`--verbose`**                   |
-| **Constants**               | Bold         | Uppercase      | Underscore      | **`INT_MAX`**                     |
-| **Control classes**         | Bold         | Uppercase      | None            | **`EDIT`**                        |
-| **Data formats**            | Bold         | Uppercase      | Underscore      | **`LOCALE`**                      |
-| **Data structures**         | Bold         | None           | None            | **`stack`**                       |
-| **Data types**              | Bold         | Lowercase      | None            | **`float`**                       |
-| **Database names**          | Bold         | None           | None            | **`SQLite`**                      |
-| **Directives**              | Bold         | None           | None            | **`#include`**                    |
-| **Environment variables**   | Regular      | Uppercase      | None            | `NDEBUG`                          |
-| **Error messages**          | Regular      | Sentence-style | Quotation marks | Syntax error: "Expected variable" |
-| **Event names**             | Bold         | None           | None            | **`OnClick`**                     |
-| **Fields**                  | Bold         | None           | None            | **`biPlanes`**                    |
-| **File attributes**         | Regular      | Lowercase      | None            | **`attrib`**                      |
-| **File extensions**         | Regular      | Lowercase      | None            | `.txt`                            |
-| **File names**              | Regular      | Lowercase      | Hyphen          | `article-condensed.txt`           |
-| **Folder names**            | Regular      | Lowercase      | Hyphen          | `/home/user/my-documents/`        |
-| **Functions**               | Bold         | Camelcase      | None            | **`printError()`**                |
-| **Handles**                 | Regular      | Uppercase      | None            | `HWND`                            |
-| **Keywords**                | Bold         | Lowercase Bar  | None            | **`break`**                       |
-| **Logical operators**       | Bold         | Uppercase      | None            | **`AND`**                         |
-| **Macros**                  | Bold         | Uppercase      | None            | **`IFDEF`**                       |
-| **Markup elements**         | Bold         | Lowercase      | None            | **`<body>`**                      |
-| **Mathematical constants**  | Italic       | Uppercase      | None            | *`PI`*                            |
-| **Members**                 | Bold         | Camelcase      | None            | **`currentSize`**                 |
-| **Methods**                 | Bold         | Camelcase      | None            | **`getPrevious()`**               |
-| **Operators**               | Bold         | None           | None            | **`+`**                           |
-| **Parameters**              | Italic       | Lowercase      | None            | *`source`*                        |
-| **Placeholders**            | Italic       | None           | None            | *`Password`*                      |
-| **Ports**                   | Regular      | Uppercase      | None            | `LPT1`                            |
-| **Products and trademarks** | Regular      | Title-style    | None            | Mozilla Firefox                   |
-| **Properties**              | Bold         | Lowercase      | None            | **`font-weight`**                 |
-| **Registers**               | Regular      | Uppercase      | None            | `DS`                              |
-| **Registry settings**       | Bold         | Uppercase      | None            | **`HKEY_CLASSES_ROOT`**           |
-| **Statements**              | Bold         | None           | None            | **`IMPORTS`**                     |
-| **Structures**              | Bold         | None           | None            | **`ACCESSTIMEOUT`**               |
-| **Switches**                | Bold         | Lowercase      | None            | **`build: commands`**             |
-| **UI text**                 | Regular      | Sentence-style | None            | Report a bug?                     |
-| **URLs**                    | Regular      | Lowercase      | None            | `www.example.com`                 |
-| **User input**              | Regular      | None           | None            | *`password`*                      |
-| **Values**                  | Regular      | None           | None            | `3.14159`                         |
-| **Variables**               | Regular      | Camelcase      | None            | **`currentSize`**                 |
-| **Vocabulary**              | Italic       | None           | None            | *Stacking context*                |
-| **XML schema elements**     | Bold         | Lowercase      | None            | **`xml:space`**                   |
 
 ## Final publishing review
 
@@ -406,43 +352,6 @@ Users interact with products using various input methods. Therefore, use generic
 | **Move, drag**                | Moving from one place to another.       | Move the tile.                            |
 | **Zoom, zoom in, zoom out**   | Changing the magnification.             | Zoom in to see details.                   |
 
-### Text formatting
-
-| **Element**                 | **Typeface** | **Case**       | **Separation**  | **Example**                       |
-| --------------------------- | ------------ | -------------- | --------------- | --------------------------------- |
-| **Blades**                  | Bold         | Sentence-style | None            | **Audit logs**                    |
-| **Buttons**                 | Bold         | Sentence-style | None            | **Save as**                       |
-| **Checkboxes**              | Bold         | Sentence-style | None            | **Match case**                    |
-| **Command-line commands**   | Bold         | Lowercase      | None            | **`mkdir`**                       |
-| **Command-line options**    | Bold         | None           | None            | **`--verbose`**                   |
-| **Commands**                | Bold         | Sentence-style | None            | **Tools**                         |
-| **Database names**          | Bold         | None           | None            | **`SQLite`**                      |
-| **Device and port names**   | Regular      | Uppercase      | None            | USB                               |
-| **Dialog boxes**            | Bold         | Sentence-style | None            | **Warning**                       |
-| **Error messages**          | Regular      | Sentence-style | Quotation marks | Syntax error: "Expected variable" |
-| **File attributes**         | Regular      | Lowercase      | None            | **`attrib`**                      |
-| **File extensions**         | Regular      | Lowercase      | None            | `.txt`                            |
-| **File names**              | Regular      | Lowercase      | Hyphen          | `article-condensed.txt`           |
-| **Folder names**            | Regular      | Lowercase      | Hyphen          | `/home/user/my-documents/`        |
-| **Key combinations**        | Bold         | Sentence-style | Plus            | **Shift+F1**                      |
-| **Macros**                  | Bold         | Uppercase      | None            | **`IFDEF`**                       |
-| **Markup elements**         | Bold         | Lowercase      | None            | **`<body>`**                      |
-| **Mathematical constants**  | Italic       | Uppercase      | None            | *`PI`*                            |
-| **Menus**                   | Bold         | Sentence-style | None            | **Tools**                         |
-| **Palettes**                | Bold         | Sentence-style | None            | **Colors**                        |
-| **Panes**                   | Bold         | Sentence-style | None            | **Styles**                        |
-| **Placeholders**            | Italic       | None           | None            | *`Password`*                      |
-| **Products and trademarks** | Regular      | Title-style    | None            | Mozilla Firefox                   |
-| **Slashes**                 | Regular      | None           | None            | Backslash (`\`)                   |
-| **Strings**                 | Regular      | Sentence-style | None            | Accept the Privacy Policy         |
-| **Tabs**                    | Bold         | Sentence-style | None            | **Design**                        |
-| **Toggles**                 | Bold         | Sentence-style | None            | **Turn on high contrast**         |
-| **URLs**                    | Regular      | Lowercase      | None            | `www.example.com`                 |
-| **User input**              | Regular      | None           | None            | *`password`*                      |
-| **Vocabulary**              | Italic       | None           | None            | *Stacking context*                |
-| **Windows**                 | Regular      | Sentence-style | None            | New Window                        |
-| **XML schema elements**     | Bold         | Lowercase      | None            | **`xml:space`**                   |
-
 ## Punctuation
 
 ### Formatting punctuation
@@ -669,32 +578,76 @@ Users interact with products using various input methods. Therefore, use generic
 | Subheadings (14-36 points)     | 110% minimum |
 | Headings (36 points or larger) | 120% maximum |
 
-| **Element**                 | **Typeface** | **Case**       | **Separation**  | **Example**                       |
-| --------------------------- | ------------ | -------------- | --------------- | --------------------------------- |
-| **Database names**          | Bold         | None           | None            | **`SQLite`**                      |
-| **Emphasis**                | Italic       | Sentence-style | None            | *important*                       |
-| **Error messages**          | Regular      | Sentence-style | Quotation marks | Syntax error: "Expected variable" |
-| **File attributes**         | Regular      | Lowercase      | None            | **`attrib`**                      |
-| **File extensions**         | Regular      | Lowercase      | None            | `.txt`                            |
-| **File names**              | Regular      | Lowercase      | Hyphen          | `article-condensed.txt`           |
-| **Folder names**            | Regular      | Lowercase      | Hyphen          | `/home/user/my-documents/`        |
-| **Macros**                  | Bold         | Uppercase      | None            | **`IFDEF`**                       |
-| **Markup elements**         | Bold         | Lowercase      | None            | **`<body>`**                      |
-| **Mathematical constants**  | Italic       | Uppercase      | None            | *`PI`*                            |
-| **Ports**                   | Regular      | Uppercase      | None            | `LPT1`                            |
-| **Products and trademarks** | Regular      | Title-style    | None            | Mozilla Firefox                   |
-| **Strings**                 | Regular      | Sentence-style | None            | Accept the Privacy Policy         |
-| **URLs**                    | Regular      | Lowercase      | None            | `www.example.com`                 |
-| **Vocabulary**              | Italic       | None           | None            | *Stacking context*                |
 
-| **Element**  | **Typeface** | **Case**       | **Separation**  | **Example**               |
-| ------------ | ------------ | -------------- | --------------- | ------------------------- |
-| Games        | Italic       | Title-style    | None            | *League of Legends*       |
-| Books        | Italic       | Title-style    | None            | *The Great Gatsby*        |
-| Chapters     | Regular      | Sentence-style | Quotation marks | Chapter 1: "Introduction" |
-| White papers | Regular      | Title-style    | None            | The Evolution of Malware  |
-| Song titles  | Regular      | Title-style    | None            | Shut Up and Dance         |
-| Blog titles  | Regular      | Title-style    | Quotation marks | "The Greatest Blog Ever"  |
+| Element                     | Typeface | Case           | Separation      | Example                           |
+| --------------------------- | -------- | -------------- | --------------- | --------------------------------- |
+| **Attributes**              | Bold     | Lowercase      | None            | **`href`**                        |
+| **Blades**                  | Bold     | Sentence-style | None            | **Audit logs**                    |
+| **Books**                   | Italic   | Title-style    | None            | *The Great Gatsby*                |
+| **Blog titles**             | Regular  | Title-style    | Quotation marks | "The Greatest Blog Ever"          |
+| **Buttons**                 | Bold     | Sentence-style | None            | **Save as**                       |
+| **Chapters**                | Regular  | Sentence-style | Quotation marks | Chapter 1: "Introduction"         |
+| **Checkboxes**              | Bold     | Sentence-style | None            | **Match case**                    |
+| **Classes**                 | Bold     | Pascalcase     | None            | **`LinkedList`**                  |
+| **Code samples**            | Regular  | None           | None            | `int main() { return 0; }`        |
+| **Command-line commands**   | Bold     | Lowercase      | None            | **`mkdir`**                       |
+| **Command-line options**    | Bold     | None           | None            | **`--verbose`**                   |
+| **Constants**               | Bold     | Uppercase      | Underscore      | **`INT_MAX`**                     |
+| **Control classes**         | Bold     | Uppercase      | None            | **`EDIT`**                        |
+| **Data formats**            | Bold     | Uppercase      | Underscore      | **`LOCALE`**                      |
+| **Data structures**         | Bold     | None           | None            | **`stack`**                       |
+| **Data types**              | Bold     | Lowercase      | None            | **`float`**                       |
+| **Database names**          | Bold     | None           | None            | **`SQLite`**                      |
+| **Dialog boxes**            | Bold     | Sentence-style | None            | **Warning**                       |
+| **Directives**              | Bold     | None           | None            | **`#include`**                    |
+| **Emphasis**                | Italic   | Sentence-style | None            | *important*                       |
+| **Environment variables**   | Regular  | Uppercase      | None            | `NDEBUG`                          |
+| **Error messages**          | Regular  | Sentence-style | Quotation marks | Syntax error: "Expected variable" |
+| **Event names**             | Bold     | None           | None            | **`OnClick`**                     |
+| **Fields**                  | Bold     | None           | None            | **`biPlanes`**                    |
+| **File attributes**         | Regular  | Lowercase      | None            | **`attrib`**                      |
+| **File extensions**         | Regular  | Lowercase      | None            | `.txt`                            |
+| **File names**              | Regular  | Lowercase      | Hyphen          | `article-condensed.txt`           |
+| **Folder names**            | Regular  | Lowercase      | Hyphen          | `/home/user/my-documents/`        |
+| **Functions**               | Bold     | Camelcase      | None            | **`printError()`**                |
+| **Games**                   | Italic   | Title-style    | None            | *League of Legends*               |
+| **Handles**                 | Regular  | Uppercase      | None            | `HWND`                            |
+| **Key combinations**        | Bold     | Sentence-style | Plus            | **Shift+F1**                      |
+| **Keywords**                | Bold     | Lowercase Bar  | None            | **`break`**                       |
+| **Logical operators**       | Bold     | Uppercase      | None            | **`AND`**                         |
+| **Macros**                  | Bold     | Uppercase      | None            | **`IFDEF`**                       |
+| **Markup elements**         | Bold     | Lowercase      | None            | **`<body>`**                      |
+| **Mathematical constants**  | Italic   | Uppercase      | None            | *`PI`*                            |
+| **Members**                 | Bold     | Camelcase      | None            | **`currentSize`**                 |
+| **Menus**                   | Bold     | Sentence-style | None            | **Tools**                         |
+| **Methods**                 | Bold     | Camelcase      | None            | **`getPrevious()`**               |
+| **Operators**               | Bold     | None           | None            | **`+`**                           |
+| **Palettes**                | Bold     | Sentence-style | None            | **Colors**                        |
+| **Panes**                   | Bold     | Sentence-style | None            | **Styles**                        |
+| **Parameters**              | Italic   | Lowercase      | None            | *`source`*                        |
+| **Placeholders**            | Italic   | None           | None            | *`Password`*                      |
+| **Ports**                   | Regular  | Uppercase      | None            | `LPT1`                            |
+| **Products and trademarks** | Regular  | Title-style    | None            | Mozilla Firefox                   |
+| **Properties**              | Bold     | Lowercase      | None            | **`font-weight`**                 |
+| **Registers**               | Regular  | Uppercase      | None            | `DS`                              |
+| **Registry settings**       | Bold     | Uppercase      | None            | **`HKEY_CLASSES_ROOT`**           |
+| **Slashes**                 | Regular  | None           | None            | Backslash (`\`)                   |
+| **Song titles**             | Regular  | Title-style    | None            | Shut Up and Dance                 |
+| **Statements**              | Bold     | None           | None            | **`IMPORTS`**                     |
+| **Strings**                 | Regular  | Sentence-style | None            | Accept the Privacy Policy         |
+| **Structures**              | Bold     | None           | None            | **`ACCESSTIMEOUT`**               |
+| **Switches**                | Bold     | Lowercase      | None            | **`build: commands`**             |
+| **Tabs**                    | Bold     | Sentence-style | None            | **Design**                        |
+| **Toggles**                 | Bold     | Sentence-style | None            | **Turn on high contrast**         |
+| **UI text**                 | Regular  | Sentence-style | None            | Report a bug?                     |
+| **URLs**                    | Regular  | Lowercase      | None            | `www.example.com`                 |
+| **User input**              | Regular  | None           | None            | *`password`*                      |
+| **Values**                  | Regular  | None           | None            | `3.14159`                         |
+| **Variables**               | Regular  | Camelcase      | None            | **`currentSize`**                 |
+| **Vocabulary**              | Italic   | None           | None            | *Stacking context*                |
+| **White papers**            | Regular  | Title-style    | None            | The Evolution of Malware          |
+| **Windows**                 | Regular  | Sentence-style | None            | New Window                        |
+| **XML schema elements**     | Bold     | Lowercase      | None            | **`xml:space`**                   |
 
 ## Unbiased communication
 
