@@ -117,55 +117,55 @@
 
 ### Text formatting
 
-| **Element**                 | **Typeface** | **Case**       | **Separation** | **Example**                |
-| --------------------------- | ------------ | -------------- | -------------- | -------------------------- |
-| **Attributes**              | Bold         | Lowercase      | None           | **`href`**                 |
-| **Classes**                 | Bold         | Pascalcase     | None           | **`LinkedList`**           |
-| **Code samples**            | Regular      | None           | None           | `int main() { return 0; }` |
-| **Command-line commands**   | Bold         | Lowercase      | None           | **`mkdir`**                |
-| **Command-line options**    | Bold         | None           | None           | **`--verbose`**            |
-| **Constants**               | Bold         | Uppercase      | Underscore     | **`INT_MAX`**              |
-| **Control classes**         | Bold         | Uppercase      | None           | **`EDIT`**                 |
-| **Data formats**            | Bold         | Uppercase      | Underscore     | **`LOCALE`**               |
-| **Data structures**         | Bold         | None           | None           | **`stack`**                |
-| **Data types**              | Bold         | Lowercase      | None           | **`float`**                |
-| **Database names**          | Bold         | None           | None           | **`SQLite`**               |
-| **Directives**              | Bold         | None           | None           | **`#include`**             |
-| **Environment variables**   | Regular      | Uppercase      | None           | `NDEBUG`                   |
-| **Error messages**          | Regular      | Sentence-style | None           | *Syntax error*             |
-| **Event names**             | Bold         | None           | None           | **`OnClick`**              |
-| **Fields**                  | Bold         | None           | None           | **`biPlanes`**             |
-| **File attributes**         | Regular      | Lowercase      | None           | **`attrib`**               |
-| **File extensions**         | Regular      | Lowercase      | None           | `.txt`                     |
-| **File names**              | Regular      | Lowercase      | Hyphen         | `article-condensed.txt`    |
-| **Folder names**            | Regular      | Lowercase      | Hyphen         | `/home/user/my-documents/` |
-| **Functions**               | Bold         | Camelcase      | None           | **`printError()`**         |
-| **Handles**                 | Regular      | Uppercase      | None           | `HWND`                     |
-| **Keywords**                | Bold         | Lowercase Bar  | None           | **`break`**                |
-| **Logical operators**       | Bold         | Uppercase      | None           | **`AND`**                  |
-| **Macros**                  | Bold         | Uppercase      | None           | **`IFDEF`**                |
-| **Markup elements**         | Bold         | Lowercase      | None           | **`<body>`**               |
-| **Mathematical constants**  | Italic       | Uppercase      | None           | *`PI`*                     |
-| **Members**                 | Bold         | Camelcase      | None           | **`currentSize`**          |
-| **Methods**                 | Bold         | Camelcase      | None           | **`getPrevious()`**        |
-| **Operators**               | Bold         | None           | None           | **`+`**                    |
-| **Parameters**              | Italic       | Lowercase      | None           | *`source`*                 |
-| **Placeholders**            | Italic       | None           | None           | *`Password`*               |
-| **Ports**                   | Regular      | Uppercase      | None           | `LPT1`                     |
-| **Products and trademarks** | Regular      | Title-style    | None           | Mozilla Firefox            |
-| **Properties**              | Bold         | Lowercase      | None           | **`font-weight`**          |
-| **Registers**               | Regular      | Uppercase      | None           | `DS`                       |
-| **Registry settings**       | Bold         | Uppercase      | None           | **`HKEY_CLASSES_ROOT`**    |
-| **Statements**              | Bold         | None           | None           | **`IMPORTS`**              |
-| **Structures**              | Bold         | None           | None           | **`ACCESSTIMEOUT`**        |
-| **Switches**                | Bold         | Lowercase      | None           | **`build: commands`**      |
-| **UI text**                 | Regular      | Sentence-style | None           | Report a bug?              |
-| **URLs**                    | Regular      | Lowercase      | None           | `www.example.com`          |
-| **User input**              | Regular      | None           | None           | *`password`*               |
-| **Values**                  | Regular      | None           | None           | `3.14159`                  |
-| **Variables**               | Regular      | Camelcase      | None           | **`currentSize`**          |
-| **Vocabulary**              | Italic       | None           | None           | *Stacking context*         |
-| **XML schema elements**     | Bold         | Lowercase      | None           | **`xml:space`**            |
+| **Element**                 | **Typeface** | **Case**       | **Separation**  | **Example**                       |
+| --------------------------- | ------------ | -------------- | --------------- | --------------------------------- |
+| **Attributes**              | Bold         | Lowercase      | None            | **`href`**                        |
+| **Classes**                 | Bold         | Pascalcase     | None            | **`LinkedList`**                  |
+| **Code samples**            | Regular      | None           | None            | `int main() { return 0; }`        |
+| **Command-line commands**   | Bold         | Lowercase      | None            | **`mkdir`**                       |
+| **Command-line options**    | Bold         | None           | None            | **`--verbose`**                   |
+| **Constants**               | Bold         | Uppercase      | Underscore      | **`INT_MAX`**                     |
+| **Control classes**         | Bold         | Uppercase      | None            | **`EDIT`**                        |
+| **Data formats**            | Bold         | Uppercase      | Underscore      | **`LOCALE`**                      |
+| **Data structures**         | Bold         | None           | None            | **`stack`**                       |
+| **Data types**              | Bold         | Lowercase      | None            | **`float`**                       |
+| **Database names**          | Bold         | None           | None            | **`SQLite`**                      |
+| **Directives**              | Bold         | None           | None            | **`#include`**                    |
+| **Environment variables**   | Regular      | Uppercase      | None            | `NDEBUG`                          |
+| **Error messages**          | Regular      | Sentence-style | Quotation marks | Syntax error: "Expected variable" |
+| **Event names**             | Bold         | None           | None            | **`OnClick`**                     |
+| **Fields**                  | Bold         | None           | None            | **`biPlanes`**                    |
+| **File attributes**         | Regular      | Lowercase      | None            | **`attrib`**                      |
+| **File extensions**         | Regular      | Lowercase      | None            | `.txt`                            |
+| **File names**              | Regular      | Lowercase      | Hyphen          | `article-condensed.txt`           |
+| **Folder names**            | Regular      | Lowercase      | Hyphen          | `/home/user/my-documents/`        |
+| **Functions**               | Bold         | Camelcase      | None            | **`printError()`**                |
+| **Handles**                 | Regular      | Uppercase      | None            | `HWND`                            |
+| **Keywords**                | Bold         | Lowercase Bar  | None            | **`break`**                       |
+| **Logical operators**       | Bold         | Uppercase      | None            | **`AND`**                         |
+| **Macros**                  | Bold         | Uppercase      | None            | **`IFDEF`**                       |
+| **Markup elements**         | Bold         | Lowercase      | None            | **`<body>`**                      |
+| **Mathematical constants**  | Italic       | Uppercase      | None            | *`PI`*                            |
+| **Members**                 | Bold         | Camelcase      | None            | **`currentSize`**                 |
+| **Methods**                 | Bold         | Camelcase      | None            | **`getPrevious()`**               |
+| **Operators**               | Bold         | None           | None            | **`+`**                           |
+| **Parameters**              | Italic       | Lowercase      | None            | *`source`*                        |
+| **Placeholders**            | Italic       | None           | None            | *`Password`*                      |
+| **Ports**                   | Regular      | Uppercase      | None            | `LPT1`                            |
+| **Products and trademarks** | Regular      | Title-style    | None            | Mozilla Firefox                   |
+| **Properties**              | Bold         | Lowercase      | None            | **`font-weight`**                 |
+| **Registers**               | Regular      | Uppercase      | None            | `DS`                              |
+| **Registry settings**       | Bold         | Uppercase      | None            | **`HKEY_CLASSES_ROOT`**           |
+| **Statements**              | Bold         | None           | None            | **`IMPORTS`**                     |
+| **Structures**              | Bold         | None           | None            | **`ACCESSTIMEOUT`**               |
+| **Switches**                | Bold         | Lowercase      | None            | **`build: commands`**             |
+| **UI text**                 | Regular      | Sentence-style | None            | Report a bug?                     |
+| **URLs**                    | Regular      | Lowercase      | None            | `www.example.com`                 |
+| **User input**              | Regular      | None           | None            | *`password`*                      |
+| **Values**                  | Regular      | None           | None            | `3.14159`                         |
+| **Variables**               | Regular      | Camelcase      | None            | **`currentSize`**                 |
+| **Vocabulary**              | Italic       | None           | None            | *Stacking context*                |
+| **XML schema elements**     | Bold         | Lowercase      | None            | **`xml:space`**                   |
 
 ## Final publishing review
 
@@ -408,40 +408,40 @@ Users interact with products using various input methods. Therefore, use generic
 
 ### Text formatting
 
-| **Element**                 | **Typeface** | **Case**       | **Separation** | **Example**                 |
-| --------------------------- | ------------ | -------------- | -------------- | --------------------------- |
-| **Blades**                  | Bold         | Sentence-style | None           | **Audit logs**              |
-| **Buttons**                 | Bold         | Sentence-style | None           | **Save as**                 |
-| **Checkboxes**              | Bold         | Sentence-style | None           | **Match case**              |
-| **Command-line commands**   | Bold         | Lowercase      | None           | **`mkdir`**                 |
-| **Command-line options**    | Bold         | None           | None           | **`--verbose`**             |
-| **Commands**                | Bold         | Sentence-style | None           | **Tools**                   |
-| **Database names**          | Bold         | None           | None           | **`SQLite`**                |
-| **Device and port names**   | Regular      | Uppercase      | None           | USB                         |
-| **Dialog boxes**            | Bold         | Sentence-style | None           | **Warning**                 |
-| **Error messages**          | Regular      | Sentence-style | None           | *Syntax error*              |
-| **File attributes**         | Regular      | Lowercase      | None           | **`attrib`**                |
-| **File extensions**         | Regular      | Lowercase      | None           | `.txt`                      |
-| **File names**              | Regular      | Lowercase      | Hyphen         | `article-condensed.txt`     |
-| **Folder names**            | Regular      | Lowercase      | Hyphen         | `/home/user/my-documents/`  |
-| **Key combinations**        | Bold         | Sentence-style | Plus           | **Shift+F1**                |
-| **Macros**                  | Bold         | Uppercase      | None           | **`IFDEF`**                 |
-| **Markup elements**         | Bold         | Lowercase      | None           | **`<body>`**                |
-| **Mathematical constants**  | Italic       | Uppercase      | None           | *`PI`*                      |
-| **Menus**                   | Bold         | Sentence-style | None           | **Tools**                   |
-| **Palettes**                | Bold         | Sentence-style | None           | **Colors**                  |
-| **Panes**                   | Bold         | Sentence-style | None           | **Styles**                  |
-| **Placeholders**            | Italic       | None           | None           | *`Password`*                |
-| **Products and trademarks** | Regular      | Title-style    | None           | Mozilla Firefox             |
-| **Slashes**                 | Regular      | None           | None           | Backslash (`\`)             |
-| **Strings**                 | Regular      | Sentence-style | None           | "Accept the Privacy Policy" |
-| **Tabs**                    | Bold         | Sentence-style | None           | **Design**                  |
-| **Toggles**                 | Bold         | Sentence-style | None           | **Turn on high contrast**   |
-| **URLs**                    | Regular      | Lowercase      | None           | `www.example.com`           |
-| **User input**              | Regular      | None           | None           | *`password`*                |
-| **Vocabulary**              | Italic       | None           | None           | *Stacking context*          |
-| **Windows**                 | Regular      | Sentence-style | None           | New Window                  |
-| **XML schema elements**     | Bold         | Lowercase      | None           | **`xml:space`**             |
+| **Element**                 | **Typeface** | **Case**       | **Separation**  | **Example**                       |
+| --------------------------- | ------------ | -------------- | --------------- | --------------------------------- |
+| **Blades**                  | Bold         | Sentence-style | None            | **Audit logs**                    |
+| **Buttons**                 | Bold         | Sentence-style | None            | **Save as**                       |
+| **Checkboxes**              | Bold         | Sentence-style | None            | **Match case**                    |
+| **Command-line commands**   | Bold         | Lowercase      | None            | **`mkdir`**                       |
+| **Command-line options**    | Bold         | None           | None            | **`--verbose`**                   |
+| **Commands**                | Bold         | Sentence-style | None            | **Tools**                         |
+| **Database names**          | Bold         | None           | None            | **`SQLite`**                      |
+| **Device and port names**   | Regular      | Uppercase      | None            | USB                               |
+| **Dialog boxes**            | Bold         | Sentence-style | None            | **Warning**                       |
+| **Error messages**          | Regular      | Sentence-style | Quotation marks | Syntax error: "Expected variable" |
+| **File attributes**         | Regular      | Lowercase      | None            | **`attrib`**                      |
+| **File extensions**         | Regular      | Lowercase      | None            | `.txt`                            |
+| **File names**              | Regular      | Lowercase      | Hyphen          | `article-condensed.txt`           |
+| **Folder names**            | Regular      | Lowercase      | Hyphen          | `/home/user/my-documents/`        |
+| **Key combinations**        | Bold         | Sentence-style | Plus            | **Shift+F1**                      |
+| **Macros**                  | Bold         | Uppercase      | None            | **`IFDEF`**                       |
+| **Markup elements**         | Bold         | Lowercase      | None            | **`<body>`**                      |
+| **Mathematical constants**  | Italic       | Uppercase      | None            | *`PI`*                            |
+| **Menus**                   | Bold         | Sentence-style | None            | **Tools**                         |
+| **Palettes**                | Bold         | Sentence-style | None            | **Colors**                        |
+| **Panes**                   | Bold         | Sentence-style | None            | **Styles**                        |
+| **Placeholders**            | Italic       | None           | None            | *`Password`*                      |
+| **Products and trademarks** | Regular      | Title-style    | None            | Mozilla Firefox                   |
+| **Slashes**                 | Regular      | None           | None            | Backslash (`\`)                   |
+| **Strings**                 | Regular      | Sentence-style | None            | Accept the Privacy Policy         |
+| **Tabs**                    | Bold         | Sentence-style | None            | **Design**                        |
+| **Toggles**                 | Bold         | Sentence-style | None            | **Turn on high contrast**         |
+| **URLs**                    | Regular      | Lowercase      | None            | `www.example.com`                 |
+| **User input**              | Regular      | None           | None            | *`password`*                      |
+| **Vocabulary**              | Italic       | None           | None            | *Stacking context*                |
+| **Windows**                 | Regular      | Sentence-style | None            | New Window                        |
+| **XML schema elements**     | Bold         | Lowercase      | None            | **`xml:space`**                   |
 
 ## Punctuation
 
@@ -655,6 +655,47 @@ Users interact with products using various input methods. Therefore, use generic
 
 ## Text formatting
 
+- Use sentence-style capitalization, which means to capitalize only the first word of a sentence or phrase and proper nouns.
+- Do not use all-uppercase text, although it is used sometimes in user interface as a design choice.
+- Do not use all-lowercase text, although it is acceptable if used in list or table items where the text is always lowercase.
+- Use left-alignment for text, where text has an even left margin and an erratic right margin.
+- Do not use center-alignment for text, although it is used sometimes in user interface as a design choice.
+- Avoid awkward situations where text fragments are orphans, which occur when the first line of a paragraph appears by itself at the bottom of a page, widows, which occur when the last line of a paragraph contains only one word or appears alone on the next page, and lines that end with hyphens.
+- Do not suppress line spacing. Never reduce line spacing, instead of editing the text, to fit more text on a page.
+
+| Font size                      | Line spacing |
+| ------------------------------ | ------------ |
+| Body text (up to 14 points)    | 120% minimum |
+| Subheadings (14-36 points)     | 110% minimum |
+| Headings (36 points or larger) | 120% maximum |
+
+| **Element**                 | **Typeface** | **Case**       | **Separation**  | **Example**                       |
+| --------------------------- | ------------ | -------------- | --------------- | --------------------------------- |
+| **Database names**          | Bold         | None           | None            | **`SQLite`**                      |
+| **Emphasis**                | Italic       | Sentence-style | None            | *important*                       |
+| **Error messages**          | Regular      | Sentence-style | Quotation marks | Syntax error: "Expected variable" |
+| **File attributes**         | Regular      | Lowercase      | None            | **`attrib`**                      |
+| **File extensions**         | Regular      | Lowercase      | None            | `.txt`                            |
+| **File names**              | Regular      | Lowercase      | Hyphen          | `article-condensed.txt`           |
+| **Folder names**            | Regular      | Lowercase      | Hyphen          | `/home/user/my-documents/`        |
+| **Macros**                  | Bold         | Uppercase      | None            | **`IFDEF`**                       |
+| **Markup elements**         | Bold         | Lowercase      | None            | **`<body>`**                      |
+| **Mathematical constants**  | Italic       | Uppercase      | None            | *`PI`*                            |
+| **Ports**                   | Regular      | Uppercase      | None            | `LPT1`                            |
+| **Products and trademarks** | Regular      | Title-style    | None            | Mozilla Firefox                   |
+| **Strings**                 | Regular      | Sentence-style | None            | Accept the Privacy Policy         |
+| **URLs**                    | Regular      | Lowercase      | None            | `www.example.com`                 |
+| **Vocabulary**              | Italic       | None           | None            | *Stacking context*                |
+
+| **Element**  | **Typeface** | **Case**       | **Separation**  | **Example**               |
+| ------------ | ------------ | -------------- | --------------- | ------------------------- |
+| Games        | Italic       | Title-style    | None            | *League of Legends*       |
+| Books        | Italic       | Title-style    | None            | *The Great Gatsby*        |
+| Chapters     | Regular      | Sentence-style | Quotation marks | Chapter 1: "Introduction" |
+| White papers | Regular      | Title-style    | None            | The Evolution of Malware  |
+| Song titles  | Regular      | Title-style    | None            | Shut Up and Dance         |
+| Blog titles  | Regular      | Title-style    | Quotation marks | "The Greatest Blog Ever"  |
+
 ## Unbiased communication
 
 - Use gender-neutral alternatives for common terms and generic references.
@@ -668,4 +709,35 @@ Users interact with products using various input methods. Therefore, use generic
 
 ## URLs and web addresses
 
+- In content for a general audience, use *address* rather than *URL*. In content for a technical audience, do not spell out *URL* on first mention. If there is reason to spell out *URL*, use *uniform resource locator*.
+- Use *a*, instead of *an*, as an article for *URL*.
+- Do not include *`https://`* in URL. Include the protocol only if it is something other than HTTP.
+- Do not include the trailing slash at the end of a URL.
+- Use lowercase for URLs, email addresses, and newsgroup addresses.
+- If there is reason to capitalize a URL, only capitalize the first letter, and omit *`https://www`*.
+- Use *of* instead of *for* to describe the relationship of the word *URL* to a resource.
+- Use the preposition *at* with the location of a specific address.
+- If there is confusion about the period at the end of a sentence being part of the URL, use trailing icons or other styling to set the URL off.
+- Write brief and specific link text, using title or description of a page rather than a generic phrase.
+- In *alt* text for a graphic that links to another location, state clearly that the graphic is a link.
+
 ## Word choice
+
+- Do not use contractions. If there is need to use contractions, do not mix contractions and their spelled out equivalents on the same screen.
+- Never form a contraction from a noun and a verb, and avoid ambiguous or awkward contractions.
+- Use simple words with precise meaning, and remove words that do not add substance.
+- Choose simple verbs without modifiers. Avoid weak and vague verbs, whenever possible.
+- Do not use a phrase with two or three words when a single equivalent word is enough.
+- Choose words that have one clear meaning.
+- Omit unnecessary adverbs unless they are important to the meaning of the sentence.
+- Use one term consistently to represent one concept.
+- Be careful with words that can be both nouns and verbs. Use the sentence structure and context to eliminate ambiguity.
+- Do not create a new word from an existing word, or apply a new meaning to an ordinary word. If a new term must be created, verify that it is not already being used to mean something else.
+- Be careful with common words that have industry-specific uses. Assume users know the common definition of the word rather than the industry-specific definition. If an industry-specific definition must be used, define the word in context.
+- Do not use a technical word when a common word is better understood. If a technical word must be used, define the word in context.
+- If a content is targeted towards a professional audience, use the terminology their industry uses.
+- When the spelling of an English word varies by locale, use the US spelling.
+- Avoid non-English words and Latin abbreviations for common English phrases.
+- Prefer *and other {generic class}* over *etc.*, *for example* over *e.g.*, and *that is* over *i.e.*, unless space is limited.
+- Do not use *and so on* at the end of a phrase that begins with *for example*, *such as*, or *like*.
+- 
