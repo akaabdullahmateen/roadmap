@@ -64,8 +64,6 @@ declarations-list ::=
 <!-- TODO: Add introduction and syntax information -->
 
 
-
-
 ## Appendix
 
 ### Glossary
