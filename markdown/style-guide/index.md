@@ -1,4 +1,4 @@
-# Writing guide
+# Writing style guide
 
 <!-- omit in toc -->
 ## Table of contents
@@ -78,13 +78,11 @@
 
 #### Capitalization
 
-- Use sentence-style capitalization, whereby everything is lowercase except the first word of a sentence and proper nouns.
+- Use sentence-style capitalization, which means to capitalize only the first word of a sentence or phrase and proper nouns.
 - Always capitalize the first word of a new sentence. Transform sentences that starts with a word that is always lowercase.
 - Do not use internal capitalization unless it is part of a brand name.
 - Use italic typeface for emphasis, instead of all uppercase.
-- For design element, do not use all lowercase, although all uppercase is used occasionally.
 - When words are joined by a slash, capitalize the word after the slash if the word before the slash is capitalized.
-- Use sentence-style capitalization, which means to capitalize only the first word of a sentence or phrase and proper nouns.
 - Do not use all-uppercase text, although it is used sometimes in user interface as a design choice.
 - Do not use all-lowercase text, although it is acceptable if used in list or table items where the text is always lowercase.
 - Use title-style capitalization for Asian, Black, White, African American, Hispanic, Latin, Native American, Alaska Native, Native Hawaiian, Pacific Islander, and Indigenous Peoples.
