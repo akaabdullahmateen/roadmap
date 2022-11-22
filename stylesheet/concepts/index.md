@@ -29,6 +29,7 @@ This section presents one possible model of how user agents that support CSS wor
 5. From the annotated document tree, generate a formatting structure.).
 6. Transfer the formatting structure to the target medium for rendering. 
 
+<!-- Syntactical constructs for rulesets and at-rules with general validation information -->
 ## Syntax
 
 The primary construct in a style sheet is a statement. A statement begins with any non-space character and ends at the first closing brace or semicolon that is encountered non-escaped, outside a string, and not nested into another brace pair. There are two categories of statements in style sheets:
