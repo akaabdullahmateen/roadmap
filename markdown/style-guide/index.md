@@ -443,6 +443,7 @@ Users interact with products using various input methods. Therefore, use generic
 ### Colons
 
 - Include a colon at the end of a phrase that directly introduces a list.
+- Include bold formatting for colon when used in run-in headings.
 - Use colons sparingly at the end of a statement followed by a second statement that expands on it. Most of the time, two separate sentences are more readable compared to a single sentence consisting of two statements connected by a colon.
 - When you use colon in a sentence, lowercase the word that follows it unless the colon introduces a direct quotation or the first word after the colon is a proper noun.
 - When you use colon in a title or heading, capitalize the word that follows it.
@@ -532,6 +533,7 @@ Users interact with products using various input methods. Therefore, use generic
 
 ### Slashes
 
+- Do not add a space before and after a slash, unless the slash is preceded and/or proceeded by compound words.
 - When instructing users to enter a slash, always include the spelled out term (*backslash* or *slash*) first, followed by the symbol in parenthesis.
 - Use a slash to imply a combination. Capitalize the word after the slash if the word before the slash is capitalized.
 - Use a slash to separate parts of a uniform resource locator. Use two slashes after the protocol name.
