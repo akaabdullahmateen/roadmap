@@ -257,22 +257,22 @@ The cascade algorithm defines how user agents combine property values originatin
 
 When a selector matches an element, the property value from the origin or layer with the highest precedence gets applied, even if the selector from a lower precedence origin or layer has greater specificity. The cascade order is based on origin type, which can be either user agent, author, or user.
 
-| Order (low to high) | Origin                     | Importance   |
-| ------------------- | -------------------------- | ------------ |
-| 1                   | **user agent** (browser)   | normal       |
-| 2                   | **user**                   | normal       |
-| 3                   | **author** (developer)     | normal       |
-| 4                   | CSS `@keyframe` animations |              |
-| 5                   | **author** (developer)     | `!important` |
-| 6                   | **user**                   | `!important` |
-| 7                   | **user agent** (browser)   | `!important` |
-| 8                   | CSS transitions            |              |
+| Order (low to high) | Origin          | Importance   |
+| ------------------- | --------------- | ------------ |
+| 1                   | User agent      | Normal       |
+| 2                   | User            | Normal       |
+| 3                   | Author          | Normal       |
+| 4                   | CSS animations  | NA           |
+| 5                   | Author          | `!important` |
+| 6                   | User            | `!important` |
+| 7                   | User agent      | `!important` |
+| 8                   | CSS transitions | NA           |
 
 The cascade within each origin type is based on the declaration order of cascade layers within that type. For all origins, styles can be declared within or outside of named or anonymous layers. When declared using `layer`, `layer()` or `@layer`, styles are placed into the specified named layer, or into an anonymous layer if no name is provided. Styles declared outside of a layer are treated as being part of an anonymous last declared layer.
 
 Normal layered styles take precedence over normal styles in prior layers. Normal unlayered styles take precedence over normal layered styles, regardless of specificity. Normal inline styles take precedence over normal author styles, unless the property is being altered by a CSS animation.
 
-| Order (low to high) | Author style     | Importance   |
+| Order (low to high) | Origin           | Importance   |
 | ------------------- | ---------------- | ------------ |
 | 1                   | First layer      | Normal       |
 | 2                   | Last layer       | Normal       |
