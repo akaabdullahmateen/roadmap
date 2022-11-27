@@ -6,8 +6,7 @@
 - [Introduction](#introduction)
   - [Processing model](#processing-model)
 - [Syntax](#syntax)
-  - [Ruleset syntax](#ruleset-syntax)
-  - [At-rules syntax](#at-rules-syntax)
+  - [Rulesets](#rulesets)
 - [Appendix](#appendix)
   - [Glossary](#glossary)
 
@@ -29,13 +28,6 @@ This section presents one possible model of how user agents that support CSS wor
 5. From the annotated document tree, generate a formatting structure.).
 6. Transfer the formatting structure to the target medium for rendering. 
 
-Both properties and values are case-insensitive.                                                                         
-If a value is not valid for its associated property, the entire declaration is invalid.                                   
-White spaces around declarations are ignored.                                                                             
-It is good style to terminate the last declaration with a semicolon.                                                      
-If any single selector in a selectors group is invalid, the entire selector, and therefore the entire ruleset, is invalid.
-Any statement which is not a ruleset or an at-rule is invalid and ignored.                                                
-
 ## Syntax
 
 The primary construct in a style sheet is a statement. A statement begins with any non-space character and ends at the first closing brace or semicolon that is encountered non-escaped, outside a string, and not nested into another brace pair. There are two categories of statements in style sheets:
@@ -43,12 +35,13 @@ The primary construct in a style sheet is a statement. A statement begins with a
 - **Rulesets:** A structure that associates a comma-separated selectors list with a declaration block.
 - **At-rules:** A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
 
-Any statement which is not a ruleset or an at-rule is invalid and ignored. Each type of at-rules, defined by its identifier, may have its own internal syntax and semantics.
+Any statement which is not a ruleset or an at-rule is invalid and ignored. Each type of at-rule, defined by its identifier, may have its own internal syntax and semantics.
 
+### Rulesets
 
-### Ruleset syntax
+The ruleset (or rule) is a structure formed by adding a declaration block after a selectors list. The selectors list is one ore more selectors separated by comma. Whitespace around selectors is ignored, however whitespace between simple selectors in a compound selector has semantic meaning. If any single selector in a selectors list is invalid, the entire selectors list, and therefore the ruleset, is invalid.
 
-All style rules share the same syntactical construct, where a selectors list is followed by a declaration block. The selectors list is one ore more selectors separated by comma. Whitespace around selectors is ignored, however whitespace between simple selectors in a compound selector has semantic meaning. The declaration block is a list of declarations separated by semicolons and delimited by an opening brace and a closing brace.
+The declaration block is a list of declarations separated by semicolons and delimited by an opening brace and a closing brace. The last declaration is not required to be terminated by a semicolon, though it is good practice to do it. Whitespaces before, between, and after properties and values are ignored. Both properties and values are case-insensitive. If a value is not valid for its associated property, the entire declaration is invalid.
 
 ```css
 style-rule ::=
@@ -64,14 +57,6 @@ declarations-list ::=
   [property: value]
   [; declarations-list]
 ```
-
-### At-rules syntax
-
-
-
-
-
-
 
 ## Appendix
 
