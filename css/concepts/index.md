@@ -214,22 +214,22 @@ A pseudo-element is a keyword added to a selector that described a specific part
 : It creates a pseudo-element that is the first child of the selected element and is inline by default. The pseudo-element created is contained by the formatting box of the selected element, and thus do not apply to replaced elements.
 
 `::first-letter`
-: It selects the first letter of the first line of a block-level element, but only when it is not preceded by other content. Punctuation that precedes or immediately follows the first letter is included in the match. Both letters of a digraph, which are always capitalized together, are included in the match. If generated content is injected with the `::before` pseudo-element, the `::first-letter` will match the first letter of this generated content.
+: It selects the first letter of the first line of a block-level element, but only when it is not preceded by other content. Punctuation that precedes or immediately follows the first letter is included in the match. If generated content is injected with the `::before` pseudo-element, the `::first-letter` will match the first letter of this generated content.
 
 `::first-line`
-: It selects the first line of a block-level element. The length and content of the text matched depends on the width of the element and document. The `::first-line` has no effect when the first child of the element is an inline block-level element.
+: It selects the first line of a block-level element. The `::first-line` has no effect when the first child of the element is an inline block-level element.
 
 `::file-selector-button`
-: It selects the button of an `<input>` element with `type="file"`. The `::file-selector-button` is a whole element, and hence matches the rules from the user agent stylesheet. In particular, fonts and colors would not necessarily inherit from the `<input>` element.
+: It selects the button of an `<input>` element with `type="file"`. The `::file-selector-button` is a whole element, and hence, rather than inheriting, it matches rules from the user agent stylesheet.
 
 `::marker`
 : It selects the marker box of a list item, which typically contains a bullet or number. It has effect on any element or pseudo-element with the declaration `display: list-item` set.
 
 `::placeholder`
-: It selects the placeholder text in an `<input>` or `<textarea>` element. By default, most browsers style placeholder text with less opacity and lighter color to indicate that it is merely a suggestion.
+: It selects the placeholder text in an `<input>` or `<textarea>` element.
 
 `::selection`
-: It selects part of the selected element that has been highlighted by the user. However, do not override selected text styles for purely aesthetic reasons, since unexpected changes can hurt a user's understanding of the functionality.
+: It selects part of the selected element that has been highlighted by the user.
 
 ### Pseudo-classes
 
@@ -237,7 +237,7 @@ A pseudo-class is a keyword added to a selector that describes a specific state 
 
 The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgiving selector list, where incorrect or unsupported selectors are simply ignored, rather than invalidating the whole selector list. The selector list can not contain the functional pseudo-class itself and any pseudo-elements. The specificity of a functional pseudo-class is replaced by the specificity of the most specific selector in its argument selector list.
 
-The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `An + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
+The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `A * n + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
 
 Styles defined by a link-related pseudo-class are overridden by any subsequent link-related pseudo-class, that has at least equal specificity. To style links appropriately, follow the *LVHA-order*, which is `:link` then `:visited` then `:hover` and finally `:active`.
 
