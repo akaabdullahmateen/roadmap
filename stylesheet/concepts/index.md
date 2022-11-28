@@ -83,6 +83,7 @@ Inline styles are applied to a particular HTML element by providing a semicolon 
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
+    <meta charset="utf-8">
     <title>Inline Styles</title>
   </head>
     <body>
@@ -103,6 +104,7 @@ Internal style sheet resides within the source document, as content of the `<sty
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
+    <meta charset="utf-8">
     <title>Internal Style Sheet</title>
     <style>
       p {
@@ -127,6 +129,7 @@ External style sheet is a file with a `.css` file extension, linked through the 
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
+    <meta charset="utf-8">
     <title>External Style Sheet</title>
     <link rel="stylesheet" href="style.css">
   </head>
