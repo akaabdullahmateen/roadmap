@@ -13,6 +13,8 @@
   - [Internal style sheet](#internal-style-sheet)
   - [External style sheet](#external-style-sheet)
 - [Selectors](#selectors)
+  - [Basic selectors](#basic-selectors)
+  - [Combinators](#combinators)
 - [Appendix](#appendix)
   - [Glossary](#glossary)
 
@@ -159,7 +161,27 @@ p {
 
 ## Selectors
 
-A selector represents a structure used as a condition to select a set of elements or a single element in the document tree. In rulesets, selectors are used for binding style declarations to elements in the source document. The elements selected by a selector are called the *subjects of the selector*. 
+A selector defines a pattern to select a set of elements or a single element in the document tree. In rulesets, selectors are used for binding style declarations to elements in the source document. The elements selected by a selector are called the *subjects of the selector*. 
+
+There are no selectors or combinators to select parent elements, siblings of parents, or children of parent siblings.
+
+### Basic selectors
+
+| Name               | Syntax   | Target                                       |
+| ------------------ | -------- | -------------------------------------------- |
+| Type selector      | `tag`    | Elements with the specified tag name.        |
+| Class selector     | `.class` | Elements with the specified class attribute. |
+| ID selector        | `#id`    | Elements with the specified id attribute.    |
+| Universal selector | `*`      | All elements                                 |
+
+### Combinators
+
+| Name                        | Syntax  | Target                                               |
+| --------------------------- | ------- | ---------------------------------------------------- |
+| Descendant combinator       | `A B`   | Descendants of the first element.                    |
+| Child combinator            | `A > B` | Direct children of the first element.                |
+| General sibling combinator  | `A ~ B` | Following siblings of the first element.             |
+| Adjacent sibling combinator | `A + B` | Immediately following siblings of the first element. |
 
 ## Appendix
 
