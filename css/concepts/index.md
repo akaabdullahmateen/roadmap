@@ -15,6 +15,7 @@
 - [Selectors](#selectors)
   - [Basic selectors](#basic-selectors)
   - [Combinators](#combinators)
+  - [Attribute selectors](#attribute-selectors)
 - [Appendix](#appendix)
   - [Glossary](#glossary)
 
@@ -163,18 +164,20 @@ p {
 
 A selector defines a pattern to select a set of elements or a single element in the document tree. In rulesets, selectors are used for binding style declarations to elements in the source document. The elements selected by a selector are called the *subjects of the selector*. 
 
-There are no selectors or combinators to select parent elements, siblings of parents, or children of parent siblings.
-
 ### Basic selectors
 
-| Name               | Syntax   | Target                                       |
-| ------------------ | -------- | -------------------------------------------- |
-| Type selector      | `tag`    | Elements with the specified tag name.        |
-| Class selector     | `.class` | Elements with the specified class attribute. |
-| ID selector        | `#id`    | Elements with the specified id attribute.    |
-| Universal selector | `*`      | All elements                                 |
+A basic selector matches elements based on their tag name, class name, or ID name. A universal selector exists that matches all elements. Optionally, the universal selector can be restricted to a specific namespace or to all namespaces.
+
+| Name               | Syntax             | Target                                       |
+| ------------------ | ------------------ | -------------------------------------------- |
+| Type selector      | `tag`              | Elements with the specified tag name.        |
+| Class selector     | `.class`           | Elements with the specified class attribute. |
+| ID selector        | `#id`              | Elements with the specified id attribute.    |
+| Universal selector | `*`, `ns|*`, `*|*` | All elements.                                |
 
 ### Combinators
+
+A combinator matches elements based on their relationship with another selected element. There are no combinators to select parent elements, siblings of parents, or children of parent siblings.
 
 | Name                        | Syntax  | Target                                               |
 | --------------------------- | ------- | ---------------------------------------------------- |
@@ -183,6 +186,19 @@ There are no selectors or combinators to select parent elements, siblings of par
 | General sibling combinator  | `A ~ B` | Following siblings of the first element.             |
 | Adjacent sibling combinator | `A + B` | Immediately following siblings of the first element. |
 
+### Attribute selectors
+
+An attribute selector matches elements based on the presence of a specified attribute and conditions for its associated value. By default, the values are tested case-sensitively, however, the addition of the character `i` or `I` before the closing bracket causes the value to be tested case-insensitively.
+
+| Name                           | Syntax            | Attribute value                                                               |
+| ------------------------------ | ----------------- | ----------------------------------------------------------------------------- |
+| General attribute selector     | `[attr]`          | Any value to the specified attribute.                                         |
+| Exact attribute selector       | `[attr="value"]`  | Value exactly matches the specified string.                                   |
+| Starts-with attribute selector | `[attr^="value"]` | Value starts with the specified string.                                       |
+| Ends-with attribute selector   | `[attr$="value"]` | Value ends with the specified string.                                         |
+| Contains attribute selector    | `[attr*="value"]` | Value contains the specified string.                                          |
+| List attribute selector        | `[attr~="value"]` | Value is a list, one of which matches the specified string.                   |
+| Hyphenated attribute selector  | `[attr|="value"]` | Value either matches, or starts with and is immediately followed by a hyphen. |
 
 
 ## Appendix
