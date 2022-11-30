@@ -57,7 +57,7 @@ style-rule ::=
   }
 ```
 
-The selectors list is one ore more selectors separated by comma. Whitespaces before and after selectors are ignored, however whitespace between simple selectors in a compound selector has semantic meaning. Selectors syntax is case-insensitive within the ASCII range. If any single selector in a selectors list is invalid, the entire selectors list, and therefore the ruleset itself, is invalid.
+The selectors list is one ore more selectors separated by comma. Whitespaces before and after selectors are ignored, however whitespace between simple selectors in a combinator has semantic meaning. Selectors syntax is case-insensitive within the ASCII range. If any single selector in a selectors list is invalid, the entire selectors list, and therefore the ruleset itself, is invalid.
 
 ```css
 selectors-list ::=
@@ -182,6 +182,8 @@ There are no selectors or combinators to select parent elements, siblings of par
 | Child combinator            | `A > B` | Direct children of the first element.                |
 | General sibling combinator  | `A ~ B` | Following siblings of the first element.             |
 | Adjacent sibling combinator | `A + B` | Immediately following siblings of the first element. |
+
+
 
 ## Appendix
 
