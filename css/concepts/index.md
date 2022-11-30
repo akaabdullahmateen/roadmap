@@ -12,6 +12,7 @@
   - [Inline styles](#inline-styles)
   - [Internal style sheet](#internal-style-sheet)
   - [External style sheet](#external-style-sheet)
+- [Selectors](#selectors)
 - [Appendix](#appendix)
   - [Glossary](#glossary)
 
@@ -41,24 +42,30 @@ The primary construct in a style sheet is a statement. A statement begins with a
 - **Rulesets:** A structure that associates a comma-separated selectors list with a declaration block.
 - **At-rules:** A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
 
-Any statement which is not a ruleset or an at-rule is invalid and ignored. Each type of at-rule, defined by its identifier, may have its own internal syntax and semantics.
+Any statement which is not a ruleset or an at-rule is invalid and ignored.
 
 ### Rulesets
 
-The ruleset (or rule) is a structure formed by adding a declaration block after a selectors list. The selectors list is one ore more selectors separated by comma. Whitespace around selectors is ignored, however whitespace between simple selectors in a compound selector has semantic meaning. If any single selector in a selectors list is invalid, the entire selectors list, and therefore the ruleset itself, is invalid.
-
-The declaration block is a list of declarations separated by semicolons and delimited by an opening brace and a closing brace. The last declaration is not required to be terminated by a semicolon, though it is good practice to do it. Whitespaces before, between, and after properties and values are ignored. Both properties and values are case-insensitive. If a value is not valid for its associated property, the entire declaration is invalid.
+The ruleset (or rule) is a structure formed by adding a declarations list, enclosed within curly braces, after a selectors list.
 
 ```css
 style-rule ::=
   selectors-list {
     declarations-list
   }
+```
 
+The selectors list is one ore more selectors separated by comma. Whitespaces before and after selectors are ignored, however whitespace between simple selectors in a compound selector has semantic meaning. Selectors syntax is case-insensitive within the ASCII range. If any single selector in a selectors list is invalid, the entire selectors list, and therefore the ruleset itself, is invalid.
+
+```css
 selectors-list ::=
   selector[:pseudo-class] [::pseudo-element]
   [, selectors-list]
+```
 
+The declarations list is one or more declarations - which are pairs of properties and values - separated by semicolons. The last declaration is not required to be terminated by a semicolon, though it is good practice to do it. Whitespaces before, between, and after properties and values are ignored. Both properties and values are case-insensitive. If a value is not valid for its associated property, the entire declaration is invalid.
+
+```css
 declarations-list ::=
   [property: value]
   [; declarations-list]
@@ -66,6 +73,8 @@ declarations-list ::=
 
 <!-- TODO: Add introduction and syntax information -->
 ### At-rules
+
+Each type of at-rule, defined by its identifier, may have its own internal syntax and semantics.
 
 ## Adding CSS
 
@@ -147,6 +156,10 @@ p {
   font-family: "Open Sans";
 }
 ```
+
+## Selectors
+
+A selector represents a structure used as a condition to select a set of elements or a single element in the document tree. In rulesets, selectors are used for binding style declarations to elements in the source document. The elements selected by a selector are called the *subjects of the selector*. 
 
 ## Appendix
 
