@@ -58,7 +58,7 @@ style-rule ::=
   }
 ```
 
-The selectors list is one ore more selectors separated by comma. Whitespaces before and after selectors are ignored, however whitespace between simple selectors in a combinator has semantic meaning. Selectors syntax is case-insensitive within the ASCII range. If any single selector in a selectors list is invalid, the entire selectors list, and therefore the ruleset itself, is invalid.
+The selectors list is a comma-separated list of selectors, which selects nodes that matches with any single selector in the list. Whitespaces before and after the comma are ignored. The selectors syntax is case-insensitive within the ASCII range. If any single selector in a selectors list is invalid or unsupported, the entire selectors list is considered invalid, and therefore the associated ruleset is ignored. However, some functional pseudo-classes accept forgiving selectors list, where each selector is parsed individually.
 
 ```css
 selectors-list ::=
@@ -66,7 +66,7 @@ selectors-list ::=
   [, selectors-list]
 ```
 
-The declarations list is one or more declarations - which are pairs of properties and values - separated by semicolons. The last declaration is not required to be terminated by a semicolon, though it is good practice to do it. Whitespaces before, between, and after properties and values are ignored. Both properties and values are case-insensitive. If a value is not valid for its associated property, the entire declaration is invalid.
+The declarations list is a semicolon-separated list of declarations - which are pairs of properties and values. The last declaration is not required to be terminated by a semicolon, though it is good practice to do it. Whitespaces before, between, and after properties and values are ignored. Both properties and values are case-insensitive. If any invalid value is passed to a property, that accepts multiple values, the entire declaration is ignored.
 
 ```css
 declarations-list ::=
@@ -197,9 +197,8 @@ An attribute selector matches elements based on the presence of a specified attr
 | Starts-with attribute selector | `[attr^="value"]` | Value starts with the specified string.                                       |
 | Ends-with attribute selector   | `[attr$="value"]` | Value ends with the specified string.                                         |
 | Contains attribute selector    | `[attr*="value"]` | Value contains the specified string.                                          |
-| List attribute selector        | `[attr~="value"]` | Value is a list, one of which matches the specified string.                   |
+| List attribute selector        | `[attr~="value"]` | Value is a space-separated list, one of which matches the specified string.   |
 | Hyphenated attribute selector  | `[attr|="value"]` | Value either matches, or starts with and is immediately followed by a hyphen. |
-
 
 ## Appendix
 
