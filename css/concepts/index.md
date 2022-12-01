@@ -16,9 +16,10 @@
   - [Basic selectors](#basic-selectors)
   - [Combinators](#combinators)
   - [Attribute selectors](#attribute-selectors)
-  - [Pseudo-classes](#pseudo-classes)
   - [Pseudo-elements](#pseudo-elements)
+  - [Pseudo-classes](#pseudo-classes)
 - [Appendix](#appendix)
+  - [Style guide / Lint](#style-guide--lint)
   - [Glossary](#glossary)
 
 <!-- general information about CSS that does not fall into any subcategory -->
@@ -47,7 +48,7 @@ The primary construct in a style sheet is a statement. A statement begins with a
 - **Rulesets:** A structure that associates a comma-separated selectors list with a declaration block.
 - **At-rules:** A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
 
-Any statement which is not a ruleset or an at-rule is invalid and ignored.
+Any statement which is not a ruleset or an at-rule is invalid and ignored. CSS ignores whitespaces around comma in a selectors list, and around properties and values. CSS is case-insensitive within the ASCII range, except for parts that are not under its control.
 
 ### Rulesets
 
@@ -60,7 +61,7 @@ style-rule ::=
   }
 ```
 
-The selectors list is a comma-separated list of selectors, which selects nodes that matches with any single selector in the list. Whitespaces before and after the comma are ignored. The selectors syntax is case-insensitive within the ASCII range. If any single selector in a selectors list is invalid or unsupported, the entire selectors list is considered invalid, and therefore the associated ruleset is ignored. However, some functional pseudo-classes accept forgiving selectors list, where each selector is parsed individually.
+The selectors list is a comma-separated list of selectors, which selects nodes that matches with any single selector in the list. If any single selector in a selectors list is invalid or unsupported, the entire selectors list is considered invalid, and therefore the associated ruleset is ignored.
 
 ```css
 selectors-list ::=
@@ -68,7 +69,7 @@ selectors-list ::=
   [, selectors-list]
 ```
 
-The declarations list is a semicolon-separated list of declarations - which are pairs of properties and values. The last declaration is not required to be terminated by a semicolon, though it is good practice to do it. Whitespaces before, between, and after properties and values are ignored. Both properties and values are case-insensitive. If any invalid value is passed to a property, that accepts multiple values, the entire declaration is ignored.
+The declarations list is a semicolon-separated list of declarations - which are pairs of properties and values. The last declaration is not required to be terminated by a semicolon. If any invalid value is passed to a property, that accepts multiple values, the entire declaration is ignored.
 
 ```css
 declarations-list ::=
@@ -202,10 +203,6 @@ An attribute selector matches elements based on the presence of a specified attr
 | List attribute selector        | `[attr~="value"]` | Value is a space-separated list, one of which matches the specified string.   |
 | Hyphenated attribute selector  | `[attr|="value"]` | Value either matches, or starts with and is immediately followed by a hyphen. |
 
-### Pseudo-classes
-
-A pseudo-class is a keyword added to a selector that describes a specific state of the selected element. A pseudo-class consists of a colon followed by the pseudo-class identifier. A functional pseudo-class is additionally followed by a pair of parenthesis which enclose the arguments. The element that a pseudo-class is attached to is called the *anchor element*.
-
 ### Pseudo-elements
 
 A pseudo-element is a keyword added to a selector that described a specific part of the selected element. A pseudo-element consists of double colons followed by the pseudo-element identifier. Although, most browsers also support the single colon syntax for pseudo-elements, it is recommended to use the double colons syntax for pseudo-elements, to distinguish them from pseudo-classes. A selector can contain at most one pseudo-element, and it must appear after any other syntax in the selector.
@@ -234,7 +231,172 @@ A pseudo-element is a keyword added to a selector that described a specific part
 `::selection`
 : It selects part of the selected element that has been highlighted by the user. However, do not override selected text styles for purely aesthetic reasons, since unexpected changes can hurt a user's understanding of the functionality.
 
+### Pseudo-classes
+
+A pseudo-class is a keyword added to a selector that describes a specific state of the selected element. A pseudo-class consists of a colon followed by the pseudo-class identifier. A functional pseudo-class is additionally followed by a pair of parenthesis which enclose the arguments. The element that a pseudo-class is attached to is called the *anchor element*.
+
+The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgiving selector list, where incorrect or unsupported selectors are simply ignored, rather than invalidating the whole selector list. The selector list can not contain the functional pseudo-class itself and any pseudo-elements. The specificity of a functional pseudo-class is replaced by the specificity of the most specific selector in its argument selector list.
+
+The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `An + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
+
+Styles defined by a link-related pseudo-class are overridden by any subsequent link-related pseudo-class, that has at least equal specificity. To style links appropriately, follow the *LVHA-order*, which is `:link` then `:visited` then `:hover` and finally `:active`.
+
+`:fullscreen`
+: It matches an element, including its children, that is currently in fullscreen mode. An element matches `:fullscreen` when it enters fullscreen mode using the Fullscreen API, and not when the browser is switched to fullscreen mode.
+
+`:modal`              
+: It selects an element that is in a state where it excludes all interaction with elements outside it until the interaction has been dismissed. Multiple elements can be selected by the `:modal` pseudo-class, but only one of them will be interactive.
+
+`:picture-in-picture` 
+: It selects an element that is currently in picture-in-picture mode.
+
+`:autofill`           
+: It selects an `<input>` element that has its value autofilled by the browser. It stops selecting the element if the user edits the field.
+
+`:enabled`            
+: It selects an element that can be activated or accept focus, and has a disabled state where it can not be activated or accept focus.
+
+`:disabled`           
+: It selects an element that can not be activated or accept focus, and has an enabled state where it can be activated or accept focus.
+
+`:read-only`          
+: It selects an element that is not editable by the user.
+
+`:read-write`         
+: It selects an element that is editable by the user.
+
+`:placeholder-shown`  
+: It selects an `<input>` or `<textarea>` element that is currently displaying placeholder text.
+
+`:default`
+: It selects a form element that is the default in a group of related elements. It selects a `<button>` element, or `<input>` element with a type that submits form, if that is the default submission button of a `<form>`.
+
+`:checked`            
+: It selects an `<input type="radio">` element, `<input type="checkbox">` element, or `<option>` element that is checked.
+
+`:indeterminate`
+: It selects a form element that has an indeterminate state.
+
+`:valid`
+: It selects a form element whose contents validate successfully.
+
+`:invalid`            
+: It selects a form element whose contents do not validate successfully.
+
+`:in-range`           
+: It selects an `<input>` element whose current value is inside the range limit specified by the `min` and `max` attributes.
+
+`:out-of-range`       
+: It selects an `<input>` element whose current value is outside the range limit specified by the `min` and `max` attributes. An empty `<input>` element will not be selected using the `:out-of-range` pseudo-class selector.
+
+`:required`           
+: It selects an `<input>`, `<select>`, or `<textarea>` element that has the `required` attribute set on it.
+
+`:optional`           
+: It selects an `<input>`, `<select>`, or `<textarea>` element that does not have the `required` attribute set on it.
+
+`:any-link`           
+: It selects an element that acts as the source anchor of a hyperlink, regardless of whether it has been visited. It matches every `<a>` or `<area>` element that has an `href` attribute.
+
+`:link`               
+: It selects a link element that has not yet been visited. It matches every unvisited `<a>` or `<area>` element that has an `href` attribute.
+
+`:visited`            
+: It selects a link element that has already been visited. For privacy reasons, the styles that can be modified using this selector are very limited.
+
+`:local-link`
+: It selects a link element that points to the same document. Therefore, an element that is the source anchor of a hyperlink whose target's absolute URL matches the element's own document URL.
+
+`:target`
+: It selects a link element with an `id` attribute whose value matches the document's URL fragment.
+
+`:playing`            
+: It selects an audio, video, or other resource element that is capable of being played or paused, when the element is playing. A resource is playing even if in buffering state or paused for any reason other than a user interaction to caus it to be explicitly paused.
+
+`:paused`             
+: It selects an audio, video, or other resource element that is capable of being played or paused, when the element is paused. A resource is paused if the user explicitly paused it, or if it in a non-activated state.
+                                    
+`:hover`              
+: It selects an element when the user interacts with it through a pointing device, but does not necessarily activate it. The `:hover` pseudo-class is problematic on touchscreens as it might match for incorrect period of time.
+
+`:active`             
+: It selects an element when the user activates it. This activation generally starts when the user presses down the primary mouse button, and continues until the primary mouse button is released.
+
+`:focus`              
+: It selects an element when it has received focus. This pseudo-class only applies to the focused element itself, and is not triggered when a contained element receives focus.
+
+`:focus-within`       
+: It selects an element when it has received focus or any of its descendants, including descendants in the shadow tree, have received focus.
+
+`:focus-visible`      
+: It selects an element that is matched by the `:focus` pseudo-class, and the user agent determines through heuristics that the focus should be made evident on the element.
+
+`:root`               
+: It selects the root element of a tree representing the document. In HTML, `:root` matches the `<html>` element, and is identical to the selector `html`, except that it has a higher specificity.
+
+`:empty`              
+: It selects an element that has no children. Children can be either element nodes or text, including whitespace. Comments, processing instructions, and CSS `content` do not affect whether an element is considered empty.
+
+`:first-child`        
+: It selects the first element among a group of sibling elements.
+
+`:last-child`         
+: It selects the last element among a group of sibling elements.
+
+`:only-child`         
+: It selects an element without any siblings. This behaves the same way as `:first-child:last-child` or `:nth-child(1):nth-last-child(1)`, but with lower specificity.
+
+`:first-of-type`      
+: It selects the first element of its type among a group of sibling elements.
+
+`:last-of-type`       
+: It selects the last element of its type among a group of sibling elements.
+
+`:only-of-type`       
+: It selects an element that has no siblings of the same type.
+
+`:nth-child()`
+: It selects elements based on their position among a group of siblings. The child count starts from `1`, and includes children of any element type, but it is only considered a match if the element at that child position is of the specified element type.
+
+`:nth-last-child()`
+: It selects elements based on their position among a group of siblings, counting from the end. The child count starts from `1` counting from the end, and includes children of any element type, but it is only considered a match if the element at that child position is of the specified element type.
+
+`:nth-of-type()`
+: It selects elements based on their position among a group of siblings with the same type. The child count starts from `1`, and excludes children of other element type.
+
+`:nth-last-of-type()`
+: It selects elements based on their position among a group of siblings with the same type, counting from the end. The child count starts from `1` counting from the end, and excludes children of other element type.
+
+`:is()`
+: It selects an element that can be selected by one of the selectors in its argument selector list.
+
+`:not()`
+: It selects elements that do not match any selector in its argument selector list. Since prevents specific items from being selected, it is called the *negation pseudo-class*. It does not accept a forgiving selector list.
+
+`:where()`
+: It select an element that can be selected by one of the selectors in its argument selector list. It is functionally similar to the `:is()` pseudo-class, but has no specificity.
+
+`:has()`
+: It selects an element if any of the relative selectors that are passed as an argument match at least one element when anchored against this element.
+
+`:dir()`
+: It selects an element based on the directionality of the text contained within that element. It uses only the semantic value of the directionality, which is defined by the document itself, and thus does not account for the directionality set by CSS properties.
+
+`:lang()`
+: It selects an element based on the language they are determined to be in. In HTML, the language is determined by a combination of the `lang` attribute, the `<meta>` element, and possibly by information from the HTTP headers.
+
 ## Appendix
+
+### Style guide / Lint
+
+Add semicolon after the last declaration in a ruleset.
+Each declaration should go on a separate line.
+Each selector should go on a separate line.
+The opening curly brace should be placed after the last selector with one space in between.
+The closing curly brace should be placed on the next line after the last declaration.
+Each ruleset should be separated from the other with one blank line.
+There should be a blank line at the end of the document.
+There should be no blank line at the start of the document.
 
 ### Glossary
 
