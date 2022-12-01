@@ -16,6 +16,8 @@
   - [Basic selectors](#basic-selectors)
   - [Combinators](#combinators)
   - [Attribute selectors](#attribute-selectors)
+  - [Pseudo-classes](#pseudo-classes)
+  - [Pseudo-elements](#pseudo-elements)
 - [Appendix](#appendix)
   - [Glossary](#glossary)
 
@@ -199,6 +201,38 @@ An attribute selector matches elements based on the presence of a specified attr
 | Contains attribute selector    | `[attr*="value"]` | Value contains the specified string.                                          |
 | List attribute selector        | `[attr~="value"]` | Value is a space-separated list, one of which matches the specified string.   |
 | Hyphenated attribute selector  | `[attr|="value"]` | Value either matches, or starts with and is immediately followed by a hyphen. |
+
+### Pseudo-classes
+
+A pseudo-class is a keyword added to a selector that describes a specific state of the selected element. A pseudo-class consists of a colon followed by the pseudo-class identifier. A functional pseudo-class is additionally followed by a pair of parenthesis which enclose the arguments. The element that a pseudo-class is attached to is called the *anchor element*.
+
+### Pseudo-elements
+
+A pseudo-element is a keyword added to a selector that described a specific part of the selected element. A pseudo-element consists of double colons followed by the pseudo-element identifier. Although, most browsers also support the single colon syntax for pseudo-elements, it is recommended to use the double colons syntax for pseudo-elements, to distinguish them from pseudo-classes. A selector can contain at most one pseudo-element, and it must appear after any other syntax in the selector.
+
+`::after`
+: It creates a pseudo-element that is the last child of the selected element and is inline by default. The pseudo-element created is contained by the formatting box of the selected element, and thus do not apply to replaced elements.
+
+`::before`
+: It creates a pseudo-element that is the first child of the selected element and is inline by default. The pseudo-element created is contained by the formatting box of the selected element, and thus do not apply to replaced elements.
+
+`::first-letter`
+: It selects the first letter of the first line of a block-level element, but only when it is not preceded by other content. Punctuation that precedes or immediately follows the first letter is included in the match. Both letters of a digraph, which are always capitalized together, are included in the match. If generated content is injected with the `::before` pseudo-element, the `::first-letter` will match the first letter of this generated content.
+
+`::first-line`
+: It selects the first line of a block-level element. The length and content of the text matched depends on the width of the element and document. The `::first-line` has no effect when the first child of the element is an inline block-level element.
+
+`::file-selector-button`
+: It selects the button of an `<input>` element with `type="file"`. The `::file-selector-button` is a whole element, and hence matches the rules from the user agent stylesheet. In particular, fonts and colors would not necessarily inherit from the `<input>` element.
+
+`::marker`
+: It selects the marker box of a list item, which typically contains a bullet or number. It has effect on any element or pseudo-element with the declaration `display: list-item` set.
+
+`::placeholder`
+: It selects the placeholder text in an `<input>` or `<textarea>` element. By default, most browsers style placeholder text with less opacity and lighter color to indicate that it is merely a suggestion.
+
+`::selection`
+: It selects part of the selected element that has been highlighted by the user. However, do not override selected text styles for purely aesthetic reasons, since unexpected changes can hurt a user's understanding of the functionality.
 
 ## Appendix
 
