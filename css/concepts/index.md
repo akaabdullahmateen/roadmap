@@ -19,7 +19,7 @@
   - [Pseudo-elements](#pseudo-elements)
   - [Pseudo-classes](#pseudo-classes)
 - [Cascade](#cascade)
-  - [Origin and importance](#origin-and-importance)
+  - [Origin](#origin)
   - [Specificity](#specificity)
   - [Inheritance](#inheritance)
 - [Appendix](#appendix)
@@ -251,7 +251,7 @@ Declarations are the only constructs in CSS that participate in the cascade, whe
 | `@import`    | Imported styles participate in the cascade, but not itself.                          |
 | `@charset`   | Obeys other algorithms, and is not affected by the cascade.                          |
 
-### Origin and importance
+### Origin
 
 The cascade algorithm defines how user agents combine property values originating from different origins. The cascade defines the origin and layer that takes precedence when declarations in more than one origin or cascade layer set a value for the same property on an element.
 
