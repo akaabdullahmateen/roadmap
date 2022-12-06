@@ -20,6 +20,8 @@
   - [Pseudo-classes](#pseudo-classes)
 - [Appendix](#appendix)
   - [Style guide / Lint](#style-guide--lint)
+  - [Pseudo-elements](#pseudo-elements-1)
+  - [Pseudo-classes](#pseudo-classes-1)
   - [Glossary](#glossary)
 
 <!-- general information about CSS that does not fall into any subcategory -->
@@ -205,7 +207,32 @@ An attribute selector matches elements based on the presence of a specified attr
 
 ### Pseudo-elements
 
-A pseudo-element is a keyword added to a selector that described a specific part of the selected element. A pseudo-element consists of double colons followed by the pseudo-element identifier. Although, most browsers also support the single colon syntax for pseudo-elements, it is recommended to use the double colons syntax for pseudo-elements, to distinguish them from pseudo-classes. A selector can contain at most one pseudo-element, and it must appear after any other syntax in the selector.
+A [pseudo-element](#pseudo-elements-1) is a keyword added to a selector that described a specific part of the selected element. A pseudo-element consists of double colons followed by the pseudo-element identifier. Although, most browsers also support the single colon syntax for pseudo-elements, it is recommended to use the double colons syntax for pseudo-elements, to distinguish them from pseudo-classes. A selector can contain at most one pseudo-element, and it must appear after any other syntax in the selector.
+
+### Pseudo-classes
+
+A [pseudo-class](#pseudo-classes-1) is a keyword added to a selector that describes a specific state of the selected element. A pseudo-class consists of a colon followed by the pseudo-class identifier. A functional pseudo-class is additionally followed by a pair of parenthesis which enclose the arguments. The element that a pseudo-class is attached to is called the *anchor element*.
+
+The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgiving selector list, where incorrect or unsupported selectors are simply ignored, rather than invalidating the whole selector list. The selector list can not contain the functional pseudo-class itself and any pseudo-elements. The specificity of a functional pseudo-class is replaced by the specificity of the most specific selector in its argument selector list.
+
+The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `A * n + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
+
+Styles defined by a link-related pseudo-class are overridden by any subsequent link-related pseudo-class, that has at least equal specificity. To style links appropriately, follow the *LVHA-order*, which is `:link` then `:visited` then `:hover` and finally `:active`.
+
+## Appendix
+
+### Style guide / Lint
+
+Add semicolon after the last declaration in a ruleset.
+Each declaration should go on a separate line.
+Each selector should go on a separate line.
+The opening curly brace should be placed after the last selector with one space in between.
+The closing curly brace should be placed on the next line after the last declaration.
+Each ruleset should be separated from the other with one blank line.
+There should be a blank line at the end of the document.
+There should be no blank line at the start of the document.
+
+### Pseudo-elements
 
 `::after`
 : It creates a pseudo-element that is the last child of the selected element and is inline by default. The pseudo-element created is contained by the formatting box of the selected element, and thus do not apply to replaced elements.
@@ -232,14 +259,6 @@ A pseudo-element is a keyword added to a selector that described a specific part
 : It selects part of the selected element that has been highlighted by the user.
 
 ### Pseudo-classes
-
-A pseudo-class is a keyword added to a selector that describes a specific state of the selected element. A pseudo-class consists of a colon followed by the pseudo-class identifier. A functional pseudo-class is additionally followed by a pair of parenthesis which enclose the arguments. The element that a pseudo-class is attached to is called the *anchor element*.
-
-The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgiving selector list, where incorrect or unsupported selectors are simply ignored, rather than invalidating the whole selector list. The selector list can not contain the functional pseudo-class itself and any pseudo-elements. The specificity of a functional pseudo-class is replaced by the specificity of the most specific selector in its argument selector list.
-
-The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `A * n + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
-
-Styles defined by a link-related pseudo-class are overridden by any subsequent link-related pseudo-class, that has at least equal specificity. To style links appropriately, follow the *LVHA-order*, which is `:link` then `:visited` then `:hover` and finally `:active`.
 
 `:fullscreen`
 : It matches an element, including its children, that is currently in fullscreen mode. An element matches `:fullscreen` when it enters fullscreen mode using the Fullscreen API, and not when the browser is switched to fullscreen mode.
@@ -384,19 +403,6 @@ Styles defined by a link-related pseudo-class are overridden by any subsequent l
 
 `:lang()`
 : It selects an element based on the language they are determined to be in. In HTML, the language is determined by a combination of the `lang` attribute, the `<meta>` element, and possibly by information from the HTTP headers.
-
-## Appendix
-
-### Style guide / Lint
-
-Add semicolon after the last declaration in a ruleset.
-Each declaration should go on a separate line.
-Each selector should go on a separate line.
-The opening curly brace should be placed after the last selector with one space in between.
-The closing curly brace should be placed on the next line after the last declaration.
-Each ruleset should be separated from the other with one blank line.
-There should be a blank line at the end of the document.
-There should be no blank line at the start of the document.
 
 ### Glossary
 
