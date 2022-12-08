@@ -22,9 +22,9 @@
   - [Origin and importance](#origin-and-importance)
   - [Specificity](#specificity)
   - [Inheritance](#inheritance)
-- [Reset style sheets](#reset-style-sheets)
 - [Appendix](#appendix)
   - [Style guide / Lint](#style-guide--lint)
+  - [Reset style sheets](#reset-style-sheets)
   - [Pseudo-elements](#pseudo-elements-1)
   - [Pseudo-classes](#pseudo-classes-1)
   - [Glossary](#glossary)
@@ -356,14 +356,6 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 | `revert`  | Reverts the property value to the value that would have been if no changes were made by the current style origin. |
 | `unset`   | Resets an inherited property to the inherited value and non-inherited property to the initial value.              |
 
-## Reset style sheets
-
-After your content has finished altering styles, it may find itself in a situation where it needs to restore them to a known state. This may happen in cases of animations, theme changes, and so forth. The CSS property `all` lets you quickly set (almost) everything in CSS back to a known state.
-
-`all` lets you opt to immediately restore all properties to any of their initial (default) state, the state inherited from the previous level of the cascade, a specific origin (the user agent stylesheet, the author stylesheet, or the user stylesheet), or even to clear the values of the properties entirely.
-
-Although some constraints on user agent stylesheets are set by the HTML specification, browsers have a lot of latitude: that means some differences exist between browsers. To simplify the development process, Web developers may use a CSS reset stylesheet, such as _normalize.css_, which sets common properties values to a known state for all browsers before beginning to make alterations to suit their specific needs.
-
 ## Appendix
 
 ### Style guide / Lint
@@ -376,6 +368,14 @@ The closing curly brace should be placed on the next line after the last declara
 Each ruleset should be separated from the other with one blank line.
 There should be a blank line at the end of the document.
 There should be no blank line at the start of the document.
+
+### Reset style sheets
+
+After your content has finished altering styles, it may find itself in a situation where it needs to restore them to a known state. This may happen in cases of animations, theme changes, and so forth. The CSS property `all` lets you quickly set (almost) everything in CSS back to a known state.
+
+`all` lets you opt to immediately restore all properties to any of their initial (default) state, the state inherited from the previous level of the cascade, a specific origin (the user agent stylesheet, the author stylesheet, or the user stylesheet), or even to clear the values of the properties entirely.
+
+Although some constraints on user agent stylesheets are set by the HTML specification, browsers have a lot of latitude: that means some differences exist between browsers. To simplify the development process, Web developers may use a CSS reset stylesheet, such as _normalize.css_, which sets common properties values to a known state for all browsers before beginning to make alterations to suit their specific needs.
 
 ### Pseudo-elements
 
