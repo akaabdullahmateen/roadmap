@@ -18,6 +18,9 @@
   - [Attribute selectors](#attribute-selectors)
   - [Pseudo-elements](#pseudo-elements)
   - [Pseudo-classes](#pseudo-classes)
+- [Cascade, Specificity, Importance, and Inheritance](#cascade-specificity-importance-and-inheritance)
+  - [Cascade origin](#cascade-origin)
+  - [Specificity](#specificity)
 - [Appendix](#appendix)
   - [Style guide / Lint](#style-guide--lint)
   - [Pseudo-elements](#pseudo-elements-1)
@@ -218,6 +221,37 @@ The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgi
 The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `A * n + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
 
 Styles defined by a link-related pseudo-class are overridden by any subsequent link-related pseudo-class, that has at least equal specificity. To style links appropriately, follow the *LVHA-order*, which is `:link` then `:visited` then `:hover` and finally `:active`.
+
+## Cascade, Specificity, Importance, and Inheritance
+
+1. Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. Specificity only matters for declarations of the same importance and same origin and cascade layer. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
+
+2. When two selectors in the same cascade layer and origin have the same specificity, proximity is important; the last selector wins.
+
+3. As per CSS rules, directly targeted elements will always take precedence over rules which an element inherits from its ancestor, regardless of the specificity of the inherited rule.
+
+4. Proximity of elements in the document tree has no effect on the specificity.
+
+### Cascade origin
+
+
+
+### Specificity
+
+Specificity is the algorithm used by browsers to choose a ruleset from competing rulesets with the same cascade origin and importance. The specificity algorithm calculates the weight of a CSS selector to determine which ruleset gets applied to an element.
+
+The specificity algorithm calculates a value based on three weight categories: *ID*, *CLASS*, and *TYPE*. The value represents the count of selector components in each weight category, and is written as *ID - CLASS - TYPE*. The selector weight categories are listed below in the order of decreasing specificity.
+
+| Column  | Selectors                                                | Weight |
+| ------- | -------------------------------------------------------- | ------ |
+| ID      | ID selectors                                             | 1-0-0  |
+| CLASS   | Class selectors, attribute selectors, and pseudo-classes | 0-1-0  |
+| TYPE    | Type selectors and pseudo-elements                       | 0-0-1  |
+| NEUTRAL | Universal selector and `:where()` pseudo-class           | 0-0-0  |
+
+The specificities are compared from left to right. The selector with a higher value in a left column wins regardless of the value in further columns. Further columns are only compared if the values in the left column are equal.
+
+Combinators may make a selector more specific in what is selected but they do not add any value to the specificity weight. The `:not()`, `:is()`, and `:has()` functional pseudo-classes do not have any specificity of their own. Their specificity is replaced by the specificity of the most specific selector in their argument selector list.
 
 ## Appendix
 
