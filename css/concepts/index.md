@@ -19,7 +19,7 @@
   - [Pseudo-elements](#pseudo-elements)
   - [Pseudo-classes](#pseudo-classes)
 - [Cascade, Specificity, Importance, and Inheritance](#cascade-specificity-importance-and-inheritance)
-  - [Cascade origin](#cascade-origin)
+  - [Cascade](#cascade)
 - [Origin types](#origin-types)
   - [User-agent stylesheets](#user-agent-stylesheets)
   - [Author stylesheets](#author-stylesheets)
@@ -246,11 +246,9 @@ Styles defined by a link-related pseudo-class are overridden by any subsequent l
 
 4. Proximity of elements in the document tree has no effect on the specificity.
 
-### Cascade origin
+### Cascade
 
-# Cascade
-
-The **cascade** is an algorithm that defines how user agents combine property values originating from different sources. The cascade defines the origin and layer that takes precedence when declarations in more than one origin or cascade layer set a value for a property on an element.
+The cascade is an algorithm that defines how user agents combine property values originating from different sources. The cascade defines the origin and layer that takes precedence when declarations in more than one origin or cascade layer set a value for a property on an element.
 
 The cascade lies at the core of CSS, as emphasized by the name: _**Cascading** Style Sheets_. When a selector matches an element, the property value from the origin with the highest precedence gets applied, even if the selector from a lower precedence origin or layer has greater specificity.
 
@@ -696,10 +694,9 @@ After your content has finished altering styles, it may find itself in a situati
 
 `all` lets you opt to immediately restore all properties to any of their initial (default) state, the state inherited from the previous level of the cascade, a specific origin (the user-agent stylesheet, the author stylesheet, or the user stylesheet), or even to clear the values of the properties entirely.
 
-
 ### Specificity
 
-Specificity is the algorithm used by browsers to choose a ruleset from competing rulesets with the same cascade origin and importance. The specificity algorithm calculates the weight of a CSS selector to determine which ruleset gets applied to an element.
+Specificity is the algorithm used by browsers to choose a declaration from competing declarations with the same cascade origin and importance. The specificity algorithm calculates the weights of CSS selectors to determine which declarations get applied to an element.
 
 The specificity algorithm calculates a value based on three weight categories: *ID*, *CLASS*, and *TYPE*. The value represents the count of selector components in each weight category, and is written as *ID - CLASS - TYPE*. The selector weight categories are listed below in the order of decreasing specificity.
 
