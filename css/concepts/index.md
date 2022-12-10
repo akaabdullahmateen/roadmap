@@ -229,12 +229,15 @@ Styles defined by a link-related pseudo-class are overridden by any subsequent l
 The cascade is an algorithm that determines how to find the value to apply for each property for each document element. The following steps apply to the cascading algorithm:
 
 1. **Relevance**: It first filters all the rules from the different sources to keep only the rules that apply to a given element. That means rules whose selector matches the given element, and which are part of an appropriate `media` at-rule.
-
 2. **Origin and importance**: It then sorts these rules according to their origin and importance (presence of the `!important` flag).
-
 3. **Specificity:** In the origin with precedence, if there are competing values for a property, the specificity of the selectors are compared, and the declaration with the highest specificity wins.
-
 4. **Order of appearance**: In the origin with precedence, if there are competing values for a property, that are in rulesets with selectors that have the same specificity, the last declaration in the style order is applied.
+
+Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. Specificity only matters for declarations of the same importance and same origin and cascade layer. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
+
+When multiple selectors in the same cascade layer and origin have the same specificity, the proximity rule is applied, whereby the selector that appears last wins.
+
+Directly targeted elements will always take precedence over rules which an element inherits from its ancestor, regardless of the specificity of the inherited rule. Proximity of elements in the document tree has no effect on the specificity.
 
 Declarations are the only constructs in CSS that participate in the cascade, whether contained inside rulesets or at-rules. However note that the at-rule may make the entire selector irrelevant. For the most part, properties and descriptors within at-rules do not participate in the cascade, however, some at-rules, as a whole, participate in the cascade. Since, at-rules do not have specificity, they are compared using a stripped down version of the cascade algorithm.
 
@@ -247,16 +250,6 @@ Declarations are the only constructs in CSS that participate in the cascade, whe
 | `@keyframes` | Entire keyframes participate in the cascade, but not individual declarations.        |
 | `@import`    | Imported styles participate in the cascade, but not itself.                          |
 | `@charset`   | Obeys other algorithms, and is not affected by the cascade.                          |
-
-Alpha as fck
-
-1. Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. Specificity only matters for declarations of the same importance and same origin and cascade layer. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
-
-2. When two selectors in the same cascade layer and origin have the same specificity, proximity is important; the last selector wins.
-
-3. As per CSS rules, directly targeted elements will always take precedence over rules which an element inherits from its ancestor, regardless of the specificity of the inherited rule.
-
-4. Proximity of elements in the document tree has no effect on the specificity.
 
 ### Origin and importance
 
@@ -328,9 +321,9 @@ The specificity algorithm calculates a value based on three weight categories: *
 | Column  | Selectors                                                | Weight |
 | ------- | -------------------------------------------------------- | ------ |
 | ID      | ID selectors                                             | 1-0-0  |
-| CLASS   | Class selectors, attribute selectors, and pseudo-classes | 0-1-0  |
-| TYPE    | Type selectors and pseudo-elements                       | 0-0-1  |
-| NEUTRAL | Universal selector and `:where()` pseudo-class           | 0-0-0  |
+| Class   | Class selectors, attribute selectors, and pseudo-classes | 0-1-0  |
+| Type    | Type selectors and pseudo-elements                       | 0-0-1  |
+| Neutral | Universal selector and `:where()` pseudo-class           | 0-0-0  |
 
 The specificities are compared from left to right. The selector with a higher value in a left column wins regardless of the value in further columns. Further columns are only compared if the values in the left column are equal.
 
