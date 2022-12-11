@@ -316,7 +316,7 @@ The `!important` flag reverses the precedence order of origin types and cascade 
 
 Specificity is the algorithm used by user agents to choose a declaration from competing declarations with the same cascade origin and importance. The specificity algorithm calculates the weights of CSS selectors to determine which declarations get applied to an element.
 
-The specificity algorithm calculates a value based on three weight categories: *ID*, *CLASS*, and *TYPE*. The value represents the count of selector components in each weight category, and is written as *ID - CLASS - TYPE*. The selector weight categories are listed below in the order of decreasing specificity.
+The specificity algorithm calculates a value based on three weight categories: *ID*, *class*, and *type*. The value represents the count of selector components in each weight category, and is written as *ID - class - type*. The selector weight categories are listed below in the order of decreasing specificity.
 
 | Column  | Selectors                                                | Weight |
 | ------- | -------------------------------------------------------- | ------ |
