@@ -233,7 +233,7 @@ The cascade is an algorithm that determines how to find the value to apply for e
 3. **Specificity:** In the origin with precedence, if there are competing values for a property, the specificity of the selectors are compared, and the declaration with the highest specificity wins.
 4. **Order of appearance**: In the origin with precedence, if there are competing values for a property, that are in rulesets with selectors that have the same specificity, the last declaration in the style order is applied.
 
-Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. Specificity only matters for declarations of the same importance and same origin and cascade layer. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
+Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
 
 When multiple selectors in the same cascade layer and origin have the same specificity, the proximity rule is applied, whereby the selector that appears last wins.
 
@@ -262,11 +262,11 @@ When a selector matches an element, the property value from the origin or layer 
 | 1                   | User agent      | Normal       |
 | 2                   | User            | Normal       |
 | 3                   | Author          | Normal       |
-| 4                   | CSS animations  | NA           |
+| 4                   | CSS animations  | Normal           |
 | 5                   | Author          | `!important` |
 | 6                   | User            | `!important` |
 | 7                   | User agent      | `!important` |
-| 8                   | CSS transitions | NA           |
+| 8                   | CSS transitions | Normal           |
 
 The cascade within each origin type is based on the declaration order of cascade layers within that type. For all origins, styles can be declared within or outside of named or anonymous layers. When declared using `layer`, `layer()` or `@layer`, styles are placed into the specified named layer, or into an anonymous layer if no name is provided. Styles declared outside of a layer are treated as being part of an anonymous last declared layer.
 
@@ -278,12 +278,12 @@ Normal layered styles take precedence over normal styles in prior layers. Normal
 | 2                   | Last layer       | Normal       |
 | 3                   | Unlayered styles | Normal       |
 | 4                   | Inline `style`   | Normal       |
-| 5                   | CSS animations   | NA           |
+| 5                   | CSS animations   | Normal           |
 | 6                   | Unlayered styles | `!important` |
 | 7                   | Last layer       | `!important` |
 | 8                   | First layer      | `!important` |
 | 9                   | Inline `style`   | `!important` |
-| 10                  | CSS Transitions  | NA           |
+| 10                  | CSS Transitions  | Normal           |
 
 The `!important` flag reverses the precedence order of origin types and cascade layers. Important styles declared outside of any cascade layer have lower precedence than those declared as part of a layer. Important values that come in early layers have precedence over important styles declared in subsequent cascade layers. Styles that are transitioning take precedence over all important styles, no matter who or how they are declared.
 
@@ -299,7 +299,7 @@ The `!important` flag reverses the precedence order of origin types and cascade 
 | 8                   | Author          | Last         | Normal       |
 | 9                   | Author          | Unlayered    | Normal       |
 | 10                  | Author          | Inline style | Normal       |
-| 11                  | CSS animations  | NA           | NA           |
+| 11                  | CSS animations  | All layers           | Normal           |
 | 12                  | Author          | Unlayered    | `!important` |
 | 13                  | Author          | Last         | `!important` |
 | 14                  | Author          | First        | `!important` |
@@ -310,7 +310,7 @@ The `!important` flag reverses the precedence order of origin types and cascade 
 | 19                  | User agent      | Unlayered    | `!important` |
 | 20                  | User agent      | Last         | `!important` |
 | 21                  | User agent      | First        | `!important` |
-| 22                  | CSS transitions | NA           | NA           |
+| 22                  | CSS transitions | All layers           | Normal           |
 
 ### Specificity
 
@@ -348,6 +348,8 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 | `initial` | Explicitly sets the property to take the initial value.                                                           |
 | `revert`  | Reverts the property value to the value that would have been if no changes were made by the current style origin. |
 | `unset`   | Resets an inherited property to the inherited value and non-inherited property to the initial value.              |
+
+
 
 ## Appendix
 
