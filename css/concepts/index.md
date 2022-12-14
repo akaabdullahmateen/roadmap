@@ -7,12 +7,12 @@
   - [Processing model](#processing-model)
 - [Syntax](#syntax)
   - [Rulesets](#rulesets)
+  - [At-rules](#at-rules)
   - [Properties](#properties)
   - [Shorthands](#shorthands)
   - [Functions](#functions)
   - [Comments](#comments)
   - [Whitespace](#whitespace)
-  - [At-rules](#at-rules)
 - [Application](#application)
   - [Inline styles](#inline-styles)
   - [Internal style sheet](#internal-style-sheet)
@@ -32,6 +32,7 @@
   - [Reset style sheets](#reset-style-sheets)
   - [Pseudo-elements](#pseudo-elements-1)
   - [Pseudo-classes](#pseudo-classes-1)
+  - [At-rules](#at-rules-1)
   - [Glossary](#glossary)
 
 <!-- general information about CSS that does not fall into any subcategory -->
@@ -52,7 +53,6 @@ This section presents one possible model of how user agents that support CSS wor
 5. From the annotated document tree, generate a formatting structure.).
 6. Transfer the formatting structure to the target medium for rendering. 
 
-<!-- Syntactical constructs for rulesets and at-rules with general validation information -->
 ## Syntax
 
 The primary construct in a style sheet is a statement. A statement begins with any non-space character and ends at the first closing brace or semicolon that is encountered non-escaped, outside a string, and not nested into another brace pair. There are two categories of statements in style sheets:
@@ -87,6 +87,21 @@ The declarations list is a semicolon-separated list of declarations - which are 
 declarations-list ::=
   [property: value]
   [; declarations-list]
+```
+
+### At-rules
+
+The at-rule is a statement that controls the CSS engine behavior in specific conditions. An at-rule begins with an `@` symbol, followed by an identifier, and continues up to the next semicolon, or the next block, whichever comes first.
+
+Besides the `@` symbol and the identifier, each at-rule has a different syntax. Nevertheless, several of them can be grouped as either *regular at-rules* or *conditional group rules*. The conditional group rules share a common syntax and optionally include nested statements.
+
+```css
+/* Regular at-rule */
+@identifier (RULE);
+
+/* Condition group rule */
+@identifier (RULE) {
+}
 ```
 
 ### Properties
@@ -127,21 +142,6 @@ The `/*` and `*/` pair is used to delimit both single line and multiple lines co
 Whitespace are characters that are used to indent the source code for readability. The characters considered as whitespace include **`U+0009 TAB`**, **`U+000A LF`**, **`U+000C FF`**, **`U+000D CR`**, and **`U+0020 SPACE`**.
 
 CSS largely ignores whitespaces between tokens, however, some instances require whitespace as syntax. Whitespaces around comma, curly braces, and colon are ignored and not required. A single whitespace character is required between property values. Property names never contain whitespaces.
-
-### At-rules
-
-The at-rule is a statement that controls the CSS engine behavior in specific conditions. An at-rule begins with an `@` symbol, followed by an identifier, and continues up to the next semicolon, or the next block, whichever comes first.
-
-Besides the `@` symbol and the identifier, each at-rule has a different syntax. Nevertheless, several of them can be grouped as either *regular at-rules* or *conditional group rules*. The conditional group rules share a common syntax and optionally include nested statements.
-
-```css
-/* Regular at-rule */
-@identifier (RULE);
-
-/* Condition group rule */
-@identifier (RULE) {
-}
-```
 
 ## Application
 
@@ -594,6 +594,76 @@ Although some constraints on user agent stylesheets are set by the HTML specific
 
 `:lang()`
 : It selects an element based on the language they are determined to be in. In HTML, the language is determined by a combination of the `lang` attribute, the `<meta>` element, and possibly by information from the HTTP headers.
+
+### At-rules
+
+`@charset`
+: It specifies the character encoding used in a style sheet. It must be the first statement in the style sheet and must not be preceded by any other character.
+
+```css
+@charset "charset";
+```
+
+`@font-face`
+: It specifies a custom font to be used for displaying text. The font can either be locally installed or loaded from a remote server.
+
+```css
+@font-face {
+  font-family: "font-name";
+  font-style: normal;
+  font-weight: 100;
+  src: local("font-name"), url("font-name.woff") format("woff");
+}
+```
+
+`@import`
+: It specifies an external style sheet to be imported, optionally into a layer, and optionally based on specific conditions. It must come before all other rules, except the `@charset` and `@layer` statements.
+
+```css
+@import url("file-name") layer(layer-name) supports(<supports-query>) <media-query>;
+```
+
+`@keyframes`
+: It specifies the intermediate steps in an animation sequence by defining styles for keyframes. This gives more control over the intermediate steps than transitions.
+
+```css
+@keyframes identifier {
+  from {
+    <style-rules>;
+  }
+
+  to {
+    <style-rules>;
+  }
+}
+```
+
+`@layer`
+: It declares a cascade layer, optionally immediately followed by a declaration block. Style rules that are not declared in a layer are gathered together into a single anonymous layer.
+
+```css
+@layer layer-name {
+  <style-rules>;
+}
+```
+
+`@media`
+: It specifies style rules that are applied based on specific media queries. These style rules are only applied when the media queries match the device on which the content is being used.
+
+```css
+@media <media-query> {
+  <style-rules>;
+}
+```
+
+`@supports`
+: It specifies style rules that are applied based on the browser support for a specific CSS feature. It must be placed at the top level of code or nested inside an other conditional group rule.
+
+```css
+@supports (<supports-query>) {
+  <style-rules>;
+}
+```
 
 ### Glossary
 
