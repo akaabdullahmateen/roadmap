@@ -7,6 +7,11 @@
   - [Processing model](#processing-model)
 - [Syntax](#syntax)
   - [Rulesets](#rulesets)
+  - [Properties](#properties)
+  - [Shorthands](#shorthands)
+  - [Functions](#functions)
+  - [Comments](#comments)
+  - [Whitespace](#whitespace)
   - [At-rules](#at-rules)
 - [Application](#application)
   - [Inline styles](#inline-styles)
@@ -55,7 +60,7 @@ The primary construct in a style sheet is a statement. A statement begins with a
 - **Rulesets:** A structure that associates a comma-separated selectors list with a declaration block.
 - **At-rules:** A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
 
-Any statement which is not a ruleset or an at-rule is invalid and ignored. CSS ignores whitespaces around comma in a selectors list, and around properties and values. CSS is case-insensitive within the ASCII range, except for parts that are not under its control.
+Any statement which is not a ruleset or an at-rule is invalid and ignored. CSS is case-insensitive within the ASCII range, except for parts that are not under its control. In CSS, US English spelling is deemed correct where there is spelling variation.
 
 ### Rulesets
 
@@ -84,10 +89,59 @@ declarations-list ::=
   [; declarations-list]
 ```
 
-<!-- TODO: Add introduction and syntax information -->
+### Properties
+
+### Shorthands
+
+Shorthand properties are CSS properties that allow setting values for multiple closely related CSS properties simultaneously. Values not specified in a shorthand property reset to their initial value. This means that an omission in a shorthand can override previously set values.
+
+Shorthand properties does not force a specific order for the values of the properties they replace, provided these properties use values of different types. However, a specific order is required when several of these properties have identical value types, such as those describing the edges of a box.
+
+| Syntax         | First value    | Second value     | Third value | Fourth value |
+| -------------- | -------------- | ---------------- | ----------- | ------------ |
+| 1-value syntax | All edges      |                  |             |              |
+| 2-value syntax | Vertical edges | Horizontal edges |             |              |
+| 3-value syntax | Top edge       | Horizontal edges | Bottom edge |              |
+| 4-value syntax | Top edge       | Right edge       | Bottom edge | Left edge    |
+
+CSS provides a universal shorthand property, `all`, which applies its value to every property of the selected element. Its purpose is to change the inheritance model of the element properties.
+
+### Functions
+
+### Comments
+
+A comment in CSS is used to add explanatory note to the code or prevent the browser from interpreting specific part of the style sheet. Comments can be placed wherever whitespace is allowed within a style sheet. Both single line and multiple lines comments are supported in CSS.
+
+```css
+/* Single line comment */
+
+/* Multiple
+   Lines
+   Comment */
+```
+
+The `/*` and `*/` pair is used to delimit both single line and multiple lines comments. There is no other way to specify comments in external style sheets. Comments can not be nested, the first instance of `*/` that follows the `/*` closes the comment.
+
+### Whitespace
+
+Whitespace are characters that are used to indent the source code for readability. The characters considered as whitespace include **`U+0009 TAB`**, **`U+000A LF`**, **`U+000C FF`**, **`U+000D CR`**, and **`U+0020 SPACE`**.
+
+CSS largely ignores whitespaces between tokens, however, some instances require whitespace as syntax. Whitespaces around comma, curly braces, and colon are ignored and not required. A single whitespace character is required between property values. Property names never contain whitespaces.
+
 ### At-rules
 
-Each type of at-rule, defined by its identifier, may have its own internal syntax and semantics.
+The at-rule is a statement that controls the CSS engine behavior in specific conditions. An at-rule begins with an `@` symbol, followed by an identifier, and continues up to the next semicolon, or the next block, whichever comes first.
+
+Besides the `@` symbol and the identifier, each at-rule has a different syntax. Nevertheless, several of them can be grouped as either *regular at-rules* or *conditional group rules*. The conditional group rules share a common syntax and optionally include nested statements.
+
+```css
+/* Regular at-rule */
+@identifier (RULE);
+
+/* Condition group rule */
+@identifier (RULE) {
+}
+```
 
 ## Application
 
@@ -244,7 +298,6 @@ Declarations are the only constructs in CSS that participate in the cascade, whe
 | At-rule      | Description                                                                          |
 | ------------ | ------------------------------------------------------------------------------------ |
 | `@media`     | Enclosed declarations participate in the cascade.                                    |
-| `@document`  | Enclosed declarations participate in the cascade.                                    |
 | `@supports`  | Enclosed declarations participate in the cascade.                                    |
 | `@font-face` | Entire at-rules, with the same `font-family` descriptor, participate in the cascade. |
 | `@keyframes` | Entire keyframes participate in the cascade, but not individual declarations.        |
@@ -262,11 +315,11 @@ When a selector matches an element, the property value from the origin or layer 
 | 1                   | User agent      | Normal       |
 | 2                   | User            | Normal       |
 | 3                   | Author          | Normal       |
-| 4                   | CSS animations  | Normal           |
+| 4                   | CSS animations  | Normal       |
 | 5                   | Author          | `!important` |
 | 6                   | User            | `!important` |
 | 7                   | User agent      | `!important` |
-| 8                   | CSS transitions | Normal           |
+| 8                   | CSS transitions | Normal       |
 
 The cascade within each origin type is based on the declaration order of cascade layers within that type. For all origins, styles can be declared within or outside of named or anonymous layers. When declared using `layer`, `layer()` or `@layer`, styles are placed into the specified named layer, or into an anonymous layer if no name is provided. Styles declared outside of a layer are treated as being part of an anonymous last declared layer.
 
@@ -278,12 +331,12 @@ Normal layered styles take precedence over normal styles in prior layers. Normal
 | 2                   | Last layer       | Normal       |
 | 3                   | Unlayered styles | Normal       |
 | 4                   | Inline `style`   | Normal       |
-| 5                   | CSS animations   | Normal           |
+| 5                   | CSS animations   | Normal       |
 | 6                   | Unlayered styles | `!important` |
 | 7                   | Last layer       | `!important` |
 | 8                   | First layer      | `!important` |
 | 9                   | Inline `style`   | `!important` |
-| 10                  | CSS Transitions  | Normal           |
+| 10                  | CSS Transitions  | Normal       |
 
 The `!important` flag reverses the precedence order of origin types and cascade layers. Important styles declared outside of any cascade layer have lower precedence than those declared as part of a layer. Important values that come in early layers have precedence over important styles declared in subsequent cascade layers. Styles that are transitioning take precedence over all important styles, no matter who or how they are declared.
 
@@ -299,7 +352,7 @@ The `!important` flag reverses the precedence order of origin types and cascade 
 | 8                   | Author          | Last         | Normal       |
 | 9                   | Author          | Unlayered    | Normal       |
 | 10                  | Author          | Inline style | Normal       |
-| 11                  | CSS animations  | All layers           | Normal           |
+| 11                  | CSS animations  | All layers   | Normal       |
 | 12                  | Author          | Unlayered    | `!important` |
 | 13                  | Author          | Last         | `!important` |
 | 14                  | Author          | First        | `!important` |
@@ -310,7 +363,7 @@ The `!important` flag reverses the precedence order of origin types and cascade 
 | 19                  | User agent      | Unlayered    | `!important` |
 | 20                  | User agent      | Last         | `!important` |
 | 21                  | User agent      | First        | `!important` |
-| 22                  | CSS transitions | All layers           | Normal           |
+| 22                  | CSS transitions | All layers   | Normal       |
 
 ### Specificity
 
@@ -348,8 +401,6 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 | `initial` | Explicitly sets the property to take the initial value.                                                           |
 | `revert`  | Reverts the property value to the value that would have been if no changes were made by the current style origin. |
 | `unset`   | Resets an inherited property to the inherited value and non-inherited property to the initial value.              |
-
-
 
 ## Appendix
 
@@ -547,76 +598,76 @@ Although some constraints on user agent stylesheets are set by the HTML specific
 ### Glossary
 
 Source document
- : The document to which one or more style sheets apply. This is encoded in some markup language that represents the document as a tree of elements.
+: The document to which one or more style sheets apply. This is encoded in some markup language that represents the document as a tree of elements.
 
 Document language
- : The encoding language of the source document, such as HTML, XHTML, or SVG.
+: The encoding language of the source document, such as HTML, XHTML, or SVG.
 
 Element
- : The primary syntactic constructs of the document language.
+: The primary syntactic constructs of the document language.
 
 Replaced element
- : An element whose content is outside the scope of the CSS formatting model, such as an image, embedded document, or applet.
+: An element whose content is outside the scope of the CSS formatting model, such as an image, embedded document, or applet.
 
 Intrinsic dimensions
- : The width and height as defined by the element itself, not imposed by the surroundings.
+: The width and height as defined by the element itself, not imposed by the surroundings.
 
 Attribute
- : A value associated with an element, consisting of a name, and an associated textual value. 
+: A value associated with an element, consisting of a name, and an associated textual value. 
 
 Content
- : The content associated with an element in the source document. Some elements have no content, in which case they are called empty. The content of an element may include text, and it may include a number of sub-elements, in which case the element is called the parent of those sub-elements. 
+: The content associated with an element in the source document. Some elements have no content, in which case they are called empty. The content of an element may include text, and it may include a number of sub-elements, in which case the element is called the parent of those sub-elements. 
 
 Rendered content
- : The content of an element after the rendering has been applied.
+: The content of an element after the rendering has been applied.
 
 Document tree
- : The tree of elements encoded in the source document. Each element in this tree has exactly one parent, with the exception of the root element, which has none.
+: The tree of elements encoded in the source document. Each element in this tree has exactly one parent, with the exception of the root element, which has none.
 
 Child
- : An element A is called the child of element B if and only if B is the parent of A.
+: An element A is called the child of element B if and only if B is the parent of A.
 
 Descendant
- : An element A is called a descendant of an element B, if either A is a child of B, or A is the child of some element C that is a descendant of B.
+: An element A is called a descendant of an element B, if either A is a child of B, or A is the child of some element C that is a descendant of B.
 
 Ancestor
- : An element A is called an ancestor of an element B, if and only if B is a descendant of A.
+: An element A is called an ancestor of an element B, if and only if B is a descendant of A.
 
 Sibling
- : An element A is called a sibling of an element B, if and only if B and A share the same parent element. Element A is a preceding sibling if it comes before B in the document tree. Element B is a following sibling if it comes after A in the document tree.
+: An element A is called a sibling of an element B, if and only if B and A share the same parent element. Element A is a preceding sibling if it comes before B in the document tree. Element B is a following sibling if it comes after A in the document tree.
 
 Preceding element
- : An element A is called a preceding element of an element B, if and only if A is an ancestor of B or A is a preceding sibling of B.
+: An element A is called a preceding element of an element B, if and only if A is an ancestor of B or A is a preceding sibling of B.
 
 Following element
- : An element A is called a following element of an element B, if and only if B is a preceding element of A.
+: An element A is called a following element of an element B, if and only if B is a preceding element of A.
 
 Author
- : An author is a person who writes documents and associated style sheets. An authoring tool is a user agent that generates style sheets.
+: An author is a person who writes documents and associated style sheets. An authoring tool is a user agent that generates style sheets.
 
 User
- : A user is a person who interacts with a user agent to view, hear, or otherwise use a document and its associated style sheet. The user may provide a personal style sheet that encodes personal preferences.
+: A user is a person who interacts with a user agent to view, hear, or otherwise use a document and its associated style sheet. The user may provide a personal style sheet that encodes personal preferences.
 
 User agent (UA)
- : A user agent is any program that interprets a document written in the document language and applies associated style sheets. A user agent may display a document, read it aloud, cause it to be printed, or convert it to another format.
+: A user agent is any program that interprets a document written in the document language and applies associated style sheets. A user agent may display a document, read it aloud, cause it to be printed, or convert it to another format.
 
 Property
- : A human-readable identifier that defines a presentational feature to be considered.
+: A human-readable identifier that defines a presentational feature to be considered.
 
 Value
- : An expression that describes how the presentational feature, defined by the associated property, must be handled.
+: An expression that describes how the presentational feature, defined by the associated property, must be handled.
 
 Declaration
- : A property and value pair separated by a colon, that together controls a presentational feature.
+: A property and value pair separated by a colon, that together controls a presentational feature.
 
 Declaration block
- : A structure containing a list of declarations separated by semicolons and delimited by an opening brace and a closing brace.
+: A structure containing a list of declarations separated by semicolons and delimited by an opening brace and a closing brace.
 
 Ruleset
- : A structure that associates a comma-separated selectors list with a declaration block.
+: A structure that associates a comma-separated selectors list with a declaration block.
 
 Statement
- : A structure that begins with any non-space character and ends at the first closing brace or semicolon.
+: A structure that begins with any non-space character and ends at the first closing brace or semicolon.
 
 At-rule
- : A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
+: A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
