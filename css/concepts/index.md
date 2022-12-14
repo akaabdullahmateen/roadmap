@@ -5,18 +5,13 @@
 
 - [Introduction](#introduction)
   - [Processing model](#processing-model)
+  - [Application](#application)
 - [Syntax](#syntax)
   - [Rulesets](#rulesets)
   - [At-rules](#at-rules)
-  - [Properties](#properties)
   - [Shorthands](#shorthands)
-  - [Functions](#functions)
   - [Comments](#comments)
   - [Whitespace](#whitespace)
-- [Application](#application)
-  - [Inline styles](#inline-styles)
-  - [Internal style sheet](#internal-style-sheet)
-  - [External style sheet](#external-style-sheet)
 - [Selectors](#selectors)
   - [Basic selectors](#basic-selectors)
   - [Combinators](#combinators)
@@ -53,6 +48,81 @@ This section presents one possible model of how user agents that support CSS wor
 5. From the annotated document tree, generate a formatting structure.).
 6. Transfer the formatting structure to the target medium for rendering. 
 
+### Application
+
+A style sheet is used to describe the presentation of a document written in a supported markup language. For the styling to take effect, the source document must either contain or link to the style sheet. In HTML, there are three methods to add a style sheet:
+
+- **Inline styles:** Applied by using the `style` attribute of an HTML element.
+- **Internal style sheet:** Applied by using the `<style>` element in the `<head>` element.
+- **External style sheet:** Applied by using the `<link>` element to link to an external CSS file.
+
+Inline styles are applied to a particular HTML element by providing a semicolon separated list of declarations inside its `style` attribute. Quotation marks can be used by escaping them as `&quot;`. However, avoid adding CSS through this method, unless the working environment is very restrictive. It is the least efficient method in terms of maintenance, and it mixes the presentation with the content.
+
+```html
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Inline Styles</title>
+  </head>
+    <body>
+      <p style="
+        color: red;
+        font-weight: bold;
+        font-size: 24px;
+        font-family: &quot;Open Sans&quot;">PARAGRAPH TEXT</p>
+    </body>
+</html>
+```
+
+Internal style sheet resides within the source document, as content of the `<style>` element contained within the `<head>` of the document. The content of an internal style sheet is identical to an external style sheet. Internal style sheet, however, is an inefficient method for adding consistent styling to a website of more than one page.
+
+```html
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Internal Style Sheet</title>
+    <style>
+      p {
+        color: red;
+        font-weight: bold;
+        font-size: 24px;
+        font-family: "Open Sans";
+      }
+    </style>
+  </head>
+    <body>
+      <p>PARAGRAPH TEXT</p>
+    </body>
+</html>
+```
+
+External style sheet is a file with a `.css` file extension, linked through the `<link>` element. The `href` attribute of the `<link>` element contains the path to the file, and the `ref` attribute must be provided the `stylesheet` value. The `type` attribute should not be provided if the style sheet has `text/css` type, because user agents already assume this as the default value. This is the recommended method of adding CSS to an HTML document, as a single style sheet can be referenced from multiple source documents, and the presentation is cleanly separated from the content.
+
+```html
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>External Style Sheet</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+    <body>
+      <p>PARAGRAPH TEXT</p>
+    </body>
+</html>
+```
+
+```css
+p {
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: "Open Sans";
+}
+```
+
 ## Syntax
 
 The primary construct in a style sheet is a statement. A statement begins with any non-space character and ends at the first closing brace or semicolon that is encountered non-escaped, outside a string, and not nested into another brace pair. There are two categories of statements in style sheets:
@@ -81,7 +151,7 @@ selectors-list ::=
   [, selectors-list]
 ```
 
-The declarations list is a semicolon-separated list of declarations - which are pairs of properties and values. The last declaration is not required to be terminated by a semicolon. If any invalid value is passed to a property, that accepts multiple values, the entire declaration is ignored.
+The declarations list is a semicolon-separated list of declarations - which are pairs of properties and values. The last declaration is not required to be terminated by a semicolon. If any invalid value is passed to a property, the entire declaration is ignored.
 
 ```css
 declarations-list ::=
@@ -104,8 +174,6 @@ Besides the `@` symbol and the identifier, each at-rule has a different syntax. 
 }
 ```
 
-### Properties
-
 ### Shorthands
 
 Shorthand properties are CSS properties that allow setting values for multiple closely related CSS properties simultaneously. Values not specified in a shorthand property reset to their initial value. This means that an omission in a shorthand can override previously set values.
@@ -120,8 +188,6 @@ Shorthand properties does not force a specific order for the values of the prope
 | 4-value syntax | Top edge       | Right edge       | Bottom edge | Left edge    |
 
 CSS provides a universal shorthand property, `all`, which applies its value to every property of the selected element. Its purpose is to change the inheritance model of the element properties.
-
-### Functions
 
 ### Comments
 
@@ -142,87 +208,6 @@ The `/*` and `*/` pair is used to delimit both single line and multiple lines co
 Whitespace are characters that are used to indent the source code for readability. The characters considered as whitespace include **`U+0009 TAB`**, **`U+000A LF`**, **`U+000C FF`**, **`U+000D CR`**, and **`U+0020 SPACE`**.
 
 CSS largely ignores whitespaces between tokens, however, some instances require whitespace as syntax. Whitespaces around comma, curly braces, and colon are ignored and not required. A single whitespace character is required between property values. Property names never contain whitespaces.
-
-## Application
-
-A style sheet is used to describe the presentation of a document written in a supported markup language. For the styling to take effect, the source document must either contain or link to the style sheet. In HTML, there are three methods to add a style sheet:
-
-- **Inline styles:** Applied by using the `style` attribute of an HTML element.
-- **Internal style sheet:** Applied by using the `<style>` element in the `<head>` element.
-- **External style sheet:** Applied by using the `<link>` element to link to an external CSS file.
-
-### Inline styles
-
-Inline styles are applied to a particular HTML element by providing a semicolon separated list of declarations inside its `style` attribute. Quotation marks can be used by escaping them as `&quot;`. However, avoid adding CSS through this method, unless the working environment is very restrictive. It is the least efficient method in terms of maintenance, and it mixes the presentation with the content.
-
-```html
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <title>Inline Styles</title>
-  </head>
-    <body>
-      <p style="
-        color: red;
-        font-weight: bold;
-        font-size: 24px;
-        font-family: &quot;Open Sans&quot;">PARAGRAPH TEXT</p>
-    </body>
-</html>
-```
-
-### Internal style sheet
-
-Internal style sheet resides within the source document, as content of the `<style>` element contained within the `<head>` of the document. The content of an internal style sheet is identical to an external style sheet. Internal style sheet, however, is an inefficient method for adding consistent styling to a website of more than one page.
-
-```html
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <title>Internal Style Sheet</title>
-    <style>
-      p {
-        color: red;
-        font-weight: bold;
-        font-size: 24px;
-        font-family: "Open Sans";
-      }
-    </style>
-  </head>
-    <body>
-      <p>PARAGRAPH TEXT</p>
-    </body>
-</html>
-```
-
-### External style sheet
-
-External style sheet is a file with a `.css` file extension, linked through the `<link>` element. The `href` attribute of the `<link>` element contains the path to the file, and the `ref` attribute must be provided the `stylesheet` value. The `type` attribute should not be provided if the style sheet has `text/css` type, because user agents already assume this as the default value. This is the recommended method of adding CSS to an HTML document, as a single style sheet can be referenced from multiple source documents, and the presentation is cleanly separated from the content.
-
-```html
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <title>External Style Sheet</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-    <body>
-      <p>PARAGRAPH TEXT</p>
-    </body>
-</html>
-```
-
-```css
-p {
-  color: red;
-  font-weight: bold;
-  font-size: 24px;
-  font-family: "Open Sans";
-}
-```
 
 ## Selectors
 
