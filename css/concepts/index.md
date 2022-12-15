@@ -30,7 +30,8 @@
   - [At-rules](#at-rules-1)
   - [Glossary](#glossary)
 
-<!-- general information about CSS that does not fall into any subcategory -->
+---
+
 ## Introduction
 
 Cascading Style Sheet (CSS) is a style sheet language used to describe the presentation of a document written in HTML or XML, including XML dialects such as SVG, MathML, or XHTML.
@@ -45,7 +46,7 @@ This section presents one possible model of how user agents that support CSS wor
 2. Identify the target media type.
 3. Retrieve all style sheets associated with the document that are specified for the target media type.
 4. Annotate every element of the document tree by assigning a single value to every property based on cascading and inheritance.
-5. From the annotated document tree, generate a formatting structure.).
+5. From the annotated document tree, generate a formatting structure.
 6. Transfer the formatting structure to the target medium for rendering. 
 
 ### Application
@@ -123,6 +124,8 @@ p {
 }
 ```
 
+---
+
 ## Syntax
 
 The primary construct in a style sheet is a statement. A statement begins with any non-space character and ends at the first closing brace or semicolon that is encountered non-escaped, outside a string, and not nested into another brace pair. There are two categories of statements in style sheets:
@@ -161,7 +164,7 @@ declarations-list ::=
 
 ### At-rules
 
-The at-rule is a statement that controls the CSS engine behavior in specific conditions. An at-rule begins with an `@` symbol, followed by an identifier, and continues up to the next semicolon, or the next block, whichever comes first.
+An [at-rule](#at-rules-1) is a statement that controls the CSS engine behavior in specific conditions. An at-rule begins with an `@` symbol, followed by an identifier, and continues up to the next semicolon, or the next block, whichever comes first.
 
 Besides the `@` symbol and the identifier, each at-rule has a different syntax. Nevertheless, several of them can be grouped as either *regular at-rules* or *conditional group rules*. The conditional group rules share a common syntax and optionally include nested statements.
 
@@ -208,6 +211,8 @@ The `/*` and `*/` pair is used to delimit both single line and multiple lines co
 Whitespace are characters that are used to indent the source code for readability. The characters considered as whitespace include **`U+0009 TAB`**, **`U+000A LF`**, **`U+000C FF`**, **`U+000D CR`**, and **`U+0020 SPACE`**.
 
 CSS largely ignores whitespaces between tokens, however, some instances require whitespace as syntax. Whitespaces around comma, curly braces, and colon are ignored and not required. A single whitespace character is required between property values. Property names never contain whitespaces.
+
+---
 
 ## Selectors
 
@@ -262,6 +267,8 @@ The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgi
 The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `A * n + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
 
 Styles defined by a link-related pseudo-class are overridden by any subsequent link-related pseudo-class, that has at least equal specificity. To style links appropriately, follow the *LVHA-order*, which is `:link` then `:visited` then `:hover` and finally `:active`.
+
+---
 
 ## Cascade
 
@@ -386,6 +393,8 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 | `initial` | Explicitly sets the property to take the initial value.                                                           |
 | `revert`  | Reverts the property value to the value that would have been if no changes were made by the current style origin. |
 | `unset`   | Resets an inherited property to the inherited value and non-inherited property to the initial value.              |
+
+---
 
 ## Appendix
 
