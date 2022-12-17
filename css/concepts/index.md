@@ -6,9 +6,13 @@
 - [Introduction](#introduction)
   - [Processing model](#processing-model)
   - [Application](#application)
+  - [Browser support](#browser-support)
+  - [Debugging CSS](#debugging-css)
+  - [Organizing CSS](#organizing-css)
 - [Syntax](#syntax)
   - [Rulesets](#rulesets)
   - [At-rules](#at-rules)
+  - [Values](#values)
   - [Shorthands](#shorthands)
   - [Comments](#comments)
   - [Whitespace](#whitespace)
@@ -22,8 +26,16 @@
   - [Origin](#origin)
   - [Specificity](#specificity)
   - [Inheritance](#inheritance)
+- [Box model](#box-model)
+  - [Backgrounds and borders](#backgrounds-and-borders)
+  - [Overflowing content](#overflowing-content)
+  - [Sizing items in CSS](#sizing-items-in-css)
+- [Text styling](#text-styling)
+  - [Handling different text directions](#handling-different-text-directions)
+- [Images, media, and form elements](#images-media-and-form-elements)
+- [Styling tables](#styling-tables)
 - [Appendix](#appendix)
-  - [Style guide / Lint](#style-guide--lint)
+  - [Style guide](#style-guide)
   - [Reset style sheets](#reset-style-sheets)
   - [Pseudo-elements](#pseudo-elements-1)
   - [Pseudo-classes](#pseudo-classes-1)
@@ -124,6 +136,16 @@ p {
 }
 ```
 
+### Browser support
+<!-- Add information about what happens when a CSS value is not supported by the browser -->
+<!-- Add information about why not all browsers are equal and support all features at the same time -->
+<!-- Give brief fallback mechanisms of CSS and introductions to how fallback can be provided -->
+<!-- And similar information -->
+
+### Debugging CSS
+
+### Organizing CSS
+
 ---
 
 ## Syntax
@@ -177,6 +199,9 @@ Besides the `@` symbol and the identifier, each at-rule has a different syntax. 
 }
 ```
 
+### Values
+
+
 ### Shorthands
 
 Shorthand properties are CSS properties that allow setting values for multiple closely related CSS properties simultaneously. Values not specified in a shorthand property reset to their initial value. This means that an omission in a shorthand can override previously set values.
@@ -208,9 +233,12 @@ The `/*` and `*/` pair is used to delimit both single line and multiple lines co
 
 ### Whitespace
 
-Whitespace are characters that are used to indent the source code for readability. The characters considered as whitespace include **`U+0009 TAB`**, **`U+000A LF`**, **`U+000C FF`**, **`U+000D CR`**, and **`U+0020 SPACE`**.
+Whitespace are characters that are used to indent the source code for readability. The characters considered as whitespace include **`U+0009 TAB`**, **`U+000A LF`**, **`U+000C FF`**, **`U+000D CR`**, and **`U+0020 SPACE`**. CSS largely ignores whitespaces between tokens, however, some instances require whitespace as syntax.
 
-CSS largely ignores whitespaces between tokens, however, some instances require whitespace as syntax. Whitespaces around comma, curly braces, and colon are ignored and not required. A single whitespace character is required between property values. Property names never contain whitespaces.
+- No whitespace is allowed between the colon and pseudo-class, and between the base selector and colon.
+- No whitespace is allowed between the two colons and pseudo-element, and between the base selector and two colons.
+- A single whitespace character is required between values to separate them.
+- Property names never contain whitespaces.
 
 ---
 
@@ -359,20 +387,21 @@ The `!important` flag reverses the precedence order of origin types and cascade 
 
 ### Specificity
 
-Specificity is the algorithm used by user agents to choose a declaration from competing declarations with the same cascade origin and importance. The specificity algorithm calculates the weights of CSS selectors to determine which declarations get applied to an element.
+Specificity is the algorithm used by user agents to choose a declaration from competing declarations with the same cascade origin and importance. The specificity algorithm calculates a value based on three weight categories: *A*, *B*, and *C*. The specificity is calculated by counting the selector components in each weight category.
 
-The specificity algorithm calculates a value based on three weight categories: *ID*, *class*, and *type*. The value represents the count of selector components in each weight category, and is written as *ID - class - type*. The selector weight categories are listed below in the order of decreasing specificity.
+| Column | Selectors                                                | Weight |
+| ------ | -------------------------------------------------------- | ------ |
+| A      | ID selectors                                             | 1-0-0  |
+| B      | Class selectors, attribute selectors, and pseudo-classes | 0-1-0  |
+| C      | Type selectors and pseudo-elements                       | 0-0-1  |
 
-| Column  | Selectors                                                | Weight |
-| ------- | -------------------------------------------------------- | ------ |
-| ID      | ID selectors                                             | 1-0-0  |
-| Class   | Class selectors, attribute selectors, and pseudo-classes | 0-1-0  |
-| Type    | Type selectors and pseudo-elements                       | 0-0-1  |
-| Neutral | Universal selector and `:where()` pseudo-class           | 0-0-0  |
+The specificities are compared from left to right. The selector with a higher value in a left column wins regardless of the value in further columns. Further columns are only compared if the values in all left columns are equal. Some exceptions to the general specificity algorithm exist.
 
-The specificities are compared from left to right. The selector with a higher value in a left column wins regardless of the value in further columns. Further columns are only compared if the values in the left column are equal.
-
-Combinators may make a selector more specific in what is selected but they do not add any value to the specificity weight. The `:not()`, `:is()`, and `:has()` functional pseudo-classes do not have any specificity of their own. Their specificity is replaced by the specificity of the most specific selector in their argument selector list.
+- The specificity of a selector list is replaced by the specificity of the most specific selector in the list.
+- The specificity of an `:is()`, `:not()`, or `:has()` pseudo-class is replaced by the specificity of the most specific selector in its selector list argument.
+- The specificity of an `:nth-child()` or `:nth-last-child()` selector is the specificity of the pseudo-class itself (counting as one pseudo-class selector) plus the specificity of the most specific selector in its selector list argument, if any.
+- Combinators may make a selector more specific in what is selected but they do not add any value to the specificity weight.
+- The specificity of a universal selector or `:where()` pseudo-class is replaced by zero.
 
 ### Inheritance
 
@@ -396,9 +425,33 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 
 ---
 
+## Box model
+
+### Backgrounds and borders
+
+### Overflowing content
+
+### Sizing items in CSS
+
+---
+
+## Text styling
+
+### Handling different text directions
+
+---
+
+## Images, media, and form elements
+
+---
+
+## Styling tables
+
+---
+
 ## Appendix
 
-### Style guide / Lint
+### Style guide
 
 Add semicolon after the last declaration in a ruleset.
 Each declaration should go on a separate line.
