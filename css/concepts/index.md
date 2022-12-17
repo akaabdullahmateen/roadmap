@@ -152,14 +152,14 @@ p {
 
 The primary construct in a style sheet is a statement. A statement begins with any non-space character and ends at the first closing brace or semicolon that is encountered non-escaped, outside a string, and not nested into another brace pair. There are two categories of statements in style sheets:
 
-- **Rulesets:** A structure that associates a comma-separated selectors list with a declaration block.
+- **Rulesets:** A structure that associates a selector list with a declaration block.
 - **At-rules:** A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
 
 Any statement which is not a ruleset or an at-rule is invalid and ignored. CSS is case-insensitive within the ASCII range, except for parts that are not under its control. In CSS, US English spelling is deemed correct where there is spelling variation.
 
 ### Rulesets
 
-The ruleset (or rule) is a structure formed by adding a declarations list, enclosed within curly braces, after a selectors list.
+The ruleset (or rule) is a structure formed by adding a declarations list, enclosed within curly braces, after a selector list.
 
 ```css
 style-rule ::=
@@ -168,7 +168,7 @@ style-rule ::=
   }
 ```
 
-The selectors list is a comma-separated list of selectors, which selects nodes that matches with any single selector in the list. If any single selector in a selectors list is invalid or unsupported, the entire selectors list is considered invalid, and therefore the associated ruleset is ignored.
+The selector list is a comma-separated list of selectors, which selects nodes that matches with any single selector in the list. If any single selector in a selector list is invalid or unsupported, the entire selector list is considered invalid, and therefore the associated ruleset is ignored.
 
 ```css
 selectors-list ::=
@@ -781,7 +781,7 @@ Declaration block
 : A structure containing a list of declarations separated by semicolons and delimited by an opening brace and a closing brace.
 
 Ruleset
-: A structure that associates a comma-separated selectors list with a declaration block.
+: A structure that associates a selector list with a declaration block.
 
 Statement
 : A structure that begins with any non-space character and ends at the first closing brace or semicolon.
