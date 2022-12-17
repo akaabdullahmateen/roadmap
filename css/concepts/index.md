@@ -24,6 +24,7 @@
   - [Pseudo-classes](#pseudo-classes)
 - [Cascade](#cascade)
   - [Origin](#origin)
+  - [Importance](#importance)
   - [Specificity](#specificity)
   - [Inheritance](#inheritance)
 - [Box model](#box-model)
@@ -239,6 +240,7 @@ Whitespace are characters that are used to indent the source code for readabilit
 - No whitespace is allowed between the two colons and pseudo-element, and between the base selector and two colons.
 - A single whitespace character is required between values to separate them.
 - Property names never contain whitespaces.
+- Any amount of whitespace is allowed between each selector and comma in a selector list.
 
 ---
 
@@ -290,7 +292,7 @@ A [pseudo-element](#pseudo-elements-1) is a keyword added to a selector that des
 
 A [pseudo-class](#pseudo-classes-1) is a keyword added to a selector that describes a specific state of the selected element. A pseudo-class consists of a colon followed by the pseudo-class identifier. A functional pseudo-class is additionally followed by a pair of parenthesis which enclose the arguments. The element that a pseudo-class is attached to is called the *anchor element*.
 
-The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgiving selector list, where incorrect or unsupported selectors are simply ignored, rather than invalidating the whole selector list. The selector list can not contain the functional pseudo-class itself and any pseudo-elements. The specificity of a functional pseudo-class is replaced by the specificity of the most specific selector in its argument selector list.
+The functional pseudo-classes (`:is()`, `:has()`, and `:where()`) accept a forgiving selector list, where incorrect or unsupported selectors are simply ignored, rather than invalidating the whole selector list. The selector list can not contain the functional pseudo-class itself and any pseudo-elements.
 
 The functional pseudo-classes (`:nth-child()`, `:nth-last-child()`, `:nth-of-type()`, and `nth-last-of-type()`) take a single argument of the form `A * n + B`, where `A` is the integer step size, `B` is the integer offset, and `n` is the domain of all non-negative integers, starting from `0`. Two keywords exist as an argument, that are `odd` and `even`, which match elements at either odd positions or even positions. A single integer can be also be used as an argument, which selects only the element at that specified position.
 
@@ -330,33 +332,28 @@ The cascade algorithm defines how user agents combine property values originatin
 
 When a selector matches an element, the property value from the origin or layer with the highest precedence gets applied, even if the selector from a lower precedence origin or layer has greater specificity. The cascade order is based on origin type, which can be either user agent, author, or user.
 
-| Order (low to high) | Origin          | Importance   |
-| ------------------- | --------------- | ------------ |
-| 1                   | User agent      | Normal       |
-| 2                   | User            | Normal       |
-| 3                   | Author          | Normal       |
-| 4                   | CSS animations  | Normal       |
-| 5                   | Author          | `!important` |
-| 6                   | User            | `!important` |
-| 7                   | User agent      | `!important` |
-| 8                   | CSS transitions | Normal       |
+| Order (low to high) | Origin          |
+| ------------------- | --------------- |
+| 1                   | User agent      |
+| 2                   | User            |
+| 3                   | Author          |
+| 4                   | CSS animations  |
+| 5                   | CSS transitions |
 
 The cascade within each origin type is based on the declaration order of cascade layers within that type. For all origins, styles can be declared within or outside of named or anonymous layers. When declared using `layer`, `layer()` or `@layer`, styles are placed into the specified named layer, or into an anonymous layer if no name is provided. Styles declared outside of a layer are treated as being part of an anonymous last declared layer.
 
 Normal layered styles take precedence over normal styles in prior layers. Normal unlayered styles take precedence over normal layered styles, regardless of specificity. Normal inline styles take precedence over normal author styles, unless the property is being altered by a CSS animation.
 
-| Order (low to high) | Origin           | Importance   |
-| ------------------- | ---------------- | ------------ |
-| 1                   | First layer      | Normal       |
-| 2                   | Last layer       | Normal       |
-| 3                   | Unlayered styles | Normal       |
-| 4                   | Inline `style`   | Normal       |
-| 5                   | CSS animations   | Normal       |
-| 6                   | Unlayered styles | `!important` |
-| 7                   | Last layer       | `!important` |
-| 8                   | First layer      | `!important` |
-| 9                   | Inline `style`   | `!important` |
-| 10                  | CSS Transitions  | Normal       |
+| Order (low to high) | Origin           |
+| ------------------- | ---------------- |
+| 1                   | First layer      |
+| 2                   | Last layer       |
+| 3                   | Unlayered styles |
+| 4                   | Inline `style`   |
+| 5                   | CSS animations   |
+| 10                  | CSS Transitions  |
+
+### Importance
 
 The `!important` flag reverses the precedence order of origin types and cascade layers. Important styles declared outside of any cascade layer have lower precedence than those declared as part of a layer. Important values that come in early layers have precedence over important styles declared in subsequent cascade layers. Styles that are transitioning take precedence over all important styles, no matter who or how they are declared.
 
