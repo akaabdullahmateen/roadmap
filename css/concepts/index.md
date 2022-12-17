@@ -272,16 +272,16 @@ A combinator matches elements based on their relationship with another selected 
 
 ### Attribute selectors
 
-An attribute selector matches elements based on the presence of a specified attribute and conditions for its associated value. By default, the values are tested case-sensitively, however, the addition of the character `i` or `I` before the closing bracket causes the value to be tested case-insensitively.
+An attribute selector matches elements based on the presence of a specified attribute and conditions for its associated value. By default, the values are tested based on the case-sensitivity of the document language, however, the addition of the character `i` or `I` before the closing bracket causes the value to be tested case-insensitively.
 
 | Name                           | Syntax            | Attribute value                                                               |
 | ------------------------------ | ----------------- | ----------------------------------------------------------------------------- |
 | General attribute selector     | `[attr]`          | Any value to the specified attribute.                                         |
 | Exact attribute selector       | `[attr="value"]`  | Value exactly matches the specified string.                                   |
+| List attribute selector        | `[attr~="value"]` | Value is a space-separated list, one of which matches the specified string.   |
 | Starts-with attribute selector | `[attr^="value"]` | Value starts with the specified string.                                       |
 | Ends-with attribute selector   | `[attr$="value"]` | Value ends with the specified string.                                         |
 | Contains attribute selector    | `[attr*="value"]` | Value contains the specified string.                                          |
-| List attribute selector        | `[attr~="value"]` | Value is a space-separated list, one of which matches the specified string.   |
 | Hyphenated attribute selector  | `[attr|="value"]` | Value either matches, or starts with and is immediately followed by a hyphen. |
 
 ### Pseudo-elements
