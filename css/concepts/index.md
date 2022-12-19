@@ -302,16 +302,16 @@ Styles defined by a link-related pseudo-class are overridden by any subsequent l
 
 ## Cascade
 
-The cascade is an algorithm that determines how to find the value to apply for each property for each document element. The following steps apply to the cascading algorithm:
+The cascade is an algorithm that determines how to find the value for each property of each document element. The following steps apply to the cascading algorithm:
 
 1. **Relevance**: It first filters all the rules from the different sources to keep only the rules that apply to a given element. That means rules whose selector matches the given element, and which are part of an appropriate `media` at-rule.
 2. **Origin and importance**: It then sorts these rules according to their origin and importance (presence of the `!important` flag).
 3. **Specificity:** In the origin with precedence, if there are competing values for a property, the specificity of the selectors are compared, and the declaration with the highest specificity wins.
 4. **Order of appearance**: In the origin with precedence, if there are competing values for a property, that are in rulesets with selectors that have the same specificity, the last declaration in the style order is applied.
 
-Specificity only applies when the same element is targeted by multiple declarations in the same cascade layer or origin. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
+Specificity only applies when the same element is targeted by multiple declarations of the same importance, in the origin with precedence. If matching selectors are in different origins, the cascade determines which declaration takes precedence.
 
-When multiple selectors in the same cascade layer and origin have the same specificity, the proximity rule is applied, whereby the selector that appears last wins.
+When multiple selectors in the origin with precedence have the same specificity, the proximity rule is applied, whereby the declaration that appears last wins.
 
 Directly targeted elements will always take precedence over rules which an element inherits from its ancestor, regardless of the specificity of the inherited rule. Proximity of elements in the document tree has no effect on the specificity.
 
