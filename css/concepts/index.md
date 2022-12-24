@@ -28,6 +28,8 @@
   - [Specificity](#specificity)
   - [Inheritance](#inheritance)
 - [Box model](#box-model)
+  - [Visual formatting model](#visual-formatting-model)
+  - [Margin collapsing](#margin-collapsing)
   - [Backgrounds and borders](#backgrounds-and-borders)
   - [Overflowing content](#overflowing-content)
   - [Sizing items in CSS](#sizing-items-in-css)
@@ -150,6 +152,29 @@ p {
 ---
 
 ## Syntax
+
+<!-- 
+- Syntax
+- - Keywords
+- - Characters
+- - Statements
+- - At-rules
+- - Blocks
+- - Rulesets
+- - Declarations
+- - Comments
+- - Errors
+
+- Values
+- - Numbers
+- - Lengths
+- - Percentages
+- - URI
+- - Counters
+- - Colors
+- - Strings
+- - Unsupported values
+-->
 
 The primary construct in a style sheet is a statement. A statement begins with any non-space character and ends at the first closing brace or semicolon that is encountered non-escaped, outside a string, and not nested into another brace pair. There are two categories of statements in style sheets:
 
@@ -424,24 +449,49 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 
 ## Box model
 
-The rendering engine represents each element as a rectangular box according to the CSS basic box model. Every box is composed of four areas, defined by their respective edges.
+The CSS box model describes the rectangular boxes that are generated for each element in the document tree and laid out according to the visual formatting model. Each box has a content area, and optionally surrounding padding, border, and margin areas. The perimeter of each area is called an *edge*, and the four edges of an area define its size.
 
-| Area         | Bounds       | Description                                                     |
+<!-- Necessary to center align and add spacing above and below the image -->
+<br><div align="center"><img src="assets/box-model.png"></div><br>
+
+| Area         | Edge         | Description                                                     |
 | ------------ | ------------ | --------------------------------------------------------------- |
-| Content area | Content edge | It contains the actual content of the element.                  |
+| Content area | Content edge | It contains the rendered content of the element.                |
 | Padding area | Padding edge | It extends the content area to include the surrounding padding. |
 | Border area  | Border edge  | It extends the padding area to include the surrounding border.  |
 | Margin area  | Margin edge  | It extends the border area to include the box margin.           |
 
-For block elements, the CSS properties (`width`, `min-width`, `max-width`, `height`, `min-height`, and `max-height`) explicitly controls the size of either content area or border area, based on whether the `box-sizing` property is set to `content-area` (default) or `border-box`. The thickness of padding, border, and margin can be explicitly controlled by CSS properties.
+For block elements, the CSS properties (`width`, `min-width`, `max-width`, `height`, `min-height`, and `max-height`) explicitly controls the size of either content area or border area, based on whether the `box-sizing` property is set to `content-area` (default) or `border-box`. For non-replaced inline elements, the box height is defined by the `line-height` property, although the border and padding are still displayed. The thickness of padding, border, and margin can be explicitly controlled by CSS properties.
 
-| Area         | Controlling properties                                                      |
+| Area         | Properties                                                                  |
 | ------------ | --------------------------------------------------------------------------- |
 | Padding area | `padding-top`, `padding-right`, `padding-bottom`, `padding-left`, `padding` |
-| Border area  | `border-width`, `border`                                                    |
+| Border area  | `border-top`, `border-right`, `border-bottom`, `border-left`, `border`      |
 | Margin area  | `margin-top`, `margin-right`, `margin-bottom`, `margin-left`, `margin`      |
 
-If there is a background set on a box, it extends underneath to the outer edge of the border. This default behavior can be altered with the `background-clip` property. When margin collapsing occurs, the margin area is not clearly defined since margins are shared between boxes. For non-replaced inline elements, the box height is defined by the `line-height` property, although the border and padding are still displayed.
+The background style of the content area, padding area, and border area can be defined by the `background` shorthand property of the generating element. However, margins always have transparent backgrounds. If there is a background set on a box, it extends underneath to the outer edge of the border. This default behavior can be altered with the `background-clip` property. 
+
+The adjoining margins of two or more boxes, which might or might not be siblings, can collapse to form a single [*collapsed margin*](#margin-collapsing). When margin collapsing occurs, the margin areas are not clearly defined since margins are shared between boxes.
+
+### Visual formatting model
+
+
+
+
+
+
+The `display` property defines the display type of an element, which consists of the two basic qualities of how an element generates boxes:
+
+- **Inner display type:** It defines the formatting context generated by a non-replaced element, dictating how the descendants are laid out.
+- **Outer display type:** It defines how the principal box itself participates in flow layout.
+
+Text runs have no display type. The inner display of a replaced element is outside the scope of CSS. 
+
+The element lays out its content using flow layout.
+
+In the visual formatting model, each element in the document tree generates zero or more boxes according to the box model. The layout of these boxes is governed by the box dimensions and type, positioning scheme, relationships between elements in the document tree, and external information.
+
+### Margin collapsing
 
 ### Backgrounds and borders
 
@@ -804,3 +854,6 @@ Statement
 
 At-rule
 : A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
+
+Principal box
+: When an element generates one or more boxes, one of them is the principal box, which contains its descendant boxes and generated content, and is also the box involved in any positioning scheme.
