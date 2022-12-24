@@ -424,6 +424,25 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 
 ## Box model
 
+The rendering engine represents each element as a rectangular box according to the CSS basic box model. Every box is composed of four areas, defined by their respective edges.
+
+| Area         | Bounds       | Description                                                     |
+| ------------ | ------------ | --------------------------------------------------------------- |
+| Content area | Content edge | It contains the actual content of the element.                  |
+| Padding area | Padding edge | It extends the content area to include the surrounding padding. |
+| Border area  | Border edge  | It extends the padding area to include the surrounding border.  |
+| Margin area  | Margin edge  | It extends the border area to include the box margin.           |
+
+For block elements, the CSS properties (`width`, `min-width`, `max-width`, `height`, `min-height`, and `max-height`) explicitly controls the size of either content area or border area, based on whether the `box-sizing` property is set to `content-area` (default) or `border-box`. The thickness of padding, border, and margin can be explicitly controlled by CSS properties.
+
+| Area         | Controlling properties                                                      |
+| ------------ | --------------------------------------------------------------------------- |
+| Padding area | `padding-top`, `padding-right`, `padding-bottom`, `padding-left`, `padding` |
+| Border area  | `border-width`, `border`                                                    |
+| Margin area  | `margin-top`, `margin-right`, `margin-bottom`, `margin-left`, `margin`      |
+
+If there is a background set on a box, it extends underneath to the outer edge of the border. This default behavior can be altered with the `background-clip` property. When margin collapsing occurs, the margin area is not clearly defined since margins are shared between boxes. For non-replaced inline elements, the box height is defined by the `line-height` property, although the border and padding are still displayed.
+
 ### Backgrounds and borders
 
 ### Overflowing content
