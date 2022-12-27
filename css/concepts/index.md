@@ -30,7 +30,12 @@
 - [Box model](#box-model)
   - [Visual formatting model](#visual-formatting-model)
   - [Margin collapsing](#margin-collapsing)
-  - [Formatting context and block formatting context (BFC)](#formatting-context-and-block-formatting-context-bfc)
+  - [Formatting context](#formatting-context)
+  - [Positioning](#positioning)
+  - [Flow layout](#flow-layout)
+  - [Flex layout](#flex-layout)
+  - [Grid layout](#grid-layout)
+  - [Table layout](#table-layout)
   - [Backgrounds and borders](#backgrounds-and-borders)
   - [Overflowing content](#overflowing-content)
   - [Sizing items in CSS](#sizing-items-in-css)
@@ -476,23 +481,40 @@ Typically, an element generates a single box, called *principal box*, however, s
 
 Text runs have no display type. For elements, the `display` property defines its display type, which consists of the two basic qualities of how an element generates boxes:
 
-- **Inner display type:** It defines the formatting context generated, dictating how its descendants are laid out.
 - **Outer display type:** It defines how the principal box itself participates in flow layout.
+- **Inner display type:** It defines the formatting context generated, dictating how its descendants are laid out.
 
 | Value       | Generated box                 | Outer display type | Inner display type | Formatting context        |
 | ----------- | ----------------------------- | ------------------ | ------------------ | ------------------------- |
-| `none`      | Subtree omitted from box tree | None               | None               | None                      |
-| `block`     | Block box                     | Block              | Flow               | Block formatting context  |
-| `inline`    | Inline box                    | Block              | Flow               | Inline formatting context |
-| `table`     | Table wrapper box             | Block              | Table              | Table formatting context  |
-| `flex`      | Flex container                | Block              | Flex               | Flex formatting context   |
-| `grid`      | Grid container                | Block              | Grid               | Grid formatting context   |
-| `list-item` | Block box with `::marker` box | Block              | Flow               | Block formatting context  |
+| `none`      | No box                        | `none`             | `none`             | None                      |
+| `block`     | Block box                     | `block`            | `flow`             | Block formatting context  |
+| `inline`    | Inline box                    | `inline`           | `flow`             | Inline formatting context |
+| `table`     | Table wrapper box             | `block`            | `table`            | Table formatting context  |
+| `flex`      | Flex box                      | `block`            | `flex`             | Flex formatting context   |
+| `grid`      | Grid container                | `block`            | `grid`             | Grid formatting context   |
+| `list-item` | Block box with `::marker` box | `block`            | `flow`             | Block formatting context  |
 
 ### Margin collapsing
 
-### Formatting context and block formatting context (BFC)
+### Formatting context
+- Block formatting context
+- Inline formatting context
+- etc
 
+### Positioning
+- Normal
+- Absolute
+- Static
+- Relative
+- etc
+
+### Flow layout
+
+### Flex layout
+
+### Grid layout
+
+### Table layout
 
 ### Backgrounds and borders
 
