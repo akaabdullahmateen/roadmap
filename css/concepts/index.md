@@ -30,6 +30,7 @@
 - [Box model](#box-model)
   - [Visual formatting model](#visual-formatting-model)
   - [Margin collapsing](#margin-collapsing)
+  - [Formatting context and block formatting context (BFC)](#formatting-context-and-block-formatting-context-bfc)
   - [Backgrounds and borders](#backgrounds-and-borders)
   - [Overflowing content](#overflowing-content)
   - [Sizing items in CSS](#sizing-items-in-css)
@@ -449,7 +450,7 @@ Inheritance can be explicitly controlled using special keywords that applies to 
 
 ## Box model
 
-The CSS box model describes the rectangular boxes that are generated for each element in the document tree and laid out according to the visual formatting model. Each box has a content area, and optionally surrounding padding, border, and margin areas. The perimeter of each area is called an *edge*, and the four edges of an area define its size.
+The CSS box model describes how each element and string of text in a source document is laid out by transforming the document tree into boxes, whose size, position, and stacking level on the canvas depend on the values of their CSS properties. Each box has a rectangular content area, which contains text, descendant boxes, or replaced elements, and optionally surrounding padding, border, and margin areas. The size of each area can be zero, or negative in the case of margins. The perimeter of each area is called an *edge*, and the four edges (top, right, bottom, left) of an area define its size.
 
 <!-- Necessary to center align and add spacing above and below the image -->
 <br><div align="center"><img src="assets/box-model.png"></div><br>
@@ -461,37 +462,37 @@ The CSS box model describes the rectangular boxes that are generated for each el
 | Border area  | Border edge  | It extends the padding area to include the surrounding border.  |
 | Margin area  | Margin edge  | It extends the border area to include the box margin.           |
 
-For block elements, the CSS properties (`width`, `min-width`, `max-width`, `height`, `min-height`, and `max-height`) explicitly controls the size of either content area or border area, based on whether the `box-sizing` property is set to `content-area` (default) or `border-box`. For non-replaced inline elements, the box height is defined by the `line-height` property, although the border and padding are still displayed. The thickness of padding, border, and margin can be explicitly controlled by CSS properties.
+For block elements, the CSS properties (`width`, `min-width`, `max-width`, `height`, `min-height`, and `max-height`) explicitly controls the size of either content area or border area, based on whether the `box-sizing` property is set to `content-area` (default) or `border-box`. For non-replaced inline elements, the box height is defined by the `line-height` property, although the border and padding are still displayed. The thickness of padding, border, and margin can be explicitly controlled by `padding` and its longhand properties, `border` and its longhand properties, and `margin` and its longhand properties, respectively.
 
-| Area         | Properties                                                                  |
-| ------------ | --------------------------------------------------------------------------- |
-| Padding area | `padding-top`, `padding-right`, `padding-bottom`, `padding-left`, `padding` |
-| Border area  | `border-top`, `border-right`, `border-bottom`, `border-left`, `border`      |
-| Margin area  | `margin-top`, `margin-right`, `margin-bottom`, `margin-left`, `margin`      |
+The background style of the content area, padding area, and border area can be defined by the `background` shorthand property of the generating element. However, margins are always transparent. Backgrounds specified on a box are, by default, painted within the padding edges, and additionally painted underneath the border. This behavior can be adjusted with the `background-origin` and `background-clip` properties. 
 
-The background style of the content area, padding area, and border area can be defined by the `background` shorthand property of the generating element. However, margins always have transparent backgrounds. If there is a background set on a box, it extends underneath to the outer edge of the border. This default behavior can be altered with the `background-clip` property. 
-
-The adjoining margins of two or more boxes, which might or might not be siblings, can collapse to form a single [*collapsed margin*](#margin-collapsing). When margin collapsing occurs, the margin areas are not clearly defined since margins are shared between boxes.
+Adjoining margins in block layout can collapse to form a single [*collapsed margin*](#margin-collapsing). When margin collapsing occurs, the margin areas are not clearly defined since margins are shared between boxes.
 
 ### Visual formatting model
 
+The visual formatting model describes how user agents process the document tree and display it for visual media, which includes continuous media and paged media. It takes a source document organized as a tree of elements and text nodes, and generates an intermediary structure called *box tree*. For each element or text node, zero or more boxes are generated, as specified by the `display` property.
 
+Typically, an element generates a single box, called *principal box*, however, some `display` values generate no box or more than than one box. An anonymous box is generated in certain circumstances to fix up the box tree. Anonymous boxes inherit from their direct parent and can not be targeted for styling.
 
+Text runs have no display type. For elements, the `display` property defines its display type, which consists of the two basic qualities of how an element generates boxes:
 
-
-
-The `display` property defines the display type of an element, which consists of the two basic qualities of how an element generates boxes:
-
-- **Inner display type:** It defines the formatting context generated by a non-replaced element, dictating how the descendants are laid out.
+- **Inner display type:** It defines the formatting context generated, dictating how its descendants are laid out.
 - **Outer display type:** It defines how the principal box itself participates in flow layout.
 
-Text runs have no display type. The inner display of a replaced element is outside the scope of CSS. 
-
-The element lays out its content using flow layout.
-
-In the visual formatting model, each element in the document tree generates zero or more boxes according to the box model. The layout of these boxes is governed by the box dimensions and type, positioning scheme, relationships between elements in the document tree, and external information.
+| Value       | Generated box                 | Outer display type | Inner display type | Formatting context        |
+| ----------- | ----------------------------- | ------------------ | ------------------ | ------------------------- |
+| `none`      | Subtree omitted from box tree | None               | None               | None                      |
+| `block`     | Block box                     | Block              | Flow               | Block formatting context  |
+| `inline`    | Inline box                    | Block              | Flow               | Inline formatting context |
+| `table`     | Table wrapper box             | Block              | Table              | Table formatting context  |
+| `flex`      | Flex container                | Block              | Flex               | Flex formatting context   |
+| `grid`      | Grid container                | Block              | Grid               | Grid formatting context   |
+| `list-item` | Block box with `::marker` box | Block              | Flow               | Block formatting context  |
 
 ### Margin collapsing
+
+### Formatting context and block formatting context (BFC)
+
 
 ### Backgrounds and borders
 
@@ -780,65 +781,23 @@ Although some constraints on user agent stylesheets are set by the HTML specific
 
 ### Glossary
 
-Source document
-: The document to which one or more style sheets apply. This is encoded in some markup language that represents the document as a tree of elements.
+Ancestor
+: An element A is called an ancestor of an element B, if and only if B is a descendant of A.
 
-Document language
-: The encoding language of the source document, such as HTML, XHTML, or SVG.
-
-Element
-: The primary syntactic constructs of the document language.
-
-Replaced element
-: An element whose content is outside the scope of the CSS formatting model, such as an image, embedded document, or applet.
-
-Intrinsic dimensions
-: The width and height as defined by the element itself, not imposed by the surroundings.
+At-rule
+: A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
 
 Attribute
 : A value associated with an element, consisting of a name, and an associated textual value. 
 
-Content
-: The content associated with an element in the source document. Some elements have no content, in which case they are called empty. The content of an element may include text, and it may include a number of sub-elements, in which case the element is called the parent of those sub-elements. 
-
-Rendered content
-: The content of an element after the rendering has been applied.
-
-Document tree
-: The tree of elements encoded in the source document. Each element in this tree has exactly one parent, with the exception of the root element, which has none.
+Author
+: An author is a person who writes documents and associated style sheets. An authoring tool is a user agent that generates style sheets.
 
 Child
 : An element A is called the child of element B if and only if B is the parent of A.
 
-Descendant
-: An element A is called a descendant of an element B, if either A is a child of B, or A is the child of some element C that is a descendant of B.
-
-Ancestor
-: An element A is called an ancestor of an element B, if and only if B is a descendant of A.
-
-Sibling
-: An element A is called a sibling of an element B, if and only if B and A share the same parent element. Element A is a preceding sibling if it comes before B in the document tree. Element B is a following sibling if it comes after A in the document tree.
-
-Preceding element
-: An element A is called a preceding element of an element B, if and only if A is an ancestor of B or A is a preceding sibling of B.
-
-Following element
-: An element A is called a following element of an element B, if and only if B is a preceding element of A.
-
-Author
-: An author is a person who writes documents and associated style sheets. An authoring tool is a user agent that generates style sheets.
-
-User
-: A user is a person who interacts with a user agent to view, hear, or otherwise use a document and its associated style sheet. The user may provide a personal style sheet that encodes personal preferences.
-
-User agent (UA)
-: A user agent is any program that interprets a document written in the document language and applies associated style sheets. A user agent may display a document, read it aloud, cause it to be printed, or convert it to another format.
-
-Property
-: A human-readable identifier that defines a presentational feature to be considered.
-
-Value
-: An expression that describes how the presentational feature, defined by the associated property, must be handled.
+Content
+: The content associated with an element in the source document. Some elements have no content, in which case they are called empty. The content of an element may include text, and it may include a number of sub-elements, in which case the element is called the parent of those sub-elements. 
 
 Declaration
 : A property and value pair separated by a colon, that together controls a presentational feature.
@@ -846,14 +805,59 @@ Declaration
 Declaration block
 : A structure containing a list of declarations separated by semicolons and delimited by an opening brace and a closing brace.
 
+Descendant
+: An element A is called a descendant of an element B, if either A is a child of B, or A is the child of some element C that is a descendant of B.
+
+Document language
+: The encoding language of the source document, such as HTML, XHTML, or SVG.
+
+Document tree
+: The tree of elements encoded in the source document. Each element in this tree has exactly one parent, with the exception of the root element, which has none.
+
+Element
+: The primary syntactic constructs of the document language.
+
+Following element
+: An element A is called a following element of an element B, if and only if B is a preceding element of A.
+
+Intrinsic dimensions
+: The width and height as defined by the element itself, not imposed by the surroundings.
+
+Preceding element
+: An element A is called a preceding element of an element B, if and only if A is an ancestor of B or A is a preceding sibling of B.
+
+Principal box
+: When an element generates one or more boxes, one of them is the principal box, which contains its descendant boxes and generated content, and is also the box involved in any positioning scheme.
+
+Property
+: A human-readable identifier that defines a presentational feature to be considered.
+
+Rendered content
+: The content of an element after the rendering has been applied.
+
+Replaced element
+: An element whose content is outside the scope of the CSS formatting model, such as an image, embedded document, or applet.
+
 Ruleset
 : A structure that associates a selector list with a declaration block.
+
+Sibling
+: An element A is called a sibling of an element B, if and only if B and A share the same parent element. Element A is a preceding sibling if it comes before B in the document tree. Element B is a following sibling if it comes after A in the document tree.
+
+Source document
+: The document to which one or more style sheets apply. This is encoded in some markup language that represents the document as a tree of elements.
 
 Statement
 : A structure that begins with any non-space character and ends at the first closing brace or semicolon.
 
-At-rule
-: A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
+User
+: A user is a person who interacts with a user agent to view, hear, or otherwise use a document and its associated style sheet. The user may provide a personal style sheet that encodes personal preferences.
 
-Principal box
-: When an element generates one or more boxes, one of them is the principal box, which contains its descendant boxes and generated content, and is also the box involved in any positioning scheme.
+User agent (UA)
+: A user agent is any program that interprets a document written in the document language and applies associated style sheets. A user agent may display a document, read it aloud, cause it to be printed, or convert it to another format.
+
+Value
+: An expression that describes how the presentational feature, defined by the associated property, must be handled.
+
+Viewport
+: A viewport is the viewing area on which the user agent displays the rendered document.
