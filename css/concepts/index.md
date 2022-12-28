@@ -484,6 +484,12 @@ Text runs have no display type. For elements, the `display` property defines its
 - **Outer display type:** It defines how the principal box itself participates in flow layout.
 - **Inner display type:** It defines the formatting context generated, dictating how its descendants are laid out.
 
+| Outer display type | Description |
+| - | - |
+| `block` | The element generates a box that is block-level when placed in flow layout.
+| `inline` | The element generates a box that is inline-level when placed in flow layout.
+| `run-in` | The element generates a run-in box, which is a type of inline-level box with special behavior that attempts to merge it into a subsequent block container.
+
 | Value       | Generated box                 | Outer display type | Inner display type | Formatting context        |
 | ----------- | ----------------------------- | ------------------ | ------------------ | ------------------------- |
 | `none`      | No box                        | `none`             | `none`             | None                      |
@@ -493,6 +499,19 @@ Text runs have no display type. For elements, the `display` property defines its
 | `flex`      | Flex box                      | `block`            | `flex`             | Flex formatting context   |
 | `grid`      | Grid container                | `block`            | `grid`             | Grid formatting context   |
 | `list-item` | Block box with `::marker` box | `block`            | `flow`             | Block formatting context  |
+
+Outer display type
+- block
+- inline
+- run-in
+
+Inner display type
+- flow
+- flow-root
+- table
+- flex
+- grid
+- ruby
 
 ### Margin collapsing
 
@@ -809,29 +828,56 @@ Ancestor
 At-rule
 : A structure that starts with an _at_ symbol, followed by an identifier, and continues up to the end of the statement.
 
+Atomic inline
+: An inline-level box that is replaced or that establishes a new formatting context, and cannot split across lines.
+
 Attribute
 : A value associated with an element, consisting of a name, and an associated textual value. 
 
 Author
 : An author is a person who writes documents and associated style sheets. An authoring tool is a user agent that generates style sheets.
 
+Block box
+: A block-level box that is also a block container. A block container does not necessarily have to be a block-level box, and a block-level box does not have to be a block container.
+
+Block container
+: A block container either contains only inline-level boxes participating in an inline formatting context, or contains only block-level boxes participating in a block formatting context, possibly generating anonymous block boxes to ensure this constraint.
+
+Block formatting context root
+: A block container that establishes a new block formatting context. 
+
+Block layout
+: The layout of block-level boxes, performed within a block formatting context. 
+
+Block-level
+: Content that participates in block layout, specifically, block-level boxes. 
+
 Child
 : An element A is called the child of element B if and only if B is the parent of A.
+
+Containing block chain
+: A sequence of successive containing blocks that form a chain of ancestors and descendants, through the containing block relation. 
+
+Containing block
+: A rectangle that forms the basis of sizing and positioning for the boxes associated with it. A containing block is a rectangle rather than a box, however it is often derived from the dimensions of a box. Each box is given a position with respect to its containing block, but it is not confined and can overflow.
 
 Content
 : The content associated with an element in the source document. Some elements have no content, in which case they are called empty. The content of an element may include text, and it may include a number of sub-elements, in which case the element is called the parent of those sub-elements. 
 
-Declaration
-: A property and value pair separated by a colon, that together controls a presentational feature.
-
 Declaration block
 : A structure containing a list of declarations separated by semicolons and delimited by an opening brace and a closing brace.
+
+Declaration
+: A property and value pair separated by a colon, that together controls a presentational feature.
 
 Descendant
 : An element A is called a descendant of an element B, if either A is a child of B, or A is the child of some element C that is a descendant of B.
 
 Document language
 : The encoding language of the source document, such as HTML, XHTML, or SVG.
+
+Document order
+: The order in which boxes and content occurs in the document, which can be different from the order in which it appears for rendering. 
 
 Document tree
 : The tree of elements encoded in the source document. Each element in this tree has exactly one parent, with the exception of the root element, which has none.
@@ -842,8 +888,29 @@ Element
 Following element
 : An element A is called a following element of an element B, if and only if B is a preceding element of A.
 
+Formatting context
+: A formatting context is the environment into which a set of related boxes are laid out.
+
+In-flow
+: A box is in-flow if it is not out-of-flow.
+
+Independent formatting context
+: An independent layout environment where the layout of its descendants is generally not affected by the rules and contents of the formatting context outside the box, except through the sizing of the box itself.
+
+Initial containing block
+: The containing block of the root element. The initial containing block establishes a block formatting context.
+
+Inline box
+: A non-replaced inline-level box whose inner display type is flow. The contents of an inline box participate in the same inline formatting context as the inline box itself. 
+
+Inline-level
+: Content that participates in inline layout, specifically, inline-level boxes and text runs. 
+
 Intrinsic dimensions
 : The width and height as defined by the element itself, not imposed by the surroundings.
+
+Out-of-flow
+: A box is out-of-flow if it is extracted from its expected position and laid out using a different paradigm outside the normal flow of content in its parent formatting context.
 
 Preceding element
 : An element A is called a preceding element of an element B, if and only if A is an ancestor of B or A is a preceding sibling of B.
@@ -858,7 +925,10 @@ Rendered content
 : The content of an element after the rendering has been applied.
 
 Replaced element
-: An element whose content is outside the scope of the CSS formatting model, such as an image, embedded document, or applet.
+: An element whose content is outside the scope of the CSS formatting model, such as an image or embedded document. Replaced elements always establish an independent formatting context.
+
+Root element
+: The element at the root of the document tree. 
 
 Ruleset
 : A structure that associates a selector list with a declaration block.
@@ -872,11 +942,11 @@ Source document
 Statement
 : A structure that begins with any non-space character and ends at the first closing brace or semicolon.
 
-User
-: A user is a person who interacts with a user agent to view, hear, or otherwise use a document and its associated style sheet. The user may provide a personal style sheet that encodes personal preferences.
-
 User agent (UA)
 : A user agent is any program that interprets a document written in the document language and applies associated style sheets. A user agent may display a document, read it aloud, cause it to be printed, or convert it to another format.
+
+User
+: A user is a person who interacts with a user agent to view, hear, or otherwise use a document and its associated style sheet. The user may provide a personal style sheet that encodes personal preferences.
 
 Value
 : An expression that describes how the presentational feature, defined by the associated property, must be handled.
