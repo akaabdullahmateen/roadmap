@@ -28,7 +28,7 @@
   - [Specificity](#specificity)
   - [Inheritance](#inheritance)
 - [Box model](#box-model)
-  - [Visual formatting model](#visual-formatting-model)
+  - [Display](#display)
   - [Margin collapsing](#margin-collapsing)
   - [Formatting context](#formatting-context)
   - [Positioning](#positioning)
@@ -473,45 +473,39 @@ The background style of the content area, padding area, and border area can be d
 
 Adjoining margins in block layout can collapse to form a single [*collapsed margin*](#margin-collapsing). When margin collapsing occurs, the margin areas are not clearly defined since margins are shared between boxes.
 
-### Visual formatting model
+### Display
 
-The visual formatting model describes how user agents process the document tree and display it for visual media, which includes continuous media and paged media. It takes a source document organized as a tree of elements and text nodes, and generates an intermediary structure called *box tree*. For each element or text node, zero or more boxes are generated, as specified by the `display` property.
+CSS takes a source document organized as a tree of elements and text nodes, and generates an intermediary structure called *box tree*. For each element or text node, zero or more boxes are generated, as specified by the `display` property.
 
-Typically, an element generates a single box, called *principal box*, however, some `display` values generate no box or more than than one box. An anonymous box is generated in certain circumstances to fix up the box tree. Anonymous boxes inherit from their direct parent and can not be targeted for styling.
+Typically, an element generates a single box, called *principal box*, however, some `display` values generate no box or more than than one box. An *anonymous box* is generated in certain circumstances to fix up the box tree. Anonymous boxes inherit from their direct parent and can not be targeted for styling.
 
 Text runs have no display type. For elements, the `display` property defines its display type, which consists of the two basic qualities of how an element generates boxes:
 
 - **Outer display type:** It defines how the principal box itself participates in flow layout.
+
+  | Value    | Generated box    |
+  | -------- | ---------------- |
+  | `block`  | Block-level box  |
+  | `inline` | Inline-level box |
+  | `run-in` | Inline-level box |
+
 - **Inner display type:** It defines the formatting context generated, dictating how its descendants are laid out.
 
-| Outer display type | Description |
-| - | - |
-| `block` | The element generates a box that is block-level when placed in flow layout.
-| `inline` | The element generates a box that is inline-level when placed in flow layout.
-| `run-in` | The element generates a run-in box, which is a type of inline-level box with special behavior that attempts to merge it into a subsequent block container.
+  | Value       | Generated box       |
+  | ----------- | ------------------- |
+  | `flow`      | Any                 |
+  | `flow-root` | Block container box |
+  | `table`     | Table wrapper box   |
+  | `flex`      | Flex container box  |
+  | `grid`      | Grid container box  |
+  | `ruby`      | Ruby container box  |
 
-| Value       | Generated box                 | Outer display type | Inner display type | Formatting context        |
-| ----------- | ----------------------------- | ------------------ | ------------------ | ------------------------- |
-| `none`      | No box                        | `none`             | `none`             | None                      |
-| `block`     | Block box                     | `block`            | `flow`             | Block formatting context  |
-| `inline`    | Inline box                    | `inline`           | `flow`             | Inline formatting context |
-| `table`     | Table wrapper box             | `block`            | `table`            | Table formatting context  |
-| `flex`      | Flex box                      | `block`            | `flex`             | Flex formatting context   |
-| `grid`      | Grid container                | `block`            | `grid`             | Grid formatting context   |
-| `list-item` | Block box with `::marker` box | `block`            | `flow`             | Block formatting context  |
+A box with an outer display type of `run-in` attempts to merge into a subsequent block container. In flex and grid formatting contexts, the `order` property can be used to rearrange the order of boxes within the container, by assigning them to ordinal groups. Items with the same ordinal group are laid out in the order they appear in the source document. The `visibility` property specifies whether the box is rendered. Invisible boxes still effect layout and occupy space. Some `display` values have additional side effects.
 
-Outer display type
-- block
-- inline
-- run-in
-
-Inner display type
-- flow
-- flow-root
-- table
-- flex
-- grid
-- ruby
+| Value       | Effect                                                  |
+| ----------- | ------------------------------------------------------- |
+| `none`      | The element and its descendants generate no boxes.      |
+| `list-item` | The element also generates a `::marker` pseudo-element. |
 
 ### Margin collapsing
 
@@ -953,3 +947,6 @@ Value
 
 Viewport
 : A viewport is the viewing area on which the user agent displays the rendered document.
+
+Visual formatting model
+: The visual formatting model describes how user agents process the document tree and display it for visual media.
