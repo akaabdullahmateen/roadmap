@@ -1,5 +1,0 @@
-list of HTML5 named character references
-RFC 5646: Tags for identifying languages
-RFC 6068: The mailto URI scheme
-RFC 3966: The tel URI for telephone numbers
-IANA media types
