@@ -31,7 +31,7 @@ Spouses and children requesting a change of status or extension of stay in a dep
 
 *An alien is any individual who is not a U.S. citizen or U.S. national. A non-resident alien is an alien who has not passed the green card test or the substantial presence test.*
 
-Non-citizens employed in the United States may have a U.S. tax obligation. The Taxation for Non-resident Aliens page on the Internal Revenue Service (IRS) provides information about taxation for such an individual.
+Non-citizens employed in the United States may have a U.S. tax obligation. The Taxation for Non-resident Aliens page on the Internal Revenue Service (IRS) website provides information about taxation for such an individual.
 
 
 ### Permanent Workers
