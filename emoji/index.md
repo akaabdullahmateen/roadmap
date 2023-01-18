@@ -14,166 +14,36 @@ As SMS mobile text messaging and internet became widespread in the late 1990s, e
 
 | Icon | Meaning |
 |-|-|
-| `:‑)` | Smiley |
-| `:)` | Smiley |
-| `:-]` | Smiley |
-| `:]` | Smiley |
-| `:->` | Smiley |
-| `:>` | Smiley |
-| `8-)` | Smiley |
-| `8)` | Smiley |
-| `:-}` | Smiley |
-| `:}` | Smiley |
-| `:o)` | Smiley |
-| `:c)` | Smiley |
-| `:^)` | Smiley |
-| `C:` | Smiley |
-| `c:` | Smiley |
-| `=]` | Smiley |
-| `=)` | Smiley |
-| `:‑D` | Grinning |
-| `:D` | Grinning |
-| `=D` | Grinning |
-| `8D` | Grinning with glasses |
-| `8‑D` | Grinning with glasses |
-| `B^D` | Grinning with glasses |
-| `x‑D` | Laughing |
-| `xD` | Laughing |
-| `X‑D` | Laughing |
-| `XD` | Laughing |
-| `:-))` | Very happy |
-| `:‑(` | Sad |
-| `:(` | Sad |
-| `:‑c` | Sad |
-| `:c` | Sad |
-| `:‑<` | Sad |
-| `:<` | Sad |
-| `:‑[` | Sad |
-| `:[` | Sad |
-| `:-||` | Sad |
-| `:{` | Sad |
-| `:@` | Sad |
-| `:(` | Sad |
-| `;(` | Sad |
-| `:'‑(` | Crying |
-| `:'(` | Crying |
-| `:=(` | Crying |
-| `:'‑)` | Tears of happiness |
-| `:')` | Tears of happiness |
-| `:"D` | Tears of happiness |
-| `>:(` | Angry |
-| `>:[` | Angry |
-| `D‑':` | Horror |
-| `D:<` | Horror |
-| `D:` | Horror |
-| `D8` | Horror |
-| `D;` | Horror |
-| `D=` | Horror |
-| `DX` | Horror |
-| `:‑O` | Surprise |
-| `:O` | Surprise |
-| `:‑o` | Surprise |
-| `:o` | Surprise |
-| `:-0` | Surprise |
-| `:0` | Surprise |
-| `8‑0` | Surprise |
-| `>:O` | Surprise |
-| `=O` | Surprise |
-| `=o` | Surprise |
-| `=0` | Surprise |
-| `:-3` | Cute face |
-| `:3` | Cute face |
-| `=3` | Cute face |
-| `x3` | Cute face |
-| `X3` | Cute face |
-| `>:3`  | Lion smile |
-| `:-*` | Kiss |
-| `:*` | Kiss |
-| `:×` | Kiss |
-| `;‑)` | Wink |
-| `;)` | Wink |
-| `*-)` | Wink |
-| `*)` | Wink |
-| `;‑]` | Wink |
-| `;]` | Wink |
-| `;^)` | Wink |
-| `;>` | Wink |
-| `:‑,` | Wink |
-| `;D` | Wink |
-| `;3` | Wink |
-| `:‑P` | Cheeky |
-| `:P` | Cheeky |
-| `X‑P` | Cheeky |
-| `XP` | Cheeky |
-| `x‑p` | Cheeky |
-| `xp` | Cheeky |
-| `:‑p` | Cheeky |
-| `:p` | Cheeky |
-| `:‑Þ` | Cheeky |
-| `:Þ` | Cheeky |
-| `:‑þ` | Cheeky |
-| `:þ` | Cheeky |
-| `:‑b` | Cheeky |
-| `:b` | Cheeky |
-| `d:` | Cheeky |
-| `=p` | Cheeky |
-| `>:P` | Cheeky |
-| `:-/` | Skeptical |
-| `:/` | Skeptical |
-| `:‑.` | Skeptical |
-| `>:\` | Skeptical |
-| `>:/` | Skeptical |
-| `:\` | Skeptical |
-| `=/` | Skeptical |
-| `=\` | Skeptical |
-| `:L` | Skeptical |
-| `=L` | Skeptical |
-| `:S` | Skeptical |
-| `',:-|` | Skeptical |
-| `',:-l` | Skeptical |
-| `:‑|` | Straight face |
-| `:|` | Straight face |
-| `:$` | Embarrassed |
-| `://)` | Embarrassed |
-| `://3` | Embarrassed |
-| `:‑X` | Sealed lips |
-| `:X` | Sealed lips |
-| `:‑#` | Sealed lips |
-| `:#` | Sealed lips |
-| `:‑&` | Sealed lips |
-| `:&` | Sealed lips |
-| `O:‑)` | Innocent |
-| `O:)` | Innocent |
-| `0:‑3` | Innocent |
-| `0:3` | Innocent |
-| `0:‑)` | Innocent |
-| `0:)` | Innocent |
-| `0;^)` | Innocent |
-| `>:‑)` | Evil |
-| `>:)` | Evil |
-| `}:‑)` | Evil |
-| `}:)` | Evil |
-| `3:‑)` | Evil |
-| `3:)` | Evil |
-| `>;‑)` | Evil |
-| `>;)` | Evil |
-| `>:3` | Evil |
-| `;3` | Evil |
-| `|;‑)` | Cool |
-| `|‑O` | Cool |
-| `B-)` | Cool |
+| `:‑)`, `:)`, `:-]`, `:]`, `:->`, `:>`, `8-)`, `8)`, `:-}`, `:}`, `:o)`, `:c)`, `:^)`, `=]`, `=)` | Smiley, happy face |
+| `:‑D`, `:D`, `8‑D`, `8D`, `=D`, `=3`, `B^D`, `c:`, `C:` | Laughing, big grin, grinning with glasses |
+| `x‑D`, `xD`, `X‑D`, `XD` | Laughing |
+| `:-))` | Very happy, double chin |
+| `:‑(`, `:(`, `:‑c`, `:c`, `:‑<`, `:<`, `:‑[`, `:[`, `:-||`, `:{`, `:@`, `:(`, `;(` | Frown, sad, pouting |
+| `:'‑(`, `:'(`, `:=(` | Crying |
+| `:'‑)`, `:')`, `:"D` | Tears of happiness |
+| `>:(`, `>:[` | Angry |
+| `D‑':`, `D:<`, `D:`, `D8`, `D;`, `D=`, `DX` | Horror, disgust, sadness, great dismay |
+| `:‑O`, `:O`, `:‑o`, `:o`, `:-0`, `:0`, `8‑0`, `>:O`, `=O`, `=o`, `=0` | Surprise, shock, yawn |
+| `:-3`, `:3`, `=3`, `x3`, `X3` | Cute face, curled mouth, cutesy, playful, mischievous |
+| `>:3`  | Lion smile, evil cat |
+| `:-*`, `:*`, `:×` | Kiss |
+| `;‑)`, `;)`, `*-)`, `*)`, `;‑]`, `;]`, `;^)`, `;>`, `:‑,`, `;D`, `;3` | Wink, smirk |
+| `:‑P`, `:P`, `X‑P`, `XP`, `x‑p`, `xp`, `:‑p`, `:p`, `:‑Þ`, `:Þ`, `:‑þ`, `:þ`, `:‑b`, `:b`, `d:`, `=p`, `>:P` | Tongue sticking out, cheeky, playful, blowing a raspberry |
+| `:-/`, `:/`, `:‑.`, `>:\`, `>:/`, `:\`, `=/`, `=\`, `:L`, `=L`, `:S` | Skeptical, annoyed, undecided, uneasy, hesitant |
+| `:‑|`, `:|` | Straight face, no expression, indecision |
+| `:$`, `://)`, `://3` | Embarrassed, blushing |
+| `:‑X`, `:X`, `:‑#`, `:#`, `:‑&`, `:&` | Sealed lips, wearing braces, tongue-tied |
+| `O:‑)`, `O:)`, `0:‑3`, `0:3`, `0:‑)`, `0:)`, `0;^)` | Angel, halo, saint, innocent |
+| `>:‑)`, `>:)`, `}:‑)`, `}:)`, `3:‑)`, `3:)`, `>;‑)`, `>;)`, `>:3`, `;3` | Evil, devilish |
+| `|;‑)`, `|‑O`, `B-)` | Cool, bored, yawning |
 | `:‑J` | Tongue-in-cheek |
 | `#‑)` | Partied all night |
-| `%‑)` | Drunk |
-| `%)` | Drunk |
-| `:‑###..` | Sick |
-| `:###..` | Sick |
-| `<:‑|` | Dumb |
-| `:E` | Awkward |
-| `8-X` | Skull and crossbones |
-| `8=X` | Skull and crossbones |
-| `x-3` | Skull and crossbones |
-| `x=3` | Skill and crossbones |
+| `%‑)`, `%)` | Drunk, confused |
+| `:‑###..`, `:###..` | Being sick |
+| `<:‑|` | Dumb, dunce-like |
+| `',:-|`, `',:-l` | Skeptical, disbelief, disapproval |
+| `:E` | Grimacing, nervous, awkward |
+| `8-X`, `8=X`, `x-3`, `x=3` | Skill and crossbones |
 | `~:>` | Chicken |
 
 ### Portraits
