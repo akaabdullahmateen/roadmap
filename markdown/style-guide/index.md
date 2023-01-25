@@ -539,7 +539,7 @@ Users interact with products using various input methods. Therefore, use generic
 - Use a slash to separate parts of a uniform resource locator. Use two slashes after the protocol name.
 - Use a slash in server, folder, and file names.
 - Use a slash between the numerator and denominator of fractions in equations that occur in text.
-- Do not use a slash as a substitute for *or*. If the user interface uses a slash in this way, follow the interface in describing the label, but use *or* to describe the action in text. However, it is acceptable to use *country / region* and *ZIP code / postal code* in situations where space is limited.
+- Do not use a slash as a substitute for *or*. If the user interface uses a slash in this way, follow the interface in describing the label, but use *or* to describe the action in text. However, it is acceptable to use *country/region* and *ZIP code / postal code* in situations where space is limited.
 
 ## Grammar
 

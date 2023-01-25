@@ -28,3 +28,4 @@
 - Add `eu/visa/index.md` and `eu/tax/index.md` with information from official websites.
 - Add `pk/visa/index.md` and `pk/tax/index.md` with information from official websites.
 - Add `uae` directory and add `uae/about/index.md`, `uae/visa/index.md`, and `uae/tax/index.md` similar to the other regions.
+- Add a directory about open source software. Exactly how? TBA
