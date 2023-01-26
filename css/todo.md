@@ -1,7 +1,0 @@
-- https://web.dev/learn/css/
-- https://drafts.csswg.org/css2/
-- https://en.wikipedia.org/wiki/CSS
-- https://drafts.csswg.org/
-- https://www.w3.org/TR/CSS/
-- https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
-- https://www.codecademy.com/resources/docs/css/anatomy
