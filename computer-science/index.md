@@ -1,0 +1,178 @@
+- Programming languages
+  - C++
+- Data Structures
+  - Array
+  - Linked List
+  - Stack
+  - Queue
+  - Hash Table
+  - Tree
+    - Binary Tree
+    - Binary Search Tree
+    - Full Binary Tree
+    - Complete Binary Tree
+    - Balanced Tree
+    - Unbalanced Tree
+    - K-D Tree
+    - Tries
+    - Balanced Search Tree
+      - 2-3-4 Tree
+      - K-ary Tree
+      - B-Tree
+  - Graph
+    - Directed Graph
+    - Undirected Graph
+    - Spanning Tree
+    - Representation
+      - Adjacency Matrix
+      - Adjacency List
+  - Heap
+  - Probabilistic Data Structures <!-- Refer to book: "Probabilistic Data Structures and Algorithms -->
+    - Skip List
+- Asymptotic Notation
+  - Big O Notation
+  - Big Theta Notation
+  - Big Omega Notation
+  - Common Runtimes
+    - Constant
+    - Logarithmic
+    - Linear
+    - Polynomial
+    - Exponential
+    - Factorial
+- Algorithms
+  - Sorting
+    - Bubble Sort
+    - Selection Sort
+    - Insertion Sort
+    - Heap Sort
+    - Quick Sort
+    - Merge Sort
+  - Searching
+    - Binary Search
+    - Linear Search
+  - Recursion
+    - Tail Recursion
+    - Non-tail Recursion
+  - Caches
+    - LRU Cache
+    - LFU Cache
+    - MFU Cache
+  - Tree
+    - Pre-order Traversal
+    - In-order Traversal
+    - Post-order Traversal
+    - Breadth First Search
+    - Depth First Search
+  - Graph
+    - Breadth First Search
+    - Depth First Search
+    - Bellman Ford Algorithm
+    - Dijkstra Algorithm
+    - A* Algorithm
+  - Greedy Algorithms
+    - Dijkstra Algorithm
+    - Huffman Coding
+    - Kruskal Algorithm
+    - Ford-Fulkerson Algorithm
+    - Prim Algorithm
+  - Back Tracking
+    - Hamiltonian Path
+    - N Queens Problem
+    - Maze Solving Problem
+    - Knight's Tour Problem
+  - String Search and Manipulations
+    - Substring Search
+      - Brute Force Search
+      - Knuth-Morris-Pratt Algorithm
+      - Boyer-Moore Algorithm
+      - Rabin-Karp Algorithm
+    - Regular Expressions
+    - Suffix Arrays
+- Character Encodings
+  - ASCII
+  - Unicode
+- Common UML Diagrams
+  - Class Diagram
+  - Usecase Diagram
+  - Activity Diagram
+  - Statemachine Diagram
+  - Sequence Diagram
+- Design Patterns
+  - GoF Design Pattern
+  - Architectural Pattern
+  - Dependency Injection
+  - Null Object Pattern
+  - Type Object Pattern
+- Complexity Classes
+  - P, NP, Co-NP, and NP Hard
+  - NP Complete
+  - P = NP
+  - Traveling Salesman Problem
+  - Knapsack Problem
+  - Longest Path Problem
+- System Design
+  - Horizontal and Vertical Scaling
+  - Load Balancing
+  - Clustering
+  - Caching
+  - CDN
+  - Proxy
+  - CAP Theorem
+  - Queues
+  - Architectural Style
+  - REST
+  - GraphQL
+  - gRPC
+  - Cloud Design Pattern
+  - Long Polling
+  - Short Polling
+  - Web Socket
+  - SSE
+- Databases
+  - SQL and NoSQL Databases
+  - Normalization and De-normalization
+  - Entity-Relationship Model
+  - DDL, DML, DQL, DCL
+  - Locking
+  - Transactions
+  - ACID Model
+  - BASE Model
+  - CAP Theorem
+  - PACELC
+  - Indexes
+  - Views
+  - Transactions
+  - Stored Procedures
+  - Database Federation
+  - Replication
+  - Sharding
+- Networking
+  - OSI Model
+  - TCP and IP Model
+  - DNS
+  - HTTP
+  - TLS and HTTPS
+  - Sockets
+- Security
+  - Public Key Cryptography
+  - Hashing, Encryption, and Encoding
+  - Hashing Algorithms
+  - OWASP Top 10
+- Computer Architecture
+  - Program Execution
+  - CPU Calculation
+  - Instructions and Programs
+  - Registers and RAM
+  - CPU Cache
+  - Endianess
+    - Big Endian
+    - Little Endian
+- Processes
+  - Process Forking
+  - Memory Management
+  - Lock, Mutex, and Semaphore
+  - Concurrency
+  - Scheduling Algorithms
+  - CPU Interrupts
+  - Processes and Threads
