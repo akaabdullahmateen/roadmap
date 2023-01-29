@@ -84,6 +84,51 @@ A C++ implementation can either be hosted or freestanding. A hosting implementat
 | `<type_traits>`                          | Type traits               |
 | `<atomic>`                               | Atomics                   |
 
+### Main function
+
+A program shall contain a global function named `main`, which is the designated start of the program in hosted environment. It shall have on of the following forms:
+
+```cpp
+/*
+Form (1)
+*/
+int main() { /* body */ }
+/*
+Form (2)
+*/
+int main(int argc, char *argv[]) { /* body */ }
+/*
+Form (3)
+*/
+/* another implementation-defined form, with int as return type */
+```
+
+`argc`
+: Non-negative value representing the number of arguments passed to the program from the environment in which the program is run.
+
+`argv`
+: Pointer to the first element of an array of `argc + 1` pointers, of which the last one is null and the previous ones, if any, point to null-terminated multibyte strings that represent the arguments passed to the program from the execution environment. If `argv[0]` is not a null pointer (or, equivalently, if `argc > 0`), it points to a string that represents the name used to invoke the program, or to an empty string.
+
+The names of `argc` and `argv` are arbitrary, as well as the representation of the types of the parameters. A very common implementation-defined form of `main()` has a third argument (in addition to `argc` and `argv`), of type `char**`, pointing to an array of pointers to the execution environment variables.
+
+The main function is called at program startup after initialization of the non-local objects with static storage duration. It is the designated entry point to a program that is executed in hosted environment (such as an operating system). The entry point to freestanding programs (such as boot loaders and OS kernels) are implementation-defined.
+
+The parameters of the two-parameter form of the main function allow arbitrary multibyte strings to be passed from the execution environment (these are typically known as command line arguments), the pointers `argv[1]` through `argv[argc - 1]` point at the first characters in each of these strings. The pointer `argv[0]` (if not null) is the pointer to the first character of a null-terminated multibyte string that represents the name used to invoke the program itself (or an empty string `""` if this is not supported by the execution environment). The strings are modifiable, although these modifications do not propagate back to the execution environment. The size of the array pointed to by `argv` is at least `argc + 1`, and the last element, `argv[argc]`, is guaranteed to be a null pointer.
+
+The main function has several special properties:
+
+- It can not be used anywhere in the program, in particular, it can not be called recursively, and its address can not be taken.
+- It can not be predefined and can not be overloaded. Effectively, the name `main` in the global namespace is reserved for functions (although it can be used to name classes, namespaces, enumerations, and any entity in a non-global namespace, except that an entity named `main` can not be declared with C language linkage in any namespace).
+- It can not be defined as deleted or declared with any language linkage, `constexpr`, `consteval`, `inline`, or `static`.
+- The body of the main function does not need to contain the return statement. If control reaches the end of the main function without encountering a return statement, the effect is that of `return 0;`.
+- Execution of the return (or the implicit return upon reaching the end of main) is equivalent to first leaving the function normally (which destroys the objects with automatic storage duration) and then calling `std::exit` with the same argument as the argument of the `return`. The `std::exit` then destroys static objects and terminates the program.
+- The return type of the main function can not be deduced (therefore, `auto main() is not valid).
+- The main function can not be a coroutine.
+
+!!! note
+
+    If the main function is defined with a function-try-block, the exceptions thrown by the destructors of static objects (which are destroyed by the implied `std::exit`) are not caught by it.
+
 ## 2. Phases of translation
 
 A C++ program is a sequence of text files (typically headers and source files) that contain declarations. They undergo translation to become an executable program, which is executed when the C++ implementation calls its main function.
@@ -140,7 +185,7 @@ Newlines are kept, but it is unspecified whether non-newline whitespace sequence
 1. All characters in character literals and string literals are converted from the source character set to the encoding (which may be a multibyte encoding such as UTF-8, as long as the 96 characters of the basic character set have single byte representations).
 2. Escaped sequences and universal character names in character literals and non-raw string literals are expanded and converted to the literal encoding. If the character specified by a universal character name can not be encoded as a single code point in the corresponding literal encoding, the result is implementation-defined, but is guaranteed not to be a null (wide) character.
 
-!!! note "Note"
+!!! note
 
     The conversion performed at this stage can be controlled by command line options in some implementations: gcc and clang use `-finput-charset` to specify the encoding of the source character set, `-fexec-charset` to specify the ordinary literal encoding, and `-fwide-exec-charset` to specify the wide literal encoding.
 
