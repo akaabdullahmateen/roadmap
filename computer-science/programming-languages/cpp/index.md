@@ -10,6 +10,40 @@ th:empty {
 }
 </style>
 
+<!-- omit in toc -->
+
+## Table of content
+
+- [Table of content](#table-of-content)
+- [C++ language](#c-language)
+  - [Introduction](#introduction)
+  - [History](#history)
+  - [Design principles](#design-principles)
+  - [Implementation types](#implementation-types)
+  - [Main function](#main-function)
+    - [Introduction](#introduction-1)
+    - [Arguments](#arguments)
+    - [Special properties](#special-properties)
+  - [Phases of translation](#phases-of-translation)
+    - [Phase 1](#phase-1)
+    - [Phase 2](#phase-2)
+    - [Phase 3](#phase-3)
+    - [Phase 4](#phase-4)
+    - [Phase 5](#phase-5)
+    - [Phase 6](#phase-6)
+    - [Phase 7](#phase-7)
+    - [Phase 8](#phase-8)
+    - [Phase 9](#phase-9)
+- [Syntax](#syntax)
+  - [Comments](#comments)
+    - [Introduction](#introduction-2)
+    - [Syntax](#syntax-1)
+    - [C-style comments](#c-style-comments)
+    - [C++-style comments](#c-style-comments-1)
+- [Types](#types)
+  - [Introduction](#introduction-3)
+  - [Fundamental types](#fundamental-types)
+
 ## C++ language
 
 ### Introduction
@@ -213,11 +247,45 @@ Translation units, instantiation units, and library components needed to satisfy
 
 ### Comments
 
-Comments serve as a sort of in-code documentation. When inserted into a program, they are effectively ignored by the compiler; they are solely intended to be used as notes by the humans that read source code. Although specific documentation is not part of the C++ standard, several utilities exist that parse comments with different documentation formats.
+#### Introduction
+
+Comments serve as in-code documentation or notes for readers. When inserted into a program, they are effectively ignored by the compiler. Although specific documentation is not part of the C++ standard, several utilities exist that parse comments with different documentation formats. All comments are removed from the program at translation phase 3 by replacing each comment with a single whitespace character.
+
+!!! note
+
+    Since comments are removed before the preprocessor stage, a macro can not be used to form a comment and an unterminated C-style comment does not spill over from a file included through the `#include` directive.
+
+Besides commenting out, other mechanism used for source code exclusion are:
+
+-   ```cpp
+    #if 0
+      std::cout << "This will not be executed or even compiled\n";
+    #endif
+    ```
+-   ```cpp
+    if(false) {
+      std::cout << "This will not be executed\n";
+    }
+    ```
+
+#### Syntax
+
+| Style     | Alternative name    | Syntax          |
+| --------- | ------------------- | --------------- |
+| C-style   | Multi-line comment  | `/* comment */` |
+| C++-style | Single line comment | `// comment`    |
+
+#### C-style comments
+
+C-style comments are usually used to comment large blocks of text, however, they can be used to comment single lines, or even individual keywords. Although it is not part of the C++ standard, `/**` and `*/` pair is often used to indicate documentation blocks; this is legal because the second asterisk is treated as part of the comment. C-style comments can not be nested, since any `*/` encountered after an initial `/*` closes the comment.
+
+#### C++-style comments
+
+C++-style comments are usually used to comment single lines, however, multiple C++-style comments can be placed consecutively to form multi-line comments. C++-style comments tell the compiler to ignore the content between `//` and the next encountered end-of-line character.
 
 ## Types
 
-### Data types
+### Introduction
 
 A data type (or simple *type*) is a description of a set of values that dictates the set of allowed operations on those values and how those operations are interpreted. There are two kinds of types: fundamental types and compound types. Types describe objects, references, or functions.
 
