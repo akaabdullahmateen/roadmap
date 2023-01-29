@@ -10,7 +10,7 @@ th:empty {
 }
 </style>
 
-## 1. C++ Language
+## C++ language
 
 ### Introduction
 
@@ -50,7 +50,7 @@ The C++ programming language was first standardized in 1998 as ISO/IEC 14882:199
 | 2020 | ISO/IEC 14882:2020 | C++20, C++2a  |
 | 2023 | ISO/IEC 14882:2023 | C++23         |
 
-### Design Principles
+### Design principles
 
 The development and evolution of C++ has been guided by a set of principles:
 
@@ -66,7 +66,7 @@ The development and evolution of C++ has been guided by a set of principles:
 - C++ should work alongside other existing programming languages, rather than fostering its own separate and incompatible programming environment.
 - If the programmer's intent is unknown, allow the programmer to specify it by providing manual control.
 
-### Implementation
+### Implementation types
 
 A C++ implementation can either be hosted or freestanding. A hosting implementation includes all the standard library facilities. A freestanding implementation may provide fewer standard library facilities, as long as the following are provided:
 
@@ -86,7 +86,9 @@ A C++ implementation can either be hosted or freestanding. A hosting implementat
 
 ### Main function
 
-A program shall contain a global function named `main`, which is the designated start of the program in hosted environment. It shall have on of the following forms:
+#### Introduction
+
+The main function is a global function named `main`, called at program startup after initialization of the non-local objects with static storage duration. It is the designated entry point to a program that is executed in hosted environment (such as an operating system). The entry point to freestanding programs (such as boot loaders and OS kernels) are implementation-defined.
 
 ```cpp
 /*
@@ -103,6 +105,8 @@ Form (3)
 /* another implementation-defined form, with int as return type */
 ```
 
+#### Arguments
+
 `argc`
 : Non-negative value representing the number of arguments passed to the program from the environment in which the program is run.
 
@@ -111,9 +115,9 @@ Form (3)
 
 The names of `argc` and `argv` are arbitrary, as well as the representation of the types of the parameters. A very common implementation-defined form of `main()` has a third argument (in addition to `argc` and `argv`), of type `char**`, pointing to an array of pointers to the execution environment variables.
 
-The main function is called at program startup after initialization of the non-local objects with static storage duration. It is the designated entry point to a program that is executed in hosted environment (such as an operating system). The entry point to freestanding programs (such as boot loaders and OS kernels) are implementation-defined.
-
 The parameters of the two-parameter form of the main function allow arbitrary multibyte strings to be passed from the execution environment (these are typically known as command line arguments), the pointers `argv[1]` through `argv[argc - 1]` point at the first characters in each of these strings. The pointer `argv[0]` (if not null) is the pointer to the first character of a null-terminated multibyte string that represents the name used to invoke the program itself (or an empty string `""` if this is not supported by the execution environment). The strings are modifiable, although these modifications do not propagate back to the execution environment. The size of the array pointed to by `argv` is at least `argc + 1`, and the last element, `argv[argc]`, is guaranteed to be a null pointer.
+
+#### Special properties
 
 The main function has several special properties:
 
@@ -122,14 +126,14 @@ The main function has several special properties:
 - It can not be defined as deleted or declared with any language linkage, `constexpr`, `consteval`, `inline`, or `static`.
 - The body of the main function does not need to contain the return statement. If control reaches the end of the main function without encountering a return statement, the effect is that of `return 0;`.
 - Execution of the return (or the implicit return upon reaching the end of main) is equivalent to first leaving the function normally (which destroys the objects with automatic storage duration) and then calling `std::exit` with the same argument as the argument of the `return`. The `std::exit` then destroys static objects and terminates the program.
-- The return type of the main function can not be deduced (therefore, `auto main() is not valid).
+- The return type of the main function can not be deduced (therefore, `auto main()` is not valid).
 - The main function can not be a coroutine.
 
 !!! note
 
     If the main function is defined with a function-try-block, the exceptions thrown by the destructors of static objects (which are destroyed by the implied `std::exit`) are not caught by it.
 
-## 2. Phases of translation
+### Phases of translation
 
 A C++ program is a sequence of text files (typically headers and source files) that contain declarations. They undergo translation to become an executable program, which is executed when the C++ implementation calls its main function.
 
@@ -145,18 +149,18 @@ pl1[program libraries] --> l1
 
 The C++ source file is processed by the compiler as if the following phases take places, in this exact order:
 
-### Phase 1
+#### Phase 1
 
 1. The individual bytes of the source code file are mapped (in implementation-defined manner) to the characters of the basic source code character set. In particular, OS-dependent end-of-line indicators are replaced by newline characters.
 2. The set of source file characters accepted is implementation-defined. Any source file character that can not be mapped to a character in the basic source character set is replaced by universal character name (escaped with `\u` or `\U`) or by some implementation-defined form that is handled equivalently.
 3. Trigraph sequences are replaced by corresponding single-character representations.
 
-### Phase 2
+#### Phase 2
 
 1. Whenever backslash appears at the end of a line (immediately followed by the newline character), these characters are deleted, combining two physical source lines into one logical source line. This is a single-pass operation; a line ending in two backslashes followed by an empty line does not combine three lines into one. If a universal character name is formed outside raw string literals in this phase, the behavior is undefined.
 2. If a non-empty source file does not end with a newline character after this step (whether it had no newline originally, or it ended with a newline immediately preceded by a backslash), a terminating newline character is added.
 
-### Phase 3
+#### Phase 3
 
 1. The source file is decomposed into components, sequences of whitespace characters (space, horizontal tab, newline, vertical tab, and form feed), and preprocessing tokens, which are the following:
     1. header names such as `<iostream>` or `"myfile.h"`
@@ -174,13 +178,13 @@ Newlines are kept, but it is unspecified whether non-newline whitespace sequence
 - If the next three characters are `<::` and the subsequent character is neither `:` nor `>`, the `<` is treated as a preprocessing token by itself (and not as the first character of the alternative token `<:`)
 - Header name preprocessing tokens are only formed within a `#include` directive.
 
-### Phase 4
+#### Phase 4
 
 1. The preprocessor is executed. If a universal character name is formed by token concatenation, the behavior is undefined.
 2. Each file introduced with the `#include` directive goes through phases 1 through 4, recursively.
 3. At the end of this phase, all preprocessor directives are removed from the source.
 
-### Phase 5
+#### Phase 5
 
 1. All characters in character literals and string literals are converted from the source character set to the encoding (which may be a multibyte encoding such as UTF-8, as long as the 96 characters of the basic character set have single byte representations).
 2. Escaped sequences and universal character names in character literals and non-raw string literals are expanded and converted to the literal encoding. If the character specified by a universal character name can not be encoded as a single code point in the corresponding literal encoding, the result is implementation-defined, but is guaranteed not to be a null (wide) character.
@@ -189,34 +193,34 @@ Newlines are kept, but it is unspecified whether non-newline whitespace sequence
 
     The conversion performed at this stage can be controlled by command line options in some implementations: gcc and clang use `-finput-charset` to specify the encoding of the source character set, `-fexec-charset` to specify the ordinary literal encoding, and `-fwide-exec-charset` to specify the wide literal encoding.
 
-### Phase 6
+#### Phase 6
 
 Adjacent string literals are concatenated.
 
-### Phase 7
+#### Phase 7
 
 Compilation takes place, where each preprocessing token is converted to a token. The tokens are syntactically and semantically analyzed and translated as a translation unit.
 
-### Phase 8
+#### Phase 8
 
 Each translation unit is examined to produce a list of required template instantiations, including the ones requested by explicit instantiations. The definitions of the templates are located, and the required instantiations are performed to produce instantiation units.
 
-### Phase 9
+#### Phase 9
 
 Translation units, instantiation units, and library components needed to satisfy external references are collected into a program image which contains information needed for execution in its execution environment.
 
-## 3. Syntax
+## Syntax
 
 ### Comments
 
 Comments serve as a sort of in-code documentation. When inserted into a program, they are effectively ignored by the compiler; they are solely intended to be used as notes by the humans that read source code. Although specific documentation is not part of the C++ standard, several utilities exist that parse comments with different documentation formats.
 
-## 4. Types
+## Types
 
 ### Data types
 
 A data type (or simple *type*) is a description of a set of values that dictates the set of allowed operations on those values and how those operations are interpreted. There are two kinds of types: fundamental types and compound types. Types describe objects, references, or functions.
 
-### Fundamental Types
+### Fundamental types
 
 C++ has a set of fundamental types corresponding to the most common basic storage units of a computer  
