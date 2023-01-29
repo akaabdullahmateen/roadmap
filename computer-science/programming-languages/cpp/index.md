@@ -44,7 +44,8 @@ th:empty {
   - [Introduction](#introduction-3)
   - [Fundamental types](#fundamental-types)
 - [Appendix](#appendix)
-  - [ASCII chart](#ascii-chart)
+  - [ASCII table](#ascii-table)
+  - [Punctuation](#punctuation)
 
 ## C++ language
 
@@ -285,6 +286,7 @@ C-style comments are usually used to comment large blocks of text, however, they
 
 C++-style comments are usually used to comment single lines, however, multiple C++-style comments can be placed consecutively to form multi-line comments. C++-style comments tell the compiler to ignore the content between `//` and the next encountered end-of-line character.
 
+
 ## Types
 
 ### Introduction
@@ -297,9 +299,9 @@ C++ has a set of fundamental types corresponding to the most common basic storag
 
 ## Appendix
 
-### ASCII chart
+### ASCII table
 
-The following chart lists all 128 ASCII characters with their decimal (**dec**), octal (**oct**), and hexadecimal (**hex**) codes. The printable ASCII characters starts from the decimal code *32* and ends at decimal code *126*. In Unicode, the ASCII character block is known as *CO Control and Basic Latin*. This block starts from code point *U+0000* and ends at code point *U+007F*.
+The following table lists all 128 ASCII characters with their decimal (**dec**), octal (**oct**), and hexadecimal (**hex**) codes. The printable ASCII characters starts from the decimal code *32* and ends at decimal code *126*. In Unicode, the ASCII character block is known as *CO Control and Basic Latin*. This block starts from code point *U+0000* and ends at code point *U+007F*.
 
 | Dec | Oct | Hex | Character                           | Dec | Oct | Hex | Character        |
 | --- | --- | --- | ----------------------------------- | --- | --- | --- | ---------------- |
@@ -367,3 +369,288 @@ The following chart lists all 128 ASCII characters with their decimal (**dec**),
 | 61  | 75  | 3d  | **=**                               | 125 | 175 | 7d  | **}**            |
 | 62  | 76  | 3e  | **>**                               | 126 | 176 | 7e  | **~**            |
 | 63  | 77  | 3f  | **?**                               | 127 | 177 | 7f  | **DEL** (delete) |
+
+### Punctuation
+
+`{ }`
+: - In a `class`/`struct`/`union` definition, delimit the member specification.
+  - In an `enum` definition, delimit the member specification.
+  - Delimit a compound statement. The compound statement may be part of:
+      - a function definition.
+      - a `try` block or `catch` clause.
+      - a function-try-block.
+      - a lambda expression.
+  - In initialization, delimit the initializers. This kind of initialization is called list initialization.
+  - In a namespace definition, delimit the namespace body.
+  - In a language linkage specification, delimit the declarations.
+  - In a `requires` expression, delimit the requirements.
+  - In a compound requirement, delimit the expression.
+  - In an export declaration, delimit the declarations.
+
+`[ ]`
+: - Subscript operator which is part of `operator[]` in operator overloading.
+  - Part of array declarator in a declaration or type-id (such as in a `new` expression).
+  - Part of `new[]` operator in operator overloading (allocation function).
+  - Part of `delete[]` operator in `delete` expression and operator overloading (deallocation function).
+  - In a lambda expression, delimit the captures.
+  - In an attribute specifier, delimit the attributes.
+  - In a structured binding declaration, delimit the identifier list.
+
+`#`
+: - Introduce a preprocessing directive.
+  - The preprocessing operator for stringification.
+
+`##`
+: - The preprocessing operator for token pasting.
+
+`( )`
+: - In an expression, indicate grouping.
+  - Function call operator which is part of `operator()` in operator overloading.
+  - In a function-style type cast, delimit the expression/initializers.
+  - In a `static_cast`, `const_cast`, `reinterpret_cast`, or `dynamic_cast`, delimit the expression.
+  - In a `typeid`, `sizeof`, `sizeof...`, `alignof`, or `noexcept` expression, delimit the operand.
+  - In a placement `new` expression, delimit the placement arguments.
+  - In a `new` expression, optionally delimit the type-id.
+  - In a `new` expression, delimit the initializers.
+  - In a C-style cast, delimit the type-id.
+  - In a declaration or a type-id, indicate grouping.
+  - Delimit the parameter list in:
+      - a function declarator (in a declaration or a type-id).
+      - a lambda expression.
+      - a user-defined deduction guide.
+      - a `requires` expression.
+  - In direct initialization, delimit the initializers.
+  - In an `asm` declaration, delimit the string literal.
+  - In a member initializer list, delimit the initializers to a base or member.
+  - In an `if` (including `constexpr if`), `switch`, `while`, `do-while`, or `for` (including range-based `for`) statement, delimit the controlling clause.
+  - In a `catch` clause, delimit the parameter declaration.
+  - In a function-like macro definition, delimit the macro parameters.
+  - Part of a `defined`, `__has_include`, `__has_cpp_attribute` preprocessing operator.
+  - In a `static_assert` declaration, delimit the operands.
+  - In a `decltype` specifier, `noexcept` specifier, `alignas` specifier, conditional `explicit` specifier, delimit the operand.
+  - In an attribute, delimit the attribute arguments.
+  - Part of `decltype(auto)` specifier.
+  - Delimit a fold expression.
+  - Part of `__VA_OPT__` replacement in a variadic macro definition.
+
+`;`
+: - Indicate the end of:
+      - a statement (including the initialization statement of a `for` statement).
+      - a declaration or member declaration.
+      - a module declaration, import declaration, global module fragment introducer, or private module fragment introducer.
+      - a requirement.
+  - Separate the second and third clauses of a `for` statement.
+
+`:`
+: - Part of conditional operator.
+  - Part of label declaration.
+  - In the class head of a `class` definition, introduce the base clause.
+  - Part of access specifier in member specification.
+  - In a bit-field member declaration, introduce the width.
+  - In a constructor definition, introduce the member initializer list.
+  - In a range-based `for` statement, separate the range declaration and the range initializer.
+  - Introduce an `enum` base, which specifies the underlying type of the `enum`.
+  - In an attribute specifier, separate the attribute-using-prefix and the attribute list.
+  - In a module declaration or import declaration of module partition, introduce the module partition name.
+  - Part of a private module fragment introducer (`module :private;`).
+
+`...`
+: - In the parameter list of a function declarator or lambda expression or user-defined deduction guide, signify a variadic function.
+  - In a `catch` clause, signify a catch-all handler.
+  - In a macro definition, signify a variadic macro.
+  - Indicate pack declaration and expansion.
+
+`?`
+: - Part of conditional operator.
+
+`::`
+: - Scope resolution operator in:
+      - a qualified name.
+      - a pointer-to-member declaration.
+      - a `new` or `delete` expression, to indicate that only global allocation or deallocation functions are looked up.
+  - In an attribute, indicate attribute scope.
+  - Part of a nested namespace definition.
+
+`.`
+: - Member access operator.
+  - In aggregate initialization, introduce a designator.
+  - Part of module name or module partition name.
+
+`.*`
+: - Pointer-to-member access operator.
+
+`->`
+: - Member access operator which is part of `operator->` in operator overloading.
+  - In a function declarator or lambda expression, introduce the trailing return type.
+  - In a user-defined deduction guide, introduce the result type.
+  - In a compound requirement, introduce the return type requirement.
+
+`->*`
+: - Pointer-to-member access operator which is part of `operator->*` in operator overloading.
+
+`~`
+: - Unary complement operator (bitwise not operator) which is part of `operator~` in operator overloading.
+  - Part of an id-expression to name a destructor or pseudo-destructor.
+
+`!`
+: - Logical not operator which is part of `operator!` in operator overloading.
+
+`+`
+: - Unary plus operator which is part of `operator+` in operator overloading.
+  - Binary plus operator which is part of `operator+` in operator overloading.
+
+`-`
+: - Unary minus operator which is part of `operator-` in operator overloading.
+  - Binary minus operator which is part of `operator-` in operator overloading.
+
+`*`
+: - Indirection operator which is part of `operator*` in operator overloading.
+  - Multiplication operator which is part of `operator*` in operator overloading.
+  - Pointer operator or part of pointer-to-member operator in a declarator or in a type-id.
+  - Part of `*this` in a lambda capture list, to capture the current object by copy.
+
+`/`
+: - Division operator which is part of `operator/` in operator overloading.
+
+`%`
+: - Modulo operator which is part of `operator%` in operator overloading.
+
+`^`
+: - Bitwise xor operator which is part of `operator^` in operator overloading.
+
+`&`
+: - Address-of operator which is part of `operator&` in operator overloading.
+  - Bitwise and operator which is part of `operator&` in operator overloading.
+  - Lvalue reference operator in a declarator or in a type-id.
+  - In a lambda capture, indicate by-reference capture.
+  - Ref-qualifier in member function declaration.
+
+`|`
+: - Bitwise or operator which is part of `operator|` in operator overloading.
+
+`=`
+: - Simple assignment operator which is part of `operator=` in operator overloading, which might be a special member function (copy assignment operator or move assignment operator).
+  - In initialization, indicate copy initialization or copy list initialization.
+  - In a function declaration, introduce a default argument.
+  - In a template parameter list, introduce a default template argument.
+  - In a namespace alias definition, separate the alias and the aliased namespace.
+  - In an `enum` definition, introduce the value of enumerator.
+  - Part of pure specifier in a pure virtual function declaration.
+  - Capture default in lambda capture, to indicate by-copy capture.
+  - Part of defaulted definition (`=default;`) or deleted definition (`=delete;`) in function definition.
+  - In a type alias declaration, separate the alias and the aliased type.
+  - In a concept definition, separate the concept name and the constraint expression.
+
+`+=`
+: - Compound assignment operator which is part of `operator+=` in operator overloading.
+
+`-=`
+: - Compound assignment operator which is part of `operator-=` in operator overloading.
+
+`*=`
+: - Compound assignment operator which is part of `operator*=` in operator overloading.
+
+`/=`
+: - Compound assignment operator which is part of `operator/=` in operator overloading.
+
+`%=`
+: - Compound assignment operator which is part of `operator%=` in operator overloading.
+
+`^=`
+: - Compound assignment operator which is part of `operator^=` in operator overloading.
+
+`&=`
+: - Compound assignment operator which is part of `operator&=` in operator overloading.
+
+`|=`
+: - Compound assignment operator which is part of `operator|=` in operator overloading.
+
+`==`
+: - Equality operator which is part of `operator==` in operator overloading.
+
+`!=`
+: - Inequality operator which is part of `operator!=` in operator overloading.
+
+`<`
+: - Less-than operator which is part of `operator<` in operator overloading.
+  - In a `static_cast`, `const_cast`, `reinterpret_cast`, or `dynamic_cast`, introduce the type-id.
+  - Introduce a template argument list.
+  - Introduce a template parameter list in:
+      - a `template` declaration.
+      - a partial specialization.
+      - a lambda expression.
+  - Part of `template<>` in template specialization declaration.
+  - Introduce a header name in:
+      - a `#include` directive.
+      - a `__has_include` preprocessing expression.
+      - an `import` declaration.
+
+`>`
+: - Greater-than operator which is part of `operator>` in operator overloading.
+  - In a `static_cast`, `const_cast`, `reinterpret_cast`, or `dynamic_cast`, indicate the end of type-id.
+  - Indicate the end of a template argument list.
+  - Indicate the end of a template parameter list in:
+      - a `template` declaration.
+      - a partial specialization.
+      - a lambda expression.
+  - Part of `template<>` in template specialization declaration.
+  - Indicate the end of a header name in:
+      - a `#include` directive.
+      - a `__has_include` preprocessing expression.
+      - an `import` declaration.
+
+`<=`
+: - Less-than-or-equal-to operator which is part of `operator<=` in operator overloading.
+
+`>=`
+: - Greater-than-or-equal-to operator which is part of `operator>=` in operator overloading.
+
+`<=>`
+: - Three-way comparison (spaceship) operator which is part of `operator<=>` in operator overloading.
+
+`&&`
+: - Logical and operator which is part of `operator&&` in operator overloading.
+  - Rvalue reference operator in a declarator or in a type-id.
+  - Ref-qualifier in member function declaration.
+
+`||`
+: - Logical or operator which is part of `operator||` in operator overloading.
+
+`<<`
+: - Bitwise shift operator which is part of `operator<<` in operator overloading (bitwise operator or stream insertion operator).
+
+`>>`
+: - Bitwise shift operator which is part of `operator>>` in operator overloading (bitwise operator or stream insertion operator).
+  - Can be reparsed as two `>` in a `static_cast`, `const_cast`, `reinterpret_cast`, `dynamic_cast`, template argument list, or a template parameter list.
+
+`<<=`
+: - Compound assignment operator which is part of `operator<<=` in operator overloading.
+
+`>>=`
+: - Compound assignment operator which is part of `operator>>=` in operator overloading.
+
+`++`
+: - Increment operator which is part of `operator++` in operator overloading.
+
+`--`
+: - Decrement operator which is part of `operator--` in operator overloading.
+
+`,`
+: - Comma operator which is part of `operator,` in operator overloading.
+  - List separator in: 
+      - the declarator list in a declaration.
+      - the initializer list in an initialization.
+      - the placement argument list in a placement `new`.
+      - the argument list in a function call expression.
+      - the enumerator list in an `enum` declaration.
+      - the base class list in a `class` declaration.
+      - the member initializer list in a constructor definition.
+      - a function parameter list.
+      - a template parameter list.
+      - a template argument list.
+      - the macro parameter list in a function-like macro definition.
+      - a lambda capture list.
+      - an attribute list.
+      - the declarator list in a `using` declaration.
+      - the identifier list in a structured binding declaration.
+  - In a `static_assert` declaration, separate the arguments.
