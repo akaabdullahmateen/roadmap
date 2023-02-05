@@ -179,6 +179,60 @@ The type `char16_t` is a type for UTF-16 character representation. It is require
 
 The type `char32_t` is a type for UTF-32 character representation. It is required to be large enough to represent any UTF-32 code unit. It has the same size, signedness, and alignment as `std::uint_least32_t`, but is a distinct type.
 
+###### Signed integer types
+
+The signed integer types consist of the following types:
+
+- Standard signed integer types
+- Extended signed integer types
+
+The range of representable values for a signed integer type is: -2<sup>N-1</sup> to 2<sup>N-1</sup> - 1 (inclusive), where `N` is called the "width" of the type.
+
+####### Standard signed integer types
+
+The standard signed integer types consist of the following types:
+
+- `signed char`
+- `short int`
+- `int`
+- `long int`
+- `long long int`
+
+In this list, each type provides at least as much storage as those preceding it in the list.
+
+####### Extended signed integer types
+
+GCC ????
+
+###### Unsigned integer types
+
+####### Standard unsigned integer types
+
+####### Extended signed integer types
+
+!!! note
+
+    The signed and unsigned integer types can be viewed as the basic integer type (`int`) with modifiers for signedness and size (which can be mixed in any order, but only one from each group can be present in a type name).
+    
+    If no size modifiers are present, then one of the signedness modifiers must be present, to name the type; in which case, the type is equivalent to the basic integer type (which is either `signed int` or `unsigned int`, depending on the signedness modifier).
+    
+    If no signedness modifiers are present, then one of the size modifiers must be present, to name the type; in which case, the type is equivalent to the unsigned integer type (which is either `short`, `int`, `long`, or `long long`, depending on the size modifier).
+    
+    The signedness modifiers are:
+    
+    | Signedness modifier | Description                                    |
+    | ------------------- | ---------------------------------------------- |
+    | `signed`            | Target type will have signed representation.   |
+    | `unsigned`          | Target type will have unsigned representation. |
+    
+    The size modifiers are:
+    
+    | Size modifier | Description                                                                       |
+    | ------------- | --------------------------------------------------------------------------------- |
+    | `short`       | Target type will be optimized for space, and will have width of at least 16 bits. |
+    | `long`        | Target type will have width of at least 32 bits.                                  |
+    | `long long`   | Target type will have width of at least 64 bits.                                  |
+
 ### Compound types
 
 Compound data types are the data types that are defined in terms of another another.
