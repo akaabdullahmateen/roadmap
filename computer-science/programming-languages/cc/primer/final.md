@@ -109,6 +109,8 @@ The integral types consist of the following types:
 - Signed integer types
 - Unsigned integer types
 
+Enumerations are not integral; however, unscoped enumerations can be promoted to integral types.
+
 ###### Boolean type
 
 Boolean type (`bool`) is a distinct type that has the same object representation, value representation, and alignment requirements as an implementation-defined unsigned integer type. The values of type `bool` are `true` and `false`.
@@ -188,6 +190,10 @@ The signed integer types consist of the following types:
 
 The range of representable values for a signed integer type is: -2<sup>N-1</sup> to 2<sup>N-1</sup> - 1 (inclusive), where `N` is called the "width" of the type.
 
+Overflow for signed arithmetic yield undefined behavior.
+
+The value representation of a signed integer type comprises `N` bits, where `N` is the respective width. Each set of values for any padding bits in the object representation are alternative representations of the value specified by the value representation. Padding bits have unspecified value, but can not cause traps.
+
 ####### Standard signed integer types
 
 The standard signed integer types consist of the following types:
@@ -198,17 +204,60 @@ The standard signed integer types consist of the following types:
 - `long int`
 - `long long int`
 
-In this list, each type provides at least as much storage as those preceding it in the list.
+The width of each signed integer type shall not be less than the values specified in the table below:
 
-####### Extended signed integer types
+| Type            | Minimum width (`N`) |
+| --------------- | ------------------- |
+| `signed char`   | 8                   |
+| `short int`     | 16                  |
+| `int`           | 16                  |
+| `long int`      | 32                  |
+| `long long int` | 64                  |
 
-GCC ????
+In this list, each type provides at least as much storage as those preceding it in the list. Except for the minimum width constraint, the width of a signed integer type is implementation-defined.
+
+The basic integer type (`int`) is intended to have the natural width suggested by the architecture of the execution environment; the other signed integer types are provided to meet special needs.
 
 ###### Unsigned integer types
 
+The unsigned integer types consist of the following types:
+
+- Standard unsigned integer types
+- Extended unsigned integer types
+
+An unsigned integer type has the same width (`N`) as the corresponding signed integer type. The range of representable values for an unsigned integer type is: 0 to 2<sup>N</sup> - 1 (inclusive).
+
+An unsigned integer type has the same object representation, value representation, and alignment requirements as the corresponding signed integer types.
+
+For each value `x` of a signed integer type, the value of the corresponding unsigned integer type congruent to `x` module 2<sup>N</sup> has the same value of corresponding bits in its value representation. This is also known as 2's complement representation.
+
+Arithmetic for the unsigned integer type is performed modulo 2<sup>N</sup>. Unsigned arithmetic does not overflow.
+
+The value representation of an unsigned integer type comprises `N` bits, where `N` is the respective width. Each set of values for any padding bits in the object representation are alternative representations of the value specified by the value representation. Padding bits have unspecified value, but can not cause traps.
+
+Each value `x` of an unsigned integer type with width `N` has a unique representation: x = x<sub>0</sub>2<sup>0</sup> + x<sub>1</sub>2<sup>1</sup> + ... + x<sub>N-1</sub>2<sup>N-1</sup>, where each coefficient of `x` is either `0` or `1`; this is called base-2 representation of `x`. The base-2 representation of a value of signed integer type is the base-2 representation of the congruent value of the corresponding unsigned integer type.
+
 ####### Standard unsigned integer types
 
-####### Extended signed integer types
+The standard unsigned integer types consist of the following types:
+
+- `unsigned char`
+- `unsigned short int`
+- `unsigned int`
+- `unsigned long int`
+- `unsigned long long int`
+
+The width of each unsigned integer type shall not be less than the values specified in the table below:
+
+| Type            | Minimum width (`N`) |
+| --------------- | ------------------- |
+| `unsigned char`   | 8                   |
+| `unsigned short int`     | 16                  |
+| `unsigned int`           | 16                  |
+| `unsigned long int`      | 32                  |
+| `unsigned long long int` | 64                  |
+
+In this list, each type provides at least as much storage as those preceding it in the list. Except for the minimum width constraint, the width of an unsigned integer type is implementation-defined.
 
 !!! note
 
