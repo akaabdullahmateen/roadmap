@@ -39,23 +39,23 @@ The C++ type system classifies each type as either a *fundamental type* or a *co
                     - Type `char16_t`
                     - Type `char32_t`
                     - Type `wchar_t`
-            - Signed and unsigned integral types
-                - Signed integral types
+            - Signed and unsigned integer types
+                - Signed integer types
                     - Type `signed char`
                     - Type `short int`
                     - Type `int`
                     - Type `long int`
                     - Type `long long int`
-                - Unsigned integral types
+                - Unsigned integer types
                     - Type `unsigned char`
                     - Type `unsigned short int`
                     - Type `unsigned int`
                     - Type `unsigned long int`
                     - Type `unsigned long long int`
         - Floating-point types
-            - Single-precision floating-point type (`float`)
-            - Double-precision floating-point type (`double`)
-            - Extended-precision floating-point type (`long double`)
+            - Single precision floating-point type (`float`)
+            - Double precision floating-point type (`double`)
+            - Extended precision floating-point type (`long double`)
 - Compound types
     - Reference types
         - L-value reference types
