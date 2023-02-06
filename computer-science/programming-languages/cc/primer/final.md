@@ -1,192 +1,221 @@
-# Data types
+# Types
+
+<!-- omit in toc -->
+## Table of contents
+
+- [Data types](#data-types)
+- [Type classification](#type-classification)
+- [Fundamental types](#fundamental-types)
+  - [Void type](#void-type)
+  - [Null pointer type](#null-pointer-type)
+  - [Boolean type](#boolean-type)
+  - [Character types](#character-types)
+    - [Type `char`](#type-char)
+    - [Type `unsigned char`](#type-unsigned-char)
+    - [Type `signed char`](#type-signed-char)
+    - [Type `wchar_t`](#type-wchar_t)
+    - [Type `char8_t`](#type-char8_t)
+    - [Type `char16_t`](#type-char16_t)
+    - [Type `char32_t`](#type-char32_t)
+  - [Integer types](#integer-types)
+    - [Data models](#data-models)
+    - [Properties](#properties)
+        - [Signed integer types](#signed-integer-types)
+        - [Unsigned integer types](#unsigned-integer-types)
 
 ## Data types
 
-A data type (or simply a "type") is a description of a set of values that dictate the set of allowed operations on those values and how those operations are interpreted.
+A *data type* (or simply a *type*) is a description of a set of values that dictate the set of allowed operations on those values and how those operations are interpreted.
 
-### Data type in C++
-
-In C++, objects, references, functions (including template specializations), and expressions have a property called type, which both restricts the operations that are permitted for those entities and provides semantic meaning to the otherwise generic sequences of bits.
+In C++, objects, references, functions (including template specializations), and expressions have a property called *type*, which both restricts the operations that are permitted for those entities and provides semantic meaning to the otherwise generic sequences of bits.
 
 ## Type classification
 
-The C++ type system consists of the following types:
+The C++ type system classifies each type as either a *fundamental type* or a *compound type*. A *fundamental type* is a type that is predefined in the C++ language; whereas, a *compound type* is a type that is defined in terms of another type. The C++ type system consists of the following types:
 
 - Fundamental types
+    - [Void type (`void`)]()
+    - [Null pointer type (`nullptr_t`)]()
+    - Arithmetic types
+        - Integral types
+            - [Boolean type (`bool`)]()
+            - Character types
+                - Narrow character types
+                    - Ordinary character types
+                        - Type `char`
+                        - Type `signed char`
+                        - Type `unsigned char`
+                    - Type `char8_t`
+                - Wide character types
+                    - Type `char16_t`
+                    - Type `char32_t`
+                    - Type `wchar_t`
+            - Signed and unsigned integral types
+                - Signed integral types
+                    - Type `signed char`
+                    - Type `short int`
+                    - Type `int`
+                    - Type `long int`
+                    - Type `long long int`
+                - Unsigned integral types
+                    - Type `unsigned char`
+                    - Type `unsigned short int`
+                    - Type `unsigned int`
+                    - Type `unsigned long int`
+                    - Type `unsigned long long int`
+        - Floating-point types
+            - Single-precision floating-point type (`float`)
+            - Double-precision floating-point type (`double`)
+            - Extended-precision floating-point type (`long double`)
 - Compound types
+    - Reference types
+        - L-value reference types
+            - L-value reference to object types
+            - L-value reference to function types
+        - R-value reference types
+            - R-value reference to object types
+            - R-value reference to function types
+    - Pointer types
+        - Pointer to object types
+        - Pointer to function types
+    - Pointer to member types
+        - Pointer to data member types
+        - Pointer to member function types
+    - Array types
+    - Function types
+    - Enumerated types
+        - Unscoped enumeration types
+        - Scope enumeration types
+    - Class types
+        - Non-union types
+        - Union types
 
-A complete hierarchy for the type system is as follows:
+## Fundamental types
 
-- fundamental type
-    - `void`
-    - `nullptr_t`
-    - arithmetic type
-        - floating-point type
-            - `float` and cv-qualified version
-            - `double` and cv-qualified version
-            - `long double` and cv-qualified version
-        - integral type
-            - `bool`
-            - character type
-                - narrow character type
-                    - ordinary character type
-                        - `char`
-                        - `signed char`
-                        - `unsigned char`
-                    - `char8_t`
-                - wide character type
-                    - `char16_t`
-                    - `char32_t`
-                    - `wchar_t`
-            - signed integral type
-                - `short int`
-                - `int`
-                - `long int`
-                - `long long int`
-            - unsigned integral type
-                - `unsigned short int`
-                - `unsigned int`
-                - `unsigned long int`
-                - `unsigned long long int`
-- compound type
-    - reference type
-        - lvalue reference type
-            - lvalue reference to object type
-            - lvalue reference to function type
-        - rvalue reference type
-            - rvalue reference to object type
-            - rvalue reference to function type
-    - pointer type
-        - pointer to object type
-        - pointer to function type
-    - pointer to member type
-        - pointer to data member type
-        - pointer to member function type
-    - array type
-    - function type
-    - enumerated type
-        - unscoped enumeration type
-        - scope enumeration type
-    - class type
-        - non-union type
-        - union type
+### Void type
 
-### Fundamental types
+The void type (`void`) is a type with an empty set of values. It is an incomplete type that can not be completed; consequently, objects of type `void` are disallowed. There are no arrays of `void`, nor references to `void`. However, pointers to `void` and functions returning `void` are permitted.
 
-Fundamental data types are the data types that are predefined in the language. They usually correspond to the basic storage units on a computer system.
+### Null pointer type
 
-Fundamental types consists of the following types:
+The null pointer type (`nullptr_t`) is the type of the null pointer literal (`nullptr`). It is a distinct type that is not itself a pointer type or a pointer to member type. Its values are null pointer constant (`NULL`), and may be implicitly converted to any pointer type or pointer to member type.
 
-- Void type (`void`)
-- Null pointer type (`nullptr_t`)
-- Arithmetic types
+### Boolean type
 
-#### Void type
+The boolean type (`bool`) is a distinct type that has one of the two values: `true` and `false`. It has the same object representation, value representation, and alignment requirements as an implementation-defined unsigned integer type.
 
-The void type (`void`) is a type with an empty set of values. It is an incomplete type that can not be completed (consequently, objects of type `void` are disallowed). There are no arrays of `void`, nor references to `void`. However, pointers to `void` and functions returning `void` are permitted.
+### Character types
 
-#### Null pointer type
+#### Type `char`
 
-The null pointer type (`std::nullptr_t`) is the type of the null pointer literal (`nullptr`). It is a distinct type that is not itself a pointer type or a pointer to member type. Its values are null pointer constant (`NULL`), and may be implicitly converted to any pointer type or pointer to member type. 
+The type `char` is a type for character representation. It is a distinct type that has an implementation-defined choice of `signed char` or `unsigned char` as its underlying type.
 
-#### Arithmetic types
+The signedness depends on the efficiency of processing of character processing on the target system (the default for ARM and PowerPC is usually `unsigned char`, and the default for x86 and x64 is usually `signed char`).
 
-Integral and floating-point types are collectively termed arithmetic types.
+For every value of type `unsigned char` in range: [0, 255], converting the value to `char` and then back to `unsigned char` produces the original value.
 
-The arithmetic types consist of the following types:
-
-- Integral types
-- Floating-point types
-
-##### Integral types
-
-The character types, boolean type, signed and unsigned integer types, and cv qualified versions of them, are collectively termed "integral types" (or synonymously "integer types").
-
-The integral types consist of the following types:
-
-- Boolean type (`bool`)
-- Character types
-- Signed integer types
-- Unsigned integer types
-
-Enumerations are not integral; however, unscoped enumerations can be promoted to integral types.
-
-###### Boolean type
-
-Boolean type (`bool`) is a distinct type that has the same object representation, value representation, and alignment requirements as an implementation-defined unsigned integer type. The values of type `bool` are `true` and `false`.
-
-There are no `signed bool`, `unsigned bool`, `short bool`, or `long bool` types or values.
-
-###### Character types
-
-The character types consist of the following types:
-
-- Narrow character types
-- Wide character types
-
-####### Narrow character types
-
-For narrow character types, each possible bit pattern of the object representation represents a distinct value. A bit-field for narrow character type whose width is larger than the width of that type has padding bits.
-
-The narrow character types consist of the following types:
-
-- Ordinary character types
-- Type `char8_t`
-
-######## Ordinary character types
-
-The ordinary character types consist of the following types:
-
-- Type `char`
-- Type `unsigned char`
-- Type `signed char`
-
-######### Type `char`
-
-The type `char` is a type for character representation. It is a distinct type that has an implementation-defined choice of `signed char` or `unsigned char` as its underlying type, whichever can be most efficiently processed on the target system (the default for ARM and PowerPC is usually `unsigned char`, and the default for x86 and x64 is usually `signed char`).
-
-For every value of type `unsigned char` in range [0, 255], converting the value to `char` and then back to `unsigned char` produces the original value.
-
-######### Type `unsigned char`
+#### Type `unsigned char`
 
 The type `unsigned char` is a type for unsigned character representation. It is often used to inspect object representations (raw memory).
 
-######### Type `signed char`
+#### Type `signed char`
 
 The type `signed char` is a type for signed character representation.
 
-######## Type `char8_t`
-
-The type `char8_t` is a type for UTF-8 character representation. It is required to be large enough to represent any UTF-8 code unit. It has the same size, signedness, and alignment as `unsigned char` (and therefore, the same size and alignment as `char` and `signed char`), but is a distinct type.
-
-####### Wide character types
-
-The wide character types consist of the following types:
-
-- Type `wchar_t`
-- Type `char16_t`
-- Type `char32_t`
-
-######## Type `wchar_t`
+#### Type `wchar_t`
 
 The type `wchar_t` is a type for wide character representation. It has an implementation-defined choice of signed or unsigned integer type as its underlying type. The values of type `wchar_t` can represent distinct codes for all members of the largest extended character set specified among the supported locales.
 
 It has the same size, signedness, and alignment as one of the integer types, but is a distinct type. In practice, it is 32 bits and holds UTF-32 code units on Linux and many other non-Windows systems, but 16 bit and holds UTF-16 code units on Windows.
 
-######## Type `char16_t`
+#### Type `char8_t`
+
+The type `char8_t` is a type for UTF-8 character representation. It is required to be large enough to represent any UTF-8 code unit. It has the same size, signedness, and alignment as an `unsigned char` (and therefore, the same size and alignment as `char` and `signed char`), but is a distinct type.
+
+#### Type `char16_t`
 
 The type `char16_t` is a type for UTF-16 character representation. It is required to be large enough to represent any UTF-16 code unit. It has the same size, signedness, and alignment as `std::uint_least16_t`, but is a distinct type.
 
-######## Type `char32_t`
+#### Type `char32_t`
 
 The type `char32_t` is a type for UTF-32 character representation. It is required to be large enough to represent any UTF-32 code unit. It has the same size, signedness, and alignment as `std::uint_least32_t`, but is a distinct type.
 
+### Integer types
+
+The integer types includes the *standard integer types* and implementation-defined *extended integer types*. The *standard integer types* includes the five *standard unsigned integer types* and five corresponding *standard unsigned integer types*.
+
+#### Data models
+
+The choices made by each implementation about the sizes of the fundamental types are collectively known as a *data model*. Four data models are widely accepted:
+
+| Data model             | System architecture | `int` width | `long` width | `ptr` width | Used by                       |
+| ---------------------- | ------------------- | ----------- | ------------ | ----------- | ----------------------------- |
+| **LP32** or **2/4/4**  | 32-bit              | 16          | 32           | 32          | Win16 API                     |
+| **ILP32** or **4/4/4** | 32-bit              | 32          | 32           | 32          | Win32 API, Unix, Linux, macOS |
+| **LLP64** or **4/4/8** | 64-bit              | 32          | 32           | 64          | Wind64 API                    |
+| **LP64** or **4/8/8**  | 64-bit              | 32          | 64           | 64          | Unix, Linux, macOS            |
+| **ILP64** or **8/8/8** | 64-bit              | 64          | 64           | 64          | UNICOX on Cray                |
+
+
+#### Properties
+
+The following table summarizes all standard integer types and their widths in common data models:
+
+| Type specifier           | Equivalent type      | C++ standard | LP32 | ILP32 | LLP64 | LP64 |
+| ------------------------ | -------------------- | ------------ | ---- | ----- | ----- | ---- |
+| `signed char`            | `signed char`        | at least 8   | 8    | 8     | 8     | 8    |
+| `unsigned char`          | `unsigned char`      | at least 8   | 8    | 8     | 8     | 8    |
+| `short`                  | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
+| `short int`              | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
+| `signed short`           | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
+| `signed short int`       | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
+| `unsigned short`         | `unsigned short int` | at least 16  | 16   | 16    | 16    | 16   |
+| `unsigned short int`     | `unsigned short int` | at least 16  | 16   | 16    | 16    | 16   |
+| `int`                    | `int`                | at least 16  | 16   | 32    | 32    | 32   |
+| `signed`                 | `int`                | at least 16  | 16   | 32    | 32    | 32   |
+| `signed int`             | `int`                | at least 16  | 16   | 32    | 32    | 32   |
+| `unsigned`               | `unsigned int`       | at least 16  | 16   | 32    | 32    | 32   |
+| `unsigned int`           | `unsigned int`       | at least 16  | 16   | 32    | 32    | 32   |
+| `long`                   | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
+| `long int`               | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
+| `signed long`            | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
+| `signed long int`        | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
+| `unsigned long`          | `unsigned long int`  | at least 32  | 32   | 32    | 32    | 64   |
+| `unsigned long int`      | `unsigned long int`  | at least 32  | 32   | 32    | 32    | 64   |
+| `long long`              | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
+| `long long int`          | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
+| `signed long long`       | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
+| `signed long long int`   | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
+| `unsigned long long`     | `unsigned long int`  | at least 64  | 64   | 64    | 64    | 64   |
+| `unsigned long long int` | `unsigned long int`  | at least 64  | 64   | 64    | 64    | 64   |
+
+The signed and unsigned integer types can be viewed as the basic integer type (`int`) with modifiers for signedness and size. These modifiers can appear in any order, but only one from each group can be present in a type name.
+
+If no size modifiers are present, then one of the signedness modifiers must be present, to name the type; in which case, the type is equivalent to the basic integer type (which is either `signed int` or `unsigned int`, depending on the signedness modifier).
+
+If no signedness modifiers are present, then one of the size modifiers must be present to name the type; in which case, the type is equivalent to the unsigned integer type (which is either `short`, `int`, `long`, or `long long`, depending on the size modifier).
+
+The signedness modifiers are:
+
+| Signedness modifier | Description                                    |
+| ------------------- | ---------------------------------------------- |
+| `signed`            | Target type will have signed representation.   |
+| `unsigned`          | Target type will have unsigned representation. |
+
+The size modifiers are:
+
+| Size modifier | Description                                                                       |
+| ------------- | --------------------------------------------------------------------------------- |
+| `short`       | Target type will be optimized for space, and will have width of at least 16 bits. |
+| `long`        | Target type will have width of at least 32 bits.                                  |
+| `long long`   | Target type will have width of at least 64 bits.                                  |
+
+!!! note
+
+    Enumerations are not integral; however, unscoped enumerations can be promoted to integral types.
+
+
 ###### Signed integer types
-
-The signed integer types consist of the following types:
-
-- Standard signed integer types
-- Extended signed integer types
 
 The range of representable values for a signed integer type is: -2<sup>N-1</sup> to 2<sup>N-1</sup> - 1 (inclusive), where `N` is called the "width" of the type.
 
@@ -208,11 +237,12 @@ The width of each signed integer type shall not be less than the values specifie
 
 | Type            | Minimum width (`N`) |
 | --------------- | ------------------- |
-| `signed char`   | 8                   |
+| `char`          | 8                   |
 | `short int`     | 16                  |
 | `int`           | 16                  |
 | `long int`      | 32                  |
 | `long long int` | 64                  |
+
 
 In this list, each type provides at least as much storage as those preceding it in the list. Except for the minimum width constraint, the width of a signed integer type is implementation-defined.
 
@@ -249,42 +279,12 @@ The standard unsigned integer types consist of the following types:
 
 The width of each unsigned integer type shall not be less than the values specified in the table below:
 
-| Type            | Minimum width (`N`) |
-| --------------- | ------------------- |
-| `unsigned char`   | 8                   |
+| Type                     | Minimum width (`N`) |
+| ------------------------ | ------------------- |
+| `unsigned char`          | 8                   |
 | `unsigned short int`     | 16                  |
 | `unsigned int`           | 16                  |
 | `unsigned long int`      | 32                  |
 | `unsigned long long int` | 64                  |
 
 In this list, each type provides at least as much storage as those preceding it in the list. Except for the minimum width constraint, the width of an unsigned integer type is implementation-defined.
-
-!!! note
-
-    The signed and unsigned integer types can be viewed as the basic integer type (`int`) with modifiers for signedness and size (which can be mixed in any order, but only one from each group can be present in a type name).
-    
-    If no size modifiers are present, then one of the signedness modifiers must be present, to name the type; in which case, the type is equivalent to the basic integer type (which is either `signed int` or `unsigned int`, depending on the signedness modifier).
-    
-    If no signedness modifiers are present, then one of the size modifiers must be present, to name the type; in which case, the type is equivalent to the unsigned integer type (which is either `short`, `int`, `long`, or `long long`, depending on the size modifier).
-    
-    The signedness modifiers are:
-    
-    | Signedness modifier | Description                                    |
-    | ------------------- | ---------------------------------------------- |
-    | `signed`            | Target type will have signed representation.   |
-    | `unsigned`          | Target type will have unsigned representation. |
-    
-    The size modifiers are:
-    
-    | Size modifier | Description                                                                       |
-    | ------------- | --------------------------------------------------------------------------------- |
-    | `short`       | Target type will be optimized for space, and will have width of at least 16 bits. |
-    | `long`        | Target type will have width of at least 32 bits.                                  |
-    | `long long`   | Target type will have width of at least 64 bits.                                  |
-
-### Compound types
-
-Compound data types are the data types that are defined in terms of another another.
-
-<!-- TODO: Yet to be completed -->
-
