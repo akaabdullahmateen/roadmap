@@ -11,6 +11,7 @@
   - [Floating-point types](#floating-point-types)
   - [Miscellaneous types](#miscellaneous-types)
   - [Properties](#properties)
+  - [Conversions](#conversions)
 
 ## Data types
 
@@ -141,13 +142,13 @@ Modifiers
 
   These modifiers are listed in the table below, and can appear in any order, but only one from each category can be present in a type name. If no size modifiers are present, then one of the signedness modifiers must be present; in which case, the type is equivalent to the basic integer type (either `signed int` or `unsigned int`). If no signedness modifiers are present, then one of the size modifiers must be present; in which case, the type is equivalent to the unsigned integer type (either `short`, `int`, `long`, or `long long`).
 
-  | Modifier    | Category   | Description                                      |
-  | ----------- | ---------- | ------------------------------------------------ |
-  | `signed`    | Signedness | Target type will have signed representation.     |
-  | `unsigned`  | Signedness | Target type will have unsigned representation.   |
-  | `short`     | Size       | Target type will have width of at least 16 bits. |
-  | `long`      | Size       | Target type will have width of at least 32 bits. |
-  | `long long` | Size       | Target type will have width of at least 64 bits. |
+  | Modifier    | Category   | Description                                     |
+  | ----------- | ---------- | ----------------------------------------------- |
+  | `signed`    | Signedness | Target type will have signed representation     |
+  | `unsigned`  | Signedness | Target type will have unsigned representation   |
+  | `short`     | Size       | Target type will have width of at least 16 bits |
+  | `long`      | Size       | Target type will have width of at least 32 bits |
+  | `long long` | Size       | Target type will have width of at least 64 bits |
 
 ### Floating-point types
 
@@ -183,6 +184,66 @@ Null pointer type
 
 Boolean type
 : The boolean type (`bool`) is a distinct type that has one of the two values: `true` and `false`. It has the same object representation, value representation, and alignment requirements as an implementation-defined unsigned integer type.
+
+Additional basic types
+: | Type          | Description                                                                  |
+  | ------------- | ---------------------------------------------------------------------------- |
+  | `size_t`      | Unsigned integer type returned by the `sizeof` operator                      |
+  | `ptrdiff_t`   | Signed integer type returned when subtracting two pointers                   |
+  | `nullptr_t`   | The type of the null pointer literal (`nullptr`)                             |
+  | `NULL`        | Implementation-defined null pointer constant                                 |
+  | `max_align_t` | Trivial type with alignment requirement as great as any other scalar type    |
+  | `offsetof`    | Byte offset from the beginning of a standard-layout type to specified member |
+  | `byte`        | The byte type                                                                |
+
+Fixed width integer types
+: | Type             | Description                                                                                                         |
+  | ---------------- | ------------------------------------------------------------------------------------------------------------------- |
+  | `int8_t`         | Signed integer type with width of exactly 8 bits with no padding bits and using 2's complement for negative values  |
+  | `int16_t`        | Signed integer type with width of exactly 16 bits with no padding bits and using 2's complement for negative values |
+  | `int32_t`        | Signed integer type with width of exactly 32 bits with no padding bits and using 2's complement for negative values |
+  | `int64_t`        | Signed integer type with width of exactly 64 bits with no padding bits and using 2's complement for negative values |
+  | `int_fast8_t`    | Fastest signed integer type with width of at least 8 bits                                                           |
+  | `int_fast16_t`   | Fastest signed integer type with width of at least 16 bits                                                          |
+  | `int_fast32_t`   | Fastest signed integer type with width of at least 32 bits                                                          |
+  | `int_fast64_t`   | Fastest signed integer type with width of at least 64 bits                                                          |
+  | `int_least8_t`   | Smallest signed integer type with width of at least 8 bits                                                          |
+  | `int_least16_t`  | Smallest signed integer type with width of at least 16 bits                                                         |
+  | `int_least32_t`  | Smallest signed integer type with width of at least 32 bits                                                         |
+  | `int_least64_t`  | Smallest signed integer type with width of at least 64 bits                                                         |
+  | `intmax_t`       | Maximum-width signed integer type                                                                                   |
+  | `intptr_t`       | Signed integer type capable of holding a pointer to `void`                                                          |
+  | `uint8_t`        | Unsigned integer type with width of exactly 8 bits                                                                  |
+  | `uint16_t`       | Unsigned integer type with width of exactly 16 bits                                                                 |
+  | `uint32_t`       | Unsigned integer type with width of exactly 32 bits                                                                 |
+  | `uint64_t`       | Unsigned integer type with width of exactly 64 bits                                                                 |
+  | `uint_fast8_t`   | Fastest unsigned integer type with width of at least 8 bits                                                         |
+  | `uint_fast16_t`  | Fastest unsigned integer type with width of at least 16 bits                                                        |
+  | `uint_fast32_t`  | Fastest unsigned integer type with width of at least 32 bits                                                        |
+  | `uint_fast64_t`  | Fastest unsigned integer type with width of at least 64 bits                                                        |
+  | `uint_least8_t`  | Smallest unsigned integer type with width of at least 8 bits                                                        |
+  | `uint_least16_t` | Smallest unsigned integer type with width of at least 16 bits                                                       |
+  | `uint_least32_t` | Smallest unsigned integer type with width of at least 32 bits                                                       |
+  | `uint_least64_t` | Smallest unsigned integer type with width of at least 64 bits                                                       |
+  | `uintmax_t`      | Maximum-width unsigned integer type                                                                                 |
+  | `uintptr_t`      | Unsigned integer type capable of holding a pointer to `void`                                                        |
+
+  !!! note
+      The implementation may define typedef names: `intN_t`, `int_fastN_t`, `int_leastN_t`, `uintN_t`, `uint_fastN_t`, and `uint_leastN_t`, when `N` is not 8, 16, 32, or 64. Typedef names of the form `intN_t` may only be defined if the implementation supports an integer type of that exact width with no padding bits.
+
+Fixed width floating-point types
+: | Type              | Literal suffix   | Width | Precision bits | Exponent bits | Max exponent |
+  | ----------------- | ---------------- | ----- | -------------- | ------------- | ------------ |
+  | `std::float16_t`  | `f16` or `F16`   | 16    | 11             | 5             | 15           |
+  | `std::float32_t`  | `f32` or `F32`   | 32    | 24             | 8             | 127          |
+  | `std::float64_t`  | `f64` or `F64`   | 64    | 53             | 11            | 1023         |
+  | `std::float128_t` | `f128` or `F128` | 128   | 113            | 15            | 16383        |
+  | `std::bfloat16_t` | `bf16` or `BF16` | 16    | 8              | 8             | 127          |
+
+  !!! note
+      The type `std::bfloat16_t` is known as the *Brain Floating Point Type*.
+
+      Unlike the fixed width integer types, which may be aliases to standard integer types, the fixed width floating-point types must be aliases to extended floating-point types (not `float`, `double`, or `long double`).
 
 ### Properties
 
@@ -259,3 +320,6 @@ Precision
   | Floating-point | 64    | IEEE-754 | 4.941 * 10<sup>-324</sup>  | 2.225 * 10<sup>-308</sup>  |
   | Floating-point | 80    | x86      | 1.823 * 10<sup>-4951</sup> | 3.362 * 10<sup>-4932</sup> |
   | Floating-point | 128   | IEEE-754 | 6.475 * 10<sup>-4966</sup> | 3.362 * 10<sup>-4932</sup> |
+
+### Conversions
+
