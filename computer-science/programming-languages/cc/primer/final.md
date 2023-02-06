@@ -6,9 +6,6 @@
 - [Data types](#data-types)
 - [Type classification](#type-classification)
 - [Fundamental types](#fundamental-types)
-  - [Void type](#void-type)
-  - [Null pointer type](#null-pointer-type)
-  - [Boolean type](#boolean-type)
   - [Character types](#character-types)
     - [Type `char`](#type-char)
     - [Type `unsigned char`](#type-unsigned-char)
@@ -92,17 +89,14 @@ The C++ type system classifies each type as either a *fundamental type* or a *co
 
 ## Fundamental types
 
-### Void type
+Void type
+: The void type (`void`) is a type with an empty set of values. It is an incomplete type that can not be completed; consequently, objects of type `void` are disallowed. There are no arrays of `void`, nor references to `void`. However, pointers to `void` and functions returning `void` are permitted.
 
-The void type (`void`) is a type with an empty set of values. It is an incomplete type that can not be completed; consequently, objects of type `void` are disallowed. There are no arrays of `void`, nor references to `void`. However, pointers to `void` and functions returning `void` are permitted.
+Null pointer type
+: The null pointer type (`nullptr_t`) is the type of the null pointer literal (`nullptr`). It is a distinct type that is not itself a pointer type or a pointer to member type. Its values are null pointer constant (`NULL`), and may be implicitly converted to any pointer type or pointer to member type.
 
-### Null pointer type
-
-The null pointer type (`nullptr_t`) is the type of the null pointer literal (`nullptr`). It is a distinct type that is not itself a pointer type or a pointer to member type. Its values are null pointer constant (`NULL`), and may be implicitly converted to any pointer type or pointer to member type.
-
-### Boolean type
-
-The boolean type (`bool`) is a distinct type that has one of the two values: `true` and `false`. It has the same object representation, value representation, and alignment requirements as an implementation-defined unsigned integer type.
+Boolean type
+: The boolean type (`bool`) is a distinct type that has one of the two values: `true` and `false`. It has the same object representation, value representation, and alignment requirements as an implementation-defined unsigned integer type.
 
 ### Character types
 
