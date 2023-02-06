@@ -7,18 +7,10 @@
 - [Type classification](#type-classification)
 - [Fundamental types](#fundamental-types)
   - [Character types](#character-types)
-    - [Type `char`](#type-char)
-    - [Type `unsigned char`](#type-unsigned-char)
-    - [Type `signed char`](#type-signed-char)
-    - [Type `wchar_t`](#type-wchar_t)
-    - [Type `char8_t`](#type-char8_t)
-    - [Type `char16_t`](#type-char16_t)
-    - [Type `char32_t`](#type-char32_t)
   - [Integer types](#integer-types)
+    - [Modifiers](#modifiers)
     - [Data models](#data-models)
     - [Properties](#properties)
-        - [Signed integer types](#signed-integer-types)
-        - [Unsigned integer types](#unsigned-integer-types)
 
 ## Data types
 
@@ -31,11 +23,11 @@ In C++, objects, references, functions (including template specializations), and
 The C++ type system classifies each type as either a *fundamental type* or a *compound type*. A *fundamental type* is a type that is predefined in the C++ language; whereas, a *compound type* is a type that is defined in terms of another type. The C++ type system consists of the following types:
 
 - Fundamental types
-    - [Void type (`void`)]()
-    - [Null pointer type (`nullptr_t`)]()
+    - Void type (`void`)
+    - Null pointer type (`nullptr_t`)
     - Arithmetic types
         - Integral types
-            - [Boolean type (`bool`)]()
+            - Boolean type (`bool`)
             - Character types
                 - Narrow character types
                     - Ordinary character types
@@ -100,43 +92,75 @@ Boolean type
 
 ### Character types
 
-#### Type `char`
+Type `char`
+: The type `char` is a type for character representation. It is a distinct type that has an implementation-defined choice of `signed char` or `unsigned char` as its underlying type.
 
-The type `char` is a type for character representation. It is a distinct type that has an implementation-defined choice of `signed char` or `unsigned char` as its underlying type.
+  The signedness depends on the efficiency of processing of character processing on the target system (the default for ARM and PowerPC is usually `unsigned char`, and the default for x86 and x64 is usually `signed char`).
 
-The signedness depends on the efficiency of processing of character processing on the target system (the default for ARM and PowerPC is usually `unsigned char`, and the default for x86 and x64 is usually `signed char`).
+  For every value of type `unsigned char` in range: [0, 255], converting the value to `char` and then back to `unsigned char` produces the original value.
 
-For every value of type `unsigned char` in range: [0, 255], converting the value to `char` and then back to `unsigned char` produces the original value.
+Type `unsigned char`
+: The type `unsigned char` is a type for unsigned character representation. It is often used to inspect object representations (raw memory).
 
-#### Type `unsigned char`
+Type `signed char`
+: The type `signed char` is a type for signed character representation.
 
-The type `unsigned char` is a type for unsigned character representation. It is often used to inspect object representations (raw memory).
+Type `wchar_t`
+: The type `wchar_t` is a type for wide character representation. It has an implementation-defined choice of signed or unsigned integer type as its underlying type. The values of type `wchar_t` can represent distinct codes for all members of the largest extended character set specified among the supported locales.
 
-#### Type `signed char`
+  It has the same size, signedness, and alignment as one of the integer types, but is a distinct type. In practice, it is 32 bits and holds UTF-32 code units on Linux and many other non-Windows systems, but 16 bit and holds UTF-16 code units on Windows.
 
-The type `signed char` is a type for signed character representation.
+Type `char8_t`
+: The type `char8_t` is a type for UTF-8 character representation. It is required to be large enough to represent any UTF-8 code unit. It has the same size, signedness, and alignment as an `unsigned char` (and therefore, the same size and alignment as `char` and `signed char`), but is a distinct type.
 
-#### Type `wchar_t`
+Type `char16_t`
+: The type `char16_t` is a type for UTF-16 character representation. It is required to be large enough to represent any UTF-16 code unit. It has the same size, signedness, and alignment as `std::uint_least16_t`, but is a distinct type.
 
-The type `wchar_t` is a type for wide character representation. It has an implementation-defined choice of signed or unsigned integer type as its underlying type. The values of type `wchar_t` can represent distinct codes for all members of the largest extended character set specified among the supported locales.
-
-It has the same size, signedness, and alignment as one of the integer types, but is a distinct type. In practice, it is 32 bits and holds UTF-32 code units on Linux and many other non-Windows systems, but 16 bit and holds UTF-16 code units on Windows.
-
-#### Type `char8_t`
-
-The type `char8_t` is a type for UTF-8 character representation. It is required to be large enough to represent any UTF-8 code unit. It has the same size, signedness, and alignment as an `unsigned char` (and therefore, the same size and alignment as `char` and `signed char`), but is a distinct type.
-
-#### Type `char16_t`
-
-The type `char16_t` is a type for UTF-16 character representation. It is required to be large enough to represent any UTF-16 code unit. It has the same size, signedness, and alignment as `std::uint_least16_t`, but is a distinct type.
-
-#### Type `char32_t`
-
-The type `char32_t` is a type for UTF-32 character representation. It is required to be large enough to represent any UTF-32 code unit. It has the same size, signedness, and alignment as `std::uint_least32_t`, but is a distinct type.
+Type `char32_t`
+: The type `char32_t` is a type for UTF-32 character representation. It is required to be large enough to represent any UTF-32 code unit. It has the same size, signedness, and alignment as `std::uint_least32_t`, but is a distinct type.
 
 ### Integer types
 
-The integer types includes the *standard integer types* and implementation-defined *extended integer types*. The *standard integer types* includes the five *standard unsigned integer types* and five corresponding *standard unsigned integer types*.
+The integer types includes the *standard integer types* and implementation-defined *extended integer types*. The *standard integer types* includes the five *standard signed integer types* and five corresponding *standard unsigned integer types*.
+
+The *standard signed integer types* along with their minimum width constraints are specified in the table below. The width (`N`) of a signed integer type is implementation-defined, but must be at least the minimum width specified for that integer type, and must be at least equal to the width of the preceding type.
+
+| Type            | Minimum width (`N`) |
+| --------------- | ------------------- |
+| `signed char`   | 8                   |
+| `short int`     | 16                  |
+| `int`           | 16                  |
+| `long int`      | 32                  |
+| `long long int` | 64                  |
+
+For each of the standard signed integer type, there exists a corresponding (but distinct) *standard unsigned integer type*. An unsigned integer type has the same width (`N`), object representation, value representation, and alignment requirements, as the corresponding signed integer type; but the range of representable values is different.
+
+| Integer type          | Range of representable values                         |
+| --------------------- | ----------------------------------------------------- |
+| Signed integer type   | -2<sup>N-1</sup> to 2<sup>N-1</sup> - 1 *(inclusive)* |
+| Unsigned integer type | 0 to 2<sup>N</sup> - 1 *(inclusive)*                  |
+
+Overflow
+: Overflow for signed integer type yield undefined behavior. Unsigned integer types do not overflow; instead, the arithmetic is performed module 2<sup>N</sup>.
+
+Value representation
+: For each value `x` of a signed integer type, the value of the corresponding unsigned integer type congruent to `x` module 2<sup>N</sup> has the same value of corresponding bits in its value representation. This is also known as 2's complement representation.
+
+  Each value `x` of an unsigned integer type with width `N` has a unique representation: x = x<sub>0</sub>2<sup>0</sup> + x<sub>1</sub>2<sup>1</sup> + ... + x<sub>N-1</sub>2<sup>N-1</sup>, where each coefficient of `x` is either `0` or `1`; this is called base-2 representation of `x`. The base-2 representation of a value of signed integer type is the base-2 representation of the congruent value of the corresponding unsigned integer type.
+
+#### Modifiers
+
+The basic integer type (`int`) is intended to have the natural width suggested by the architecture of the execution environment; the other signed and unsigned integer types are provided to meet special needs. These other signed and unsigned integer types can be viewed as the basic integer type (`int`) with modifiers for signedness and size.
+
+These modifiers are listed in the table below, and can appear in any order, but only one from each category can be present in a type name. If no size modifiers are present, then one of the signedness modifiers must be present; in which case, the type is equivalent to the basic integer type (either `signed int` or `unsigned int`). If no signedness modifiers are present, then one of the size modifiers must be present; in which case, the type is equivalent to the unsigned integer type (either `short`, `int`, `long`, or `long long`).
+
+| Modifier    | Category   | Description                                      |
+| ----------- | ---------- | ------------------------------------------------ |
+| `signed`    | Signedness | Target type will have signed representation.     |
+| `unsigned`  | Signedness | Target type will have unsigned representation.   |
+| `short`     | Size       | Target type will have width of at least 16 bits. |
+| `long`      | Size       | Target type will have width of at least 32 bits. |
+| `long long` | Size       | Target type will have width of at least 64 bits. |
 
 #### Data models
 
@@ -150,135 +174,35 @@ The choices made by each implementation about the sizes of the fundamental types
 | **LP64** or **4/8/8**  | 64-bit              | 32          | 64           | 64          | Unix, Linux, macOS            |
 | **ILP64** or **8/8/8** | 64-bit              | 64          | 64           | 64          | UNICOX on Cray                |
 
-
 #### Properties
 
 The following table summarizes all standard integer types and their widths in common data models:
 
-| Type specifier           | Equivalent type      | C++ standard | LP32 | ILP32 | LLP64 | LP64 |
-| ------------------------ | -------------------- | ------------ | ---- | ----- | ----- | ---- |
-| `signed char`            | `signed char`        | at least 8   | 8    | 8     | 8     | 8    |
-| `unsigned char`          | `unsigned char`      | at least 8   | 8    | 8     | 8     | 8    |
-| `short`                  | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `short int`              | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `signed short`           | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `signed short int`       | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `unsigned short`         | `unsigned short int` | at least 16  | 16   | 16    | 16    | 16   |
-| `unsigned short int`     | `unsigned short int` | at least 16  | 16   | 16    | 16    | 16   |
-| `int`                    | `int`                | at least 16  | 16   | 32    | 32    | 32   |
-| `signed`                 | `int`                | at least 16  | 16   | 32    | 32    | 32   |
-| `signed int`             | `int`                | at least 16  | 16   | 32    | 32    | 32   |
-| `unsigned`               | `unsigned int`       | at least 16  | 16   | 32    | 32    | 32   |
-| `unsigned int`           | `unsigned int`       | at least 16  | 16   | 32    | 32    | 32   |
-| `long`                   | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `long int`               | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `signed long`            | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `signed long int`        | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `unsigned long`          | `unsigned long int`  | at least 32  | 32   | 32    | 32    | 64   |
-| `unsigned long int`      | `unsigned long int`  | at least 32  | 32   | 32    | 32    | 64   |
-| `long long`              | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `long long int`          | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `signed long long`       | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `signed long long int`   | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `unsigned long long`     | `unsigned long int`  | at least 64  | 64   | 64    | 64    | 64   |
-| `unsigned long long int` | `unsigned long int`  | at least 64  | 64   | 64    | 64    | 64   |
+| Type specifier           | Equivalent type      | Minimum width | LP32 | ILP32 | LLP64 | LP64 |
+| ------------------------ | -------------------- | ------------- | ---- | ----- | ----- | ---- |
+| `signed char`            | `signed char`        | 8             | 8    | 8     | 8     | 8    |
+| `unsigned char`          | `unsigned char`      | 8             | 8    | 8     | 8     | 8    |
+| `short`                  | `short int`          | 16            | 16   | 16    | 16    | 16   |
+| `short int`              | `short int`          | 16            | 16   | 16    | 16    | 16   |
+| `signed short`           | `short int`          | 16            | 16   | 16    | 16    | 16   |
+| `signed short int`       | `short int`          | 16            | 16   | 16    | 16    | 16   |
+| `unsigned short`         | `unsigned short int` | 16            | 16   | 16    | 16    | 16   |
+| `unsigned short int`     | `unsigned short int` | 16            | 16   | 16    | 16    | 16   |
+| `int`                    | `int`                | 16            | 16   | 32    | 32    | 32   |
+| `signed`                 | `int`                | 16            | 16   | 32    | 32    | 32   |
+| `signed int`             | `int`                | 16            | 16   | 32    | 32    | 32   |
+| `unsigned`               | `unsigned int`       | 16            | 16   | 32    | 32    | 32   |
+| `unsigned int`           | `unsigned int`       | 16            | 16   | 32    | 32    | 32   |
+| `long`                   | `long int`           | 32            | 32   | 32    | 32    | 64   |
+| `long int`               | `long int`           | 32            | 32   | 32    | 32    | 64   |
+| `signed long`            | `long int`           | 32            | 32   | 32    | 32    | 64   |
+| `signed long int`        | `long int`           | 32            | 32   | 32    | 32    | 64   |
+| `unsigned long`          | `unsigned long int`  | 32            | 32   | 32    | 32    | 64   |
+| `unsigned long int`      | `unsigned long int`  | 32            | 32   | 32    | 32    | 64   |
+| `long long`              | `long long int`      | 64            | 64   | 64    | 64    | 64   |
+| `long long int`          | `long long int`      | 64            | 64   | 64    | 64    | 64   |
+| `signed long long`       | `long long int`      | 64            | 64   | 64    | 64    | 64   |
+| `signed long long int`   | `long long int`      | 64            | 64   | 64    | 64    | 64   |
+| `unsigned long long`     | `unsigned long int`  | 64            | 64   | 64    | 64    | 64   |
+| `unsigned long long int` | `unsigned long int`  | 64            | 64   | 64    | 64    | 64   |
 
-The signed and unsigned integer types can be viewed as the basic integer type (`int`) with modifiers for signedness and size. These modifiers can appear in any order, but only one from each group can be present in a type name.
-
-If no size modifiers are present, then one of the signedness modifiers must be present, to name the type; in which case, the type is equivalent to the basic integer type (which is either `signed int` or `unsigned int`, depending on the signedness modifier).
-
-If no signedness modifiers are present, then one of the size modifiers must be present to name the type; in which case, the type is equivalent to the unsigned integer type (which is either `short`, `int`, `long`, or `long long`, depending on the size modifier).
-
-The signedness modifiers are:
-
-| Signedness modifier | Description                                    |
-| ------------------- | ---------------------------------------------- |
-| `signed`            | Target type will have signed representation.   |
-| `unsigned`          | Target type will have unsigned representation. |
-
-The size modifiers are:
-
-| Size modifier | Description                                                                       |
-| ------------- | --------------------------------------------------------------------------------- |
-| `short`       | Target type will be optimized for space, and will have width of at least 16 bits. |
-| `long`        | Target type will have width of at least 32 bits.                                  |
-| `long long`   | Target type will have width of at least 64 bits.                                  |
-
-!!! note
-
-    Enumerations are not integral; however, unscoped enumerations can be promoted to integral types.
-
-
-###### Signed integer types
-
-The range of representable values for a signed integer type is: -2<sup>N-1</sup> to 2<sup>N-1</sup> - 1 (inclusive), where `N` is called the "width" of the type.
-
-Overflow for signed arithmetic yield undefined behavior.
-
-The value representation of a signed integer type comprises `N` bits, where `N` is the respective width. Each set of values for any padding bits in the object representation are alternative representations of the value specified by the value representation. Padding bits have unspecified value, but can not cause traps.
-
-####### Standard signed integer types
-
-The standard signed integer types consist of the following types:
-
-- `signed char`
-- `short int`
-- `int`
-- `long int`
-- `long long int`
-
-The width of each signed integer type shall not be less than the values specified in the table below:
-
-| Type            | Minimum width (`N`) |
-| --------------- | ------------------- |
-| `char`          | 8                   |
-| `short int`     | 16                  |
-| `int`           | 16                  |
-| `long int`      | 32                  |
-| `long long int` | 64                  |
-
-
-In this list, each type provides at least as much storage as those preceding it in the list. Except for the minimum width constraint, the width of a signed integer type is implementation-defined.
-
-The basic integer type (`int`) is intended to have the natural width suggested by the architecture of the execution environment; the other signed integer types are provided to meet special needs.
-
-###### Unsigned integer types
-
-The unsigned integer types consist of the following types:
-
-- Standard unsigned integer types
-- Extended unsigned integer types
-
-An unsigned integer type has the same width (`N`) as the corresponding signed integer type. The range of representable values for an unsigned integer type is: 0 to 2<sup>N</sup> - 1 (inclusive).
-
-An unsigned integer type has the same object representation, value representation, and alignment requirements as the corresponding signed integer types.
-
-For each value `x` of a signed integer type, the value of the corresponding unsigned integer type congruent to `x` module 2<sup>N</sup> has the same value of corresponding bits in its value representation. This is also known as 2's complement representation.
-
-Arithmetic for the unsigned integer type is performed modulo 2<sup>N</sup>. Unsigned arithmetic does not overflow.
-
-The value representation of an unsigned integer type comprises `N` bits, where `N` is the respective width. Each set of values for any padding bits in the object representation are alternative representations of the value specified by the value representation. Padding bits have unspecified value, but can not cause traps.
-
-Each value `x` of an unsigned integer type with width `N` has a unique representation: x = x<sub>0</sub>2<sup>0</sup> + x<sub>1</sub>2<sup>1</sup> + ... + x<sub>N-1</sub>2<sup>N-1</sup>, where each coefficient of `x` is either `0` or `1`; this is called base-2 representation of `x`. The base-2 representation of a value of signed integer type is the base-2 representation of the congruent value of the corresponding unsigned integer type.
-
-####### Standard unsigned integer types
-
-The standard unsigned integer types consist of the following types:
-
-- `unsigned char`
-- `unsigned short int`
-- `unsigned int`
-- `unsigned long int`
-- `unsigned long long int`
-
-The width of each unsigned integer type shall not be less than the values specified in the table below:
-
-| Type                     | Minimum width (`N`) |
-| ------------------------ | ------------------- |
-| `unsigned char`          | 8                   |
-| `unsigned short int`     | 16                  |
-| `unsigned int`           | 16                  |
-| `unsigned long int`      | 32                  |
-| `unsigned long long int` | 64                  |
-
-In this list, each type provides at least as much storage as those preceding it in the list. Except for the minimum width constraint, the width of an unsigned integer type is implementation-defined.
