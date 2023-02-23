@@ -35,9 +35,40 @@ There are several important characteristic features of statistics:
 
 ### Descriptive and Inferential Statistics
 
+Statistics as a subject may be divided into two broad branches:
+
+Descriptive statistics
+: The branch of statistics that deals with the concepts and methods related to the description and summarization of the important aspects of numerical data (such as tabular displays, central tendency, and spread of the observations).
+
+Inferential statistics
+: The branch of statistics that deals with the procedures for making inferences about the characteristics that describe the large group of data (population) from the knowledge derived from only a part of the data (sample) (such as estimation of population parameters and testing of statistical hypothesis).
+
+| Descriptive statistics | Inferential statistics |
+| - | - |
+| A sports player wants to find his score average for the last 20 games. | A sports player wants to estimate his chance of scoring based on his current season average. |
+| A student wants to describe the variation in his school examination marks. | A student wants to predict the variation in his official examination marks based on the school examination marks. |
+
 ### Populations and Samples
 
+A *population* or a statistical population is the set (possibly infinite) of all possible observations relevant to some characteristic of interest. A statistical population may be real (such as the height of all students) or hypothetical (such as all the possible outcomes of a coin toss). The number of observations in a finite population is called the *size* of the population, and is denoted by the letter *N*. The numerical quantities describing a population are called *parameters*, and are conventionally denoted by Greek letters.
+
+A *sample* is a subset of a population. Generally it consists of some observations, but in some cases, it may include the whole population. The number of observations in a sample is called the *size* of the sample, and is denoted by the letter *n*. A numerical quantity calculated from a sample is called a *statistic*, and is conventionally denoted by Latin letters. The information derived from sample data is used to draw conclusions about the population.
+
 ### Importance of Statistics
+
+The following functions of statistics indicates its importance:
+
+- Statistics assists in summarizing large sets of data in a form that is easily understandable.
+- Statistics assists in designing scientific experiments efficiently.
+- Statistics assists in planning surveys effectively.
+- Statistics assists in drawing general conclusions and predictions.
+
+The following uses of statistics indicates its importance:
+
+- A businessman, industrialist, and research worker employ statistical methods in their work.
+- An administrator, whether in public or private sector, uses statistical data to provide factual basis for a decision.
+- A politician uses statistics to get support and credibility for his arguments.
+- A social scientist uses statistical methods in various areas of society and economics. 
 
 ## Observations and Variables
 
