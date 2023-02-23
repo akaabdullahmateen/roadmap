@@ -106,6 +106,26 @@ A variable, whether countable or measurable, is generally denoted by some symbol
 
 ### Measurement Scales
 
+Measurement means assigning a number to an observation, and *scaling* is the process of measurement. Levels of measurement, also called scales of measurement, describes how precisely variables are recorded. The four levels of measurements are cumulative; which means that they each take on the properties of lower levels and add new properties:
+
+| Measurement scale | Description | Example |
+| - | - | - |
+| Nominal scale | Data is categorized by labelling them in mutually exclusive groups, but there is no order between the categories. | Gender (male or female: there is no particular order) |
+| Ordinal scale | Data is categorized and ranked in an order, but there is no information about the intervals between the ranks. | Performance (good, average, or bad: there is no indication about how much an *average* is better than a *bad*) |
+| Interval scale | Data is categorized, ranked, and evenly spaced (equal intervals can be inferred between neighboring data points), but there is no true zero point. | Test score (zero marks does not indicate an absolute lack of intelligence) |
+| Ratio scale | Data is categorized, ranked, evenly spaced, and there is a true zero point (an absolute absence of the characteristic being measured) | Length (zero length means an absolute absence of length) |
+
+<!-- Not relevant here, but may be useful in future. Taken from scribbr,com/statistics/levels-of-measurement -->
+
+| Data type | Mathematical operations | Measures of central tendency | Measures of variability |
+| - | - | - | - |
+| Nominal | Equality (=) | Mode | None |
+| Ordinal | Equality (=), comparison (>, <) | Mode, median | Range, interquartile range |
+| Interval | Equality (=), comparison (>, <), addition/subtraction (+, -) | Mode, median, arithmetic mean | Range, interquartile range, standard deviation, variance |
+| Ratio | Equality (=), comparison (>, <), addition/subtraction (+, -), multiplication/division (*, /) | Mode, median, arithmetic mean, geometric mean | Range, interquartile range, standard deviation, variance, relative standard deviation |
+
+<!-- END -->
+
 ### Errors of Measurement
 
 ### Significant Digits
