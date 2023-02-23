@@ -78,9 +78,31 @@ In statistics, *observation* means any numerical quantity that describes an info
 
 A *variable* is a characteristic that varies between individuals or objects (such as age is a variable that varies between persons). The given set of all possible values from which a variable takes its value is called a *domain*. If the domain of a variable contains only one value, then the variable is referred to as a *constant*.
 
-Variables can be classified as either quantitative or qualitative depending on the characteristic being measured. A variable is called a *quantitative variable* when the characteristic can be expressed numerically (such as age or weight). A variable is called a *qualitative variable* when the characteristic is non-numerical in nature (such as eye color, gender, or satisfaction). A qualitative characteristic is also called an *attribute*. An individual or an object with a qualitative characteristic can be enumerated by assigning to them one of the several mutually exclusive classes or categories.
+```mermaid
+flowchart TD
+    root["Variable"]
+    a1["Quantitative"]
+    a2["Qualitative"]
+    b1["Discrete"]
+    b2["Continuous"]
+    b3["Attribute"]
+    root --> a1
+    root --> a2
+    a1 --> b1
+    a1 --> b2
+    a2 --> b3
+
+```
+
+Variables can be classified as either quantitative or qualitative depending on the characteristic being measured. A variable is called a *quantitative variable* when the characteristic can be expressed numerically (such as age or weight). A variable is called a *qualitative variable* when the characteristic is non-numerical in nature (such as eye color, gender, or satisfaction). A qualitative variable is also called an *attribute*. An individual or an object with a qualitative characteristic can be enumerated by assigning to them one of the several mutually exclusive classes or categories.
 
 ### Discrete and Continuous Variables
+
+A quantitative variable can be classified as either discrete or continuous. A *discrete variable* is a variable that can only take values from a set of discrete integers. A discrete variable represents *count* data (such as the number of citizens, rooms, or accidents).
+
+A *continuous variable* is a variable that can take any value from the set of real numbers within a given domain. A continuous variable represents *measurement* data (such as the age, height, or temperature).
+
+A variable, whether countable or measurable, is generally denoted by some symbol (such as *X* or *Y*). The symbol *X<sub>i</sub>* represents the *ith* value of a variable; the subscript is replaced by a number when referring to a particular value.
 
 ### Measurement Scales
 
