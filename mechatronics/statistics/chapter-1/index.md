@@ -106,7 +106,7 @@ A variable, whether countable or measurable, is generally denoted by some symbol
 
 ### Measurement Scales
 
-Measurement means assigning a number to an observation, and *scaling* is the process of measurement. Levels of measurement, also called scales of measurement, describes how precisely variables are recorded. The four levels of measurements are cumulative; which means that they each take on the properties of lower levels and add new properties:
+Measurement means assigning a number to an observation, and *scaling* is the process of measurement. Levels of measurement, also called scales of measurement, describes how precisely variables are recorded. The four levels of measurements are cumulative (they each take on the properties of lower levels and add new properties).
 
 | Measurement scale | Description | Example |
 | - | - | - |
@@ -128,7 +128,7 @@ Measurement means assigning a number to an observation, and *scaling* is the pro
 
 ### Errors of Measurement
 
-A continuous variable can never be measured accurately because of errors in measurement. The *actual* or *true* value, however, is assumed to exist (such as if a weight is measured as $60 \text{ kg}$ on a scale with $1 \text{ kg}$ intervals, the true weight lies between $59.5 \text{ kg}$ and $60.5 \text{ kg}$). The difference between the measured value ($x$) and the true value ($x + \epsilon$) is called the *absolute error*. *Relative error* and *percentage error* are derived from absolute error.
+A continuous variable can never be measured accurately because of errors in measurement. The deviations between the measured value ($x$) and the true value ($x + \epsilon$) are called *errors of measurement*.
 
 $$
 \begin{aligned}
@@ -151,7 +151,7 @@ $$
 \end{aligned}
 $$
 
-Absolute error has the same units as that of the measured value ($x$). Relative error and percentage error are both unitless. These errors of measurement have both magnitude and direction. Note that the word *error* in statistics does not imply mistake in measurement, which is a chance inaccuracy.
+*Absolute errors* have the same unit as that of the measured value ($x$). *Relative errors* and *percentage errors* are both unitless. These errors of measurement have both magnitude and direction. Note that the word *error* in statistics does not imply mistake in measurement, which is a chance inaccuracy.
 
 An error is said to be *biased* when the deviations (excesses or defects) in the measured value from the true value are consistent and constant. Biased errors are not revealed by repeating the measurements, and are *cumulative* (increasing the number of observations increases the magnitude of the error). Biased errors are also called *cumulative errors* or *systematic errors*.
 
