@@ -50,9 +50,9 @@ Inferential statistics
 
 ### Populations and Samples
 
-A *population* or a statistical population is the set (possibly infinite) of all possible observations relevant to some characteristic of interest. A statistical population may be real (such as the height of all students) or hypothetical (such as all the possible outcomes of a coin toss). The number of observations in a finite population is called the *size* of the population, and is denoted by the letter *N*. The numerical quantities describing a population are called *parameters*, and are conventionally denoted by Greek letters.
+A *population* or a statistical population is the set (possibly infinite) of all possible observations relevant to some characteristic of interest. A statistical population may be real (such as the height of all students) or hypothetical (such as all the possible outcomes of a coin toss). The number of observations in a finite population is called the *size* of the population, and is denoted by the letter $N$. The numerical quantities describing a population are called *parameters*, and are conventionally denoted by Greek letters.
 
-A *sample* is a subset of a population. Generally it consists of some observations, but in some cases, it may include the whole population. The number of observations in a sample is called the *size* of the sample, and is denoted by the letter *n*. A numerical quantity calculated from a sample is called a *statistic*, and is conventionally denoted by Latin letters. The information derived from sample data is used to draw conclusions about the population.
+A *sample* is a subset of a population. Generally it consists of some observations, but in some cases, it may include the whole population. The number of observations in a sample is called the *size* of the sample, and is denoted by the letter $n$. A numerical quantity calculated from a sample is called a *statistic*, and is conventionally denoted by Latin letters. The information derived from sample data is used to draw conclusions about the population.
 
 ### Importance of Statistics
 
@@ -119,14 +119,43 @@ Measurement means assigning a number to an observation, and *scaling* is the pro
 
 | Data type | Mathematical operations | Measures of central tendency | Measures of variability |
 | - | - | - | - |
-| Nominal | Equality (=) | Mode | None |
-| Ordinal | Equality (=), comparison (>, <) | Mode, median | Range, interquartile range |
-| Interval | Equality (=), comparison (>, <), addition/subtraction (+, -) | Mode, median, arithmetic mean | Range, interquartile range, standard deviation, variance |
-| Ratio | Equality (=), comparison (>, <), addition/subtraction (+, -), multiplication/division (*, /) | Mode, median, arithmetic mean, geometric mean | Range, interquartile range, standard deviation, variance, relative standard deviation |
+| Nominal | Equality (=, $\not$=) | Mode | None |
+| Ordinal | Equality (=, $\not$=), comparison (>, <) | Mode, median | Range, interquartile range |
+| Interval | Equality (=, $\not$=), comparison (>, <), addition/subtraction (+, -) | Mode, median, arithmetic mean | Range, interquartile range, standard deviation, variance |
+| Ratio | Equality (=, $\not$=), comparison (>, <), addition/subtraction (+, -), multiplication/division ($\times$, $\div$) | Mode, median, arithmetic mean, geometric mean | Range, interquartile range, standard deviation, variance, relative standard deviation |
 
 <!-- END -->
 
 ### Errors of Measurement
+
+A continuous variable can never be measured accurately because of errors in measurement. The *actual* or *true* value, however, is assumed to exist (such as if a weight is measured as $60 \text{ kg}$ on a scale with $1 \text{ kg}$ intervals, the true weight lies between $59.5 \text{ kg}$ and $60.5 \text{ kg}$). The difference between the measured value ($x$) and the true value ($x + \epsilon$) is called the *absolute error*. *Relative error* and *percentage error* are derived from absolute error.
+
+$$
+\begin{aligned}
+\text{absolute error}   &= \text{true value} - \text{measured value} \\
+                        &= \epsilon
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\text{relative error}   &= \frac{\text{absolute error}}{\text{true value}} \\
+                        &= \frac{\epsilon}{x + \epsilon}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\text{percentage error} &= \text{relative error} \times 100\% \\
+                        &= \frac{\epsilon}{x + \epsilon} \times 100\%
+\end{aligned}
+$$
+
+Absolute error has the same units as that of the measured value ($x$). Relative error and percentage error are both unitless. These errors of measurement have both magnitude and direction. Note that the word *error* in statistics does not imply mistake in measurement, which is a chance inaccuracy.
+
+An error is said to be *biased* when the deviations (excesses or defects) in the measured value from the true value are consistent and constant. Biased errors are not revealed by repeating the measurements, and are *cumulative* (increasing the number of observations increases the magnitude of the error). Biased errors are also called *cumulative errors* or *systematic errors*.
+
+An error is said to be *unbiased* when the deviations (excesses or defects) in the measured value from the true value tend to occur equally often. Unbiased errors are revealed when measurements are repeated, and are *compensating* (they tend to cancel out in the long run). Unbiased errors are also called *random errors* or *accidental errors*.
 
 ### Significant Digits
 
