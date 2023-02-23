@@ -72,7 +72,13 @@ The following uses of statistics indicates its importance:
 
 ## Observations and Variables
 
+In statistics, *observation* means any numerical quantity that describes an information or characteristic. It can be a physical measurement (such as height or weight), a classification (such as heads or tails), or an answer to a discrete question (such as yes or no).
+
 ### Variables
+
+A *variable* is a characteristic that varies between individuals or objects (such as age is a variable that varies between persons). The given set of all possible values from which a variable takes its value is called a *domain*. If the domain of a variable contains only one value, then the variable is referred to as a *constant*.
+
+Variables can be classified as either quantitative or qualitative depending on the characteristic being measured. A variable is called a *quantitative variable* when the characteristic can be expressed numerically (such as age or weight). A variable is called a *qualitative variable* when the characteristic is non-numerical in nature (such as eye color, gender, or satisfaction). A qualitative characteristic is also called an *attribute*. An individual or an object with a qualitative characteristic can be enumerated by assigning to them one of the several mutually exclusive classes or categories.
 
 ### Discrete and Continuous Variables
 
