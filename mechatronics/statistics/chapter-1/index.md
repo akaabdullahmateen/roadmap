@@ -159,7 +159,7 @@ An error is said to be *unbiased* when the deviations (excesses or defects) in t
 
 ### Significant Digits
 
-*Significant digits* (also called significant figures) of a number are digits that are reliable and necessary to indicate the measurement. If a number expressing the result of a measurement has more digits than the number of digits allowed by the measurement resolution, then only as many digits as allowed by the measurement resolution are reliable, and so only these can be significant digits. Rules are identifying significant digits are given below:
+*Significant digits* (also called *significant figures*) of a number are digits that are reliable and necessary to indicate the measurement. If a number expressing the result of a measurement has more digits than the number of digits allowed by the measurement resolution, then only as many digits as allowed by the measurement resolution are reliable, and so only these can be significant digits. Rules are identifying significant digits are given below:
 
 - **Digits beyond the measurement resolution are *not* significant.**
   - 114.8 mm has four significant digits (1, 1, 4, and 8) if the resolution is 0.1 mm.
@@ -195,12 +195,102 @@ It should be remembered that:
 
 ### Rounding Off a Number
 
+*Rounding off* (or simply *rounding*) means replacing a number with an approximate value that has a shorter, simpler, and more explicit representation. For integers, the last few digits are replaced with zeroes. For decimal numbers, the last few digits are dropped. For a given precision, the following rules are used for rounding:
+
+- If the digit following the last significant digit is greater than 5 or equal to 5 and followed by digits (not all of which are zero), the last significant digit is increased by 1, and the digits following it are dropped or replaced with zeroes.
+  - 2.145001 is 2.15 when rounded to 3 significant digits.
+  - 2145001 is 2150000 when rounded to 3 significant digits.
+- If the digit following the last significant digit is less than 5, the last significant digit remains unchanged, and the digits following it are dropped or replaced with zeroes.
+  - 2.1548 is 2.15 when rounded to 3 significant digits.
+  - 21548 is 21500 when rounded to 3 significant digits.
+- If the digit following the last significant digit is exactly 5, conventionally, the last significant digit is increased by 1, if it is odd, and remains unchanged, if it is even. This ensures that round-off errors are symmetric (for every fraction rounded down, there is an equal chance of a fraction being rounded up).
+  - 4.535 is 4.54 when rounded to 3 significant digits.
+  - 2.745 is 2.74 when rounded to 3 significant digits.
+
+However, to prevent accumulating round-off errors, the process of rounding the numbers should be applied to the final result, rather than intermediate calculations.
+
 ## Collection of Data
+
+Statistical data is collected either by a *complete* enumeration of the whole field, called *census*, which in many cases would be too costly and time consuming, as it requires a large number of enumerators and supervisory staff, or by a *partial* enumeration associated with a sample, which saves time and money.
+
+When data are classified based on *source*, generally, the following distinctions are made:
+
+Primary data
+: Data that have been originally collected (*raw data*) and have not undergone any sort of treatment by statistical methods.
+
+Secondary data
+: Data that have undergone any sort of treatment by statistical methods at least once (such as data being collected, classified, tabulated, or presented in some form for a certain purpose).
+
+The survey research includes the following important steps:
+
+- To define the objectives of the survey.
+- To define the variable and the population of interest.
+- To define the data collection and data measuring schemes.
+- To determine the appropriate descriptive and inferential data analysis techniques.
 
 ### Collection of Primary Data
 
+The primary data is obtained from the following sources:
+
+Direct personal investigation
+: In this method, an investigator collects the information personally from the individual concerned. Since he interviews the informants himself, the information collected is generally considered quite accurate and complete. However, this method is very costly and time consuming when the area to be covered is large. Nevertheless, it is useful for laboratory experiments or localized inquiries. Errors are likely to enter the results due to personal bias of the investigator.
+
+Indirect investigation
+: Sometimes the direct sources do not exist or the informants hesitate to respond. In such cases, third parties or witnesses, who have the necessary information, are interviewed. As some of the informants are likely to deliberately give wrong information, consensus from multiple witnesses is required. Moreover, due allowance is to be made for personal bias. This method is useful when the information desired is complex or there is reluctance or indifference in the informants. It can be adopted for extensive inquiries.
+
+Collection through questionnaire
+: A questionnaire is an inquiry form containing relevant questions with space for entering the information asked. The questionnaire are usually sent by mail and the informants are requested to return the questionnaire to the investigator within a certain period of time. This method is cheap, efficient, and good for extensive inquiries. However, most of the respondents do not care to fill the questionnaires and return them to the investigators. Sometimes, the questionnaires are returned incomplete and full of errors. Regardless of these drawbacks, this method is the standard practice for routine business and administrative inquiries. It should be noted that the questions should be few, brief, simple, easy for all respondents to answer, clearly worded, and not offensive to certain respondents.
+
+Collection through enumerators
+: In this method, the information is gathered by employing trained enumerators who assist the informants in making the entries in the schedules or questionnaires correctly. This method gives the most reliable information if the enumerator is well trained. It is considered the best method when a large scale government inquiry is to be conducted. This method can not be adopted by private companies or individuals due to the cost required.
+
+Collection through local sources
+: In this method, there is no formal collection of data. Instead, agents or local correspondents are directed to  collect and send the required information, using their own judgement. This method is cheap and efficient, but gives only the estimates.
+
+Computer interviews
+: In this method, the respondents enter data directly into a computer in response to questions presented on the screen.
+
+Laboratory experiments
+: In this method, independent variables are manipulated in an artificial environment, to observe the impacts. Basic design considers the impact of only one independent variable.
+
+Field experiments
+: In this method, independent variables are manipulated in a natural environment, to observe the impacts.
+
 ### Collection of Secondary Data
+
+The secondary data is obtained from the following sources:
+
+Internal secondary data
+: Data is generated within an organization itself (such as sales invoices and accounting records).
+
+External secondary data
+: This includes official sources (such as official publications by standard institutions), semi-official sources (such as reports by banks and councils), and other credible sources (such as reputable journals and publications by research institutions).
 
 ### Editing of Data
 
+The primary data should be extensively checked at an early stage in order to identify incomplete or inconsistent entries. If possible, incomplete and defective questionnaires should be returned to the respondents for amendments. In order to accept the secondary data as authoritative, the reliability of the compiler, suitability of the data, scope of the inquiry, sources of information, and the degree of accuracy should be critically examined.
+
 ### Uses and Misuses of Statistics
+
+A few examples of uses of statistics are given below:
+
+- In experimental sciences, the experiments generate data, and this data must be collected and analyzed.
+- In government, many types of statistical data are collected all the time. This data can be used for various types of planning, and to inform the general public.
+- In education, statistics is used to describe the results and standards of education.
+
+Statistical techniques are often misused as well:
+
+- To sell products that do not work.
+- To prove something that is not really true.
+- To get the attention of public by evoking fear and shock.
+
+Statistics is misused by many ways:
+
+- Non-representative samples.
+- Small sample size
+- Ambiguous averages and dispersions
+- Detached facts
+- Implied connections
+- Incorrect and misleading graphs
+- Incorrect use of statistical techniques
+- Bad assumptions for statistical techniques
