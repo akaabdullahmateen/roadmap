@@ -10,71 +10,7 @@ If a language specification requires its typing rules strongly (allowing only th
 
 ## Type
 
-Objects, references, functions (including function template specializations), and expressions have a property called *type*, which restricts the operations that are permitted for those entities, and provide semantic meaning to the otherwise generic sequences of bits.
-
 ### Type classification
-
-The C++ type system consists of the following types:
-
-Fundamental types
-: If T is a fundamental type (arithmetic type, `void`, or `nullptr_t`), `std::is_fundamental` provides the member constant value equal to `true`; for any other type, the value is `false`.
-
-Compound types
-: If T is a compound type (array, function, object pointer, function pointer, member object pointer, member function pointer, reference, class, union, or enumeration, including cv-qualified variants), `std::is_compound` provides the member constant value equal to `true`; for any other type, the value is `false`.
-
-- fundamental type
-    - `void`
-    - `std::nullptr_t`
-    - arithmetic type
-        - floating-point type
-            - `float` and cv-qualified version
-            - `double` and cv-qualified version
-            - `long double` and cv-qualified version
-        - integral type
-            - `bool`
-            - character type
-                - narrow character type
-                    - ordinary character type
-                        - `char`
-                        - `signed char`
-                        - `unsigned char`
-                    - `char8_t`
-                - wide character type
-                    - `char16_t`
-                    - `char32_t`
-                    - `wchar_t`
-            - signed integral type
-                - `short int`
-                - `int`
-                - `long int`
-                - `long long int`
-            - unsigned integral type
-                - `unsigned short int`
-                - `unsigned int`
-                - `unsigned long int`
-                - `unsigned long long int`
-- compound type
-    - reference type
-        - lvalue reference type
-            - lvalue reference to object type
-            - lvalue reference to function type
-        - rvalue reference type
-            - rvalue reference to object type
-            - rvalue reference to function type
-    - pointer type
-        - pointer to object type
-        - pointer to function type
-    - pointer to member type
-        - pointer to data member type
-        - pointer to member function type
-    - array type
-    - function type
-    - enumerated type
-        - unscoped enumeration type
-        - scope enumeration type
-    - class type
-        - non-union type
-        - union type
 
 For every type other than reference and function, the type system supports three additional cv-qualified versions of that type (`const`, `volatile`, and `const volatile`).
 
@@ -97,60 +33,8 @@ The following types are incomplete types; all other types are complete:
     - array of elements of incomplete type
     - enumeration type from the point of declaration until its underlying type is determined
 
-### Additional basic types
-
-Defined in header `<cstddef>`
-
-| Type          | Description                                                                  |
-| ------------- | ---------------------------------------------------------------------------- |
-| `size_t`      | unsigned integer type returned by the `sizeof` operator                      |
-| `ptrdiff_t`   | signed integer type returned when subtracting two pointers                   |
-| `nullptr_t`   | the type of the null pointer literal `nullptr`                               |
-| `NULL`        | implementation-defined null pointer constant                                 |
-| `max_align_t` | trivial type with alignment requirement as great as any other scalar type    |
-| `offsetof`    | byte offset from the beginning of a standard-layout type to specified member |
-| `byte`        | the byte type                                                                |
 
 ### Fixed width integer types
-
-#### Types
-
-Defined in header `<cstdint>`
-
-| Type             | Description                                                                                                         |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `int8_t`         | signed integer type with width of exactly 8 bits with no padding bits and using 2's complement for negative values  |
-| `int16_t`        | signed integer type with width of exactly 16 bits with no padding bits and using 2's complement for negative values |
-| `int32_t`        | signed integer type with width of exactly 32 bits with no padding bits and using 2's complement for negative values |
-| `int64_t`        | signed integer type with width of exactly 64 bits with no padding bits and using 2's complement for negative values |
-| `int_fast8_t`    | fastest signed integer type with width of at least 8 bits                                                           |
-| `int_fast16_t`   | fastest signed integer type with width of at least 16 bits                                                          |
-| `int_fast32_t`   | fastest signed integer type with width of at least 32 bits                                                          |
-| `int_fast64_t`   | fastest signed integer type with width of at least 64 bits                                                          |
-| `int_least8_t`   | smallest signed integer type with width of at least 8 bits                                                          |
-| `int_least16_t`  | smallest signed integer type with width of at least 16 bits                                                         |
-| `int_least32_t`  | smallest signed integer type with width of at least 32 bits                                                         |
-| `int_least64_t`  | smallest signed integer type with width of at least 64 bits                                                         |
-| `intmax_t`       | maximum-width signed integer type                                                                                   |
-| `intptr_t`       | signed integer type capable of holding a pointer to `void`                                                          |
-| `uint8_t`        | unsigned integer type with width of exactly 8 bits                                                                  |
-| `uint16_t`       | unsigned integer type with width of exactly 16 bits                                                                 |
-| `uint32_t`       | unsigned integer type with width of exactly 32 bits                                                                 |
-| `uint64_t`       | unsigned integer type with width of exactly 64 bits                                                                 |
-| `uint_fast8_t`   | fastest unsigned integer type with width of at least 8 bits                                                         |
-| `uint_fast16_t`  | fastest unsigned integer type with width of at least 16 bits                                                        |
-| `uint_fast32_t`  | fastest unsigned integer type with width of at least 32 bits                                                        |
-| `uint_fast64_t`  | fastest unsigned integer type with width of at least 64 bits                                                        |
-| `uint_least8_t`  | smallest unsigned integer type with width of at least 8 bits                                                        |
-| `uint_least16_t` | smallest unsigned integer type with width of at least 16 bits                                                       |
-| `uint_least32_t` | smallest unsigned integer type with width of at least 32 bits                                                       |
-| `uint_least64_t` | smallest unsigned integer type with width of at least 64 bits                                                       |
-| `uintmax_t`      | maximum-width unsigned integer type                                                                                 |
-| `uintptr_t`      | unsigned integer type capable of holding a pointer to `void`                                                        |
-
-!!! note
-
-    The implementation may define typedef names `intN_t`, `int_fastN_t`, `int_leastN_t`, `uintN_t`, `uint_fastN_t`, and `uint_leastN_t` when `N` is not 8, 16, 32, or 64. Typedef names of the form `intN_t` may only be defined if the implementation supports an integer type of that width with no padding. Thus, `uint24_t` denotes an unsigned integer type with a width of exactly 24 bits.
 
 #### Macro constants
 
@@ -268,24 +152,6 @@ For the macros of data types, replace `x` with `8`, `16`, `32`, `64`, or any oth
 
      The type `std::int8_t` may be `signed char` and `std::uint8_t` may be `unsigned char`, but neither can be `char` regardless of its signedness (because `char` is not considered a *signed integer type* or *unsigned integer type*).
 
-### Fixed with floating-point types
-
-Defined in `<stdfloat>`
-
-| Type name         | Literal suffix   | Predefined macro        | C language type | Storage bits | Precision bits | Exponent bits | Max exponent |
-| ----------------- | ---------------- | ----------------------- | --------------- | ------------ | -------------- | ------------- | ------------ |
-| `std::float16_t`  | `f16` or `F16`   | `__STDCPP_FLOAT16_T__`  | `_Float16`      | 16           | 11             | 5             | 15           |
-| `std::float32_t`  | `f32` or `F32`   | `__STDCPP_FLOAT32_T__`  | `_Float32`      | 32           | 24             | 8             | 127          |
-| `std::float64_t`  | `f64` or `F64`   | `__STDCPP_FLOAT64_T__`  | `_Float64`      | 64           | 53             | 11            | 1023         |
-| `std::float128_t` | `f128` or `F128` | `__STDCPP_FLOAT128_T__` | `_Float128`     | 128          | 113            | 15            | 16383        |
-| `std::bfloat16_t` | `bf16` or `BF16` | `__STDCPP_BFLOAT16_T__` | (n/a)           | 16           | 8              | 8             | 127          |
-
-!!! note
-
-    The type `std::bfloat16_t` is known as Brain Floating Point.
-
-    Unlike the fixed width integer types, which may be aliases to standard integer types, the fixed width floating-point types must be aliases to extended floating-point types (not `float`, `double`, or `long double`).
-
 ### Numeric limits
 
 Defined in header `<limits>` and called `std::numeric_limits`
@@ -366,121 +232,6 @@ Implementations may also provide specializations of `std::numeric_limits` for im
 | -------------------- | ---------------------------------------------- |
 | `float_round_style`  | indicates floating-point rounding modes        |
 | `float_denorm_style` | indicates floating-point denormalization modes |
-
-### Fundamental types
-
-#### Void type
-
-The type `void` is a type with an empty set of values. It is an incomplete type that can not be completed (consequently, objects of type `void` are not allowed). There are no arrays of `void`, nor references to `void`. However, pointers to `void` and functions returning type `void` are permitted.
-
-#### Null pointer type
-
-Defined in header `<cstddef>`
-
-`std::nullptr_t` is the type of the null pointer literal (`nullptr`). It is a distinct type that is not itself a pointer type or a pointer to member type. Its values are null pointer constant (`NULL`), and may be implicitly converted to any pointer and pointer to member type.
-
-`sizeof(std::nullptr_t)` is equal to `sizeof(void *)`.
-
-#### Data models
-
-The choices made by each implementation about the sizes of the fundamental types are collectively known as data model. Four data models are widely accepted:
-
-32 bit systems
-:   - **LP32** or **2/4/4** (`int` is 16 bit, `long` is 32 bit, and pointer is 32 bit)
-        - Win16 API
-    - **ILP32** or **4/4/4** (`int` is 32 bit, `long` is 32 bit, and pointer is 32 bit)
-        - Win32 API
-        - Unix and Unix-like systems (Linux, macOS)
-
-
-64 bit systems
-:   - **LLP64** or **4/4/8** (`int` is 32 bit, `long` is 32 bit, and pointer is 64 bit)
-        - Win64 API
-    - **LP64** or **4/8/8** (`int` is 32 bit, `long` is 64 bit, and pointer is 64 bit)
-        - Unix and Unix-like systems (Linux, macOS)
-
-Other models are very rare. For example, **ILP64** or **8/8/8** (`int` is 64 bit, `long` is 64 bit, and pointer is 64 bit) only appeared in some early 64 bit Unix systems (such as UNICOS on Cray).
-
-#### Signed and unsigned integer types
-
-`int` is the basic integer type. The keyword `int` may be omitted if any of the modifiers listed below are used. If no length modifiers are present, it is guaranteed to have a width of at least 16 bits. However, on 32/64 bit systems, it is almost exclusively guaranteed to have a width of at least 32 bits.
-
-##### Modifiers
-
-Modifiers modifies the basic integer type. They can be mixed in any order, but only of each group can be present in a type name (`unsigned long long int` and `long int unsigned long` name the same type, which is an integer type with unsigned representation and width of at least 64 bits).
-
-Signedness
-:   - `signed`
-        : target type will have a signed representation (this is the default if omitted)
-    - `unsigned`
-        : target type will have an unsigned representation
-
-Size
-:   - `short`
-        : target type will be optimized for space and will have width of at least 16 bits
-    - `long`
-        : target type will have width of at least 32 bits
-    - `long long`
-        : target type will have width of at least 64 bits
-
-##### Properties
-
-The following table summarizes all available integer types and their widths in various common data models:
-
-| Type specifier           | Equivalent type      | C++ standard | LP32 | ILP32 | LLP64 | LP64 |
-| ------------------------ | -------------------- | ------------ | ---- | ----- | ----- | ---- |
-| `signed char`            | `signed char`        | at least 8   | 8    | 8     | 8     | 8    |
-| `unsigned char`          | `unsigned char`      | at least 8   | 8    | 8     | 8     | 8    |
-| `short`                  | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `short int`              | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `signed short`           | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `signed short int`       | `short int`          | at least 16  | 16   | 16    | 16    | 16   |
-| `unsigned short`         | `unsigned short int` | at least 16  | 16   | 16    | 16    | 16   |
-| `unsigned short int`     | `unsigned short int` | at least 16  | 16   | 16    | 16    | 16   |
-| `int`                    | `int`                | at least 16  | 16   | 32    | 32    | 32   |
-| `signed`                 | `int`                | at least 16  | 16   | 32    | 32    | 32   |
-| `signed int`             | `int`                | at least 16  | 16   | 32    | 32    | 32   |
-| `unsigned`               | `unsigned int`       | at least 16  | 16   | 32    | 32    | 32   |
-| `unsigned int`           | `unsigned int`       | at least 16  | 16   | 32    | 32    | 32   |
-| `long`                   | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `long int`               | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `signed long`            | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `signed long int`        | `long int`           | at least 32  | 32   | 32    | 32    | 64   |
-| `unsigned long`          | `unsigned long int`  | at least 32  | 32   | 32    | 32    | 64   |
-| `unsigned long int`      | `unsigned long int`  | at least 32  | 32   | 32    | 32    | 64   |
-| `long long`              | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `long long int`          | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `signed long long`       | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `signed long long int`   | `long long int`      | at least 64  | 64   | 64    | 64    | 64   |
-| `unsigned long long`     | `unsigned long int`  | at least 64  | 64   | 64    | 64    | 64   |
-| `unsigned long long int` | `unsigned long int`  | at least 64  | 64   | 64    | 64    | 64   |
-
-#### Boolean type
-
-`bool` is the boolean type, capable of holding one of the two values: `true` or `false`. The value of `sizeof(bool)` is implementation-defined and might be different from 1.
-
-#### Character types
-
-- `signed char`
-    : type for signed character representation
-- `unsigned char`
-    : type for signed character representation. Also used to inspect object representation (raw memory).
-- `char`
-    : type for character representation which can be most efficiently processed on the target system (it has the same representation and alignment as either `signed char` or `unsigned char`, but is always a distinct type). Multibyte character strings use this type to represent code units. For each value of type `unsigned char` in range [0, 255], converting the value to `char` and then back to `unsigned char` produces the original value. The signedness of `char` depends on the compiler and the target platform (the default for ARM and PowerPC is usually unsigned, and the default for x86 and x64 is usually signed).
-- `wchar_t`
-    : type for wide character representation. It has the same size, signedness, and alignment as one of the integer types, but is a distinct type. In practice, it is 32 bits and holds UTF-32 code units on Linux and many other non-Windows systems, but 16 bit and holds UTF-16 code units on Windows.
-- `char8_t`
-    : type for UTF-8 character representation, required to be large enough to represent any UTF-8 code unit (8 bits). It has the same size, signedness, and alignment as `unsigned char` (and therefore, the same size and alignment as `char` and `signed char`), but is a distinct type.
-- `char16_t`
-    : type for UTF-16 character representation, required to be large enough to represent any UTF-16 code unit (16 bits). It has the same size, signedness, and alignment as `std::uint_least16_t`, but is a distinct type.
-- `char32_t`
-    : type for UTF-32 character representation, required to be large enough to represent any UTF-32 code unit (32 bits). It has the same size, signedness, and alignment as `std::uint_least32_t`, but is a distinct type.
-
-Besides the minimal bit counts, the C++ standard guarantees that:
-
-```cpp
-1 == sizeof(char) <= sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long)
-```
 
 ##### Null-terminated wide strings
 
@@ -610,71 +361,6 @@ Defined in header `<cwchar>`
 | `WEOF`      | a non-character value of type `wint_t` used to indicate errors |
 | `WCHAR_MIN` | the smallest valid value of `wchar_t`                          |
 | `WCHAR_MAX` | the largest valid value of `wchar_t`                           |
-
-#### Floating-point types
-
-The following three types and their cv-qualified versions are collectively called floating-point types:
-
-- `float`
-    : single precision floating-point type. Matches IEEE-754 binary32 format if supported. 
-- `double`
-    : double precision floating-point type. Matches IEEE-754 binary64 format if supported. 
-- `long double`
-    : extended precision floating-point type. Matches IEEE-754 binary128 format if supported, otherwise matches IEEE-754 binary64-extended format if supported, otherwise matches some non-IEEE-754 extended floating-point format as long as its precision is better than binary64 and range is at least as good as binary64, otherwise matches IEEE-754 binary64 format.
-
-    - binary128 format is used by some HP-UX, SPARC, MIPS, ARM64, and z/OS implementations.
-    - The most well known IEEE-754 binary64-extended format is 80-bit x87 extended precision format. It is used by many x86 and x64 implementations (a notable exception is MSVC, which implements `long double` in the same format as `double`, which is binary64).
-
-##### Properties
-
-Floating-point types may support special values:
-
-- infinity (*INFINITY* and *-INFINITY*)
-    : If the implementation supports floating-point infinities, the macro `INFINITY` expands to constant expression of type `float` which evaluates to positive or unsigned infinity. If the implementation does not support floating-point infinities, the macro `INFINITY` expands to a positive value that is guaranteed to overflow a `float` at compile time, and the use of this macro generates a compiler warning.
-- negative zero (*-0.0*)
-    : it compares equal to positive zero, but is meaningful in some mathematics (such as `1.0/0.0 == INFINITY` but `1.0/-0.0 == -INFINITY`).
-- NaN (*not-a-number*)
-    : which does not compare equal with anything, including itself. Multiple bit patterns represent NaN (such as `std::nan` and `NAN`). Note that C++ takes no special notice of signaling NaN other than detecting their support by `std::numeric_limits::has_signaling_NaN`, and treats all NaN as quiet.
-
-Real floating-point numbers may be used with arithmetic operators and various mathematical functions from `<cmath>`. Both built-in operators and library functions may raise floating-point exceptions and set `errno`.
-
-Floating-point expressions may have greater range and precision than indicated by their types. Floating-point expressions may also be contracted (calculated as if all intermediate values have infinite range and precision). Standard C++ does not restrict the accuracy of floating-point operations.
-
-Some operations on floating-point numbers are affected by and modify the state of the floating-point environment (most notably, rounding direction).
-
-Implicit conversions are defined between real floating-point types and integer types.
-
-#### Range of values
-
-The following table provides a reference for the limits of common numeric representations.
-
-Prior to C++20, the C++ Standard allowed any signed integer representation, and the minimum guaranteed range of N-bit signed integers was from -(2<sup>N-1</sup> - 1) to +2<sup>N-1</sup> - 1 (such as -127 to 127 for a signed 8-bit type), which corresponds to the limits of one's complement.
-
-However, all C++ compilers use two's complement representation, and as of C++20, it is the only representation allowed by the standard, with the guaranteed range from -2<sup>N-1</sup> to +2<sup>N-1</sup> - 1 (such as -128 to 127 for a signed 8-bit type).
-
-8-bit one's complement representation for `char` have been disallowed since C++11, because a UTF-8 code unit of value `0x80` used in a UTF-8 string literal must be stored in a `char` element object.
-
-| Type      | Size in bits | Format   | Value range                                             |
-| --------- | ------------ | -------- | ------------------------------------------------------- |
-| character | 8            | signed   | -128 to 127                                             |
-| character | 8            | unsigned | 0 to 255                                                |
-| character | 16           | UTF-16   | 0 to 65535                                              |
-| character | 32           | UTF-32   | 0 to 1114111 (0x10ffff)                                 |
-| integer   | 16           | signed   | -32768 to 32767                                         |
-| integer   | 16           | unsigned | 0 to 65535                                              |
-| integer   | 32           | signed   | -2,147,483,648 to 2,147,483,647                         |
-| integer   | 32           | unsigned | 0 to 4,294,967,295                                      |
-| integer   | 64           | signed   | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |
-| integer   | 64           | unsigned | 0 to 18,446,744,073,709,551,615                         |
-
-The following table provides a reference for the limits of binary floating-point representations in common formats. The values for limits are only absolute values (signedness is not included for brevity).
-
-| Type                  | Size in bits | Format   | Min subnormal | Min normal | Max                                     |
-| --------------------- | ------------ | -------- | ------------- | ---------- | --------------------------------------- |
-| binary floating-point | 32           | IEEE 754 | 0x1p-149      | 0x1p-126   | 0x1.fffffep+127                         |
-| binary floating-point | 64           | IEEE 754 | 0x1p-1074     | 0x1p-1022  | 0x1.fffffffffffffp+1023                 |
-| binary floating-point | 80           | x86      | 0x1p-16446    | 0x1p-16382 | 0x1.fffffffffffffffep+16383             |
-| binary floating-point | 128          | IEEE 754 | 0x1p-16494    | 0x1p-16382 | 0x1.ffffffffffffffffffffffffffffp+16383 |
 
 ### Arithmetic operators
 
