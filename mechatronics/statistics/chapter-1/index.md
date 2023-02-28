@@ -1,5 +1,27 @@
 # Introduction
 
+<!-- omit in toc -->
+## Table of contents
+
+- [Meaning of Statistics](#meaning-of-statistics)
+  - [Use of Statistical Information](#use-of-statistical-information)
+  - [Characteristics of Statistics](#characteristics-of-statistics)
+  - [Descriptive and Inferential Statistics](#descriptive-and-inferential-statistics)
+  - [Populations and Samples](#populations-and-samples)
+  - [Importance of Statistics](#importance-of-statistics)
+- [Observations and Variables](#observations-and-variables)
+  - [Variables](#variables)
+  - [Discrete and Continuous Variables](#discrete-and-continuous-variables)
+  - [Measurement Scales](#measurement-scales)
+  - [Errors of Measurement](#errors-of-measurement)
+  - [Significant Digits](#significant-digits)
+  - [Rounding Off a Number](#rounding-off-a-number)
+- [Collection of Data](#collection-of-data)
+  - [Collection of Primary Data](#collection-of-primary-data)
+  - [Collection of Secondary Data](#collection-of-secondary-data)
+  - [Editing of Data](#editing-of-data)
+  - [Uses and Misuses of Statistics](#uses-and-misuses-of-statistics)
+
 ## Meaning of Statistics
 
 The word *statistics*, which comes from the Latin word *status*  (meaning a political state), originally meant information useful to the state (such as information about the population and armed forces). But this word has now acquired different meanings depending on its context:
@@ -115,7 +137,7 @@ Measurement means assigning a number to an observation, and *scaling* is the pro
 | Interval scale | Data is categorized, ranked, and evenly spaced (equal intervals can be inferred between neighboring data points), but there is no true zero point. | Test score (zero marks does not indicate an absolute lack of intelligence) |
 | Ratio scale | Data is categorized, ranked, evenly spaced, and there is a true zero point (an absolute absence of the characteristic being measured) | Length (zero length means an absolute absence of length) |
 
-<!-- Not relevant here, but may be useful in future. Taken from scribbr,com/statistics/levels-of-measurement -->
+<!-- Not relevant here, but may be useful in future. Taken from scribbr.com/statistics/levels-of-measurement -->
 
 | Data type | Mathematical operations | Measures of central tendency | Measures of variability |
 | - | - | - | - |
