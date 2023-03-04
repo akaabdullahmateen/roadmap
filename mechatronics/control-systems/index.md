@@ -89,14 +89,10 @@ F(\alpha x) = \alpha F(x)
 \end{equation}
 $$
 
-Based on the example above, it can be shown that any system described by a first order differential equation of the following form is linear.
-
-$$
-a_1 \frac {d}{dt} y(t) + a_0 y(t) = b x(t)
-$$
-
 Generally, any system described by a differential equation of the following form is linear, with $n \geq m$.
 
 $$
 a_n \frac {d^n}{dt^n} y(t) + a_{n - 1} \frac {d^{n - 1}}{dt^{n - 1}} y(t) + \ldots + a_0 y(t) = b_n \frac {d^m}{dt^m} x(t) + b_{m - 1} \frac {d^{m - 1}}{dt^{m - 1}} x(t) + \ldots + b_0 x(t)
 $$
+
+continue
