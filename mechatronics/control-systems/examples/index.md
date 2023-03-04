@@ -1,6 +1,6 @@
 # Examples
 
-## Example 1: Proving that the RC circuit is a linear system
+## Example 1: Proving that an RC circuit is a linear system
 
 !!! example
 
@@ -49,7 +49,7 @@
 
     Matching with the equation (4), we observe that $V_{c3} = k_1 V_{c1} + k_2 V_{c2}$. Therefore, the RC circuit is indeed a linear system.
 
-## Example 2: Proving that a homogenous second order differential equation is linear
+## Example 2: Proving that a second order differential equation is linear
 
 !!! example
 
@@ -109,7 +109,7 @@
 
     Matching with the equation (4), we observe that $y_3 = k_1 y_1 + k_2 y_2$. Therefore, the second order differential equation is indeed a linear system.
 
-## Example 3: Proving that a non-homogenous second order differential equation is non-linear
+## Example 3: Proving that a second order differential equation is non-linear
 
 !!! example
 
