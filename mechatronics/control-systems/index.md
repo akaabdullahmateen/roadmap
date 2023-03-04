@@ -9,7 +9,7 @@
   - [System configurations](#system-configurations)
     - [Open loop systems](#open-loop-systems)
     - [Closed loop systems](#closed-loop-systems)
-- [Superposition principle](#superposition-principle)
+- [Linearity](#linearity)
 
 ## Introduction
 
@@ -60,19 +60,79 @@ The closed loop system compensates for disturbances by measuring the output resp
 
 ------------
 
-## Superposition principle
+## Linearity
 
-The superposition principle states that, for all linear systems, the net response caused by two or more stimuli is the sum of the responses that would have been caused by each stimuli individually. So that if input $A$ produces response $X$ and input $B$ produces response $Y$, then input $(A+B)$ produces response $(X+Y)$.
+**Linearity** means the property of a function of being compatible with *addition* and *scaling*, also called the superposition principle. Thereby, if input $x_1$ produces response $y_1$ and input $x_2$ produces response $y_2$, then the weighted sum of the inputs must produce the weighted sum of the responses.
 
-A function $F(x)$ that satisfies the superposition principle is called a *linear function*. Superposition can be defined by two simpler properties:
+In the equation below, the weights $k_1$ and $k_2$ are real constants, and the inputs and outputs are functions of time.
 
-Additivity
-: $$
-  F(x_1 + x_2) = F(x_1) + F(x_2)
-  $$
+$$
+\begin{equation}
+\tag{Linearity}
+k_1 y_1(t) + k_2 y_2(t) = k_1 x_1(t) + k_2 x_2(t)
+\end{equation}
+$$
 
-Homogeneity
-: $$
-  F(\alpha x) = \alpha F(x)
-  $$
+The *superposition principle* states that, for all linear systems, the net response caused by two or more stimuli is the sum of the responses that would have been caused by each stimuli individually. A function $F(x)$ that satisfies the superposition principle is called a *linear function*. Superposition can be defined by two simpler properties:
+
+$$
+\begin{equation}
+\tag{Additivity}
+F(x_1 + x_2) = F(x_1) + F(x_2)
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\tag{Homogeneity}
+F(\alpha x) = \alpha F(x)
+\end{equation}
+$$
+
+!!! example
+
+    Show that an RC circuit obeying the given relationship is a linear system. For brevity, we assume $\tau = RC$.
+
+    $$
+    \tau \frac{d}{dt} V_c + V_c = V_{in}
+    $$ (1)
+
+    Given inputs $V_{in1}$ and $V_{in2}$, we get responses $V_{c1}$ and $V_{c2}$ respectively, such that:
+
+    $$
+    \tau \frac{d}{dt} V_{c1} + V_{c1} = V_{in1}
+    $$ (2)
+
+    $$
+    \tau \frac{d}{dt} V_{c2} + V_{c2} = V_{in2}
+    $$ (3)
+
+    Now, if we provide an input $V_{in3}$, which is a weighted sum of the prior two inputs, we get a response $V_{c3}$ according to the equation (1).
+
+    $$
+    V_{in3} = k_1 V_{in1} + k_2 V_{in2}
+    $$
+
+    $$
+    \tau \frac{d}{dt} V_{c3} + V_{c3} = V_{in3}
+    $$ (4)
+
+    To prove that the RC circuit is a linear system, we need to show that:
+
+    $$
+    V_{c3} = k_1 V_{c1} + k_2 V_{c2}
+    $$
+
+    $$
+    \begin{aligned}
+    V_{in3} &= k_1 V_{in1} + k_2 V_{in2} \\
+            &= k_1 (\tau \frac{d}{dt} V_{c1} + V_{c1}) + k_2 (\tau \frac{d}{dt} V_{c2} + V_{c2}) \\
+            &= \tau (k_1 \frac {d}{dt} V_{c1} + k_2 \frac {d}{dt} V_{c2}) + (k_1 V_{c1} + k_2 V_{c2}) \\
+            &= \tau (\frac {d}{dt} k_1 V_{c1} + \frac {d}{dt} k_2 V_{c2}) + (k_1 V_{c1} + k_2 V_{c2}) \\
+            &= \tau (\frac {d}{dt} (k_1 V_{c1} + k_2 V_{c2})) + (k_1 V_{c1} + k_2 V_{c2})
+    \end{aligned}
+    $$
+
+    Matching with the equation (4), we observe that $V_{c3} = k_1 V_{c1} + k_2 V_{c2}$. Therefore, the RC circuit is indeed a linear system.
+
 
