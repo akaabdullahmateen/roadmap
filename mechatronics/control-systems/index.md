@@ -89,50 +89,14 @@ F(\alpha x) = \alpha F(x)
 \end{equation}
 $$
 
-!!! example
+Based on the example above, it can be shown that any system described by a first order differential equation of the following form is linear.
 
-    Show that an RC circuit obeying the given relationship is a linear system. For brevity, we assume $\tau = RC$.
+$$
+a_1 \frac {d}{dt} y(t) + a_0 y(t) = b x(t)
+$$
 
-    $$
-    \tau \frac{d}{dt} V_c + V_c = V_{in}
-    $$ (1)
+Generally, any system described by a differential equation of the following form is linear, with $n \geq m$.
 
-    Given inputs $V_{in1}$ and $V_{in2}$, we get responses $V_{c1}$ and $V_{c2}$ respectively, such that:
-
-    $$
-    \tau \frac{d}{dt} V_{c1} + V_{c1} = V_{in1}
-    $$ (2)
-
-    $$
-    \tau \frac{d}{dt} V_{c2} + V_{c2} = V_{in2}
-    $$ (3)
-
-    Now, if we provide an input $V_{in3}$, which is a weighted sum of the prior two inputs, we get a response $V_{c3}$ according to the equation (1).
-
-    $$
-    V_{in3} = k_1 V_{in1} + k_2 V_{in2}
-    $$
-
-    $$
-    \tau \frac{d}{dt} V_{c3} + V_{c3} = V_{in3}
-    $$ (4)
-
-    To prove that the RC circuit is a linear system, we need to show that:
-
-    $$
-    V_{c3} = k_1 V_{c1} + k_2 V_{c2}
-    $$
-
-    $$
-    \begin{aligned}
-    V_{in3} &= k_1 V_{in1} + k_2 V_{in2} \\
-            &= k_1 (\tau \frac{d}{dt} V_{c1} + V_{c1}) + k_2 (\tau \frac{d}{dt} V_{c2} + V_{c2}) \\
-            &= \tau (k_1 \frac {d}{dt} V_{c1} + k_2 \frac {d}{dt} V_{c2}) + (k_1 V_{c1} + k_2 V_{c2}) \\
-            &= \tau (\frac {d}{dt} k_1 V_{c1} + \frac {d}{dt} k_2 V_{c2}) + (k_1 V_{c1} + k_2 V_{c2}) \\
-            &= \tau (\frac {d}{dt} (k_1 V_{c1} + k_2 V_{c2})) + (k_1 V_{c1} + k_2 V_{c2})
-    \end{aligned}
-    $$
-
-    Matching with the equation (4), we observe that $V_{c3} = k_1 V_{c1} + k_2 V_{c2}$. Therefore, the RC circuit is indeed a linear system.
-
-
+$$
+a_n \frac {d^n}{dt^n} y(t) + a_{n - 1} \frac {d^{n - 1}}{dt^{n - 1}} y(t) + \ldots + a_0 y(t) = b_n \frac {d^m}{dt^m} x(t) + b_{m - 1} \frac {d^{m - 1}}{dt^{m - 1}} x(t) + \ldots + b_0 x(t)
+$$
