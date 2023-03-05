@@ -9,7 +9,11 @@
   - [System configurations](#system-configurations)
     - [Open loop systems](#open-loop-systems)
     - [Closed loop systems](#closed-loop-systems)
-- [Linearity](#linearity)
+- [Linear systems](#linear-systems)
+  - [Superposition principle](#superposition-principle)
+  - [Linearity](#linearity)
+  - [Time invariance](#time-invariance)
+  - [Linear time invariant systems](#linear-time-invariant-systems)
 
 ## Introduction
 
@@ -60,20 +64,11 @@ The closed loop system compensates for disturbances by measuring the output resp
 
 ------------
 
-## Linearity
+## Linear systems
 
-**Linearity** means the property of a function of being compatible with *addition* and *scaling*, also called the superposition principle. Thereby, if input $x_1$ produces response $y_1$ and input $x_2$ produces response $y_2$, then the weighted sum of the inputs must produce the weighted sum of the responses.
+### Superposition principle
 
-In the equation below, the weights $k_1$ and $k_2$ are real constants, and the inputs and outputs are functions of time.
-
-$$
-\begin{equation}
-\tag{Linearity}
-k_1 y_1(t) + k_2 y_2(t) = k_1 x_1(t) + k_2 x_2(t)
-\end{equation}
-$$
-
-The *superposition principle* states that, for all linear systems, the net response caused by two or more stimuli is the sum of the responses that would have been caused by each stimuli individually. A function $F(x)$ that satisfies the superposition principle is called a *linear function*. Superposition can be defined by two simpler properties:
+A system satisfies the superposition principle, if the net response caused by two or more stimuli is the sum of the responses that would have been caused by each stimuli individually. Superposition can be defined by two simpler properties:
 
 $$
 \begin{equation}
@@ -89,10 +84,34 @@ F(\alpha x) = \alpha F(x)
 \end{equation}
 $$
 
+### Linearity
+
+A system is considered linear if it satisfies the superposition principle. In a linear system, if input $u_1$ produces response $y_1$ and input $u_2$ produces response $y_2$, then the weighted sum of these inputs must produce the weighted sum of these responses.
+
+$$
+\begin{equation}
+\tag{Linearity}
+\alpha_1 y_1(t) + \alpha_2 y_2(t) = F(\alpha_1 u_1(t) + \alpha_2 u_2(t))
+\end{equation}
+$$
+
 Generally, any system described by a differential equation of the following form is linear, with $n \geq m$.
 
 $$
-a_n \frac {d^n}{dt^n} y(t) + a_{n - 1} \frac {d^{n - 1}}{dt^{n - 1}} y(t) + \ldots + a_0 y(t) = b_n \frac {d^m}{dt^m} x(t) + b_{m - 1} \frac {d^{m - 1}}{dt^{m - 1}} x(t) + \ldots + b_0 x(t)
+a_n \frac {d^n}{dt^n} y(t) + a_{n - 1} \frac {d^{n - 1}}{dt^{n - 1}} y(t) + \ldots + a_0 y(t) = b_m \frac {d^m}{dt^m} x(t) + b_{m - 1} \frac {d^{m - 1}}{dt^{m - 1}} x(t) + \ldots + b_0 x(t)
 $$
 
-continue
+### Time invariance
+
+A system is considered time-invariant, given it has a time-dependent output function $y(t)$ and a time-dependent input function $u(t)$, if a time delay on the input function $u(t - \tau)$ directly equates to a time delay on the output function $y(t - \tau)$. In other words, if the input to the system is applied $\tau$ time units later, the output will be identical except for the equivalent time delay.
+
+$$
+\begin{equation}
+\tag{Time invariance}
+y(t - \tau) = F(u(t - \tau))
+\end{equation}
+$$
+
+### Linear time invariant systems
+
+Linear, time-invariant (LTI) systems are systems that are both linear and time-invariant. LTI systems are of special interest because they can be characterized entirely by a single function called the system's *impulse response*. The system's output $y(t)$ is simply the convolution of the system's input $x(t)$ with the system's impulse response $h(t)$. This is called a *continuous time system*.
