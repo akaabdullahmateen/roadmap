@@ -176,4 +176,43 @@
     
     Hence, the system described by the given differential equation is non-linear.
 
-## Example 4: Continue
+## Example 4: Derivation of output response of an LTI system
+
+!!! example
+
+    **Determine an expression for the output function $y(t)$ of a linear time invariant system, given an input function $u(t)$.**
+
+    Write the input signal $u(t)$ as a sample of itself; this means that $u(t)$ can be written as a weighted integral of unit impulse functions.
+
+    $$
+    u(t) = \int^{\infty}_{-\infty} u(\tau) \delta(t - \tau) d\tau
+    $$
+
+    Applying the linear invariant system $F$ to the input $u(t)$.
+
+    $$
+    \begin{aligned}
+    y(t) &= F(u(t)) \\
+         &= F(\int^{\infty}_{-\infty} u(\tau) \delta(t - \tau) d\tau)
+    \end{aligned}
+    $$
+
+    Since the system obeys linearity, we can interchange the order of the system operator and the integration.
+
+    $$
+    y(t) = \int^{\infty}_{-\infty} u(\tau) F(\delta(t - \tau)) d\tau
+    $$
+
+    Substituting for the impulse response gives:
+
+    $$
+    y(t) = \int^{\infty}_{-\infty} u(\tau) h(t - \tau) d\tau
+    $$
+
+    This can be written as the convolution of the impulse response with an input function.
+
+    $$
+    y(t) = h(t) \ast u(t)
+    $$
+
+## Example 5: Continue
