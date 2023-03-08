@@ -215,4 +215,35 @@
     y(t) = h(t) \ast u(t)
     $$
 
-## Example 5: Continue
+## Example 5: List of common Laplace transforms
+
+!!! example
+
+    In the table below, the time domain column contains the functions $y(t) = \mathcal{L}^{-1} \lbrace Y(s) \rbrace$ and the frequency domain column contains the functions $Y(s) = \mathcal{L} \lbrace y(t) \rbrace$.
+
+    | Function | Time domain | Frequency domain |
+    | - | - | - |
+    | Unit impulse | $\delta (t)$ | 1 |
+    | Delayed unit impulse | $\delta (t - \tau)$ | $e^{-\tau s}$ |
+    | Unit step | $u(t)$ | $\frac {1}{s}$ |
+    | Delayed unit step | $u(t - \tau)$ | $\frac {1}{s} e^{-\tau s}$ |
+    | Ramp | $t \cdot u(t)$ | $\frac {1}{s^2}$ |
+    | Integer $n$th power | $t^n \cdot u(t)$ | $\frac {n!}{s^{n+1}}$ |
+    | Complex $q$th power | $t^q \cdot u(t)$ | $\frac {\Gamma (q+1)}{s^{q+1}}$ |
+    | $n$th root | $\sqrt[n]{t} \cdot u(t)$ | $\frac {1}{s^{\frac {1}{n} + 1}} \Gamma ( \frac {1}{n} + 1 )$ |
+    | $n$th power with frequency shift | $t^n e^{-\alpha t} \cdot u(t)$ | $\frac {n!}{(s + \alpha)^{n + 1}}$ |
+    | Delayed $n$th power with frequency shift | $(t- \tau)^n e^{-\alpha (t - \tau)} \cdot u(t - \tau)$ | $\frac {n! \cdot e^{-\tau s}}{(s + \alpha)^{n + 1}}$ |
+    | Exponential decay | $e^{-\alpha t} \cdot u(t)$ | $\frac {1}{s + \alpha}$ |
+    | Two-sided exponential decay | $e^{-\alpha \lvert t \rvert}$ | $\frac {2 \alpha}{\alpha^2 - s^{2}}$ |
+    | Exponential approach | $(1 - e^{-\alpha t}) \cdot u(t)$ | $\frac {\alpha}{s(s + \alpha)}$ |
+    | Sine | $\sin(\omega t) \cdot u(t)$ | $\frac {\omega}{s^2 + \omega^2}$ |
+    | Cosine | $\cos(\omega t) \cdot u(t)$ | $\frac {s}{s^2 + \omega^2}$ |
+    | Hyperbolic sine | $\sinh(\alpha t) \cdot u(t)$ | $\frac {\alpha}{s^2 - \alpha^2}$ |
+    | Hyperbolic cosine | $\cosh(\alpha t) \cdot u(t)$ | $\frac {s}{s^2 - \alpha^2}$ |
+    | Exponentially decaying sine wave | $e^{-\alpha t} \sin(\omega t) \cdot u(t)$ | $\frac {\omega}{(s + \alpha )^2 + \omega^2}$ |
+    | Exponentially decaying cosine wave | $e^{-\alpha t} \cos(\omega t) \cdot u(t)$ | $\frac {s + \alpha}{(s + \alpha)^2 + \omega^2}$ |
+    | Natural logarithm | $\ln(t) \cdot u(t)$ | $\frac {-\ln(s) - \gamma}{s}$ |
+    | Bessel function of $n$th order | $J_n (\omega t) \cdot u(t)$ | $\frac {(\sqrt {s^2 + \omega^2} - s)^n}{\omega^n \sqrt {s^2 + \omega^2}}$ |
+    | Error function | $\operatorname{erf} (t) \cdot u(t)$ | $\frac {e^{s^2 / 4}}{s} ( 1 - \operatorname{erf} (\frac {s}{2}))$ |
+
+## Example 6: Continue
