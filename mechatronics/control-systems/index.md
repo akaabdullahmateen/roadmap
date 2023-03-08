@@ -2,9 +2,9 @@
 
 <!-- omit in toc -->
 ## Table of contents
-- [Introduction](#introduction)
-  - [Introduction](#introduction-1)
-    - [Control system definition](#control-system-definition)
+- [Control Systems](#control-systems-1)
+  - [Importance of control systems](#importance-of-control-systems)
+  - [Definition](#definition)
     - [Advantages of control systems](#advantages-of-control-systems)
   - [System configurations](#system-configurations)
     - [Open loop systems](#open-loop-systems)
@@ -13,13 +13,20 @@
   - [Superposition principle](#superposition-principle)
   - [Linearity](#linearity)
   - [Time invariance](#time-invariance)
+  - [Convolution](#convolution)
+  - [Impulse response](#impulse-response)
   - [Linear time invariant systems](#linear-time-invariant-systems)
+  - [Causal systems](#causal-systems)
+  - [Complex numbers](#complex-numbers)
+  - [Frequency domain](#frequency-domain)
+  - [Fourier transform](#fourier-transform)
+  - [Laplace transform](#laplace-transform)
 
-## Introduction
+## Control Systems
 
-### Introduction
+### Importance of control systems
 
-#### Control system definition
+### Definition
 
 A *control system* consists of *subsystems* and *processes* (or *plants*) assembled for the purpose of obtaining a *desired output* with *desired performance*, given a *specified input*.
 
@@ -112,6 +119,128 @@ y(t - \tau) = F(u(t - \tau))
 \end{equation}
 $$
 
+### Convolution
+
+The convolution $f \ast g$ is defined as the integral of the product of the two functions after one is reflected about the y-axis and shifted.
+
+$$
+\begin{equation}
+\tag{Convolution}
+\begin{aligned}
+(f \ast g)(t) &= \int^{\infty}_{-\infty} f(t - \tau) g(\tau) d\tau \\
+              &= \int^{\infty}_{-\infty} f(\tau) g(t - \tau) d\tau
+\end{aligned}
+\end{equation}
+$$
+
+### Impulse response
+
+The impulse response $h(t)$ of a system is its output when presented with a brief input signal called a *unit impulse*. A unit impulse $\delta(t)$ is a function whose value is zero everywhere except at zero, and whose integral over the entire real line is equal to one.
+
+$$
+\begin{equation}
+\tag{Impulse response}
+h(t) = F(\delta(t))
+\end{equation}
+$$
+
+The convolution of the unit impulse function with another function $f(t)$ is simply $f(t)$.
+
+$$
+(\delta \ast f)(t) = \int^{\infty}_{-\infty} f(\tau) \delta(t - \tau) d\tau = f(t)
+$$
+
 ### Linear time invariant systems
 
-Linear, time-invariant (LTI) systems are systems that are both linear and time-invariant. LTI systems are of special interest because they can be characterized entirely by a single function called the system's *impulse response*. The system's output $y(t)$ is simply the convolution of the system's input $x(t)$ with the system's impulse response $h(t)$. This is called a *continuous time system*.
+Linear, time-invariant (LTI) systems are systems that are both linear and time-invariant. LTI systems are of special interest because they can be characterized entirely by a single function called the *impulse response*. Once the impulse response is known for an LTI system, responses to all inputs can be found.
+
+The output function $y(t)$ is the convolution of the input function $x(t)$ with the impulse response $h(t)$.
+
+$$
+\begin{aligned}
+y(t) &= \int^{\infty}_{-\infty} u(\tau) h(t - \tau) d\tau \\
+     &= h(t) \ast u(t)
+\end{aligned}
+$$
+
+### Causal systems
+
+A causal system is a system where the output depends on past and current inputs but not future inputs. The integral for the output function $y(t)$ of an LTI system can hence be modified so that the upper limit is $t$.
+
+$$
+\begin{aligned}
+y(t) &= \int^{\infty}_{-\infty} u(\tau) h(t - \tau) d\tau \\
+     &= \int^{t}_{-\infty} u(\tau) h(t - \tau) d\tau
+\end{aligned}
+$$
+
+All physical systems respond to input only after the input is applied. In math terms, this means that $u(t) = 0$ and $h(t) = 0$ for all $t < 0$.
+
+$$
+\begin{aligned}
+y(t) &= \int^{t}_{-\infty} u(\tau) h(t - \tau) d\tau \\
+     &= \int^{t}_{0} u(\tau) h(t - \tau) d\tau
+\end{aligned}
+$$
+
+### Complex numbers
+
+A complex number is a number of the form $z = x + \iota y$, where $x$ and $y$ are real numbers, and $i$ is an indeterminate called the *imaginary unit* and satisfies $\iota ^2 = -1$.
+
+The *argument* $\theta$ of a complex number $z$ is the polar angle from the positive real axis to the vector representing $z$ in the complex plane.
+
+$$
+\theta = \arg (z) = -\iota \ln{\frac{z}{|z|}}
+$$
+
+If the complex number $z$ lies to the right imaginary axis in the complex plane; $x > 0$:
+
+$$
+\theta = \arg (x + \iota y) = \arctan{\frac{y}{x}}
+$$
+
+The *modulus* $r$ of a complex number $z$ is the Euclidean distance from the origin to the point representing $z$ in the complex plane.
+
+$$
+r = |z| = \sqrt{x^2 + y^2}
+$$
+
+Euler's formula establishes the fundamental relationship between the complex exponential function and trigonometric functions. Euler's formula states that for any real number $\theta$:
+
+$$
+\begin{equation}
+\tag{Euler's formula}
+\cos{\theta} + \iota \sin{\theta} = e^{\iota \theta}
+\end{equation}
+$$
+
+Euler's formula allows to alternate between *rectangular form* ($z = x + \iota y$) and *polar form* ($z = |z| \angle \arg (z)$).
+
+$$
+r (\cos{\theta} + \iota \sin{\theta}) = r e^{\iota \theta}
+$$
+
+Arithmetic rules for two complex numbers $z_1$ and $z_2$ are given below. Note that addition and subtraction are more naturally expressed in rectangular form, and multiplication and division are more cleanly expressed in polar form.
+
+$$
+\begin{aligned}
+z_1 + z_2 &= (x_1 + x_2) + i (y_1 + y_2) \\
+z_1 - z_2 &= (x_1 - x_2) + i (y_1 - y_2) \\
+z_1 \times z_2 &= |z_1| |z_2| \angle \arg (z_1) + \arg (z_2) \\
+z_1 \div z_2 &= \frac{|z_1|}{|z_2|} \angle \arg (z_1) - \arg (z_2)
+\end{aligned}
+$$
+
+### Frequency domain
+
+The frequency domain refers to the analysis of functions or signals with respect to frequency rather than time. A time domain graph shows how a signal changes over time, whereas a frequency domain graph shows how much of the signal lies within each given frequency band over a range of frequencies.
+
+For systems described by linear differential equations, converting the system from time domain to frequency domain converts the differential equations to algebraic equations, which are much easier to solve.
+
+### Fourier transform
+
+The Fourier transform converts a function into a form that describes the frequencies present in the original function. The output of the transform is a complex valued function of frequency.
+
+### Laplace transform
+
+The Laplace transform is an integral transform that converts a function in the time domain to a function of a complex variable
