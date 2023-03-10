@@ -15,8 +15,8 @@
   - [Class limits](#class-limits)
   - [Class boundaries](#class-boundaries)
   - [Class mark](#class-mark)
-  - [Class width or interval](#class-width-or-interval)
-  - [Constructing a grouped frequency distribution](#constructing-a-grouped-frequency-distribution)
+  - [Class interval or width](#class-interval-or-width)
+  - [Constructing a frequency distribution](#constructing-a-frequency-distribution)
   - [Cumulative frequency distribution](#cumulative-frequency-distribution)
 - [Stem and leaf display](#stem-and-leaf-display)
 - [Graphical representation](#graphical-representation)
@@ -214,17 +214,189 @@ General
 
 ## Frequency distributions
 
+*Frequency distribution* is the distribution of observations into classes together with the number of observations in each class. The number of observations in a particular class is called the *class frequency* (or simply *frequency*), and denoted as $f$.
+
+Data presented in a frequency distribution is called *grouped data*; whereas, data in its original form is called *ungrouped data*.
+
+Data arranged in ascending or descending order of magnitude is referred to as being arranged in an *array*.
+
+Frequency distributions allow for observing patterns in the distribution. A common frequency pattern is the rising to a peak and the declining.
+
 ### Class limits
+
+In a frequency distribution, the *class limits* describe the smallest and largest values that can belong to a class. The *upper class limit* describes the largest value that can belong to the class; while, the *lower class limit* describes the smallest value that can belong to the class.
+
+Class limits are *inclusive* and have no overlapping, therefore, the value corresponding exactly to the lower class limit or the upper class limit is included in the class. The class limits should therefore have the same number of significant digits as the recorded values.
+
+A class that has either no upper class limit or lower class limit, is called an *open ended class*. Open ended classes should be avoided since they hinder certain conveniences in calculations.
+
+!!! note
+
+    A class indicated as $10 - 15$ describes the range $10 \leq X < 15$; therefore, the exact value $10$ is included but the exact value $15$ is not included in the class.
 
 ### Class boundaries
 
+*Class boundaries* are the precise numbers which separate adjacent classes. A class boundary is located midway between the upper class limit of a class and the lower class limit of the higher class. The upper class boundary of a class coincides with the lower class boundary of the higher class.
+
+$$
+\begin{equation}
+\tag{Lower class boundary}
+\text{lower class boundary} = \text{class midpoint} - \frac{\text{class interval}}{2}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\tag{Upper class boundary}
+\text{upper class boundary} = \text{class midpoint} + \frac{\text{class interval}}{2}
+\end{equation}
+$$
+
+The class boundaries are thus always defined more precisely than the level of measurement used. This avoids the possibility of any value lying exactly on the class boundary.
+
+!!! example
+
+    **Determine class boundaries for the following class limits.**
+
+    | Class limits | Class boundaries | Inclusion            |
+    | ------------ | ---------------- | -------------------- |
+    | $10 - 14$    | $9.5 - 14.5$     | $9.5 \leq X < 14.5$  |
+    | $15 - 19$    | $14.5 - 19.5$    | $14.5 \leq X < 19.5$ |
+    | $20 - 24$    | $19.5 - 24.5$    | $19.5 \leq X < 24.5$ |
+    | $25 - 29$    | $24.5 - 29.5$    | $24.5 \leq X < 29.5$ |
+
 ### Class mark
 
-### Class width or interval
+*Class mark* (also called class midpoint) is the average of the upper class boundary and lower class boundary of a class.
 
-### Constructing a grouped frequency distribution
+$$
+\begin{equation}
+\tag{Class mark}
+\text{class mark} = \frac{\text{upper class limit} + \text{lower class limit}}{2}
+\end{equation}
+$$
+
+For purposes of calculation, where a single value is required for each class, the frequency of a particular class is assumed to have the same value as the class mark. This assumption, however, introduces an error, called *grouping error*, but such errors are small and are counterbalanced over the entire distribution.
+
+The grouping error can also be minimized by choosing classes in such a way that the midpoints correspond to the means of the observations in those class.
+
+### Class interval or width
+
+*Class interval* (also called class width) is the difference between the class boundaries. It is equivalent to the difference between two successive lower class limits, and the difference between two successive upper class limits.
+
+$$
+\begin{equation}
+\tag{Class interval}
+\text{class interval} = \text{upper class boundary} - \text{lower class boundary}
+\end{equation}
+$$
+
+### Constructing a frequency distribution
+
+The following rules should be considered when constructing a grouped frequency distribution:
+
+Decide the number of classes
+: Although there are no strict guidelines for the choice of the number of classes, no less than 5 and no greater than 20 classes are generally used.
+
+    Too few classes defeat the purpose of condensation; while, too many classes will result in too much loss of information.
+
+    H. A. Sturges has proposed an empirical rule for determining the number of classes into which the set of observations should be grouped; where $k$ denotes the number of classes and $N$ is the total number of observations:
+
+    $$
+    \begin{equation}
+    \tag{H. A. Sturges rule}
+    k = 1 + 3.3 \log{N}
+    \end{equation}
+    $$
+
+Determine the range of variation in the data
+: This is the difference between the largest and the smallest value in the data.
+
+    $$
+    \begin{equation}
+    \tag{Range}
+    \text{range} = \text{largest value} - \text{smallest value}
+    \end{equation}
+    $$
+
+Divide the range of variation by the number of classes
+: This determines the approximate class intervals. In case of fractional results, the next higher whole number is used. But in practice, class intervals are multiples of 5 or 10, since they are easy to comprehend.
+
+Decide the class limits
+: The lowest class usually starts with the smallest data value; if the smallest data value is not convenient, a number smaller than that is used instead. The lower class boundary of the lowest class limit should be determined appropriately. The upper class limit of the lowest class is calculated by adding the class interval to the lower class boundary.
+
+Determine the remaining class limits
+: The class limits and class boundaries of subsequent classes are calculated by repeatedly adding the class interval to the upper class boundaries of the earlier classes. The lowest class is placed at the top of the distribution when presenting the data.
+
+Calculate the frequency of each class
+: The data is distributed into the appropriate classes based on the class boundaries. For each class, the total number of observations that lie in that class, is calculated. This number is the frequency of the class, and is written in the frequency column.
+
+Calculate the total of the frequency column
+: All the frequencies in the frequency column are added to get the total of the frequency column. This should equal the total number of observations.
+
+!!! note
+
+    These rules are applied to group raw data which are assumed to be continuous. In case of discrete data, the concept of class boundaries is unrealistic, as there can be no points where the adjoining classes meet. Despite this, when the discrete data is sufficiently large, it is treated as continuous, and hence, is grouped in the same way as continuous data.
+
+
+!!! example
+
+    **Make a grouped frequency distribution for the following data.**
+    
+    ```
+    93      95      76      82      70      84
+    106     105     119     119     117     104
+    ```
+
+    <!-- Some values are emphasized to show that classes are inclusive -->
+
+    | Classes   | Class boundaries | Class marks | Entries  (optional)         | Frequencies |
+    | --------- | ---------------- | ----------- | --------------------------- | ----------- |
+    | 65 - 84   | 64.5 - 84.5      | 74.5        | 76, 82, 70, **84**          | 4           |
+    | 85 - 104  | 84.5 - 104.5     | 94.5        | 93, 95, **104**             | 3           |
+    | 105 - 124 | 104.5 - 124.5    | 114.5       | 106, **105**, 119, 119, 117 | 5           |
+    | Total     |                  |             |                             | 12          |
 
 ### Cumulative frequency distribution
+
+**Cumulative frequency** is the total of frequencies from one end (called *base*) to a certain value. A table that shows the cumulative frequencies is called a *cumulative frequency distribution*.
+
+The cumulative frequency of the last class is the total frequency of the observations in the distribution.
+
+The cumulative frequency distribution is classified into the following types:
+
+Less than cumulative frequency
+: A cumulative frequency distribution where the cumulation process is from the lowest value to the highest value. The less than frequency distribution starts with the lower class boundary of the lowest class, indicating that there is no frequency until it.
+
+More than cumulative frequency
+: A cumulative frequency distribution where the cumulation process is from the highest value to the lowest value. The more than frequency distribution starts with the upper class boundary of the highest class, indicating that there is no frequency beyond it.
+
+!!! example
+
+    **Create a less than cumulative frequency distribution and more than cumulative frequency distribution for a frequency distribution with $k$ classes, each with the class interval $h$, the midpoint of the $i^{th}$ class is represented by $x_i$ with frequency $f_i$ such that $\sum^k_{i=1}f_i = n$.**
+
+    **Less than cumulative frequency distribution**
+
+    | Class boundary                | Cumulative frequency |
+    | ----------------------------- | -------------------- |
+    | less than $x_1 - \frac{h}{2}$ | $0$                  |
+    | less than $x_1 + \frac{h}{2}$ | $f_1$                |
+    | less than $x_2 + \frac{h}{2}$ | $f_1 + f_2$          |
+    | less than $x_3 + \frac{h}{2}$ | $f_1 + f_2 + f_3$    |
+    | less than $x_k + \frac{h}{2}$ | $\sum f_i = n$       |
+
+
+    **More than cumulative frequency distribution**
+
+    | Class boundary                | Cumulative frequency |
+    | ----------------------------- | -------------------- |
+    | more than $x_1 - \frac{h}{2}$ | $\sum f_i = n$       |
+    | more than $x_1 + \frac{h}{2}$ | $f_1 + f_2 + f_3$    |
+    | more than $x_2 + \frac{h}{2}$ | $f_1 + f_2$          |
+    | more than $x_3 + \frac{h}{2}$ | $f_1$                |
+    | more than $x_k + \frac{h}{2}$ | $0$                  |
+
+*Relative frequency* is the frequency of a class divided by the total frequency. Relative frequencies can be expressed as percentages. A *percentage cumulative distribution* is used to show the percentage of values falling between certain specified values.
 
 ## Stem and leaf display
 
