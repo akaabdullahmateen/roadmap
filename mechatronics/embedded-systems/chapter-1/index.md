@@ -15,30 +15,30 @@
   - [Parallel resistance](#parallel-resistance)
   - [Voltage divider rule](#voltage-divider-rule)
   - [Current divider rule](#current-divider-rule)
+- [Logic gates](#logic-gates)
+  - [Negation](#negation)
+  - [Conjunction and disjunction](#conjunction-and-disjunction)
+  - [Alternative denial and joint denial](#alternative-denial-and-joint-denial)
+  - [Exclusion and biconditional](#exclusion-and-biconditional)
 - [Digital logic](#digital-logic)
   - [Transistors](#transistors)
   - [Binary bits](#binary-bits)
-  - [Logic gates](#logic-gates)
-    - [Negation](#negation)
-    - [Conjunction and disjunction](#conjunction-and-disjunction)
-    - [Alternative denial and joint denial](#alternative-denial-and-joint-denial)
-    - [Exclusion and biconditional](#exclusion-and-biconditional)
   - [Bitwise operation](#bitwise-operation)
   - [Logical operation](#logical-operation)
   - [Boolean algebra](#boolean-algebra)
   - [De Morgan's laws](#de-morgans-laws)
   - [Order of precedence](#order-of-precedence)
-  - [Storage devices](#storage-devices)
-    - [SR latch](#sr-latch)
-    - [Gated D latch](#gated-d-latch)
-    - [D flip-flop](#d-flip-flop)
-    - [Tri-state driver](#tri-state-driver)
-    - [Open collector NOT gate](#open-collector-not-gate)
-  - [Number system](#number-system)
-    - [Bases](#bases)
-    - [Signed representation](#signed-representation)
-    - [IEC prefixes](#iec-prefixes)
-  - [Computer architecture](#computer-architecture)
+- [Memory](#memory)
+  - [SR latch](#sr-latch)
+  - [Gated D latch](#gated-d-latch)
+  - [D flip-flop](#d-flip-flop)
+  - [Tri-state driver](#tri-state-driver)
+  - [Open collector NOT gate](#open-collector-not-gate)
+- [Number system](#number-system)
+  - [Bases](#bases)
+  - [Signed representation](#signed-representation)
+  - [IEC prefixes](#iec-prefixes)
+- [Computer architecture](#computer-architecture)
 
 ## Electric circuits
 
@@ -142,6 +142,45 @@ I_1 = \frac{R_2}{R_1 + R_2} I_t
 \end{equation}
 $$
 
+## Logic gates
+
+Digital logic is built upon logic gates, which are semiconductor devices that perform Boolean functions.
+
+### Negation
+
+The NOT gate implements logical negation, that outputs *true* if the operand is *false*.
+
+| Name | Function           | Symbol                     |
+| ---- | ------------------ | -------------------------- |
+| NOT  | $Q = \overline{A}$ | ![](./assets/not-gate.png) |
+
+### Conjunction and disjunction
+
+The AND gate implements logical conjunction, that outputs *true* if all of the operands are *true*. Whereas, the OR gate implements logical disjunction, that outputs *true* if at least one of the operands is *true*.
+
+| Name | Function        | Symbol                     |
+| ---- | --------------- | -------------------------- |
+| AND  | $Q = A \cdot B$ | ![](./assets/and-gate.png) |
+| OR   | $Q = A + B$     | ![](./assets/or-gate.png)  |
+
+### Alternative denial and joint denial
+
+The NAND gate implements logical alternative denial, that outputs *true* if at least one of the operands is *false*. Whereas, the NOR gate implements logical joint denial, that outputs *true* if all of the operands are *false*.
+
+| Name | Function                   | Symbol                      |
+| ---- | -------------------------- | --------------------------- |
+| NAND | $Q = \overline{A \cdot B}$ | ![](./assets/nand-gate.png) |
+| NOR  | $Q = \overline{A + B}$     | ![](./assets/nor-gate.png)  |
+
+### Exclusion and biconditional
+
+The XOR gate implements logical exclusion, that outputs *true* if only one of the operands is *true*. Whereas, the XNOR gate implements logical biconditional, that outputs *true* if all of the operands are *false* or all of the operands are *true*.
+
+| Name | Function                       | Symbol                      |
+| ---- | ------------------------------ | --------------------------- |
+| XOR  | $Q = A \bigoplus B$            | ![](./assets/xor-gate.png)  |
+| XNOR | $Q = \overline{A \bigoplus B}$ | ![](./assets/xnor-gate.png) |
+
 ## Digital logic
 
 ### Transistors
@@ -166,45 +205,6 @@ On Cortex-M microcontrollers, powered by 3.3 V, the binary bits exist in one of 
 | Low state  | 0 V - 1.3 V |
 
 The 0.7 V gap between the two states allows the digital logic to operate reliably at very high speeds.
-
-### Logic gates
-
-Digital logic is built upon logic gates, which are semiconductor devices that perform Boolean functions.
-
-#### Negation
-
-The NOT gate implements logical negation, that outputs *true* if the operand is *false*.
-
-| Name | Function           | Symbol                     |
-| ---- | ------------------ | -------------------------- |
-| NOT  | $Q = \overline{A}$ | ![](./assets/not-gate.png) |
-
-#### Conjunction and disjunction
-
-The AND gate implements logical conjunction, that outputs *true* if all of the operands are *true*. Whereas, the OR gate implements logical disjunction, that outputs *true* if at least one of the operands is *true*.
-
-| Name | Function        | Symbol                     |
-| ---- | --------------- | -------------------------- |
-| AND  | $Q = A \cdot B$ | ![](./assets/and-gate.png) |
-| OR   | $Q = A + B$     | ![](./assets/or-gate.png)  |
-
-#### Alternative denial and joint denial
-
-The NAND gate implements logical alternative denial, that outputs *true* if at least one of the operands is *false*. Whereas, the NOR gate implements logical joint denial, that outputs *true* if all of the operands are *false*.
-
-| Name | Function                   | Symbol                      |
-| ---- | -------------------------- | --------------------------- |
-| NAND | $Q = \overline{A \cdot B}$ | ![](./assets/nand-gate.png) |
-| NOR  | $Q = \overline{A + B}$     | ![](./assets/nor-gate.png)  |
-
-#### Exclusion and biconditional
-
-The XOR gate implements logical exclusion, that outputs *true* if only one of the operands is *true*. Whereas, the XNOR gate implements logical biconditional, that outputs *true* if all of the operands are *false* or all of the operands are *true*.
-
-| Name | Function                       | Symbol                      |
-| ---- | ------------------------------ | --------------------------- |
-| XOR  | $Q = A \bigoplus B$            | ![](./assets/xor-gate.png)  |
-| XNOR | $Q = \overline{A \bigoplus B}$ | ![](./assets/xnor-gate.png) |
 
 ### Bitwise operation
 
@@ -249,36 +249,36 @@ $$
 
 In Boolean algebra, the parenthesis have the highest precedence, therefore, the order of operations is usually dictated by the use of parenthesis. However, the general order of precedence for the fundamental Boolean functions (from highest to lowest) is: *NOT*, then *AND*, and finally *OR*.
 
-### Storage devices
+## Memory
 
 Flip-flops and latches are circuits that have two stable states, and are used to store a single bit of data.
 
-#### SR latch
+### SR latch
 
 Set-reset latch (SR latch) is the most fundamental latch, constructed from a pair from cross-coupled NOR or NAND gates. The stored bit is present on the output marked $Q$.
 
-#### Gated D latch
+### Gated D latch
 
-#### D flip-flop
+### D flip-flop
 
-#### Tri-state driver
+### Tri-state driver
 
-#### Open collector NOT gate
+### Open collector NOT gate
 
-### Number system
+## Number system
 
-#### Bases
+### Bases
 
 binary, octal, decimal, hexadecimal
 
-#### Signed representation
+### Signed representation
 
 One's complement, two's complement
 
-#### IEC prefixes
+### IEC prefixes
 
 1 KiB = 2^10 bytes = 1024 bytes != 1000 bytes
 
-### Computer architecture
+## Computer architecture
 
 
