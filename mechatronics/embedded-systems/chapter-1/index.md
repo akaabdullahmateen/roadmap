@@ -1,93 +1,284 @@
 # Introduction
 
-## Review of electronics
+<!-- omit in toc -->
+## Table of contents
 
-Current
-: An electric current is a stream of charged particles, such as electrons or ions, moving through an electrical conductor or space. It is measured as the net rate of flow of electric charge through a surface or into a control volume. The moving particles are called charge carriers, which may be one of several types of particles, depending on the conductor. In electric circuits, the charge carriers are often electrons moving through a wire. In semiconductors, they can be electrons or holes. In an electrolyte, the charge carriers are ions, while in plasma, they are ions and electrons.
+- [Electric circuits](#electric-circuits)
+  - [Current](#current)
+  - [Potential difference](#potential-difference)
+  - [Resistance](#resistance)
+  - [Ohm's law](#ohms-law)
+  - [Power](#power)
+  - [Kirchhoff's current law](#kirchhoffs-current-law)
+  - [Kirchhoff's voltage law](#kirchhoffs-voltage-law)
+  - [Series resistance](#series-resistance)
+  - [Parallel resistance](#parallel-resistance)
+  - [Voltage divider rule](#voltage-divider-rule)
+  - [Current divider rule](#current-divider-rule)
+- [Digital logic](#digital-logic)
+  - [Transistors](#transistors)
+  - [Binary bits](#binary-bits)
+  - [Logic gates](#logic-gates)
+    - [Negation](#negation)
+    - [Conjunction and disjunction](#conjunction-and-disjunction)
+    - [Alternative denial and joint denial](#alternative-denial-and-joint-denial)
+    - [Exclusion and biconditional](#exclusion-and-biconditional)
+  - [Bitwise operation](#bitwise-operation)
+  - [Logical operation](#logical-operation)
+  - [Boolean algebra](#boolean-algebra)
+  - [De Morgan's laws](#de-morgans-laws)
+  - [Order of precedence](#order-of-precedence)
+  - [Storage devices](#storage-devices)
+    - [SR latch](#sr-latch)
+    - [Gated D latch](#gated-d-latch)
+    - [D flip-flop](#d-flip-flop)
+    - [Tri-state driver](#tri-state-driver)
+    - [Open collector NOT gate](#open-collector-not-gate)
+  - [Number system](#number-system)
+    - [Bases](#bases)
+    - [Signed representation](#signed-representation)
+    - [IEC prefixes](#iec-prefixes)
+  - [Computer architecture](#computer-architecture)
 
-  The SI unit of electric current is Ampere, which is the flow of electric charge across a surface at the rate of 1 Coulomb per second (6.241 * 10<sup>18</sup> electrons per second). Electric current has both an amplitude and direction. It is measured at one point as the number of electrons traveling per second, using an ammeter. Since electrons are negatively charged, if the electrons are moving to the left, electric current is defined as moving to the right.
+## Electric circuits
 
-Voltage
-: Voltage (also called electric potential difference) is the difference in electric potentials between two points. In a static electric circuit, it corresponds to the work needed per unit of charge to move a test charge between two points. Voltage is the electromotive force or potential to produce current.
+### Current
 
-  The voltage between points can be caused by the build-up of electric charge (such as capacitors), and from an electromotive force (such as electromagnetic induction in generators, inductors, and transformers). On a macroscopic scale, a potential difference can be caused by electrochemical processes (such as cells and batteries), the pressure-induced piezoelectric effect, and the thermoelectric effect.
+Current is the net rate of flow of charge carriers through an electrical conductor. Current is measured in Amperes (1 Ampere = 1 Coulomb / second).
 
-  A voltmeter can be used to measure the voltage between two points in a system. Often a common reference potential (such as the ground of the system) is used as one of the points. A voltage can represent either a source of energy or the loss, dissipation, or storage of energy.
+### Potential difference
 
-  In SI units, work per unit charge is expressed as Joules per Coulomb, where 1 Volt = 1 Joule (of work) per 1 Coulomb (of charge). In the International System of Units, the derived unit for voltage is named Volt.
+Potential difference is the work needed per unit of charge to move a test charge between two points. Potential difference is measured in Volts (1 Volt = 1 Joule / Coulomb).
 
-Resistance
-: The electrical resistance of an object is a measure of its opposition to the flow of electric current. Its reciprocal quantity is electrical conductance, measuring the ease with which an electric current passes. The SI unit of electrical resistance is the Ohm, while electrical conductance is measured in Siemens.
+### Resistance
 
-Conductors and Resistors
-: Substances in which electricity can flow are called conductors. Conductors are made of high-conductivity materials (such as metals, in particular copper and aluminum). A wire is common type of conductor, which ideally has a resistance of 0 Ohms. A piece of conducting material of a particular resistance meant for use in a circuit is called a resistor. Resistors, on the other hand, are made of a wide variety of materials depending on factors such as the desired resistance, amount of energy that it needs to dissipate, precision, and cost.
+Resistance is the ratio of the potential difference to the electric current. Resistance is measured in Ohms (1 Ohm = 1 Volt / Ampere).
 
-Ohm's law
-: Ohm's law states that the current through a conductor between two points is directly proportional to the voltage across the two points. Introducing the constant of proportionality, the resistance, the following mathematical equation describes the relationship:
+### Ohm's law
+
+Ohm's law states that the current through a conductor is directly proportional to the potential difference across it, with the resistance being the constant of proportionality.
 
 $$
-I = \frac{V}{R}
-$$
-
-$$
+\begin{equation}
+\tag{Ohms's law}
 R = \frac{V}{I}
+\end{equation}
 $$
 
-$$
-V = I R
-$$
+### Power
 
-Power
-: Electric power is the rate at which electrical energy is transferred by an electric circuit. The SI unit of power is the Watt, equal to 1 Joule per second. Electric power is the rate of doing work, represented by the letter $P$. The electric power has neither polarity nor direction. The electric power in Watts produced by an electric current $I$ consisting of a charge of $Q$ Coulombs every $t$ seconds passing through an electric potential difference of $V$ Volts is given as:
+Power is the rate of energy dissipation in an electric circuit. Power is measured in Watts (1 Watt = 1 Joule / second).
 
 $$
+\begin{equation}
+\tag{Power}
+P = VI = \frac{V^2}{R} = I^2 R
+\end{equation}
+$$
+
+### Kirchhoff's current law
+
+The algebraic sum of electric currents meeting at a point is zero. In other words, the sum of electric current entering a node is equal to the sum of electric current leaving the node.
+
+$$
+\begin{equation}
+\tag{Kirchhoff's current law}
+\sum^{n}_{k=1}{I_{k}} = 0
+\end{equation}
+$$
+
+### Kirchhoff's voltage law
+
+The algebraic sum of the potential differences around a closed loop is zero.
+
+$$
+\begin{equation}
+\tag{Kirchhoff's voltage law}
+\sum^{n}_{k=1}{V_{k}} = 0
+\end{equation}
+$$
+
+### Series resistance
+
+When resistors are connected in series, the total resistance $R_s$ is the sum of the individual resistances.
+
+$$
+\begin{equation}
+\tag{Series resistance}
+R_s = \sum^{n}_{k=1}{R_k}
+\end{equation}
+$$
+
+### Parallel resistance
+
+When resistors are connected in parallel, the reciprocal of the total resistance $R_p$ is the sum of the reciprocals of the individual resistances.
+
+$$
+\begin{equation}
+\tag{Parallel resistance}
+\frac{1}{R_p} = \sum^{n}_{k=1}{\frac{1}{R_k}}
+\end{equation}
+$$
+
+### Voltage divider rule
+
+Voltage divider rule states that the total potential difference across a series connection of multiple resistors is divided among the resistors proportional to their resistance.
+
+$$
+\begin{equation}
+\tag{Voltage divider rule}
+V_1 = \frac{R_1}{R_1 + R_2} V_t
+\end{equation}
+$$
+
+### Current divider rule
+
+Current divider rule states that the division of current in the branches of a parallel circuit is inversely proportional to their resistance.
+
+$$
+\begin{equation}
+\tag{Current divider rule}
+I_1 = \frac{R_2}{R_1 + R_2} I_t
+\end{equation}
+$$
+
+## Digital logic
+
+### Transistors
+
+A transistor is a semiconductor device used to amplify or switch electrical signals. There are two types of transistors:
+
+Bipolar junction transistors (BJT)
+: A bipolar junction transistor has three terminals labelled *base*, *collector*, and *emitter*. A small current at the base can control the flow of a much larger current between the collector and emitter.
+
+Field effect transistors (FET)
+: A field effect transistor has three terminals labelled *gate*, *source*, and *drain*. A voltage at the gain can control the current flow between the source and drain.
+
+The integrated circuits of Cortex-M microcontrollers are constructed using *complementary metal oxide semiconductor* (CMOS) technology, which are a type of *metal oxide semiconductor field effect transistors* (MOSFET).
+
+### Binary bits
+
+On Cortex-M microcontrollers, powered by 3.3 V, the binary bits exist in one of two possible states depending on the voltage.
+
+| State      | Voltage     |
+| ---------- | ----------- |
+| High state | 2 V - 5 V   |
+| Low state  | 0 V - 1.3 V |
+
+The 0.7 V gap between the two states allows the digital logic to operate reliably at very high speeds.
+
+### Logic gates
+
+Digital logic is built upon logic gates, which are semiconductor devices that perform Boolean functions.
+
+#### Negation
+
+The NOT gate implements logical negation, that outputs *true* if the operand is *false*.
+
+| Name | Function           | Symbol                     |
+| ---- | ------------------ | -------------------------- |
+| NOT  | $Q = \overline{A}$ | ![](./assets/not-gate.png) |
+
+#### Conjunction and disjunction
+
+The AND gate implements logical conjunction, that outputs *true* if all of the operands are *true*. Whereas, the OR gate implements logical disjunction, that outputs *true* if at least one of the operands is *true*.
+
+| Name | Function        | Symbol                     |
+| ---- | --------------- | -------------------------- |
+| AND  | $Q = A \cdot B$ | ![](./assets/and-gate.png) |
+| OR   | $Q = A + B$     | ![](./assets/or-gate.png)  |
+
+#### Alternative denial and joint denial
+
+The NAND gate implements logical alternative denial, that outputs *true* if at least one of the operands is *false*. Whereas, the NOR gate implements logical joint denial, that outputs *true* if all of the operands are *false*.
+
+| Name | Function                   | Symbol                      |
+| ---- | -------------------------- | --------------------------- |
+| NAND | $Q = \overline{A \cdot B}$ | ![](./assets/nand-gate.png) |
+| NOR  | $Q = \overline{A + B}$     | ![](./assets/nor-gate.png)  |
+
+#### Exclusion and biconditional
+
+The XOR gate implements logical exclusion, that outputs *true* if only one of the operands is *true*. Whereas, the XNOR gate implements logical biconditional, that outputs *true* if all of the operands are *false* or all of the operands are *true*.
+
+| Name | Function                       | Symbol                      |
+| ---- | ------------------------------ | --------------------------- |
+| XOR  | $Q = A \bigoplus B$            | ![](./assets/xor-gate.png)  |
+| XNOR | $Q = \overline{A \bigoplus B}$ | ![](./assets/xnor-gate.png) |
+
+### Bitwise operation
+
+In a bitwise operation, the corresponding bits of the operands are independently compared using the logical function.
+
+### Logical operation
+
+In a logical operation, the operands are first converted to a Boolean value, and then compared as a whole using the logical function. In C, only `0` and `nullptr` becomes `false`, all other values become `true`.
+
+### Boolean algebra
+
+Boolean algebra satisfies some fundamental laws, where logical OR is equivalent to addition and logical AND to multiplication.
+
+| Law            | Addition form                             | Multiplication form                           |
+| -------------- | ----------------------------------------- | --------------------------------------------- |
+| Identity       | $X + 0 = X$                               | $X \cdot 1 = X$                               |
+| Annihilator    | $X + 1 = 1$                               | $X \cdot 0 = 0$                               |
+| Idempotence    | $X + X = X$                               | $X \cdot X = X$                               |
+| Commutativity  | $X + Y = Y + X$                           | $X \cdot Y = Y \cdot X$                       |
+| Associativity  | $X + (Y + Z) = (X + Y) + Z$               | $X \cdot (Y \cdot Z) = (X \cdot Y) \cdot Z$   |
+| Distributivity | $X + (Y \cdot Z) = (X + Y) \cdot (X + Z)$ | $X \cdot (Y + Z) = (X \cdot Y) + (X \cdot Z)$ |
+| Absorption     | $X + (X \cdot Y) = X$                     | $X \cdot (X + Y) = X$                         |
+
+### De Morgan's laws
+
+De Morgan's laws allow the expression of conjunctions and disjunctions purely in terms of each other through negation. The rules can be expressed as:
+
+- The negation of a disjunction is the conjunction of the negations.
+- The negation of a conjunction is the disjunction of the negations.
+
+$$
+\begin{equation}
+\tag{De Morgan's laws}
 \begin{aligned}
-P &= \frac{W}{t} \\
-  &= \frac{W}{Q}\frac{Q}{t} \\
-  &= V I \\
-  &= \frac{V^{2}}{R} \\
-  &= I^{2} R
+\overline{X + Y} &= \overline{X} \cdot \overline{Y} \\
+\overline{X \cdot Y} &= \overline{X} + \overline{Y}
 \end{aligned}
+\end{equation}
 $$
 
-Energy
-: Electrical energy is the energy derived from electric potential energy or kinetic energy of the charged particles. The SI unit for electrical energy is the Joule. Similar to electric power, the electrical energy has neither polarity nor direction. It can be described mathematically as:
+### Order of precedence
 
-$$
-\begin{aligned}
-E &= P t \\
-  &= V I t
-\end{aligned}
-$$
+In Boolean algebra, the parenthesis have the highest precedence, therefore, the order of operations is usually dictated by the use of parenthesis. However, the general order of precedence for the fundamental Boolean functions (from highest to lowest) is: *NOT*, then *AND*, and finally *OR*.
 
-Kirchhoff's circuit laws
-: Kirchhoff's circuit laws are two equalities that deal with the current and potential difference in the lumped element model of electric circuits.
+### Storage devices
 
-  Kirchhoff's current law
-  : This law (also called Kirchhoff's first law or Kirchhoff's junction rule) states that, for any node (junction) of an electric circuit, the sum of currents flowing into that node is equal to the sum of currents flowing out of that node, or equivalently:
+Flip-flops and latches are circuits that have two stable states, and are used to store a single bit of data.
 
-    > The algebraic sum of currents in a network of conductors meeting at a point is zero.
+#### SR latch
 
-    Recalling that current is a signed (positive or negative) quantity reflecting direction towards or away from a node, this principle can be succinctly stated as:
+Set-reset latch (SR latch) is the most fundamental latch, constructed from a pair from cross-coupled NOR or NAND gates. The stored bit is present on the output marked $Q$.
 
-    $$
-    \sum^{n}_{k=1}{I_{k}} = 0
-    $$
+#### Gated D latch
 
-  Kirchhoff's voltage law
-  : This law (also called Kirchhoff's second law or Kirchhoff's loop rule), states the following:
+#### D flip-flop
 
-    > The directed sum of the potential differences around any closed loop is zero.
+#### Tri-state driver
 
-    Similar to the Kirchhoff's current law, the voltage law can be stated as:
+#### Open collector NOT gate
 
-    $$
-    \sum^{n}_{k=1}{V_{k}} = 0
-    $$
+### Number system
 
-Series resistance and parallel resistance ????
+#### Bases
 
-Voltage divider rule and current divider rule ????
+binary, octal, decimal, hexadecimal
 
-## Binary information implemented with MOS transistors
+#### Signed representation
+
+One's complement, two's complement
+
+#### IEC prefixes
+
+1 KiB = 2^10 bytes = 1024 bytes != 1000 bytes
+
+### Computer architecture
+
 
