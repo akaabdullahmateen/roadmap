@@ -3,8 +3,8 @@
 <!-- omit in toc -->
 ## Table of contents
 
-- [Meaning of Statistics](#meaning-of-statistics)
-  - [Use of Statistical Information](#use-of-statistical-information)
+- [Statistics](#statistics)
+  - [Applications](#applications)
   - [Characteristics of Statistics](#characteristics-of-statistics)
   - [Descriptive and Inferential Statistics](#descriptive-and-inferential-statistics)
   - [Populations and Samples](#populations-and-samples)
@@ -22,25 +22,23 @@
   - [Editing of Data](#editing-of-data)
   - [Uses and Misuses of Statistics](#uses-and-misuses-of-statistics)
 
-## Meaning of Statistics
+## Statistics
 
-The word *statistics*, which comes from the Latin word *status*  (meaning a political state), originally meant information useful to the state (such as information about the population and armed forces). But this word has now acquired different meanings depending on its context:
+Statistics is the mathematical science involving the collection, organization, analysis, interpretation, and presentation of data.
 
-- *Statistics (plural)* refers to **numerical facts systematically arranged** (such as statistics of prices, road accidents, or crimes).
-- *Statistics (singular)* is defined as the **discipline that includes procedures and techniques to collect, process, and analyze numerical data to make inferences and reach decisions if there is uncertainty**. It should be noted that uncertainty does not imply ignorance but instead refers to the incompleteness and instability of the data available.
-- *Statistics (plural)* are **numerical quantities calculated from sample observations**. A single quantity that has been calculated in this manner is called a *statistic* (such as the mean of a sample).
+The word *statistics* comes from the German word *statistik*, which originally meant the *description of a state or country*.
 
-### Use of Statistical Information
+### Applications
 
-The statistical information are used for a variety of purposes:
+Statistical techniques are used in a wide range of scientific and social research to:
 
-- Inform general public.
-- Explain things that have happened.
-- Justify a claim.
-- Provide general comparisons.
-- Predict future outcomes.
-- Estimate unknown quantities.
-- Establish relationship between factors.
+- Access risk in the insurance and finance industries.
+- Study scientific phenomena and observations.
+- Capture patterns in the data through the use of computation algorithms.
+- Develop new insights and understanding of business performance and opportunities.
+- Study factors affecting the health of population.
+- Study human behavior in a social environment.
+- Arrive at optimal or near optimal solutions to complex problems.
 
 ### Characteristics of Statistics
 
