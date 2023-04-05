@@ -2,6 +2,8 @@
 
 <!-- omit in toc -->
 ## Table of contents
+- [Introduction](#introduction)
+  - [Static and dynamic systems](#static-and-dynamic-systems)
 - [Linear systems](#linear-systems)
   - [Superposition principle](#superposition-principle)
   - [Linearity](#linearity)
@@ -26,11 +28,15 @@
     - [Open loop systems](#open-loop-systems)
     - [Closed loop systems](#closed-loop-systems)
 
+## Introduction
+
+### Static and dynamic systems
+
 ## Linear systems
 
 ### Superposition principle
 
-A system satisfies the superposition principle, if the net response caused by two or more stimuli is the sum of the responses that would have been caused by each stimuli individually. Superposition can be defined by two simpler properties:
+A system satisfies the superposition principle if the net response caused by two or more stimuli is the sum of the responses that would have been caused by each stimuli individually. Superposition can be defined by two simpler properties:
 
 $$
 \begin{equation}
@@ -65,7 +71,7 @@ $$
 
 ### Time invariance
 
-A system is considered time-invariant, given it has a time-dependent output function $y(t)$ and a time-dependent input function $u(t)$, if a time delay on the input function $u(t - \tau)$ directly equates to a time delay on the output function $y(t - \tau)$. In other words, if the input to the system is applied $\tau$ time units later, the output will be identical except for the equivalent time delay.
+A system is considered time-invariant if a time delay on the input function $u(t - \tau)$ directly equates to a time delay on the output function $y(t - \tau)$. In other words, if the input to the system is applied $\tau$ time units later, the output will be identical except for the equivalent time delay.
 
 $$
 \begin{equation}
@@ -142,13 +148,7 @@ $$
 
 A complex number is a number of the form $z = x + \iota y$, where $x$ and $y$ are real numbers, and $i$ is an indeterminate called the *imaginary unit* and satisfies $\iota ^2 = -1$.
 
-The *argument* $\theta$ of a complex number $z$ is the polar angle from the positive real axis to the vector representing $z$ in the complex plane.
-
-$$
-\theta = \arg (z) = -\iota \ln{\frac{z}{|z|}}
-$$
-
-If the complex number $z$ lies to the right imaginary axis in the complex plane; $x > 0$:
+The *argument* $\theta$ of a complex number $z$ is the polar angle from the positive real axis to the vector representing $z$ in the complex plane. For $x > 0$:
 
 $$
 \theta = \arg (x + \iota y) = \arctan{\frac{y}{x}}
@@ -157,7 +157,7 @@ $$
 The *modulus* $r$ of a complex number $z$ is the Euclidean distance from the origin to the point representing $z$ in the complex plane.
 
 $$
-r = |z| = \sqrt{x^2 + y^2}
+r = |x + \iota y| = \sqrt{x^2 + y^2}
 $$
 
 Euler's formula establishes the fundamental relationship between the complex exponential function and trigonometric functions. Euler's formula states that for any real number $\theta$:
@@ -227,12 +227,12 @@ H(s) = \frac{Y(s)}{X(s)}
 \end{equation}
 $$
 
-For an LTI system described an ordinary differential equation, with input signal $x(t)$ and output response $y(t)$, the impulse response $h(t)$ can be written symbolically using the *differential operator $D$* ($D^n = \frac{d^n}{dt^n}$).
+For an LTI system described as an ordinary differential equation, with input signal $x(t)$ and output response $y(t)$, the impulse response $h(t)$ can be written symbolically using the *differential operator $D$* ($D^n = \frac{d^n}{dt^n}$).
 
 $$
 \begin{aligned}
 a_n \frac {d^n}{dt^n} y(t) + a_{n - 1} \frac {d^{n - 1}}{dt^{n - 1}} y(t) + \dots + a_0 y(t) &= b_m \frac {d^m}{dt^m} x(t) + b_{m - 1} \frac {d^{m - 1}}{dt^{m - 1}} x(t) + \dots + b_0 x(t) \\[10pt]
-h(t) = \frac{y(t)}{x(t)} &= \frac{a_n D^n + a_{n - 1} D^{n - 1} + \dots + a_0}{b_m D^m + b_{m - 1} D^{m - 1} + \dots + b_0}
+h(t) = \frac{y(t)}{x(t)} &= \frac{b_m D^m + b_{m - 1} D^{m - 1} + \dots + b_0}{a_n D^n + a_{n - 1} D^{n - 1} + \dots + a_0}
 \end{aligned}
 $$
 
@@ -241,7 +241,7 @@ The transfer function $H(s)$ is obtained by applying Laplace transform to the di
 $$
 \begin{aligned}
 a_n s^n Y(s) + a_{n - 1} s^{n - 1} Y(s) + \dots + a_0 Y(s) &= b_m s^m X(s) + b_{m - 1} s^{m - 1} X(s) + \dots + b_0 X(s) \\[10pt]
-H(s) = \frac{Y(s)}{X(x)} &= \frac{a_n s^n + a_{n - 1} s^{n - 1} + \dots + a_0}{b_m s^m + b_{m - 1} s^{m - 1} + \dots + b_0}
+H(s) = \frac{Y(s)}{X(x)} &= \frac{b_m s^m + b_{m - 1} s^{m - 1} + \dots + b_0}{a_n s^n + a_{n - 1} s^{n - 1} + \dots + a_0}
 \end{aligned}
 $$
 
@@ -257,7 +257,7 @@ In physical systems, the input can be changed suddenly. Ideally in these instanc
 | - | - | - | - |
 | Step | $u(t)$ | $\begin{aligned} u(t) = \begin{cases} 0 & t < 0\\ u_0 & t \geq 0 \end{cases} \end{aligned}$ | ![](./assets/typical-inputs/step-input.png) |
 
-However, in real systems, the input is changed by some other dynamic system with a finite response time. Therefore, the input signal does not have zero rise time relative to the dynamic response time of the system.
+However in real systems, the input is changed by some other dynamic system with a finite response time. Therefore, the input signal does not have zero rise time relative to the dynamic response time of the system.
 
 In these instances, the input signal is modelled as a *ramped step input*, where the input rises like a ramp for some time, and stays constant thereafter.
 
@@ -266,7 +266,7 @@ $$
 u(t) =
 \begin{cases}
 0 & t < 0 \\
-u_0 \frac{t}{T_1} & 0 \leq t \leq T_1 \\
+\frac{u_0}{T_1}t & 0 \leq t \leq T_1 \\
 u_0 & t > T_1
 \end{cases}
 \end{aligned}
@@ -298,7 +298,7 @@ $$
 \begin{aligned}
 u(t) =
 \begin{cases}
-0 & t > 0 \text{ or } t > T_1 \\
+0 & \text{$t > 0$ or $t > T_1$} \\
 u_0 & 0 \leq t \leq T_1
 \end{cases}
 \end{aligned}
@@ -306,7 +306,7 @@ $$
 
 ### Harmonic input
 
-In physical systems, the input can oscillate at some amplitude. These sinusoidal waves are used to test for the system's *frequency response*, which describes how the system will respond to sinusoidal waves of various frequencies.
+In physical systems, the input signal can oscillate at some amplitude. These sinusoidal waves are used to test for the system's *frequency response*, which describes how the system will respond to sinusoidal waves of various frequencies.
 
 If the system's *transient response* is to be tested, the input signal would be zero and the sinusoidal wave would start at $t = 0$.
 

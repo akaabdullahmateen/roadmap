@@ -1,125 +1,24 @@
-# Linear algebra
+# Matrix equations
 
 <!-- omit in toc -->
 ## Table of contents
 
-- [Introduction](#introduction)
-  - [Linear equations](#linear-equations)
-  - [System of linear equations](#system-of-linear-equations)
-  - [Solution sets](#solution-sets)
-  - [Properties](#properties)
-    - [Independence](#independence)
-    - [Consistency](#consistency)
-    - [Equivalence](#equivalence)
-  - [Basic and free variables](#basic-and-free-variables)
-  - [Parametric description](#parametric-description)
-  - [Existence and uniqueness theorem](#existence-and-uniqueness-theorem)
 - [Matrix notation](#matrix-notation)
   - [Matrix](#matrix)
   - [Coefficient matrix](#coefficient-matrix)
   - [Augmented matrix](#augmented-matrix)
   - [Elementary row operations](#elementary-row-operations)
   - [Row equivalence](#row-equivalence)
-- [Row reduction](#row-reduction)
   - [Row echelon form](#row-echelon-form)
   - [Reduced row echelon form](#reduced-row-echelon-form)
   - [Uniqueness of the reduced row echelon form](#uniqueness-of-the-reduced-row-echelon-form)
-  - [Pivot positions](#pivot-positions)
+  - [Pivot position](#pivot-position)
   - [Gaussian elimination](#gaussian-elimination)
-    - [Forward elimination](#forward-elimination)
-    - [Backward substitution](#backward-substitution)
-- [Vector equations](#vector-equations)
-  - [Vectors in $\\R^2$](#vectors-in-r2)
+  - [Basic and free variables](#basic-and-free-variables)
+  - [Parametric description](#parametric-description)
+  - [Existence and uniqueness theorem](#existence-and-uniqueness-theorem)
 - [Matrix decomposition](#matrix-decomposition)
   - [LU decomposition](#lu-decomposition)
-
-## Introduction
-
-### Linear equations
-
-A **linear equation** is an equation that can be written in the form:
-
-$$
-\begin{equation}
-\tag{Linear equation}
-a_1 x_1 + a_2 x_2 + \dots + a_n x_n = b
-\end{equation}
-$$
-
-where $x_i$ are variables, $a_i$ are coefficients, and $b$ is a constant.
-
-### System of linear equations
-
-A **system of linear equations** (or a *linear system*) is a set of linear equations that involve the same variables.
-
-$$
-\begin{equation}
-\tag{System of linear equations}
-\begin{aligned}
-a_{11} x_1 + a_{12} x_2 + &\dots + a_{1n} x_n = b_1 \\
-a_{21} x_1 + a_{22} x_2 + &\dots + a_{2n} x_n = b_2 \\
-                          &\vdots \\
-a_{m1} x_1 + a_{m2} x_2 + &\dots + a_{mn} x_n = b_m
-\end{aligned}
-\end{equation}
-$$
-
-### Solution sets
-
-A **solution** of a linear system is an ordered tuple $(s_1, s_2, \dots, s_n)$ such that each equation in the system is satisfied, if the variables $x_i$ are replaced with values $s_i$.
-
-The **solution set** of a linear system is the set of all possible solutions. A linear system may behave in any one of three possible ways:
-
-- The system has *infinitely many solutions*.
-- The system has a *single unique solution*.
-- The system has *no solution*.
-
-### Properties
-
-#### Independence
-
-The equations of a linear system are **independent** if none of the equations can be algebraically derived from the others.
-
-#### Consistency
-
-A linear system is **consistent** if it has at least one solution. A linear system is **inconsistent** if it has no solution.
-
-#### Equivalence
-
-Two linear systems are **equivalent** if and only if they have the same solution set.   
-
-### Basic and free variables
-
-In the reduced row echelon form of the augmented matrix of a linear system, a variable that corresponds to a leading 1 is called a *basic* variable, and a variable that does not correspond to a leading 1 is called a *free* variable.
-
-### Parametric description
-
-The solution set of a linear system that has free variables is given as a *parametric description*, where the free variables act as parameters. Each different choice of a free variable determines a different solution of the system, and every solution of the system is determined by a choice of the free variable.
-
-$$
-\begin{aligned}
-\begin{cases}
-x_1 = 1 + 5 x_3 \\
-x_2 = 4 - x_3 \\
-x_3 = \text{free variable}
-\end{cases}
-\end{aligned}
-$$
-
-### Existence and uniqueness theorem
-
-A linear system is consistent if and only if the rightmost column of the augmented matrix is not a pivot column, that is, the reduced row echelon form of the augmented matrix does not have any rows of the form:
-
-$$
-\begin{aligned}
-\begin{bmatrix}
-0 & 0 & \dots & 0 & b
-\end{bmatrix}
-&&\text{where $b$ is nonzero}
-\end{aligned}
-$$
-
-If a linear system is consistent, then the solution set contains either a single unique solution, if there are no free variables, or infinitely many solutions, if there is at least one free variable.
 
 ## Matrix notation
 
@@ -181,8 +80,6 @@ Two matrices $A$ and $B$ are **row equivalent** if it is possible to transform $
 
 If the augmented matrices of two linear systems are row equivalent, then the two linear systems have the same solution set.
 
-## Row reduction
-
 ### Row echelon form
 
 A matrix is in **row echelon form** (called an *echelon matrix*) if it satisfies the following conditions:
@@ -224,7 +121,7 @@ Each matrix $A$ is row equivalent to one and only one reduced echelon matrix. Ho
 Since the reduced echelon form is unique, the leading entries are always in the same positions
 in any echelon form obtained from a given matrix.
 
-### Pivot positions
+### Pivot position
 
 A **pivot position** in a matrix $A$ is the location that corresponds to a leading 1 in the reduced echelon form of $A$. The column that contains a pivot position is called the **pivot column**, and the nonzero number at the pivot position is called the **pivot**.
 
@@ -234,38 +131,53 @@ A **pivot position** in a matrix $A$ is the location that corresponds to a leadi
 
 Sometimes, the forward elimination is called the Gaussian elimination, while the forward elimination combined with the backward substitution is called the *Gauss-Jordan elimination*.
 
-#### Forward elimination
+Forward elimination
+: The **forward elimination** phase reduces a given matrix to row echelon form, from which the consistency of the linear system can be determined.
 
-The **forward elimination** phase reduces a given matrix to row echelon form, from which the consistency of the linear system can be determined.
+    1. Start with the leftmost nonzero column as a pivot column.
+    2. Select a nonzero entry in the pivot column as a pivot. If necessary, swap rows to move this entry into the pivot position.
+    3. Use elementary row operations to create zeroes in all positions below the pivot position.
+    4. Cover (or ignore) the row containing the pivot position and the rows above it.
+    5. Repeat the above steps on the sub-matrix that remains until there are no more nonzero rows to modify.
 
-1. Start with the leftmost nonzero column as a pivot column.
-2. Select a nonzero entry in the pivot column as a pivot. If necessary, swap rows to move this entry into the pivot position.
-3. Use elementary row operations to create zeroes in all positions below the pivot position.
-4. Cover (or ignore) the row containing the pivot position and the rows above it.
-5. Repeat the above steps on the sub-matrix that remains until there are no more nonzero rows to modify.
+Backward substitution
+: The **backward substitution** phase further reduces the echelon matrix to reduced row echelon form, from which the solution set of the linear system can be determined.
 
-#### Backward substitution
+    1. Beginning with the rightmost pivot, create zeroes above each pivot, and work upwards and to the left.
+    2. Multiply each row containing a pivot position by a scalar such that each pivot becomes a leading 1.
 
-The **backward substitution** phase further reduces the echelon matrix to reduced row echelon form, from which the solution set of the linear system can be determined.
+### Basic and free variables
 
-1. Beginning with the rightmost pivot, create zeroes above each pivot, and work upwards and to the left.
-2. Multiply each row containing a pivot position by a scalar such that each pivot becomes a leading 1.
+In the reduced row echelon form of the augmented matrix of a linear system, a variable that corresponds to a leading 1 is called a *basic* variable, and a variable that does not correspond to a leading 1 is called a *free* variable.
 
-## Vector equations
+### Parametric description
 
-### Vectors in $\R^2$
-
-A matrix with only one column is called a **column vector** (or simply a *vector*). A vector with two entries $\omega_1$ and $\omega_2$ is represented as:
+The solution set of a linear system that has free variables is given as a *parametric description*, where the free variables act as parameters. Each different choice of a free variable determines a different solution of the system, and every solution of the system is determined by a choice of the free variable.
 
 $$
-\bold{v} =
+\begin{aligned}
+\begin{cases}
+x_1 = 1 + 5 x_3 \\
+x_2 = 4 - x_3 \\
+x_3 = \text{free variable}
+\end{cases}
+\end{aligned}
+$$
+
+### Existence and uniqueness theorem
+
+A linear system is consistent if and only if the rightmost column of the augmented matrix is not a pivot column, that is, the reduced row echelon form of the augmented matrix does not have any rows of the form:
+
+$$
+\begin{aligned}
 \begin{bmatrix}
-\omega_1 \\
-\omega_2
+0 & 0 & \dots & 0 & b
 \end{bmatrix}
+&&\text{where $b$ is nonzero}
+\end{aligned}
 $$
 
-# TO BE CONTINUED !!!!
+If a linear system is consistent, then the solution set contains either a single unique solution, if there are no free variables, or infinitely many solutions, if there is at least one free variable.
 
 ## Matrix decomposition
 
