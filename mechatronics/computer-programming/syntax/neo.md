@@ -63,6 +63,11 @@
   - [locals()](#locals)
   - [map()](#map)
 - [MISCELLANEOUS](#miscellaneous)
+  - [Introduction](#introduction)
+    - [Implementations](#implementations)
+  - [Lab 01](#lab-01)
+    - [`print()` function](#print-function)
+  - [Notes](#notes)
 
 ## Lexical analysis
 
@@ -699,6 +704,53 @@ frozenset()
 
 ## MISCELLANEOUS
 
+### Introduction
+
+#### Implementations
+
+CPython
+: CPython is the original and reference implementation of the Python programming language written in the C programming language. It is the most maintained and stable implementation. Moreover, new features are first implemented in CPython, before any other implementation.
+
+PyPy
+: PyPy is an implementation of the Python programming language written in the Python programming language. It supports several advanced features that are not available in other implementations, like stackless support and a Just in Time compiler.
+
+Jython
+: Jython (formerly called *JPython*) is an implementation of the Python programming language written in the Java programming language. It is designed to run on the Java Virtual Machine (JVM), and can access classes written in Java.
+
+IronPython
+: IronPython is an implementation of the Python programming language written in the C# programming language. It is designed to target the .NET framework and Mono.
+
+### Lab 01
+
+#### `print()` function
+
+The `print()` function is used to write string to an output stream. More specifically, it prints `objects` to the text stream `file`, separated by `sep`, and followed by `end`.
+
+```py
+print(*objects, sep=' ', end='\n', file=None, flush=False)
+```
+
+!!! note
+
+    All arguments except for `objects` must be given as keyword arguments.
+
+`objects`
+: The objects to be printed to the text stream. All non-keyword arguments are considered as `objects`, and therefore, they are converted to strings like `str()` does, and written to the stream. If no `objects` are given, `print()` will just write `end` and exit.
+
+`sep`
+: A string that is to be used as the separator between objects. If it is not present or `None`, the default value is used, which is a single space character (`' '`).
+
+`end`
+: A string that is to be used as the terminator at the end. If it is not present or `None`, the default value is used, which is a newline character (`'\n'`).
+
+`file`
+: An object with a `write(string)` method. If it is not present or `None`, the default value is used, which is the standard output stream (`sys.stdout`). Since printed arguments are converted to text strings, `print()` can not be used with binary mode file objects; for those, `file.write()` is used instead.
+
+`flush`
+: A boolean that forcibly controls whether the output is buffered or not. If it is not present or `None`, the default behavior is determined by the output stream object `file`.
+
+### Notes
+
 - print() built-in function
   - print function will advance to the next line by default
   - sep and end parameters of print()
@@ -784,4 +836,8 @@ frozenset()
   - real_part = complex_number.real
   - imag_part = complex_number.imag
   - conjugate_part = complex_number.conjugate()
-- 
+- relational operators: >, <, >=, <=, ==, !=
+- The if conditional statement
+  - the statements inside the if block must be indented
+- The if else statement
+- logical operators: and, or, not
