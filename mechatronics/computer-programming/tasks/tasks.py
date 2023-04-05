@@ -412,6 +412,170 @@ def lab5_task11():
     return
 
 # -------------------------------------------
+#               Lab 6 - Task 1
+# -------------------------------------------
+
+def lab6_task1():
+    task_header(6,1)
+    a, b, c = eval(input("Enter three numbers: "))
+    if a >= c:
+        if a >= b:
+            maximum = a
+        else:
+            maximum = b
+    else:
+        if c >= b:
+            maximum = c
+        else:
+            maximum = b
+    print(f"{maximum} is the largest number")
+    return
+
+# -------------------------------------------
+#               Lab 6 - Task 2
+# -------------------------------------------
+
+def lab6_task2():
+    task_header(6,2)
+    martial_status = input("Enter martial status (M/U): ")
+    gender = input("Enter your gender (M/F): ")
+    age = eval(input("Enter your age: "))
+    if (martial_status == "M" or martial_status == "m"):
+        eligible = True
+    else:
+        if (gender == "M" or gender == "m"):
+            if age > 30:
+                eligible = True
+            else:
+                eligible = False
+        else:
+            if age > 25:
+                eligible = True
+            else:
+                eligible = False
+    if eligible:
+        print("Congratulations! You are eligible for the insurance")
+    else:
+        print("Sorry! You are not eligible for the insurance")
+    return
+
+# -------------------------------------------
+#               Lab 6 - Task 3
+# -------------------------------------------
+
+def lab6_task3():
+    task_header(6,3)
+    martial_status = input("Enter martial status (M/U): ")
+    if (martial_status == "M" or martial_status == "m"):
+        eligible = True
+    else:
+        gender = input("Enter your gender (M/F): ")
+        age = eval(input("Enter your age: "))
+        if (gender == "M" or gender == "m"):
+            if age > 30:
+                eligible = True
+            else:
+                eligible = False
+        else:
+            if age > 25:
+                eligible = True
+            else:
+                eligible = False
+    if eligible:
+        print("Congratulations! You are eligible for the insurance")
+    else:
+        print("Sorry! You are not eligible for the insurance")
+    return
+
+# -------------------------------------------
+#               Lab 6 - Task 4
+# -------------------------------------------
+
+def lab6_task4():
+    task_header(6,4)
+    day = eval(input("Enter day: "))
+    month = eval(input("Enter month: "))
+    if (day <= 27 or day == 29):
+        next_day = day + 1
+    else:
+        if (day == 28 and month == 2):
+            next_day = 1
+        if (day == 28 and month != 2):
+            next_day = 29
+        if (day == 31):
+            next_day = 1
+        if day == 30:
+            if month in [1,3,5,7,8,10,12]:
+                next_day = 31
+            else:
+                next_day = 1
+    print(f"The next day is: {next_day}")
+    return
+
+# -------------------------------------------
+#               Lab 6 - Task 5
+# -------------------------------------------
+
+def lab6_task5():
+    task_header(6,5)
+    day = eval(input("Enter day: "))
+    month = eval(input("Enter month: "))
+    if month == 2:
+        if day == 28:
+            next_day = 1
+        else:
+            next_day = day + 1
+    if month in [4,6,9,11]:
+        if day == 30:
+            next_day = 1
+        else:
+            next_day = day + 1
+    if month in [1,3,5,7,8,10,12]:
+        if day == 31:
+            next_day = 1
+        else:
+            next_day = day + 1
+    print(f"The next day is: {next_day}")
+    return
+
+# -------------------------------------------
+#               Lab 6 - Task 6
+# -------------------------------------------
+
+def lab6_task6():
+    task_header(6,6)
+    units = eval(input("Enter electricity units consumed: "))
+    if units <= 100:
+        ec_cost = 13.85 * units
+    elif units <= 200:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * (units - 100)
+    elif units <= 300:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * 100 + \
+                  16.83 * (units - 200)
+    elif units <= 700:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * 100 + \
+                  16.83 * 100 + \
+                  18.54 * (units - 300)
+    else:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * 100 + \
+                  16.83 * 100 + \
+                  18.54 * 400 + \
+                  20.94 * (units - 700)
+    nj_sur = 0.1 * units
+    fc_sur = 0.43 * units
+    tv_charge = 35
+    before_tax = ec_cost + nj_sur + fc_sur + tv_charge
+    after_tax = before_tax * 1.12
+    after_due_date = after_tax * 1.0834
+    print(f"Amount payable within due date: {after_tax:.2f}")
+    print(f"Amount payable after due date: {after_due_date:.2f}")
+    return
+
+# -------------------------------------------
 #            Auxiliary Function
 # -------------------------------------------
 
@@ -429,7 +593,8 @@ def run_all():
     "lab2_task1","lab2_task2","lab2_task3","lab2_task4","lab2_task5","lab2_task6","lab2_task7"
     "lab3_task1","lab3_task2","lab3_task3",
     "lab4_task1","lab4_task2","lab4_task3","lab4_task4","lab4_task5","lab4_task6",
-    "lab5_task1"
+    "lab5_task1","lab5_task2","lab5_task3","lab5_task4","lab5_task5","lab5_task6","lab5_task7","lab5_task8","lab5_task9","lab5_task10","lab5_task11",
+    "lab6_task1","lab6_task2","lab6_task3","lab6_task4","lab6_task5","lab6_task6",
     ]
     for task in tasks:
         globals()[task]()
