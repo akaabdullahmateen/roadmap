@@ -841,3 +841,33 @@ print(*objects, sep=' ', end='\n', file=None, flush=False)
   - the statements inside the if block must be indented
 - The if else statement
 - logical operators: and, or, not
+- elif statement for else if blocks
+- user defined functions:
+  - def func_name():
+  - function name can be any name following the variable naming rules
+  - function is called by func_name()
+  - add comment at the first line of function to write description of what the program does
+  - after functions, before the program start, at global indent, write a comment that program starts here
+- flow of execution of programs which have functions
+  - execution flow jumps to function when the function is called
+  - and returns to the calling position after the function returns
+- functions can have parameters in parenthesis
+  - def func_name(arg_name)
+  - this parameter becomes locally available inside the function so it can be used like any other variable
+- functions can return values
+  - def sum(a, b): return a + b
+- variables created inside functions are local variables and are only visible inside the function
+  - variables declared elsewhere with the same names as the function's local variables are totally different objects
+- python has two types of loops: for and while
+- just like if-else and function blocks, for loop body needs to be indented as well
+- the range function is commonly used to iterate over a sequence of numbers
+- range(start, stop, step)
+  - start is the inclusive start number
+  - stop is the exclusive stop number. the exact number stop is not included in the sequence
+  - step is the difference between two consecutive numbers
+  - for positive steps: range[i] = start + step * i, i >= 0, with constraint range[i] < stop
+  - for negative steps: range[i] = start + step * i, i >= 0, with constraint range[i] > stop
+- boolean type: True or False, True == 1, False == 0
+  - False is null objects, and zero etc
+  - True is anything other than zero and null objects, so True == 5 etc
+- 

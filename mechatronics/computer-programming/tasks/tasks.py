@@ -583,6 +583,475 @@ def lab6_task6():
     return
 
 # -------------------------------------------
+#               Lab 7 - Task 1
+# -------------------------------------------
+
+def lab7_task1_printTwice(msg):
+    print(f"{msg} {msg}")
+
+def lab7_task1():
+    task_header(7,1)
+    lab7_task1_printTwice(input("Enter any message: "))
+    return
+
+# -------------------------------------------
+#               Lab 7 - Task 2
+# -------------------------------------------
+
+def lab7_task2_printTimes(s:str,n:int):
+    for i in range(n):
+        print(s, end=" ")
+    print("\b")
+
+def lab7_task2():
+    task_header(7,2)
+    msg = input("Enter any message: ")
+    count = eval(input("Times to repeat: "))
+    lab7_task2_printTimes(msg,count)
+    return
+
+# -------------------------------------------
+#               Lab 7 - Task 3
+# -------------------------------------------
+
+def lab7_task3_dist(x1,y1,x2,y2):
+    import math
+    x_diff = abs(x2 - x1)
+    y_diff = abs(y2 - y1)
+    distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
+    del math
+    return distance
+
+def lab7_task3():
+    task_header(7,3)
+    x1,y1 = eval(input("Enter first point (format: x1,y1): "))
+    x2,y2 = eval(input("Enter second point (format: x2,y2): "))
+    result = lab7_task3_dist(x1,y1,x2,y2)
+    print(f"Distance between the two points is: {result:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 7 - Task 4
+# -------------------------------------------
+
+def lab7_task4_triAreaSides(a,b,c):
+    import math
+    s = 0.5 * (a + b + c)
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    del math
+    return area
+
+def lab7_task4():
+    task_header(7,4)
+    sideA,sideB,sideC = eval(input("Enter sides of a triangle: "))
+    print(f"The area of the triangle is: {lab7_task4_triAreaSides(sideA,sideB,sideC):.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 7 - Task 5
+# -------------------------------------------
+
+def lab7_task5_billElect(units):
+    if units <= 100:
+        ec_cost = 13.85 * units
+    elif units <= 200:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * (units - 100)
+    elif units <= 300:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * 100 + \
+                  16.83 * (units - 200)
+    elif units <= 700:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * 100 + \
+                  16.83 * 100 + \
+                  18.54 * (units - 300)
+    else:
+        ec_cost = 13.85 * 100 + \
+                  15.86 * 100 + \
+                  16.83 * 100 + \
+                  18.54 * 400 + \
+                  20.94 * (units - 700)
+    nj_sur = 0.1 * units
+    fc_sur = 0.43 * units
+    tv_charge = 35
+    before_tax = ec_cost + nj_sur + fc_sur + tv_charge
+    after_tax = before_tax * 1.12
+    after_due_date = after_tax * 1.0834
+    return after_tax,after_due_date
+
+def lab7_task5():
+    task_header(7,5)
+    units = eval(input("Enter electricity units consumed: "))
+    due_amount,late_amount = lab7_task5_billElect(units) 
+    print(f"Amount payable within due date: {due_amount:.2f}")
+    print(f"Amount payable after due date: {late_amount:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 8 - Task 1
+# -------------------------------------------
+
+def lab8_task1_dist(x1,y1,x2,y2):
+    import math
+    x_diff = abs(x2 - x1)
+    y_diff = abs(y2 - y1)
+    distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
+    del math
+    return distance
+
+def lab8_task1_triAreaSides(a,b,c):
+    import math
+    s = 0.5 * (a + b + c)
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    del math
+    return area
+
+def lab8_task1_triAreaPoints(x1,y1,x2,y2,x3,y3):
+    sideA = lab8_task1_dist(x1,y1,x2,y2)
+    sideB = lab8_task1_dist(x2,y2,x3,y3)
+    sideC = lab8_task1_dist(x3,y3,x1,y1)
+    return lab8_task1_triAreaSides(sideA,sideB,sideC)
+
+def lab8_task1():
+    task_header(8,1)
+    x1,y1 = eval(input("Enter first point: "))
+    x2,y2 = eval(input("Enter second point: "))
+    x3,y3 = eval(input("Enter third point: "))
+    area = lab8_task1_triAreaPoints(x1,y1,x2,y2,x3,y3)
+    print(f"The area of the triangle is {area:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 8 - Task 2
+# -------------------------------------------
+
+def lab8_task2_dist(x1,y1,x2,y2):
+    import math
+    x_diff = abs(x2 - x1)
+    y_diff = abs(y2 - y1)
+    distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
+    del math
+    return distance
+
+def lab8_task2_triAreaSides(a,b,c):
+    import math
+    s = 0.5 * (a + b + c)
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    del math
+    return area
+
+def lab8_task2_triAreaPoints(x1,y1,x2,y2,x3,y3):
+    sideA = lab8_task2_dist(x1,y1,x2,y2)
+    sideB = lab8_task2_dist(x2,y2,x3,y3)
+    sideC = lab8_task2_dist(x3,y3,x1,y1)
+    return lab8_task2_triAreaSides(sideA,sideB,sideC)
+
+def lab8_task2_pentaArea(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5):
+    partialA = lab8_task2_triAreaPoints(x1,y1,x2,y2,x3,y3)
+    partialB = lab8_task1_triAreaPoints(x1,y1,x3,y3,x5,y5)
+    partialC = lab8_task1_triAreaPoints(x3,y3,x4,y4,x5,y5)
+    return partialA + partialB + partialC
+
+def lab8_task2():
+    task_header(8,2)
+    x1,y1 = eval(input("Enter first point: "))
+    x2,y2 = eval(input("Enter second point: "))
+    x3,y3 = eval(input("Enter third point: "))
+    x4,y4 = eval(input("Enter fourth point: "))
+    x5,y5 = eval(input("Enter fifth point: "))
+    area = lab8_task2_pentaArea(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5)
+    print(f"The area of the pentagon is {area:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 8 - Task 3
+# -------------------------------------------
+
+def lab8_task3_dist(x1,y1,x2,y2):
+    import math
+    x_diff = abs(x2 - x1)
+    y_diff = abs(y2 - y1)
+    distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
+    del math
+    return distance
+
+def lab8_task3_triAreaSides(a,b,c):
+    import math
+    s = 0.5 * (a + b + c)
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    del math
+    return area
+
+def lab8_task3_triAreaPoints(x1,y1,x2,y2,x3,y3):
+    sideA = lab8_task3_dist(x1,y1,x2,y2)
+    sideB = lab8_task3_dist(x2,y2,x3,y3)
+    sideC = lab8_task3_dist(x3,y3,x1,y1)
+    return round(lab8_task3_triAreaSides(sideA,sideB,sideC),2)
+
+
+def lab8_task3():
+    task_header(8,3)
+    x1,y1 = eval(input("Enter first point: "))
+    x2,y2 = eval(input("Enter second point: "))
+    x3,y3 = eval(input("Enter third point: "))
+    px,py = eval(input("Enter point to check: "))
+    area = lab8_task3_triAreaPoints(x1,y1,x2,y2,x3,y3)
+    partialA = lab8_task3_triAreaPoints(px,py,x1,y1,x2,y2)
+    partialB = lab8_task3_triAreaPoints(px,py,x1,y1,x3,y3)
+    partialC = lab8_task3_triAreaPoints(px,py,x2,y2,x3,y3)
+    if (area == partialA + partialB + partialC):
+        print(f"The point ({px}, {py}) is inside the triangle")
+    else:
+        print(f"The point ({px}, {py}) is outside the triangle")
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 1
+# -------------------------------------------
+
+def lab9_task1():
+    task_header(9,1)
+    rows = eval(input("Enter the number of rows: "))
+    columns = 10
+    for _ in range(rows):
+        print("*" * columns)
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 2
+# -------------------------------------------
+
+def lab9_task2():
+    task_header(9,2)
+    n = eval(input("Enter a number: "))
+    for i in range(1, n + 1):
+        print(f"{i}\t{i * i * i}")
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 3
+# -------------------------------------------
+
+def lab9_task3():
+    task_header(9,3)
+    print()
+    for i in range(1, 11):
+        print(f"12 \xd7 {i}\t= {12 * i}")
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 4
+# -------------------------------------------
+
+def lab9_task4():
+    task_header(9,4)
+    multiplicand = eval(input("Enter the multiplicand: "))
+    max_multiplier = eval(input("Enter the maximum multiplier: "))
+    print()
+    for multiplier in range(1, max_multiplier + 1):
+        print(f"{multiplicand} \xd7 {multiplier}\t= {multiplicand * multiplier}")
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 5
+# -------------------------------------------
+
+def lab9_task5():
+    task_header(9,5)
+    height = eval(input("Enter the height: "))
+    print()
+    for width in range(1, height + 1):
+        print("*" * width)
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 6
+# -------------------------------------------
+
+def lab9_task6():
+    task_header(9,6)
+    height = eval(input("Enter the height: "))
+    print()
+    for width in range(height, 0, -1):
+        print("*" * width)
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 7
+# -------------------------------------------
+
+def lab9_task7():
+    task_header(9,7)
+    height = eval(input("Enter the height: "))
+    print()
+    for width in range(1, height + 1):
+        print((" " * (height - width)) + ("*" * width))
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 8
+# -------------------------------------------
+
+def lab9_task8_DistTable(m, n):
+    print()
+    for multiplier in range(1, n + 1):
+        print(f"{m} \xd7 {multiplier}\t= {m * multiplier}")
+    return
+
+def lab9_task8():
+    task_header(9,8)
+    multiplicand = eval(input("Enter the multiplicand: "))
+    max_multiplier = eval(input("Enter the maximum multiplier: "))
+    lab9_task8_DistTable(multiplicand,max_multiplier)
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 9
+# -------------------------------------------
+
+def lab9_task9():
+    task_header(9,9)
+    for i in range(1,101):
+        square = i * i
+        unit_digit = square % 10
+        tenth_digit = (square // 10) % 10
+        if (unit_digit == tenth_digit and unit_digit != 0):
+            print(f"Number: {i}\t Square: {square}")
+    return
+
+# -------------------------------------------
+#               Lab 9 - Task 10
+# -------------------------------------------
+
+def lab9_task10():
+    task_header(9,10)
+    countEven = countOdd = 0
+    for _ in range(10):
+        number = eval(input("Enter number: "))
+        if (number % 2 == 0):
+            countEven += 1
+        else:
+            countOdd += 1
+    print(f"You entered {countEven} even and {countOdd} odd numbers")
+    return
+
+# -------------------------------------------
+#               Lab 10 - Task 1
+# -------------------------------------------
+
+def lab10_task1():
+    task_header(10,1)
+    sumEven = sumOdd = 0
+    for _ in range(10):
+        number = eval(input("Enter number: "))
+        if (number % 2 == 0):
+            sumEven += number
+        else:
+            sumOdd += number
+    print()
+    print(f"Sum of even numbers: {sumEven}")
+    print(f"Sum of odd numbers: {sumOdd}")
+    return
+
+# -------------------------------------------
+#               Lab 10 - Task 2
+# -------------------------------------------
+
+def lab10_task2():
+    task_header(10,2)
+    total_marks = 0
+    n = 5
+    for _ in range(n):
+        marks = eval(input("Enter subject marks: "))
+        total_marks += marks
+    average_marks = total_marks / n
+    print()
+    print(f"Mean of the five subject marks: {average_marks:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 10 - Task 3
+# -------------------------------------------
+
+def lab10_task3():
+    task_header(10,3)
+    number = eval(input("Enter a number: "))
+    if number < 0:
+        print("Error: Negative numbers are not allowed")
+    else:
+        if (number % 2 == 0):
+            start = 0
+        else:
+            start = 1
+        total = 0
+        for i in range(start,number + 1,2):
+            total += i
+            if i == number:
+                print(f"{i}",end="")
+            else:
+                print(f"{i}",end="+")
+        print(f" = {total}")
+    return
+
+# -------------------------------------------
+#               Lab 10 - Task 4
+# -------------------------------------------
+
+def lab10_task4_fact(n):
+    factorial = 1
+    for i in range(2,n + 1):
+        factorial *= i
+    return factorial
+
+def lab10_task4():
+    task_header(10,4)
+    number = eval(input("Enter a number: "))
+    print(f"{number}! = {lab10_task4_fact(number)}")
+    return
+
+# -------------------------------------------
+#               Lab 10 - Task 5
+# -------------------------------------------
+
+def lab10_task5_isprime(n):
+    for i in range(2,n):
+        if n % i == 0:
+            return False
+    return True
+
+def lab10_task5():
+    task_header(10,5)
+    number = eval(input("Enter a number: "))
+    if lab10_task5_isprime(number):
+        print(f"The number {number} is prime")
+    else:
+        print(f"The number {number} is not prime")
+    return
+
+# -------------------------------------------
+#               Lab 10 - Task 6
+# -------------------------------------------
+
+def lab10_task6_isprime(n):
+    import math
+    sqrt_n = math.ceil(math.sqrt(n))
+    del math
+    for i in range(2,sqrt_n):
+        if n % i == 0:
+            return False
+    return True
+
+def lab10_task6():
+    task_header(10,6)
+    number = eval(input("Enter a number: "))
+    if lab10_task6_isprime(number):
+        print(f"The number {number} is prime")
+    else:
+        print(f"The number {number} is not prime")
+    return
+
+# -------------------------------------------
 #            Auxiliary Function
 # -------------------------------------------
 
@@ -602,6 +1071,9 @@ def run_all():
     "lab4_task1","lab4_task2","lab4_task3","lab4_task4","lab4_task5","lab4_task6",
     "lab5_task1","lab5_task2","lab5_task3","lab5_task4","lab5_task5","lab5_task6","lab5_task7","lab5_task8","lab5_task9","lab5_task10","lab5_task11",
     "lab6_task1","lab6_task2","lab6_task3","lab6_task4","lab6_task5","lab6_task6",
+    "lab7_task1","lab7_task2","lab7_task3","lab7_task4","lab7_task5",
+    "lab8_task1","lab8_task2","lab8_task3",
+    "lab9_task1","lab9_task2","lab9_task3","lab9_task4","lab9_task5","lab9_task6","lab9_task7","lab9_task8","lab9_task9","lab9_task10",
     ]
     for task in tasks:
         globals()[task]()
