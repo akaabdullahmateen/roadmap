@@ -1037,7 +1037,7 @@ def lab10_task6_isprime(n):
     import math
     sqrt_n = math.ceil(math.sqrt(n))
     del math
-    for i in range(2,sqrt_n):
+    for i in range(2,sqrt_n+1):
         if n % i == 0:
             return False
     return True
@@ -1049,6 +1049,226 @@ def lab10_task6():
         print(f"The number {number} is prime")
     else:
         print(f"The number {number} is not prime")
+    return
+
+# -------------------------------------------
+#               Lab 11 - Task 1
+# -------------------------------------------
+
+def lab11_task1():
+    task_header(11,1)
+    matrix_sum = 0
+    matrix_product = 1
+    print(f"Enter the elements of a 3 by 3 matrix", end="\n\n")
+    for row in range(3):
+        for column in range(3):
+            element = eval(input(f"a{row + 1}{column + 1} = "))
+            matrix_sum += element
+            matrix_product *= element
+    print(f"\nSum of all elements: {matrix_sum}")
+    print(f"Product of all elements: {matrix_product}")
+    return
+
+# -------------------------------------------
+#               Lab 11 - Task 2
+# -------------------------------------------
+
+def lab11_task2():
+    task_header(11,2)
+    n = eval(input("Enter the value of \"n\": "))
+    summation = 0
+    for k in range(1,n+1):
+        k_factorial = 1
+        for i in range(2,k+1):
+            k_factorial *= i
+        summation += (1/k_factorial)
+    print(f"Sum of series: {summation}")
+    return
+
+# -------------------------------------------
+#               Lab 11 - Task 3
+# -------------------------------------------
+
+def lab11_task3_fact(k):
+    if k < 0:
+        return 0
+    if k == 0:
+        return 1
+    factorial = 1
+    for i in range(2,k+1):
+        factorial *= i
+    return factorial
+
+def lab11_task3_mySeries(n):
+    summation = 0
+    for k in range(1,n+1):
+        k_factorial = lab11_task3_fact(k)
+        summation += (1/k_factorial)
+    return summation
+
+def lab11_task3():
+    task_header(11,3)
+    n = eval(input("Enter the value of \"n\": "))
+    print(f"Sum of series: {lab11_task3_mySeries(n)}")
+    return
+
+# -------------------------------------------
+#               Lab 11 - Task 4
+# -------------------------------------------
+
+def lab11_task4():
+    task_header(11,4)
+    import math
+    n = eval(input("Enter a number: "))
+    for i in range(2,n+1):
+        is_prime = True
+        for j in range(2,math.ceil(math.sqrt(i))+1):
+            if i % j == 0:
+                is_prime = False
+                break
+        if is_prime:
+            print(f"{i}",end=" ")
+    print()
+    del math
+    return
+
+# -------------------------------------------
+#               Lab 11 - Task 5
+# -------------------------------------------
+
+def lab11_task5_isPrime(n):
+    import math
+    limit = math.ceil(math.sqrt(n))+1
+    del math
+    for i in range(2,limit):
+        if n % i == 0:
+            return False
+    return True
+
+def lab11_task5():
+    task_header(11,5)
+    maximum = eval(input("Enter a number: "))
+    for n in range(2,maximum+1):
+        if lab11_task5_isPrime(n):
+            print(f"{n}",end=" ")
+    print()
+    return
+
+# -------------------------------------------
+#               Lab 12 - Task 1
+# -------------------------------------------
+
+def lab12_task1():
+    task_header(12,1)
+    n = eval(input("Enter a number: "))
+    print()
+    i = 1
+    while i <= n:
+        cube = i*i*i
+        print(f"{i}\t{cube}")
+        i += 1
+    return
+
+# -------------------------------------------
+#               Lab 12 - Task 2
+# -------------------------------------------
+
+def lab12_task2_fact(n):
+    factorial = 1
+    i = 2
+    while i <= n:
+        factorial *= i
+        i += 1
+    return factorial
+
+def lab12_task2():
+    task_header(12,2)
+    n = eval(input("Enter a number: "))
+    factorial = lab12_task2_fact(n)
+    if factorial == None:
+        print("ERROR: Factorial is not defined for negative numbers")
+    else:
+        print(f"{n}! = {factorial}")
+    return
+
+# -------------------------------------------
+#               Lab 12 - Task 3
+# -------------------------------------------
+
+def lab12_task3():
+    task_header(12,3)
+    n = 1
+    total_count = 0
+    total_sum = 0
+    while n != 0:
+        n = eval(input("Enter a number: "))
+        if n != 0:
+            total_count += 1
+            total_sum += n
+    average = total_sum / total_count
+    print()
+    print(f"Count: {total_count}")
+    print(f"Average: {average:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 12 - Task 4
+# -------------------------------------------
+
+def lab12_task4():
+    task_header(12,4)
+    n = eval(input("Enter initial value: "))
+    steps = 0
+    while n != 1:
+        if (n % 2 == 0):
+            n = n / 2
+        else:
+            n = 3 * n + 1
+        steps += 1
+        n = int(n)
+        print(f"Next value: {n}")
+    print()
+    print(f"Steps: {steps}")
+    return
+
+# -------------------------------------------
+#               Lab 12 - Task 5
+# -------------------------------------------
+
+def lab12_task5():
+    task_header(12,5)
+    prompt = "Enter initial value: "
+    n = eval(input(prompt))
+    while n < 2:
+        n = eval(input(prompt))
+    steps = 0
+    while n != 1:
+        if (n % 2 == 0):
+            n = n / 2
+        else:
+            n = 3 * n + 1
+        steps += 1
+        n = int(n)
+        print(f"Next value: {n}")
+    print()
+    print(f"Steps: {steps}")
+    return
+
+# -------------------------------------------
+#               Lab 12 - Task 6
+# -------------------------------------------
+
+def lab12_task6():
+    task_header(12,6)
+    n = eval(input("Enter a number: "))
+    count = 0
+    duplicate = n
+    while n != 0:
+        digit = n % 10
+        n //= 10
+        if digit == 0:
+            count += 1
+    print(f"Number of zeroes in {duplicate}: {count}")
     return
 
 # -------------------------------------------
