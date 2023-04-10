@@ -1037,7 +1037,7 @@ def lab10_task6_isprime(n):
     import math
     sqrt_n = math.ceil(math.sqrt(n))
     del math
-    for i in range(2,sqrt_n+1):
+    for i in range(2,sqrt_n + 1):
         if n % i == 0:
             return False
     return True
@@ -1077,11 +1077,11 @@ def lab11_task2():
     task_header(11,2)
     n = eval(input("Enter the value of \"n\": "))
     summation = 0
-    for k in range(1,n+1):
+    for k in range(1,n + 1):
         k_factorial = 1
-        for i in range(2,k+1):
+        for i in range(2,k + 1):
             k_factorial *= i
-        summation += (1/k_factorial)
+        summation += (1 / k_factorial)
     print(f"Sum of series: {summation}")
     return
 
@@ -1095,15 +1095,15 @@ def lab11_task3_fact(k):
     if k == 0:
         return 1
     factorial = 1
-    for i in range(2,k+1):
+    for i in range(2,k + 1):
         factorial *= i
     return factorial
 
 def lab11_task3_mySeries(n):
     summation = 0
-    for k in range(1,n+1):
+    for k in range(1,n + 1):
         k_factorial = lab11_task3_fact(k)
-        summation += (1/k_factorial)
+        summation += (1 / k_factorial)
     return summation
 
 def lab11_task3():
@@ -1120,9 +1120,9 @@ def lab11_task4():
     task_header(11,4)
     import math
     n = eval(input("Enter a number: "))
-    for i in range(2,n+1):
+    for i in range(2,n + 1):
         is_prime = True
-        for j in range(2,math.ceil(math.sqrt(i))+1):
+        for j in range(2,math.ceil(math.sqrt(i)) + 1):
             if i % j == 0:
                 is_prime = False
                 break
@@ -1136,9 +1136,9 @@ def lab11_task4():
 #               Lab 11 - Task 5
 # -------------------------------------------
 
-def lab11_task5_isPrime(n):
+def lab11_task5_isprime(n):
     import math
-    limit = math.ceil(math.sqrt(n))+1
+    limit = math.ceil(math.sqrt(n)) + 1
     del math
     for i in range(2,limit):
         if n % i == 0:
@@ -1148,8 +1148,8 @@ def lab11_task5_isPrime(n):
 def lab11_task5():
     task_header(11,5)
     maximum = eval(input("Enter a number: "))
-    for n in range(2,maximum+1):
-        if lab11_task5_isPrime(n):
+    for n in range(2,maximum + 1):
+        if lab11_task5_isprime(n):
             print(f"{n}",end=" ")
     print()
     return
@@ -1164,7 +1164,7 @@ def lab12_task1():
     print()
     i = 1
     while i <= n:
-        cube = i*i*i
+        cube = i * i * i
         print(f"{i}\t{cube}")
         i += 1
     return
@@ -1272,7 +1272,647 @@ def lab12_task6():
     return
 
 # -------------------------------------------
-#            Auxiliary Function
+#               Lab 12 - Task 7
+# -------------------------------------------
+
+def lab12_task7_isprime(n):
+    import math
+    limit = math.ceil(math.sqrt(n)) + 1
+    del math
+    for i in range(2, limit):
+        if n % i == 0:
+            return False
+    return True
+
+def lab12_task7():
+    task_header(12,7)
+    n = eval(input("Enter a number: "))
+    x = n + 1
+    while not lab12_task7_isprime(x):
+        x += 1
+    print(f"First prime encountered: {x}")
+    return
+
+# -------------------------------------------
+#               Lab 12 - Task 8
+# -------------------------------------------
+
+def lab12_task8_isprime(n):
+    import math
+    limit = math.ceil(math.sqrt(n)) + 1
+    del math
+    for i in range(2, limit):
+        if n % i == 0:
+            return False
+    return True
+
+def lab12_task8():
+    task_header(12,8)
+    n = eval(input("Enter a nunber: "))
+    count = 0
+    i = 2
+    while count < n:
+        if lab12_task8_isprime(i):
+            print(f"{i}", end=" ")
+            count += 1
+        i += 1
+    print()
+    return
+
+# -------------------------------------------
+#               Lab 13 - Task 1
+# -------------------------------------------
+
+def lab13_task1():
+    task_header(13,1)
+    n = eval(input("Enter a number: "))
+    isprime = True
+    import math
+    limit = math.ceil(math.sqrt(n)) + 1
+    del math
+    for i in range(2, limit):
+        if n % i == 0:
+            isprime = False
+            break
+    if isprime:
+        print(f"The number {n} is prime")
+    else:
+        print(f"The number {n} is not prime")
+    return
+
+# -------------------------------------------
+#               Lab 13 - Task 2
+# -------------------------------------------
+
+def lab13_task2():
+    task_header(13,2)
+    sum = 0
+    count = 0
+    while True:
+        n = eval(input("Enter a number: "))
+        if n != 0:
+            sum += n
+            count += 1
+        else:
+            break
+    if count != 0:
+        average = sum / count
+    else:
+        average = 0
+    print()
+    print(f"Average: {average}")
+    return
+
+# -------------------------------------------
+#               Lab 13 - Task 3
+# -------------------------------------------
+
+def lab13_task3():
+    task_header(13,3)
+    import time
+    import os
+    ss = 0
+    mm = 0
+    while True:
+        if os.name == "nt":
+            os.system("cls")
+        else:
+            os.system("clear")
+        print(f"{mm:0>2}:{ss:0>2}")
+        time.sleep(1)
+        ss += 1
+        if ss == 60:
+            ss = 0
+            mm += 1
+        if mm == 60:
+            mm = 0
+    del time
+    del os
+    return
+
+# -------------------------------------------
+#               Lab 13 - Task 4
+# -------------------------------------------
+
+def lab13_task4_clear():
+    import os
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+    del os
+    return
+
+def lab13_task4_kbhit():
+    import os    
+    if os.name == "nt":
+        import msvcrt
+        c = msvcrt.kbhit()
+        del msvcrt
+        return c
+    else:
+        import select
+        import sys
+        dr,dw,de = select.select([sys.stdin],[],[],0)
+        del select
+        del sys
+        return dr != []
+
+def lab13_task4_getch():
+    import os
+    if os.name == "nt":
+        import msvcrt
+        c = msvcrt.getch().decode("utf-8")
+        del msvcrt
+    else:
+        import sys
+        c = sys.stdin.read(1)
+        del sys
+    del os
+    return c
+
+def lab13_task4():
+    task_header(13,4)
+    import time
+    ss = 0
+    mm = 0
+    paused = False
+    while True:
+        if not paused:
+            lab13_task4_clear()
+            print(f"{mm:0>2}:{ss:0>2}")
+            time.sleep(1)
+            ss += 1
+            if ss == 60:
+                ss = 0
+                mm += 1
+            if mm == 60:
+                mm = 0
+        if lab13_task4_kbhit():
+            char = lab13_task4_getch()
+            if char == "p" or char == "P":
+                paused = True
+            elif char == "s" or char == "S":
+                paused = False
+            elif char == "r" or char == "R":
+                ss = 0
+                mm = 0
+            elif char == "q" or char == "Q":
+                break
+    del time
+    return
+
+# -------------------------------------------
+#               Lab 14 - Task 1
+# -------------------------------------------
+
+def lab14_task1():
+    task_header(14,1)
+    print("*" * 70)
+    print("1. Coffee\t2. Tea\t\t3. Coke\t\t4.Orange juice")
+    print("*" * 70)
+    print("This is a survey for the favorite beverage")
+    print()
+    print("Choose (1-4) from the above menu or 0 to exit the program")
+    print()
+    count = 0
+    coffee_count = 0
+    tea_count = 0
+    coke_count = 0
+    juice_count = 0
+    while True:
+        choice = eval(input(f"Please input the favorite beverage of person #{count + 1}: "))
+        is_valid = False
+        if choice == 0:
+            break
+        if choice >= 1 and choice <= 4:
+            is_valid = True
+        if is_valid:
+            count += 1
+            if choice == 1:
+                coffee_count += 1
+            elif choice == 2:
+                tea_count += 1
+            elif choice == 3:
+                coke_count += 1
+            else:
+                juice_count += 1
+        else:
+            print("Error: Please enter a number in the range [1-4]")
+    print()
+    print("The results are as follows:")
+    print(f"The total number of participants: {count}")
+    print()
+    print("Beverage\tNumber of votes")
+    print("*" * 35)
+    print(f"Coffee\t\t{coffee_count}")
+    print(f"Tea\t\t{tea_count}")
+    print(f"Coke\t\t{coke_count}")
+    print(f"Orange juice\t{juice_count}")
+    return
+
+# -------------------------------------------
+#               Lab 14 - Task 2
+# -------------------------------------------
+
+def lab14_task2_isPerfSq(x):
+    import math
+    squareroot = math.floor(math.sqrt(x))
+    del math
+    if squareroot ** 2 == x:
+        return True
+    else:
+        return
+
+def lab14_task2_isSqFree(x):
+    for i in range(2, x + 1):
+        if x % i == 0:
+            if lab14_task2_isPerfSq(i):
+                return False
+    return True
+
+def lab14_task2():
+    task_header(14,2)
+    n = eval(input("Enter a number: "))
+    if lab14_task2_isSqFree(n):
+        print(f"The number {n} is a square free number")
+    else:
+        print(f"The number {n} is not a square free number")
+    return
+
+# -------------------------------------------
+#               Lab 14 - Task 3
+# -------------------------------------------
+
+def lab14_task3():
+    task_header(14,3)
+    n = eval(input("Enter a number: "))
+    original = n
+    reversed = 0
+    while n != 0:
+        d = n % 10
+        n //= 10
+        reversed = reversed * 10 + d
+    if original == reversed:
+        print("Palindrome number")
+    else:
+        print("Not a palindrome number")
+    return
+
+# -------------------------------------------
+#               Lab 14 - Task 4
+# -------------------------------------------
+
+def lab14_task4():
+    task_header(14,4)
+    for n in range(1,10000):
+        original = n
+        reversed = 0
+        while n != 0:
+            d = n % 10
+            n //= 10
+            reversed = reversed * 10 + d
+        if original == reversed:
+            print(f"{original}")
+    return
+
+# -------------------------------------------
+#               Lab 14 - Task 5
+# -------------------------------------------
+
+def lab14_task5():
+    task_header(14,5)
+    while True:
+        n = eval(input("Enter a number: "))
+        is_valid = False
+        chances = 3
+        while not is_valid:
+            if chances == 0:
+                print("You failed 3 times")
+                print("Good bye!")
+                return
+            s = eval(input("Enter a digit: "))
+            if s >= 0 and s < 10:
+                is_valid = True
+            chances -= 1
+        count = 0
+        original = n
+        while n != 0:
+            d = n % 10
+            n //= 10
+            if d == s:
+                count += 1
+        print(f"Number of {s} in {original}: {count}")
+        user_input = input("Repeat [y/n]: ").lower()
+        if user_input == "n":
+            break
+        else:
+            print()
+    return
+
+# -------------------------------------------
+#               Lab 15 - Task 1
+# -------------------------------------------
+
+def lab15_task1():
+    task_header(15,1)
+    import random
+    selected_number = random.randint(5,10)
+    del random
+    print("An integer is selected between 5 and 10 (both inclusive)")
+    print()
+    chances = 0
+    while True:
+        guessed_number = eval(input("Guess what is it: "))
+        chances += 1
+        if guessed_number == selected_number:
+            print("Correct!")
+            break
+        else:
+            print("Wrong!")
+    print()
+    print(f"You tried {chances} times to guess the number {selected_number}")
+    return
+
+# -------------------------------------------
+#               Lab 15 - Task 2
+# -------------------------------------------
+
+def lab15_task2():
+    task_header(15,2)
+    import random
+    selected_number = random.randint(0,100)
+    del random
+    print("An integer is selected between 0 and 100 (both inclusive)")
+    print()
+    chances = 0
+    while True:
+        guessed_number = eval(input("Guess what is it: "))
+        chances += 1
+        if guessed_number == selected_number:
+            print("Correct!")
+            break
+        else:
+            if guessed_number < selected_number:
+                print(f"Hint: It is ABOVE {guessed_number}")
+            else:
+                print(f"Hint: It is BELOW {guessed_number}")
+    print()
+    print(f"You tried {chances} times to guess the number {selected_number}")
+    return
+
+# -------------------------------------------
+#               Lab 15 - Task 3
+# -------------------------------------------
+
+def lab15_task3():
+    task_header(15,3)
+    trials = eval(input("Enter the number of trials: "))
+    import random
+    count = 0
+    for trial in range(1, trials + 1):
+        print()
+        _ = input("[Press any key to roll dice]")
+        dice_a = random.randint(1,6)
+        dice_b = random.randint(1,6)
+        dice_sum = dice_a + dice_b
+        print(f"Trial: {trial} Dice A: {dice_a} Dice B: {dice_b} Sum: {dice_sum}")
+        if dice_sum >= 7:
+            count += 1
+    print()
+    print(f"The win condition occurred {count} times in {trials} trials")
+    if count > (trials / 2):
+        print("Congratulations: You won!")
+    else:
+        print("Sorry: You lost!")
+    del random
+    return
+
+# -------------------------------------------
+#               Lab 15 - Task 4
+# -------------------------------------------
+
+def lab15_task4():
+    task_header(15,4)
+    import random
+    score = 0
+    for _ in range(10):
+        operand_a = random.randint(1,15)
+        operand_b = random.randint(1,15)
+        user_sum = eval(input(f"{operand_a} + {operand_b} = "))
+        if user_sum == operand_a + operand_b:
+            score += 1
+            print("Correct!")
+        else:
+            print("Wrong!")
+        print()
+    print(f"Score: {score} out of 10")
+    del random
+    return
+
+# -------------------------------------------
+#               Lab 15 - Task 5
+# -------------------------------------------
+
+def lab15_task5():
+    task_header(15,5)
+    import random
+    score = 0
+    for _ in range(10):
+        operand_a = random.randint(1,15)
+        operand_b = random.randint(1,15)
+        operation_index = random.randint(1,3)
+        if operation_index == 1:
+            operation_symbol = "+"
+            solution = operand_a + operand_b
+        elif operation_index == 2:
+            operation_symbol = "-"
+            solution = operand_a - operand_b
+        else:
+            operation_symbol = "*"
+            solution = operand_a * operand_b
+        user_sum = eval(input(f"{operand_a} {operation_symbol} {operand_b} = "))
+        if user_sum == solution:
+            score += 1
+            print("Correct!")
+        else:
+            print("Wrong!")
+        print()
+    print(f"Score: {score} out of 10")
+    del random
+    return
+
+# -------------------------------------------
+#               Lab 15 - Task 6
+# -------------------------------------------
+
+def lab15_task6():
+    task_header(15,6)
+    import random
+    for n in [10,100,1000,10000,100000]:
+        count = 0
+        for _ in range(n):
+            dice_a = random.randint(1,6)
+            dice_b = random.randint(1,6)
+            if dice_a == dice_b:
+                count += 1
+        probability = count / n
+        print(f"Iterations: {n}")
+        print(f"\tProbability: {probability}")
+    del random
+    return
+
+# -------------------------------------------
+#               Lab 16 - Task 1
+# -------------------------------------------
+
+def lab16_task1():
+    task_header(16,1)
+    n = 10
+    my_list = []
+    import random
+    for _ in range(n):
+        my_list.append(random.randint(1,20))
+    del random
+    print(f"Generated list: {my_list}")
+    element_sum = 0
+    for i in range(len(my_list)):
+        element_sum += my_list[i]
+    average = element_sum / n
+    print(f"Sum: {element_sum}\tAverage: {average:0.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 16 - Task 2
+# -------------------------------------------
+
+def lab16_task2():
+    task_header(16,2)
+    my_list = []
+    n = 10
+    import random
+    for _ in range(n):
+        my_list.append(random.randint(-20,20))
+    print(f"Initial list:\t{my_list}")
+    for i in range(len(my_list)):
+        if my_list[i] > 10:
+            my_list[i] = 10
+        elif my_list[i] < 0:
+            my_list[i] = 0
+    print(f"Final list:\t{my_list}")
+    del random
+    return
+
+# -------------------------------------------
+#               Lab 16 - Task 3
+# -------------------------------------------
+
+def lab16_task3():
+    task_header(16,3)
+    my_list = []
+    n = 10
+    import random
+    for _ in range(n):
+        my_list.append(random.randint(2,100))
+    del random
+    print(f"List elements:\t\t{my_list}")
+    import math
+    count = 0
+    prime_list = []
+    for i in range(len(my_list)):
+        isprime = True
+        element = my_list[i]
+        limit = int(math.sqrt(element)) + 1
+        for j in range(2, limit):
+            if element % j == 0:
+                isprime = False
+        if isprime:
+            prime_list.append(element)
+            count += 1
+    print(f"Prime elements:\t\t{prime_list}")
+    print(f"Number of primes:\t{count}")
+    del math
+    return
+
+# -------------------------------------------
+#               Lab 16 - Task 4
+# -------------------------------------------
+
+def lab16_task4_isprime(n):
+    import math
+    limit = int(math.sqrt(n)) + 1
+    del math
+    for i in range(2, limit):
+        if n % i == 0:
+            return False
+    return True
+        
+def lab16_task4():
+    task_header(16,4)
+    my_list = []
+    n = 10
+    import random
+    for _ in range(n):
+        my_list.append(random.randint(2,100))
+    del random
+    print(f"List elements:\t\t{my_list}")
+    count = 0
+    prime_list = []
+    for i in range(len(my_list)):
+        element = my_list[i]
+        if lab16_task4_isprime(element):
+            prime_list.append(element)
+            count += 1
+    print(f"Prime elements:\t\t{prime_list}")
+    print(f"Number of primes:\t{count}")
+    return
+
+# -------------------------------------------
+#               Lab 16 - Task 5
+# -------------------------------------------
+
+def lab16_task5():
+    task_header(16,5)
+    import random
+    my_list = []
+    n = 10
+    for _ in range(n):
+        my_list.append(random.randint(1,100))
+    del random
+    print(f"List elements: {my_list}")
+    maximum = my_list[0]
+    for i in range(1,len(my_list)):
+        if my_list[i] > maximum:
+            maximum = my_list[i]
+    print(f"Maximum value: {maximum}")
+    return
+
+# -------------------------------------------
+#               Lab 16 - Task 6
+# -------------------------------------------
+
+def lab16_task6():
+    task_header(16,6)
+    import random
+    my_list = []
+    n = 10
+    for _ in range(n):
+        my_list.append(random.randint(1,100))
+    del random
+    print(f"List elements: {my_list}")
+    maximum = my_list[0]
+    minimum = my_list[0]
+    for i in range(1,len(my_list)):
+        if my_list[i] > maximum:
+            maximum = my_list[i]
+        if my_list[i] < minimum:
+            minimum = my_list[i]
+    print(f"Maximum value: {maximum}")
+    print(f"Minimum value: {minimum}")
+    return
+
+# -------------------------------------------
+#            Auxiliary Functions
 # -------------------------------------------
 
 def task_header(lab_number, task_number):
@@ -1300,31 +1940,48 @@ def run_all():
     return
 
 def run_specific():
-    lab_number = eval(input("\nLab number: "))
-    task_number = eval(input("Task number: "))
+    lab_number, task_number = eval(input("\n>> Lab number and task number (lab, task): "))
     globals()[f"lab{lab_number}_task{task_number}"]()
     return
 
-def main():
-    print("-------------------------------------------")
-    print("   [a] - Press A to run all the tasks")
-    print("   [n] - Press N to run a specific task")
-    print("   [q] - Press Q to quit the program")
-    print("-------------------------------------------")
-    user_input = input(">> ")
-    if user_input == "q" or user_input == "Q":
-        return
-    elif user_input == "a" or user_input == "A":
-        run_all()
-    elif user_input == "n" or user_input == "N":
-        run_specific()
-    else:
-        print("Error: Invalid option")
-        return
+def list_all():
+    v_bar = "│"
+    h_bar = "─"
+    joint = "├"
+    elbow = "└"
+    
+    # TODO: Print a tree like structure
+    # that shows all the available tasks for each lab session
+
+def loop():
+    prompt = """
+--------------------------------------------------------
+    [a] - Press A to run all tasks with dummy input
+    [n] - Press N to run a specific task
+    [h] - List all available tasks
+    [q] - Press Q to quit the program
+--------------------------------------------------------
+
+    """
+    
+    while True:
+        print(prompt)
+        user_input = input(">> ")
+        if user_input.lower() == "a":
+            run_all()
+        elif user_input.lower() == "n":
+            run_specific()
+        elif user_input.lower() == "h":
+            list_all()
+        elif user_input.lower() == "q":
+            break
+        else:
+            print("Error: Invalid option")
+            return
 
 # -------------------------------------------
 #               Program Start
 # -------------------------------------------
 
 if __name__ == "__main__":
-    main()
+    loop()
