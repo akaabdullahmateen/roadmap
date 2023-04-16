@@ -27,6 +27,8 @@
   - [System configurations](#system-configurations)
     - [Open loop systems](#open-loop-systems)
     - [Closed loop systems](#closed-loop-systems)
+- [Miscellaneous](#miscellaneous)
+  - [PID controller](#pid-controller)
 
 ## Introduction
 
@@ -255,7 +257,7 @@ In physical systems, the input can be changed suddenly. Ideally in these instanc
 
 | Input | Function | Description | Sketch |
 | - | - | - | - |
-| Step | $u(t)$ | $\begin{aligned} u(t) = \begin{cases} 0 & t < 0\\ u_0 & t \geq 0 \end{cases} \end{aligned}$ | ![](./assets/typical-inputs/step-input.png) |
+| Step | $u(t)$ | $\begin{aligned} u(t) = \begin{cases} 0 & t < 0\\ u_0 & t \geq 0 \end{cases} \end{aligned}$ | <img style="width:128px;border:4px solid #9146ff;border-radius:12px" src="./assets/typical-inputs/step-input.png"> |
 
 However in real systems, the input is changed by some other dynamic system with a finite response time. Therefore, the input signal does not have zero rise time relative to the dynamic response time of the system.
 
@@ -278,7 +280,7 @@ In physical systems, the input can rise constantly from zero. Ideally in these i
 
 | Input | Function | Description | Sketch |
 | - | - | - | - |
-| Ramp | $tu(t)$ | $\begin{aligned} tu(t) = \begin{cases} 0 & t < 0\\ u_0 t & t \geq 0 \end{cases} \end{aligned}$ | ![](./assets/typical-inputs/ramp-input.png) |
+| Ramp | $tu(t)$ | $\begin{aligned} tu(t) = \begin{cases} 0 & t < 0\\ u_0 t & t \geq 0 \end{cases} \end{aligned}$ | <img style="width:128px;border:4px solid #9146ff;border-radius:12px" src="./assets/typical-inputs/ramp-input.png"> |
 
 However, in real systems, the input signal can not keep rising forever, since energy is a finite resource. In these instances, the input signal is modelled as a *sawtooth wave*, where the input rises like a ramp for some time, falls to zero, and rises again.
 
@@ -288,7 +290,7 @@ The derivative of the step function is called the *impulse input*. An impulse in
 
 | Input | Function | Description | Sketch |
 | - | - | - | - |
-| Impulse | $\delta(t)$ | $\begin{aligned} \delta(t) = \begin{cases} 0 & t \not= 0\\ \infty & t = 0 \end{cases} \end{aligned} \\ \int^{0^+}_{0^-}{\delta(t)}dt = u_0$ | ![](./assets/typical-inputs/impulse-input.png) |
+| Impulse | $\delta(t)$ | $\begin{aligned} \delta(t) = \begin{cases} 0 & t \not= 0\\ \infty & t = 0 \end{cases} \end{aligned} \\ \int^{0^+}_{0^-}{\delta(t)}dt = u_0$ | <img style="width:128px;border:4px solid #9146ff;border-radius:12px" src="./assets/typical-inputs/impulse-input.png"> |
 
 However, in real systems, the input signal can not be a pure impulse signal, since that requires an infinite value of the input variable for zero duration of time. In these instances, the input is modelled as a *pulse input*, where the input is constant at some finite value for some finite nonzero duration of time.
 
@@ -312,7 +314,7 @@ If the system's *transient response* is to be tested, the input signal would be 
 
 | Input | Function | Description | Sketch |
 | - | - | - | - |
-| Sinusoidal | $\sin{\omega t}$ | $\begin{aligned} \sin{\omega t} = \begin{cases} 0 & t < 0 \\ u_0 \sin{\omega t} & t \geq 0\end{cases} \end{aligned}$ | ![](./assets/typical-inputs/sinusoidal-input.png) |
+| Sinusoidal | $\sin{\omega t}$ | $\begin{aligned} \sin{\omega t} = \begin{cases} 0 & t < 0 \\ u_0 \sin{\omega t} & t \geq 0\end{cases} \end{aligned}$ | <img style="width:128px;border:4px solid #9146ff;border-radius:12px" src="./assets/typical-inputs/sinusoidal-input.png"> |
 
 If the system's *steady state response* is to be tested, the input signal would be provided to the system for some time duration, and the system response would be observed after the transients have died away.
 
@@ -337,7 +339,9 @@ There are two major configurations of control systems: *open loop* and *closed l
 
 The generic architecture of an open loop system is shown in the figure below. It starts with a subsystem called an *input transducer*, which converts the form of input to that used by the *controller*. The controller drives a *process* or *plant*. The input is sometimes called the *reference*, while the output can be called the *controller variable*. Other signals, such as *disturbances*, are shown added to the controller and process outputs via *summing junctions*, which yield the algebraic sum of their input signals using associated signs.
 
-![](assets/system-configurations/open-loop.png)
+<div style="display:flex;align-items:center;justify-content:center;margin:24px">
+<img style="width:512px;border:4px solid #9146ff;border-radius:12px" src="./assets/system-configurations/open-loop.png">
+</div>
 
 The distinguishing characteristic of an open loop system is that it can not compensate for any disturbances that add to the controller's driving signal (Disturbance 1 in the figure). The output of an open loop system is corrupted not only by signals that add to the controller's commands but also by disturbances at the output ("Disturbance 2 in the figure). The system can not correct these disturbances either.
 
@@ -347,6 +351,31 @@ The generic architecture of a closed loop system in shown in the figure below. T
 
 The first summing junction algebraically adds the signal from the input to the signal from the output, which arrives via the *feedback path*, the return path from the output to the summing junction. The result is generally called the *actuating signal*. However, in systems where both the input and output transducers have *unity gain* (that is, the transducer amplifies the input by 1), the actuating signal's value is equal to the actual difference between the input and the output. Under this condition, the actuating signal is called the *error*.
 
-![](./assets/system-configurations/closed-loop.png)
+<div style="display:flex;align-items:center;justify-content:center;margin:24px">
+<img style="width:512px;border:4px solid #9146ff;border-radius:12px" src="./assets/system-configurations/closed-loop.png">
+</div>
 
 The closed loop system compensates for disturbances by measuring the output response, feeding that measurement back through a feedback path, and comparing that response to the input at the summing junction.
+
+## Miscellaneous
+
+### PID controller
+
+A proportional-integral-derivative controller (PID controller) is a control loop mechanism that continuously calculates an error value $e(t)$ as the difference between a desired set point $\text{SP} = r(t)$ and a measured process variable $\text{PV} = y(t)$, and applies a correction based on proportional, integral, and derivative terms. The controller attempts to minimize the error over time by adjusting the control variable $u(t)$ to a new value determined by the weighted sum of the control sums.
+
+<div style="display:flex;align-items:center;justify-content:center;margin:24px">
+<img style="width:512px;border:4px solid #9146ff;border-radius:12px" src="./assets/misc/pid-controller.png">
+</div>
+
+In this model:
+
+- Term **P** is proportional to the current value of the error $e(t) = r(t) - y(t)$ with $K_p$ as the gain factor. Using proportional control alone will result in an error between the set point and the process value because the controller requires an error to generate the proportional output response.
+- Term **I** accounts for past values of the error by integrating the error over time with $K_i$ as the gain factor. The integral term seeks to eliminate the residual error from the application of the proportional control, by adding a control effect due to the historic cumulative value of the error. Therefore, the proportional effect diminishes as the error decreases, but this is compensated by the growing integral effect.
+- Term **D** is a best estimate of the future trend of the error, based on its current rate of change, with $K_d$ as the gain factor. If the rate of change is high, the controlling or damping effect is also high due to the large derivative term.
+
+$$
+\begin{equation}
+\tag{PID control function}
+u(t) = K_p e(t) + K_i \int^{t}_{0} e(\tau) d\tau + K_d \frac{d e(t)}{dt}
+\end{equation}
+$$
