@@ -1912,6 +1912,961 @@ def lab16_task6():
     return
 
 # -------------------------------------------
+#               Lab 17 - Task 1
+# -------------------------------------------
+
+def lab17_task1_part1(l):
+    max_value = max(l)
+    index = l.index(max_value)
+    return index
+
+def lab17_task1_part2(l):
+    sorted_list = sorted(l)
+    index = sorted_list.index(7)
+    return index
+
+def lab17_task1_part3_approach1(l):
+    sorted_list = sorted(l,reverse=True)
+    index = sorted_list.index(7)
+    return index
+
+def lab17_task1_part3_approach2(l):
+    sorted_list = sorted(l)
+    index = sorted_list.index(7)
+    repeated = l.count(7)
+    count = len(l) - index - repeated
+    return count
+
+def lab17_task1_part4(l):
+    sorted_list = sorted(l)
+    number = sorted_list[-2]
+    index = l.index(number)
+    return index
+
+def lab17_task1_part5(l):
+    max_value = max(l)
+    min_value = min(l)
+    index = l.index(min_value)
+    l[index] = max_value
+    return l
+
+def lab17_task1_print(l):
+    print("Elements: [ ",end="")
+    for i in range(len(l)):
+        if i == len(l) - 1:
+            separator = ""
+        else:
+            separator = ", "
+        print(f"{l[i]:>-3}",end=separator)
+    print("]")
+    print("Indices:  [ ",end="")
+    for i in range(len(l)):
+        if i == len(l) - 1:
+            separator = ""
+        else:
+            separator = ", "
+        print(f"{i:>3}",end=separator)
+    print("]")
+
+def lab17_task1():
+    task_header(17,1)
+    a = [7,3,6,10,6,7,-2,7,5,-8,23,12,-22,3,6,-5,7,5,10,-20]
+    lab17_task1_print(a)
+    print(f"Index of  maximum number: {lab17_task1_part1(a)}")
+    print(f"Count of numbers less than seven: {lab17_task1_part2(a)}")
+    print(f"Count of numbers greater than seven (Approach 1): {lab17_task1_part3_approach1(a)}")
+    print(f"Count of numbers greater than seven (Approach 2): {lab17_task1_part3_approach2(a)}")
+    print(f"Index of second largest number: {lab17_task1_part4(a)}")
+    print(f"Modified list: {lab17_task1_part5(a)}")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 2
+# -------------------------------------------
+
+def lab17_task2():
+    task_header(17,2)
+    l = list()
+    while True:
+        e = eval(input("Enter a number: "))
+        if e == -1:
+            break
+        l.append(e)
+    if len(l) == 0:
+        print("Error: List is empty")
+        return
+    maximum = l[0]
+    minimum = l[0]
+    element_sum = 0
+    for e in l:
+        if e > maximum:
+            maximum = e
+        if e < minimum:
+            minimum = e
+        element_sum += e
+    average = element_sum / len(l)
+    print()
+    print(f"Maximum value: {maximum}")
+    print(f"Minimum value: {minimum}")
+    print(f"Average value: {average:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 3
+# -------------------------------------------
+
+def lab17_task3_isprime(n):
+    import math
+    limit = int(math.sqrt(n)) + 1
+    del math
+    for i in range(2,limit):
+        if n % i == 0:
+            return False
+    return True
+
+def lab17_task3():
+    task_header(17,3)
+    l = []
+    n = 20
+    import random
+    for _ in range(n):
+        l.append(random.randint(1,50))
+    del random
+    print(f"Randomly populated list: {l}")
+    p = []
+    for e in l:
+        if lab17_task3_isprime(e):
+            p.append(e)
+    print(f"List of prime numbers:   {p}")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 4
+# -------------------------------------------
+
+def lab17_task4():
+    task_header(17,4)
+    marks = []
+    print("This program displays the result of Computer Programming-I")
+    n = eval(input("Enter total number of students in class: "))
+    for i in range(n):
+        marks.append(eval(input(f"Enter marks of roll no. {i + 1}: ")))
+    average = sum(marks) / n
+    failing_count = 0
+    for mark in marks:
+        if mark < 40:
+            failing_count += 1
+    highest_marks = max(marks)
+    highest_roll = marks.index(highest_marks) + 1
+    lowest_marks = min(marks)
+    lowest_roll = marks.index(lowest_marks) + 1
+    print()
+    print("*************************************************")
+    print("* Result of Computer Programming-I              *")
+    print("*************************************************")
+    print(f"* Average marks: {average:>4.2f}                           *")
+    print(f"* Failing students: {failing_count}                           *")
+    print(f"* Highest marks: {highest_marks} obtained by roll no. {highest_roll}       *")
+    print(f"* Lowest marks: {lowest_marks} obtained by roll no. {lowest_roll}        *")
+    print("*************************************************")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 5
+# -------------------------------------------
+
+def lab17_task5():
+    task_header(17,5)
+    List1 = []
+    List2 = []
+    import random
+    for _ in range(20):
+        List1.append(random.randint(1,10))
+    del random
+    for i in range(10):
+        List2.append(List1.count(i + 1))
+    print(f"List 1: {List1}")
+    print(f"List 2: {List2}")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 6
+# -------------------------------------------
+
+def lab17_task6():
+    task_header(17,6)
+    n = eval(input("Enter an integer: "))
+    limit = n // 2
+    factors = []
+    for i in range(2, limit):
+        if n % i == 0:
+            factors.append(i)
+    factors.append(n)
+    factors.insert(0,1)
+    print(f"Factors: {factors}")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 7
+# -------------------------------------------
+
+def lab17_task7():
+    task_header(17,7)
+    my_list = []
+    n = 10
+    import random
+    for _ in range(n):
+        my_list.append(random.randint(1,50))
+    del random
+    print(f"Original list: {my_list}")
+    last_value = my_list[-1]
+    for i in range(-1, -len(my_list), -1):
+        my_list[i] = my_list[i - 1]
+    my_list[0] = last_value
+    print(f"Rotated list:  {my_list}")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 8
+# -------------------------------------------
+
+def lab17_task8():
+    task_header(17,8)
+    binary_list = []
+    n = 100
+    import random
+    for _ in range(n):
+        binary_list.append(random.choice([0,1]))
+    del random
+    print(f"Binary list: {binary_list}")
+    chain_count = 0
+    maximum = 0
+    for digit in binary_list:
+        if digit == 0:
+            chain_count += 1
+        else:
+            if chain_count > maximum:
+                maximum = chain_count
+            chain_count = 0
+    print(f"Longest run of zeroes: {maximum}")
+    return
+
+# -------------------------------------------
+#               Lab 17 - Task 9
+# -------------------------------------------
+
+def lab17_task9():
+    task_header(17,9)
+    my_list = []
+    n = 20
+    import random
+    for _ in range(n):
+        my_list.append(random.randint(1,50))
+    del random
+    print(f"Original list: {my_list}")
+    new_list = []
+    for element in my_list:
+        if element not in new_list:
+            new_list.append(element)
+    print(f"Modified list: {new_list}")
+    return
+
+# -------------------------------------------
+#               Lab 18 - Task 1
+# -------------------------------------------
+
+def lab18_task1_func(num_list):
+    average = sum(num_list) / len(num_list)    
+    lt_list = []
+    eq_list = []
+    gt_list = []
+    for num in num_list:
+        if num < average:
+            lt_list.append(num)
+        elif num == average:
+            eq_list.append(num)
+        else:
+            gt_list.append(num)
+    return average,lt_list,eq_list,gt_listn
+
+def lab18_task1():
+    task_header(18,1)
+    num_list = []
+    while True:
+        user_input = input("Enter a number (enter space to quit): ")
+        if user_input == " ":
+            break
+        num_list.append(eval(user_input))
+    average, lt_list, eq_list, gt_list = lab18_task1_func(num_list)
+    print()
+    print(f"Average: {average}")
+    print()
+    print(f"Values less than average:    {lt_list}")
+    print(f"Values exactly average:      {eq_list}")
+    print(f"Values greater than average: {gt_list}")
+    return
+
+# -------------------------------------------
+#               Lab 18 - Task 2
+# -------------------------------------------
+
+def lab18_task2_factors(n):
+    factors = []
+    limit = n // 2 + 1
+    for i in range(2, limit):
+        if n % i == 0:
+            factors.append(i)
+    factors.insert(0,1)
+    factors.append(n)
+    return factors
+
+def lab18_task2():
+    task_header(18,2)
+    n = eval(input("Enter an integer: "))
+    print(f"Factors: {lab18_task2_factors(n)}")
+    return
+
+# -------------------------------------------
+#               Lab 18 - Task 3
+# -------------------------------------------
+
+def lab18_task3_isSorted(l):
+    n = len(l)
+    if n == 0:
+        return True
+    last = l[0]
+    for i in range(1, n):
+        current = l[i]
+        if current < last:
+            return False
+        last = current
+    return True
+
+def lab18_task3():
+    task_header(18,3)
+    my_list = []
+    while True:
+        user_input = input("Enter a number (enter space to exit): ")
+        if user_input == " ":
+            break
+        my_list.append(eval(user_input))
+    print()
+    print(f"List: {my_list}")
+    if lab18_task3_isSorted(my_list):
+        print("List is sorted")
+    else:
+        print("List is not sorted")
+    return
+
+# -------------------------------------------
+#               Lab 18 - Task 4
+# -------------------------------------------
+
+def lab18_task4_bestOfTwo(l1,l2):
+    n1 = len(l1)
+    n2 = len(l2)
+    if n1 > n2:
+        longer_length = n1
+        shorter_length = n2
+        longer_list = l1
+    else:
+        longer_length = n2
+        shorter_length = n1
+        longer_list = l2
+    bestOfTwo = []
+    for i in range(shorter_length):
+        if l1[i] > l2[i]:
+            bestOfTwo.append(l1[i])
+        else:
+            bestOfTwo.append(l2[i])
+    for i in range(shorter_length, longer_length):
+        bestOfTwo.append(longer_list[i])
+    return bestOfTwo
+
+def lab18_task4():
+    task_header(18,4)
+    l1 = eval(input("Enter a list [x1,x2,x3,...]: "))
+    l2 = eval(input("Enter a list [x1,x2,x3,...]: "))
+    bestOfTwo = lab18_task4_bestOfTwo(l1,l2)
+    print(f"Best of two: {bestOfTwo}")
+    return
+
+# -------------------------------------------
+#               Lab 18 - Task 5
+# -------------------------------------------
+
+def lab18_task5_countRange(iterable,value,start,end):
+    count = 0
+    for index in range(start,end + 1):
+        if iterable[index] == value:
+            count += 1
+    return count
+
+def lab18_task5_randomList(size,low,high):
+    randomList = []
+    import random
+    for _ in range(size):
+        randomList.append(random.randint(low,high))
+    del random
+    return randomList
+
+def lab18_task5():
+    task_header(18,5)
+    randomList = lab18_task5_randomList(20,1,10)
+    print(f"Random list: {randomList}")
+    print()
+    value = eval(input("Value: "))
+    start = eval(input("Start: "))
+    end = eval(input("End: "))
+    print()
+    print(f"Count: {lab18_task5_countRange(randomList,value,start,end)}")
+    return
+
+# -------------------------------------------
+#               Lab 18 - Task 6
+# -------------------------------------------
+
+def lab18_task6_dispList(container):
+    size = len(container)
+    if size == 0:
+        text = ""
+    elif size == 1:
+        text = container[0]
+    else:
+        text = ""
+        for index in range(size - 2):
+            text = text + container[index] + ", "
+        text = text + container[size - 2] + " and " + container[size - 1]
+    return text
+
+def lab18_task6():
+    task_header(18,6)
+    fruits = ["Apple","Banana","Orange","Pear","Mango"]
+    print(f"List: {fruits}")
+    print()
+    for end in range(len(fruits) + 1):
+        sublist = fruits[0:end]
+        print(f"String: {lab18_task6_dispList(sublist)}")
+    return
+
+# -------------------------------------------
+#               Lab 18 - Task 7
+# -------------------------------------------
+
+def lab18_task7():
+    task_header(18,7)
+    import random
+    player1_score = 0
+    player2_score = 0
+    step = 0
+    while True:
+        dice1 = random.randint(1,6)
+        dice2 = random.randint(1,6)
+        if dice1 > dice2:
+            player1_score += (dice1 - dice2)
+        elif dice2 > dice1:
+            player2_score += (dice2 - dice1)
+        else:
+            player1_score = 0
+            player2_score = 0  
+        step += 1
+        print()
+        print(f"[{step}]\tDice A: {dice1} Dice B: {dice2}")
+        print(f"[{step}]\tScore A: {player1_score} Score B: {player2_score}")
+        if player1_score == 20:
+            winner = "Player 1"
+            break
+        elif player2_score == 20:
+            winner = "Player 2"
+            break
+    print()
+    print(f"The winner is {winner}")
+    del random
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 1
+# -------------------------------------------
+
+def lab19_task1_maxSum(parent_list):
+    highest_index = 0
+    highest_sum = 0
+    for element in parent_list[highest_index]:
+        highest_sum += element
+    for sublist_index in range(1, len(parent_list)):
+        sum = 0
+        sublist = parent_list[sublist_index]
+        for element in sublist:
+            sum += element
+        if sum > highest_sum:
+            highest_sum = sum
+            highest_index = sublist_index
+    return parent_list[highest_index]
+
+def lab19_task1():
+    task_header(19,1)
+    parent_list = eval(input("Enter a list of sublists of numbers: "))
+    print(lab19_task1_maxSum(parent_list))
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 2
+# -------------------------------------------
+
+def lab19_task2_populate(n):
+    l = []
+    lowest = 0
+    highest = 20
+    import random
+    for _ in range(n):
+        l.append(random.randint(lowest,highest))
+    del random
+    return l
+
+def lab19_task2():
+    task_header(19,2)
+    original_list = lab19_task2_populate(10)
+    print(f"Original list: {original_list}")
+    first_length = eval(input("Enter the length of the first part: "))
+    first_part = original_list[0:first_length]
+    second_part = original_list[first_length:]
+    print(f"First part: {first_part}")
+    print(f"Second part: {second_part}")
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 3
+# -------------------------------------------
+
+def lab19_task3_splitList(a,n):
+    nested_list = []
+    sublist = []
+    for index in range(0,len(a)):
+        sublist.append(a[index])
+        is_appended = False
+        if (index + 1) % n == 0:
+            nested_list.append(sublist)
+            sublist = []
+            is_appended = True
+    if not is_appended:
+        nested_list.append(sublist)
+    return nested_list
+
+def lab19_task3_populate(n):
+    import random
+    l = []
+    lowest = 0
+    highest = 50
+    for _ in range(n):
+        l.append(random.randint(lowest,highest))
+    del random
+    return l
+
+def lab19_task3():
+    task_header(19,3)
+    a = lab19_task3_populate(20)
+    n = eval(input("Enter the size of sublists: "))
+    nested_list = lab19_task3_splitList(a,n)
+    print(f"Nested list: {nested_list}")
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 4
+# -------------------------------------------
+
+def lab19_task4_mergeSubLists(l1,l2):
+    merged_list = []
+    for i in range(len(l1)):
+        sublist = []
+        for j in l1[i]:
+            sublist.append(j)
+        for j in l2[i]:
+            sublist.append(j)
+        merged_list.append(sublist)
+    return merged_list
+
+def lab19_task4_populate(n):
+    import random
+    nested_list = []
+    min_len = 1
+    max_len = 5
+    min_val = 0
+    max_val = 50
+    for _ in range(n):
+        sublist = []
+        sublist_length = random.randint(min_len,max_len)
+        for _ in range(sublist_length):
+            sublist.append(random.randint(min_val,max_val))
+        nested_list.append(sublist)
+    del random
+    return nested_list
+
+def lab19_task4():
+    task_header(19,4)
+    n = 5
+    l1 = lab19_task4_populate(n)
+    l2 = lab19_task4_populate(n)
+    print(f"First list: {l1}")
+    print(f"Second list: {l2}")
+    merged_list = lab19_task4_mergeSubLists(l1,l2)
+    print(f"Merged list: {merged_list}")
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 5
+# -------------------------------------------
+
+def lab19_task5_get_subject_string(subject):
+    if subject == 0:
+        subject_str = "Calculus"
+    elif subject == 1:
+        subject_str = "Algebra"
+    elif subject == 2:
+        subject_str = "Programming"
+    elif subject == 3:
+        subject_str = "Electronics"
+    elif subject == 4:
+        subject_str = "Statistics"
+    else:
+        subject_str = "Undefined"
+    return subject_str
+
+def lab19_task5_get_subject_details(marks):
+    subject_prompt = """Enter the subject for details:
+    0 - Calculus
+    1 - Algebra
+    2 - Programming
+    3 - Electronics
+    4 - Statistics
+>> """
+    subject = eval(input(subject_prompt))
+    max_marks = marks[0][subject]
+    min_marks = marks[0][subject]
+    marks_sum = marks[0][subject]
+    max_index = 0
+    min_index = 0
+    n = len(marks)
+    for i in range(1,n):
+        subject_marks = marks[i][subject]
+        marks_sum += subject_marks
+        if subject_marks > max_marks:
+            max_marks = subject_marks
+            max_index = i
+        if subject_marks < min_marks:
+            min_marks = subject_marks
+            min_index = i
+    average = marks_sum / n
+    subject_str = lab19_task5_get_subject_string(subject)
+    print(f"Average marks for {subject_str}: {average:.2f}")
+    print(f"Highest marks: {max_marks} obtained by roll no.: {max_index + 1}")
+    print(f"Lowest marks: {min_marks} obtained by roll no.: {min_index + 1}")
+
+def lab19_task5_get_student_details(marks):
+    student = eval(input("Enter the roll number of the student: "))
+    student_result = marks[student - 1]
+    max_marks = student_result[0]
+    min_marks = student_result[0]
+    marks_sum = student_result[0]
+    max_subject = 0
+    min_subject = 0
+    n = len(student_result)
+    for i in range(1,n):
+        subject_marks = student_result[i]
+        marks_sum += subject_marks
+        if subject_marks > max_marks:
+            max_marks = subject_marks
+            max_subject = i
+        if subject_marks < min_marks:
+            min_marks = subject_marks
+            min_subject = i
+    average = marks_sum / n
+    max_subject_str = lab19_task5_get_subject_string(max_subject)
+    min_subject_str = lab19_task5_get_subject_string(min_subject)
+    print(f"Average marks for roll no. {student}: {average:.2f}")
+    print(f"Highest marks: {max_marks} in subject {max_subject_str}")
+    print(f"Lowest marks: {min_marks} in subject {min_subject_str}")
+
+def lab19_task5():
+    task_header(19,5)
+    marks = [[89,91,68,88,93],
+            [78,79,87,78,67],
+            [94,83,69,79,82],
+            [67,78,77,82,66],
+            [88,82,87,77,69],
+            [93,55,90,82,67],
+            [76,69,86,75,94],
+            [66,77,67,64,83],
+            [82,79,83,71,68],
+            [59,83,88,84,79]]
+    option_prompt = """Enter the category for details:
+    \"s\" or \"S\" - Subject
+    \"r\" or \"R\" - Student
+>> """
+    while True:
+        option = input(option_prompt)
+        if option.lower() == "s":
+            lab19_task5_get_subject_details(marks)
+        elif option.lower() == "r":
+            lab19_task5_get_student_details(marks)
+        else:
+            print("Error: Invalid option")
+        print()
+        option = input("Repeat for another query (y/n): ")
+        if option.lower() == "n":
+            break
+        print()
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 6
+# -------------------------------------------
+
+def lab19_task6_det2(A):
+    det = A[0][0] * A[1][1] - A[0][1] * A[1][0]
+    return det
+
+def lab19_task6_det3(A):
+    sm1 = [A[1][1],A[1][2]],[A[2][1],A[2][2]]
+    sm2 = [A[1][0],A[1][2]],[A[2][0],A[2][2]]
+    sm3 = [A[1][0],A[1][1]],[A[2][0],A[2][1]]
+    c1 = A[0][0]
+    c2 = A[0][1]
+    c3 = A[0][2]
+    det = c1 * lab19_task6_det2(sm1) - c2 * lab19_task6_det2(sm2) + c3 * lab19_task6_det2(sm3)
+    return det
+
+def lab19_task6_print(matrix):
+    for row in matrix:
+        for element in row:
+            print(f"{element:<6}",end="")
+        print()
+    print()
+    return
+
+def lab19_task6():
+    task_header(19,6)
+    import random
+    matrix = []
+    n = 3
+    low = 1
+    high = 9
+    for _ in range(n):
+        row = []
+        for _ in range(n):
+            row.append(random.randint(low,high))
+        matrix.append(row)
+    del random
+    lab19_task6_print(matrix)
+    print(f"Determinant: {lab19_task6_det3(matrix)}")
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 7
+# -------------------------------------------
+
+def lab19_task7_det2(A):
+    det = A[0][0] * A[1][1] - A[0][1] * A[1][0]
+    return det
+
+def lab19_task7_inv2(A):
+    det = lab19_task7_det2(A)
+    inv_det = 1 / det
+    inverse = [inv_det * A[1][1],-inv_det * A[0][1]],[-inv_det * A[1][0],inv_det * A[0][0]]
+    return inverse
+
+def lab19_task7_dispMat(A,name):
+    print(f"{name}:")
+    for row in A:
+        for element in row:
+            print(f"{element:< 6.2f}",end=" ")
+        print()
+    print()
+    return
+
+def lab19_task7_populate(n):
+    import random
+    matrix = []
+    low = 1
+    high = 9
+    for _ in range(n):
+        row = []
+        for _ in range(n):
+            row.append(random.randint(low,high))
+        matrix.append(row)
+    del random
+    return matrix
+
+def lab19_task7():
+    task_header(19,7)
+    n = 2
+    matrix = lab19_task7_populate(n)
+    lab19_task7_dispMat(matrix,"Matrix")
+    inverse = lab19_task7_inv2(matrix)
+    lab19_task7_dispMat(inverse,"Inverse")
+    return
+
+# -------------------------------------------
+#               Lab 19 - Task 8
+# -------------------------------------------
+
+def lab19_task8_displayGrid(grid):
+    print("-----------------------------------")
+    print("            Tic Tac Toe")
+    print("-----------------------------------")
+    print()
+    print("Player 1 [X]           Player 2 [O]")
+    print()
+    print(f"           {grid[0][0]}  |  {grid[0][1]}  |  {grid[0][2]}")
+    print("         -----+-----+-----")
+    print(f"           {grid[1][0]}  |  {grid[1][1]}  |  {grid[1][2]}")
+    print("         -----+-----+-----")
+    print(f"           {grid[2][0]}  |  {grid[2][1]}  |  {grid[2][2]}")
+    print()
+
+def lab19_task8_clear():
+    import os
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+    del os
+    return
+
+def lab19_task8_fillSlot(grid,slot,mark):
+    column = (slot % 3) - 1
+    row = (slot - 1) // 3
+    if(grid[row][column] not in [1,2,3,4,5,6,7,8,9]):
+        return False
+    grid[row][column] = mark
+    return True
+
+def lab19_task8_playerTurn(grid,player):
+    if player == 1:
+        mark = "X"
+    else:
+        mark = "O"
+    success = False
+    while not success:
+        slot = eval(input(f"[Player {player}] Enter the slot number: "))
+        success = lab19_task8_fillSlot(grid,slot,mark)
+        if success == False:
+            print("Error: Invalid slot number - Please try again!")
+    return
+
+def lab19_task8_isWinner(grid):
+    if  grid[0][0] == grid[0][1] and grid[0][1] == grid[0][2] or \
+        grid[1][0] == grid[1][1] and grid[1][1] == grid[1][2] or \
+        grid[2][0] == grid[2][1] and grid[2][1] == grid[2][2] or \
+        grid[0][0] == grid[1][0] and grid[1][0] == grid[2][0] or \
+        grid[0][1] == grid[1][1] and grid[1][1] == grid[2][1] or \
+        grid[0][2] == grid[1][2] and grid[1][2] == grid[2][2] or \
+        grid[0][0] == grid[1][1] and grid[1][1] == grid[2][2] or \
+        grid[0][2] == grid[1][1] and grid[1][1] == grid[2][0]:
+        return True
+    return False
+
+def lab19_task8_gameEnd(code):
+    if code == 1:
+        print("Congratulations! Player 1 won")
+    elif code == 2:
+        print("Congratulations! Player 2 won")
+    else:
+        print("Draw! No one won")
+
+def lab19_task8():
+    task_header(19,8)
+    grid = [[1,2,3],[4,5,6],[7,8,9]]
+    max_turns = 9
+    turn = 0
+    player = 1
+    while turn < max_turns:
+        lab19_task8_clear()
+        lab19_task8_displayGrid(grid)
+        lab19_task8_playerTurn(grid,player)
+        if lab19_task8_isWinner(grid):
+            lab19_task8_clear()
+            lab19_task8_displayGrid(grid)
+            lab19_task8_gameEnd(player)
+            break
+        turn += 1
+        if player == 1:
+            player = 2
+        else:
+            player = 1
+    else:
+        lab19_task8_clear()
+        lab19_task8_displayGrid(grid)
+        lab19_task8_gameEnd(0)
+    return
+
+# -------------------------------------------
+#               Lab 20 - Task 1
+# -------------------------------------------
+
+def lab20_task1_polyPerimeter(polygon):
+    import math
+    perimeter = 0
+    vertices = len(polygon)
+    for i in range(vertices):
+        if i == vertices - 1:
+            j = 0
+        else:
+            j = i + 1
+        x1,y1 = polygon[i]
+        x2,y2 = polygon[j]
+        perimeter += math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    del math
+    return perimeter
+
+def lab20_task1():
+    task_header(20,1)
+    polygon = []
+    vertices = eval(input("Enter the number of vertices: "))
+    for i in range(vertices):
+        if i == 0:
+            postfix = "st"
+        elif i == 1:
+            postfix = "nd"
+        elif i == 2:
+            postfix = "rd"
+        else:
+            postfix = "th"
+        point = eval(input(f"Enter the {i + 1}{postfix} point (x,y): "))
+        polygon.append(point)
+    perimeter = lab20_task1_polyPerimeter(polygon)
+    print(f"Perimeter: {perimeter:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 20 - Task 2
+# -------------------------------------------
+
+def lab20_task2():
+    task_header(20,2)
+    students = [("Ahmad","Anwar","MCT-UET-01",["CP","LA"]),
+                ("Ali","Jamal","MCT-UET-02",["LA"]),
+                ("Muneeb","Akhtar","MCT-UET-03",["Phy","CP","LA"]),
+                ("Rizwan","Khan","MCT-UET-04",["Statistics","Phy"])]
+    cp_students = []
+    tc_students = []
+    for student in students:
+        first_name,last_name,reg_id,courses = student
+        if "CP" in courses:
+            cp_students.append(reg_id)
+        if len(courses) == 3:
+            full_name = first_name,last_name
+            tc_students.append(full_name)
+    print(f"Registration numbers of the students registered in the course CP:")
+    for reg_id in cp_students:
+        print(reg_id)
+    print()
+    print(f"Full names of the students registered in exactly 3 courses:")
+    for full_name in tc_students:
+        first_name,last_name = full_name
+        print(f"{first_name} {last_name}")
+    return
+
+# -------------------------------------------
 #            Auxiliary Functions
 # -------------------------------------------
 
