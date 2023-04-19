@@ -2867,6 +2867,429 @@ def lab20_task2():
     return
 
 # -------------------------------------------
+#               Lab 21 - Task 1
+# -------------------------------------------
+
+def lab21_task1():
+    task_header(21,1)
+    user_string = input("Enter a message: ")
+    vowels = "aeiou"
+    vowels_count = 0
+    for char in user_string:
+        if char.lower() in vowels:
+            vowels_count += 1
+    print(f"There are {vowels_count} vowels in the entered message")
+    return
+
+# -------------------------------------------
+#               Lab 21 - Task 2
+# -------------------------------------------
+
+def lab21_task2():
+    task_header(21,2)
+    user_string = input("Enter a message: ")
+    words_count = 0
+    for char in user_string:
+        if char.lower().isspace():
+            words_count += 1
+    print(f"There are {words_count + 1} words in the entered message")
+    return
+
+# -------------------------------------------
+#               Lab 21 - Task 3
+# -------------------------------------------
+
+def lab21_task3():
+    task_header(21,3)
+    user_string = input("Enter a message: ")
+    words = user_string.split(" ")
+    count = 0
+    for word in words:
+        if len(word) == 4:
+            count += 1
+    print(f"There are {count} words with exactly 4 letters")
+    return
+
+# -------------------------------------------
+#               Lab 21 - Task 4
+# -------------------------------------------
+
+def lab21_task4():
+    task_header(21,4)
+    word = input("Enter a word: ")
+    letters = list(word)
+    import random
+    random.shuffle(letters)
+    del random
+    shuffled_word = "".join(letters)
+    print(f"Shuffled word: {shuffled_word}")
+    return
+
+# -------------------------------------------
+#               Lab 21 - Task 5
+# -------------------------------------------
+
+def lab21_task5_prologue(checks):
+    print("-------------------------------------------------------------")
+    print("            Enter a strong password - [q] to quit            ")
+    print("-------------------------------------------------------------")
+    print(f"  [{checks[0]}] Password must be between 8 and 32 characters           ")
+    print(f"  [{checks[1]}] Password must contain at least one lowercase letter    ")
+    print(f"  [{checks[2]}] Password must contain at least one uppercase letter    ")
+    print(f"  [{checks[3]}] Password must contain at least one numeric digit       ")
+    print(f"  [{checks[4]}] Password must contain at least one special character   ")
+    print("-------------------------------------------------------------")
+
+def lab21_task5():
+    task_header(21,5)
+    import string
+    import os
+    password_weak = True
+    islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
+    while password_weak:
+        os.system("cls" if os.name == "nt" else "clear")
+        checks = [
+                "\u2713" if islong else "x",
+                "\u2713" if haslower else "x",
+                "\u2713" if hasupper else "x",
+                "\u2713" if hasnumeric else "x",
+                "\u2713" if hasspecial else "x"
+        ]
+        lab21_task5_prologue(checks)
+        password = input("\n>> ")
+        if password == "q":
+            break
+        islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
+        if len(password) > 8 and len(password) < 32:
+            islong = True
+        for character in password:
+            if character.islower():
+                haslower = True
+            elif character.isupper():
+                hasupper = True
+            elif character.isdecimal():
+                hasnumeric = True
+            elif character in string.punctuation:
+                hasspecial = True
+        if islong and haslower and hasupper and hasnumeric and hasspecial:
+            password_weak = False
+        else:
+            password_weak = True
+    del os
+    del string
+    return
+
+# -------------------------------------------
+#               Lab 21 - Task 6
+# -------------------------------------------
+
+def lab21_task6_extract(player):
+    player = player.strip()
+    raw = player.split(":")
+    name = raw[0].strip()
+    score = raw[1].split("-")
+    overs = float(score[0].strip())
+    maidens = float(score[1].strip())
+    runs = float(score[2].strip())
+    wickets = float(score[3].strip())
+    return name,overs,maidens,runs,wickets
+
+def lab21_task6_reference(players):
+    r_player = players[0]
+    r_overs = r_player[1]
+    r_runs = r_player[3]
+    r_economy = r_runs / r_overs
+    return r_player[0],r_economy,r_player[2],r_player[4]
+
+def lab21_task6():
+    task_header(21,6)
+    bowling = """Wasim Akram : 10-0-49-3
+                Aaqib Javed: 10- 2-27-2
+                Mushtaq Ahmed:10- 1-41-3
+                Ijaz Ahmed:3-0-13-0
+                Imran Khan:6.2-0-43- 1
+                Aamer Sohail : 10-0-49 -0"""
+    players = [lab21_task6_extract(player) for player in bowling.split("\n")]
+    r_name,r_economy,r_maidens,r_wickets = lab21_task6_reference(players)
+    best_economy = [r_economy,r_name]
+    most_wickets = [r_wickets,r_name]
+    total_maidens = r_maidens
+    for index in range(1,len(players)):
+        name,overs,maidens,runs,wickets = players[index]
+        economy = runs / overs
+        if economy < best_economy[0]:
+            best_economy = [economy,name]
+        total_maidens += maidens
+        if wickets > most_wickets[0]:
+            most_wickets = [wickets,name]
+    print(f"Bowler with the best economy: {best_economy[1]}")
+    print(f"Total maiden overs bowled by Pakistan: {total_maidens}")
+    print(f"Bowlers who took the best wickets: {most_wickets[1]}")
+    return
+
+# -------------------------------------------
+#               Lab 21 - Task 7
+# -------------------------------------------
+
+def lab21_task7_randomDNA(n):
+    import random
+    dna = []
+    nucleotides = ["A","T","C","G"]
+    for _ in range(n):
+        dna.append(random.choice(nucleotides))
+    del random
+    return dna
+
+def lab21_task7_ATContent(dna):
+    a_content = 0
+    t_content = 0
+    for nucleotide in dna:
+        if nucleotide.upper() == "A":
+            a_content += 1
+        elif nucleotide.upper() == "T":
+            t_content += 1
+    at_content = a_content / t_content
+    return at_content
+
+def lab21_task7_reverseComplement(dna):
+    complement = []
+    for nucleotide in dna:
+        if nucleotide.upper() == "A":
+            complement.append("T")
+        elif nucleotide.upper() == "T":
+            complement.append("A")
+        elif nucleotide.upper() == "C":
+            complement.append("G")
+        elif nucleotide.upper() == "G":
+            complement.append("C")
+        else:
+            print("Error: Unexpected nucleotide detected")
+    return complement
+
+def lab21_task7():
+    task_header(21,7)
+    n = 20
+    dna = lab21_task7_randomDNA(n)
+    at_content = lab21_task7_ATContent(dna) * 100
+    complement = lab21_task7_reverseComplement(dna)
+    print(f"DNA sequence:       {dna}")
+    print(f"Reverse complement: {complement}")
+    print(f"AT content:         {at_content} %")
+    return
+
+# -------------------------------------------
+#               Lab 22 - Task 1
+# -------------------------------------------
+
+def lab22_task1():
+    task_header(22,1)
+    user_string = input("Enter a message: ")
+    vowels = "aeiou"
+    vowels_count = 0
+    for char in user_string:
+        if char.lower() in vowels:
+            vowels_count += 1
+    print(f"There are {vowels_count} vowels in the entered message")
+    return
+
+# -------------------------------------------
+#               Lab 22 - Task 2
+# -------------------------------------------
+
+def lab22_task2():
+    task_header(22,2)
+    user_string = input("Enter a message: ")
+    words_count = 0
+    for char in user_string:
+        if char.lower().isspace():
+            words_count += 1
+    print(f"There are {words_count + 1} words in the entered message")
+    return
+
+# -------------------------------------------
+#               Lab 22 - Task 3
+# -------------------------------------------
+
+def lab22_task3():
+    task_header(22,3)
+    user_string = input("Enter a message: ")
+    words = user_string.split(" ")
+    count = 0
+    for word in words:
+        if len(word) == 4:
+            count += 1
+    print(f"There are {count} words with exactly 4 letters")
+    return
+
+# -------------------------------------------
+#               Lab 22 - Task 4
+# -------------------------------------------
+
+def lab22_task4():
+    task_header(22,4)
+    word = input("Enter a word: ")
+    letters = list(word)
+    import random
+    random.shuffle(letters)
+    del random
+    shuffled_word = "".join(letters)
+    print(f"Shuffled word: {shuffled_word}")
+    return
+
+# -------------------------------------------
+#               Lab 22 - Task 5
+# -------------------------------------------
+
+def lab22_task5_prologue(checks):
+    print("-------------------------------------------------------------")
+    print("            Enter a strong password - [q] to quit            ")
+    print("-------------------------------------------------------------")
+    print(f"  [{checks[0]}] Password must be between 8 and 32 characters           ")
+    print(f"  [{checks[1]}] Password must contain at least one lowercase letter    ")
+    print(f"  [{checks[2]}] Password must contain at least one uppercase letter    ")
+    print(f"  [{checks[3]}] Password must contain at least one numeric digit       ")
+    print(f"  [{checks[4]}] Password must contain at least one special character   ")
+    print("-------------------------------------------------------------")
+
+def lab22_task5():
+    task_header(22,5)
+    import string
+    import os
+    password_weak = True
+    islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
+    while password_weak:
+        os.system("cls" if os.name == "nt" else "clear")
+        checks = [
+                "\u2713" if islong else "x",
+                "\u2713" if haslower else "x",
+                "\u2713" if hasupper else "x",
+                "\u2713" if hasnumeric else "x",
+                "\u2713" if hasspecial else "x"
+        ]
+        lab22_task5_prologue(checks)
+        password = input("\n>> ")
+        if password == "q":
+            break
+        islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
+        if len(password) > 8 and len(password) < 32:
+            islong = True
+        for character in password:
+            if character.islower():
+                haslower = True
+            elif character.isupper():
+                hasupper = True
+            elif character.isdecimal():
+                hasnumeric = True
+            elif character in string.punctuation:
+                hasspecial = True
+        if islong and haslower and hasupper and hasnumeric and hasspecial:
+            password_weak = False
+        else:
+            password_weak = True
+    del os
+    del string
+    return
+
+
+# -------------------------------------------
+#               Lab 22 - Task 6
+# -------------------------------------------
+
+def lab22_task6_extract(player):
+    player = player.strip()
+    raw = player.split(":")
+    name = raw[0].strip()
+    score = raw[1].split("-")
+    overs = float(score[0].strip())
+    maidens = float(score[1].strip())
+    runs = float(score[2].strip())
+    wickets = float(score[3].strip())
+    return name,overs,maidens,runs,wickets
+
+def lab22_task6_reference(players):
+    r_player = players[0]
+    r_overs = r_player[1]
+    r_runs = r_player[3]
+    r_economy = r_runs / r_overs
+    return r_player[0],r_economy,r_player[2],r_player[4]
+
+def lab22_task6():
+    task_header(22,6)
+    bowling = """Wasim Akram : 10-0-49-3
+                Aaqib Javed: 10- 2-27-2
+                Mushtaq Ahmed:10- 1-41-3
+                Ijaz Ahmed:3-0-13-0
+                Imran Khan:6.2-0-43- 1
+                Aamer Sohail : 10-0-49 -0"""
+    players = [lab22_task6_extract(player) for player in bowling.split("\n")]
+    r_name,r_economy,r_maidens,r_wickets = lab22_task6_reference(players)
+    best_economy = [r_economy,r_name]
+    most_wickets = [r_wickets,r_name]
+    total_maidens = r_maidens
+    for index in range(1,len(players)):
+        name,overs,maidens,runs,wickets = players[index]
+        economy = runs / overs
+        if economy < best_economy[0]:
+            best_economy = [economy,name]
+        total_maidens += maidens
+        if wickets > most_wickets[0]:
+            most_wickets = [wickets,name]
+    print(f"Bowler with the best economy: {best_economy[1]}")
+    print(f"Total maiden overs bowled by Pakistan: {total_maidens}")
+    print(f"Bowlers who took the best wickets: {most_wickets[1]}")
+    return
+
+# -------------------------------------------
+#               Lab 22 - Task 7
+# -------------------------------------------
+
+def lab22_task7_randomDNA(n):
+    import random
+    dna = []
+    nucleotides = ["A","T","C","G"]
+    for _ in range(n):
+        dna.append(random.choice(nucleotides))
+    del random
+    return dna
+
+def lab22_task7_ATContent(dna):
+    a_content = 0
+    t_content = 0
+    for nucleotide in dna:
+        if nucleotide.upper() == "A":
+            a_content += 1
+        elif nucleotide.upper() == "T":
+            t_content += 1
+    at_content = a_content / t_content
+    return at_content
+
+def lab22_task7_reverseComplement(dna):
+    complement = []
+    for nucleotide in dna:
+        if nucleotide.upper() == "A":
+            complement.append("T")
+        elif nucleotide.upper() == "T":
+            complement.append("A")
+        elif nucleotide.upper() == "C":
+            complement.append("G")
+        elif nucleotide.upper() == "G":
+            complement.append("C")
+        else:
+            print("Error: Unexpected nucleotide detected")
+    return complement
+
+def lab22_task7():
+    task_header(22,7)
+    n = 20
+    dna = lab22_task7_randomDNA(n)
+    at_content = lab22_task7_ATContent(dna) * 100
+    complement = lab22_task7_reverseComplement(dna)
+    print(f"DNA sequence:       {dna}")
+    print(f"Reverse complement: {complement}")
+    print(f"AT content:         {at_content} %")
+    return
+
+# -------------------------------------------
 #            Auxiliary Functions
 # -------------------------------------------
 
