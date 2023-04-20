@@ -3290,6 +3290,419 @@ def lab22_task7():
     return
 
 # -------------------------------------------
+#               Lab 23 - Task 1
+# -------------------------------------------
+
+def lab23_task1_populate(n,min_v,max_v):
+    import random
+    l = []
+    for _ in range(n):
+        l.append(random.randint(min_v,max_v))
+    del random
+    return l
+
+def lab23_task1_findMax(l):
+    high_v = l[0]
+    for i in range(1,len(l)):
+        if l[i] > high_v:
+            high_v = l[i]
+    return high_v
+
+def lab23_task1():
+    task_header(23,1)
+    n = 20
+    min_v = 0
+    max_v = 10
+    l = lab23_task1_populate(n,min_v,max_v)
+    print(f"List with duplicates:    {l}")
+    l = list(set(l))
+    print(f"List without duplicates: {l}")
+    high_v = lab23_task1_findMax(l)
+    print(f"Highest value:           {high_v}")
+    l.remove(high_v)
+    high_v = lab23_task1_findMax(l)
+    print(f"Second highest value:    {high_v}")
+    return
+
+# -------------------------------------------
+#               Lab 23 - Task 2
+# -------------------------------------------
+
+def lab23_task2_populate(max_n,max_v):
+    import random
+    l = []
+    n = random.randint(5,max_n)
+    for _ in range(n):
+        l.append(random.randint(0,max_v))
+    del random
+    return l
+
+def lab23_task2():
+    task_header(23,2)
+    a = lab23_task2_populate(20,20)
+    b = lab23_task2_populate(20,20)
+    print(f"List A:               {a}")
+    print(f"List B:               {b}")
+    a.remove(a[0])
+    a.remove(a[-1])
+    print(f"Special intersection: {set(a).intersection(b)}")
+    return
+
+# -------------------------------------------
+#               Lab 24 - Task 1
+# -------------------------------------------
+
+def lab24_task1_displayDictionary(dictionary,key_name,val_name):
+    print()
+    print("--------------------------")
+    print(f"        {key_name}  |  {val_name}      ")
+    print("--------------------------")
+    for key,value in dictionary.items():
+        print(f"{key:>12}  |  {value:<12}")
+    print("--------------------------")
+    print()
+    return
+
+def lab24_task1():
+    task_header(24,1)
+    products={'walnuts':1500,'cashew':1800,'almond':2000,'pine nuts':8000}
+    while True:
+        mode = eval(input("""
+-----------------------------------------------
+    Select one of the following mode
+-----------------------------------------------
+    [1] Display the rate of a product
+    [2] Add or update a product price
+    [3] Generate bill for purchased products
+    [4] Quit the program
+-----------------------------------------------
+
+>> """))
+        if mode == 1:
+            product_name = input("\nEnter the product name: ")
+            product_price = products.get(product_name)
+            if product_price == None:
+                print(f"Sorry! There is no record for {product_name}")
+            else:
+                print(f"The unit price of {product_name} is PKR {product_price}")
+        elif mode == 2:
+            product_name = input("\nEnter the product name: ")
+            product_price = eval(input("Enter the product price: "))
+            products.update({product_name:product_price})
+            lab24_task1_displayDictionary(products,"Name","Rate")
+        elif mode == 3:
+            bill = {}
+            while True:
+                product_name = input("\nEnter the product name - enter [q] to quit: ")
+                if product_name.lower() == "q":
+                    break
+                product_amount = eval(input("Enter the amount purchased: "))
+                bill.update({product_name:product_amount})
+                print()
+            lab24_task1_displayDictionary(bill,"Name","Amount")
+            bill_amount = 0
+            for name,amount in bill.items():
+                rate = products.get(name)
+                if rate != None:
+                    bill_amount += rate * amount
+            print(f"Bill: PKR {bill_amount}")
+        elif mode == 4:
+            break
+        else:
+            print("Error: Invalid mode")
+    return
+
+# -------------------------------------------
+#               Lab 24 - Task 2
+# -------------------------------------------
+
+def lab24_task2_displayDictionary(dictionary,key_name,val_name):
+    print()
+    print("--------------------------")
+    print(f"        {key_name}  |  {val_name}      ")
+    print("--------------------------")
+    for key,value in dictionary.items():
+        print(f"{key:>12}  |  {value:<12}")
+    print("--------------------------")
+    print()
+    return
+
+def lab24_task2_mode1(products):
+    product_name = input("\nEnter the product name: ")
+    product_price = products.get(product_name)
+    if product_price == None:
+        print(f"Sorry! There is no record for {product_name}")
+    else:
+        print(f"The unit price of {product_name} is PKR {product_price}")
+    return
+
+def lab24_task2_mode2(products):
+    product_name = input("\nEnter the product name: ")
+    product_price = eval(input("Enter the product price: "))
+    products.update({product_name:product_price})
+    lab24_task2_displayDictionary(products,"Name","Rate")
+    return
+
+def lab24_task2_mode3(products):
+    bill = {}
+    while True:
+        product_name = input("\nEnter the product name - enter [q] to quit: ")
+        if product_name.lower() == "q":
+            break
+        product_amount = eval(input("Enter the amount purchased: "))
+        bill.update({product_name:product_amount})
+        print()
+    lab24_task2_displayDictionary(bill,"Name","Amount")
+    bill_amount = 0
+    for name,amount in bill.items():
+        rate = products.get(name)
+        if rate != None:
+            bill_amount += rate * amount
+    print(f"Bill: PKR {bill_amount}")
+    return
+
+def lab24_task2():
+    task_header(24,2)
+    products={'walnuts':1500,'cashew':1800,'almond':2000,'pine nuts':8000}
+    while True:
+        mode = eval(input("""
+-----------------------------------------------
+    Select one of the following mode
+-----------------------------------------------
+    [1] Display the rate of a product
+    [2] Add or update a product price
+    [3] Generate bill for purchased products
+    [4] Quit the program
+-----------------------------------------------
+
+>> """))
+        if mode == 1:
+            lab24_task2_mode1(products)
+        elif mode == 2:
+            lab24_task2_mode2(products)
+        elif mode == 3:
+            lab24_task2_mode3(products)
+        elif mode == 4:
+            break
+        else:
+            print("Error: Invalid mode")
+    return
+
+# -------------------------------------------
+#               Lab 24 - Task 3
+# -------------------------------------------
+
+def lab24_task3():
+    task_header(24,3)
+    products={
+        'walnuts'   :1500,
+        'cashew'    :1800,
+        'almond'    :2000,
+        'pine nuts' :8000,
+        'mangoes'   :600,
+        'bananas'   :2100,
+        'berries'   :6400,
+        'apricots'  :200}
+    budget = eval(input("Enter your budget: "))
+    affordables = []
+    for name,price in products.items():
+        if price <= budget:
+            affordables.append(name)
+    print()
+    print("--------------------------")
+    print("Affordable products:")
+    print("--------------------------")
+    for i in range(len(affordables)):
+        print(f"[{i + 1}] - {affordables[i]}")
+    print("--------------------------")
+    return
+
+# -------------------------------------------
+#               Lab 24 - Task 4
+# -------------------------------------------
+
+def lab24_task4_displayDictionary(words):
+    print("--------------------------")
+    print("      Word  |  Count      ")
+    print("--------------------------")
+    for word,count in words.items():
+        print(f"{word:>10}  |  {count:<10}")
+    return
+
+def lab24_task4():
+    task_header(24,4)
+    import string
+    message = input("Enter a message: ")
+    for p in string.punctuation:
+        message = message.replace(p,"")
+    words = {}
+    for word in message.lower().split(" "):
+        if word in words.keys():
+            words[word] += 1
+        else:
+            words[word] = 1
+    words = [(count,word) for (word,count) in list(words.items())]
+    words.sort(reverse=True)
+    words = [(word,count) for (count,word) in words]
+    words = dict(words)
+    lab24_task4_displayDictionary(words)
+    return
+
+# -------------------------------------------
+#               Lab 24 - Task 5
+# -------------------------------------------
+
+def lab24_task5():
+    task_header(24,5)
+    logins = {
+        "david_bailey"      :"X8@pM!kZ6g#^T2u",
+        "emma_collins"      :"L5@dR!tN7h#^B1w",
+        "ethan_foster"      :"K9@lH!sJ3m#^P4q",
+        "hannah_johnson"    :"F7@yN!zU2v#^G5x",
+        "isaac_gonzalez"    :"W2@tK!pV9e#^D3f",
+        "jasmine_hall"      :"R3@dZ!wL5s#^U1x",
+        "kevin_kim"         :"E4@mB!nH7x#^Q6j",
+        "laura_walker"      :"M6@uV!yK8f#^T9s",
+        "mason_wright"      :"B8@jT!zN5l#^F1r",
+        "olivia_thompson"   :"Y1@sP!wR6k#^G3h",
+        "rachel_roberts"    :"S7@tZ!nF2m#^E5x",
+        "samuel_smith"      :"C9@vL!pW4s#^T6f",
+        "sophia_lee"        :"U2@kM!zX9g#^D8b",
+        "tyler_clark"       :"H4@nF!yV5j#^B1p",
+        "zoe_taylor"        :"A5@dN!wP3e#^G2q"
+    }
+    attempts = 5
+    while attempts != 0:
+        username = input("Username: ")
+        if username not in logins.keys():
+            print("\nError: The username is not registered")
+        else:
+            password = input("Password: ")
+            if password != logins[username]:
+                print("\nError: The password is incorrect")
+            else:
+                print("\nSuccess: You are logged in to the system")
+                break
+        attempts -= 1
+        print(f"\nYou have {attempts} attempts remaining")
+        print("-----------------------------------------")
+    else:
+        print("Sorry: You failed 5 times, you are locked out")
+    return
+
+# -------------------------------------------
+#               Lab 24 - Task 6
+# -------------------------------------------
+
+def lab24_task6_calculateGPA(credit_hours,letter_grades):
+    letters = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F']
+    points = [4,4,3.7,3.3,3.0,2.7,2.3,2.0,1.7,1.3,1.0,0.0]
+    grades = dict(zip(letters,points))
+    numerator = 0
+    denominator = 0
+    for i in range(len(credit_hours)):
+        numerator += (grades[letter_grades[i]] * credit_hours[i])
+        denominator += credit_hours[i]
+    gpa = numerator / denominator
+    return gpa
+
+def lab24_task6():
+    task_header(24,6)
+    ch = [1,3,3,2,1,1,5,2,3,1]
+    lg = ["A-","B+","A+","C","A","D","F","C+","B-","A"]
+    gpa = lab24_task6_calculateGPA(ch,lg)
+    print(f"GPA: {gpa:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 24 - Task 7
+# -------------------------------------------
+
+def lab24_task7_MorseCodeGenerator(msg):
+    mapping = {
+        'A': '.-',    'B': '-...',  'C': '-.-.',   'D': '-..',
+        'E': '.',     'F': '..-.',  'G': '--.',    'H': '....',
+        'I': '..',    'J': '.---',  'K': '-.-',    'L': '.-..',
+        'M': '--',    'N': '-.',    'O': '---',    'P': '.--.',
+        'Q': '--.-',  'R': '.-.',   'S': '...',    'T': '-',
+        'U': '..-',   'V': '...-',  'W': '.--',    'X': '-..-',
+        'Y': '-.--',  'Z': '--..',  '0': '-----',  '1': '.----',
+        '2': '..---', '3': '...--', '4': '....-',  '5': '.....',
+        '6': '-....', '7': '--...', '8': '---..',  '9': '----.',
+    }
+    space = " "
+    code = ""
+    for char in msg.upper():
+        if char == space:
+            code += space
+        else:
+            code += mapping[char]
+    return code
+
+def lab24_task7():
+    task_header(24,7)
+    message = input("Enter a message: ")
+    code = lab24_task7_MorseCodeGenerator(message)
+    print(f"Morse code: {code}")
+    return
+
+# -------------------------------------------
+#               Lab 26 - Task 1
+# -------------------------------------------
+
+def lab26_task1():
+    task_header(26,1)
+    d = {
+        'element1':5,
+        'element2':2,
+        'element3':0,
+        'element4':'Computer',
+        'element5':3.2,
+        'element6':False,
+        'element7':0,
+        'element8':9
+    }
+    for k,v in d.items():
+        try:
+            reciprocal = 1 / v
+        except ZeroDivisionError as e:
+            print("Reciprocal of zero is not possible")
+            print(f"\tException: {e}")
+        except TypeError as e:
+            print("Reciprocal of non-integer is not possible")
+            print(f"\tException: {e}")
+        except Exception as e:
+            print(f"\tException: {e}")
+        else:
+            print(f"Reciprocal of {v} is {1 / v:.2f}")
+        finally:
+            print()
+    return
+
+# -------------------------------------------
+#               Lab 26 - Task 2
+# -------------------------------------------
+
+def lab26_task2():
+    task_header(26,2)
+    import io
+    try:
+        f = open("sample.txt","r")
+    except FileNotFoundError:
+        print("Error: File does not exist")
+    else:
+        try:
+            f.write("Hello, World!")
+        except io.UnsupportedOperation:
+            print("Error: File is not opened in write mode")
+        except Exception as e:
+            print(f"Exception: {e}")
+    finally:
+        if "f" in locals():
+            f.close()
+    return
+
+# -------------------------------------------
 #            Auxiliary Functions
 # -------------------------------------------
 
@@ -3340,11 +3753,10 @@ def loop():
     [q] - Press Q to quit the program
 --------------------------------------------------------
 
-    """
+>> """
     
     while True:
-        print(prompt)
-        user_input = input(">> ")
+        user_input = input(prompt)
         if user_input.lower() == "a":
             run_all()
         elif user_input.lower() == "n":
