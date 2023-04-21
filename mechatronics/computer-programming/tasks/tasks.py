@@ -3703,6 +3703,313 @@ def lab26_task2():
     return
 
 # -------------------------------------------
+#               Lab 27 - Task 1
+# -------------------------------------------
+
+def lab27_task1_pol2cart(r,theta,unit="degree"):
+    import math
+    if unit.lower() == "radian":
+        angle = theta
+    else:
+        angle = theta * 180 / math.pi
+    x = r * math.cos(angle)
+    y = r * math.sin(angle)
+    return x,y
+
+def lab27_task1():
+    task_header(27,1)
+    print("------------------------------------------------------")
+    print("This program converts the polar form to cartesian form")
+    print("------------------------------------------------------")
+    r = eval(input("r: "))
+    theta = eval(input("\u03b8: "))
+    unit = input("[degree (default) / radian]: ")    
+    x,y = lab27_task1_pol2cart(r,theta,unit)
+    print(f"\nCartesian form: ({x:.2f} + \u03b9{y:.2f})")
+    return
+
+# -------------------------------------------
+#               Lab 27 - Task 2
+# -------------------------------------------
+
+def lab27_task2_cart2pol(x,y,unit="degree"):
+    import math
+    r = math.sqrt(x ** 2 + y ** 2)
+    angle = math.atan2(y,x)
+    if unit.lower() == "radian":
+        theta = angle
+        unit = "rad"
+    else:
+        theta = angle * 180 / math.pi
+        unit = "\u00b0"
+    return r,theta,unit
+
+def lab27_task2():
+    task_header(27,2)
+    print("------------------------------------------------------")
+    print("This program converts the cartesian form to polar form")
+    print("------------------------------------------------------")
+    x = eval(input("x: "))
+    y = eval(input("y: "))
+    unit = input("[degree (default) / radian]: ")    
+    r,theta,unit = lab27_task2_cart2pol(x,y,unit)
+    print(f"\nPolar form: ({r:.2f} \u2220 {theta:.2f} {unit})")
+    return
+
+# -------------------------------------------
+#               Lab 27 - Task 3
+# -------------------------------------------
+
+def lab27_task3_addCourses(students,regid,*subjects):
+    for subject in subjects:
+        students[regid]["courses"].append(subject)
+    return
+
+def lab27_task3():
+    task_header(27,3)
+    students = {
+        "MCT-UET-01":{"name":"Ahmad Bradley","courses":[]},
+        "MCT-UET-02":{"name":"Misbah Rehman","courses":[]},
+        "MCT-UET-03":{"name":"Zainab Khan","courses":[]},
+        "MCT-UET-04":{"name":"Hina Xobia","courses":[]}
+    }
+    while True:
+        regid = input("Registration ID - [\"X\" to quit]: ").upper()
+        if regid == "X":
+            break
+        if regid not in students.keys():
+            raise KeyError("Invalid registration ID")
+        while True:
+            print()
+            print("----------------------------------------------------------")
+            print("  [v] - Enter V to view the currently registered courses")
+            print("  [r] - Enter R to register any number of courses")
+            print("  [b] - Enter B to go back")
+            print("----------------------------------------------------------")
+            print()
+            option = input(">> ").lower()
+            print()
+            if option == "v":
+                print(students[regid]["courses"])
+            elif option == "r":
+                subjects = list(eval(input("Courses: ")))
+                lab27_task3_addCourses(students,regid,*subjects)
+            elif option == "b":
+                break
+            else:
+                print("Error: Invalid option")
+    return
+
+
+# -------------------------------------------
+#               Lab 27 - Task 4
+# -------------------------------------------
+
+def lab27_task4_GCD(*args):
+    m = min(args)
+    for i in range(1,m + 1):
+        divides_all = True
+        for arg in args:
+            if arg % i != 0:
+                divides_all = False
+        if divides_all:
+            gcd = i
+    return gcd
+
+def lab27_task4():
+    task_header(27,4)
+    args = eval(input("Enter a comma-separated list of numbers: "))
+    gcd = lab27_task4_GCD(*args)
+    print(f"GCD: {gcd}")
+    return
+
+# -------------------------------------------
+#               Lab 27 - Task 5
+# -------------------------------------------
+
+def lab27_task5_dist(v1,v2):
+    import math
+    dist = math.sqrt((v2[1] - v1[1]) ** 2 + (v2[0] - v1[0]) ** 2)
+    del math
+    return dist
+
+def lab27_task5_polyPerimeter(*vertices):
+    n = len(vertices)
+    perimeter = 0
+    for i in range(0,n - 1):
+        perimeter += lab27_task5_dist(vertices[i],vertices[i + 1])
+    perimeter += lab27_task5_dist(vertices[n - 1],vertices[0])
+    return perimeter
+
+def lab27_task5():
+    task_header(27,5)
+    n = eval(input("Number of sides: "))
+    print()
+    vertices = []
+    for i in range(n):
+        vertex = eval(input(f"Vertex {i + 1} - (x,y): "))
+        vertices.append(vertex)
+    perimeter = lab27_task5_polyPerimeter(*vertices)
+    print()
+    print(f"Perimeter of the {n}-sided polygon: {perimeter:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 28 - Task 1
+# -------------------------------------------
+
+def lab28_task1():
+    task_header(28,1)
+    n = eval(input("n: "))
+    from functools import lru_cache
+    @lru_cache(maxsize=1000)
+    def lab28_task1_fibonacci(n):
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return lab28_task1_fibonacci(n - 1) + lab28_task1_fibonacci(n - 2)
+    print(f"Fibonacci(n): {lab28_task1_fibonacci(n)}")
+    del lru_cache
+    return
+
+# -------------------------------------------
+#               Lab 28 - Task 2
+# -------------------------------------------
+
+def lab28_task2_fibonacci(n):
+    a = 0
+    b = 1
+    for _ in range(n):
+        a,b = b,(a + b)
+    return a
+
+def lab28_task2():
+    task_header(28,2)
+    n = eval(input("n: "))
+    print(f"Fibonacci(n): {lab28_task2_fibonacci(n)}") 
+    return
+
+# -------------------------------------------
+#               Lab 28 - Task 3
+# -------------------------------------------
+
+def lab28_task3():
+    task_header(28,3)
+    a,b = eval(input("(a,b): "))
+    from functools import lru_cache
+    @lru_cache(maxsize=1000)
+    def lab28_task3_gcd(a,b):
+        if a < b:
+            a,b = b,a
+        if b == 0:
+            return a
+        else:
+            return lab28_task3_gcd(a - b, b)
+    print(f"GCD: {lab28_task3_gcd(a,b)}")
+    del lru_cache
+    return
+
+# -------------------------------------------
+#               Lab 28 - Task 4
+# -------------------------------------------
+
+def lab28_task4_title():
+    print("-----------------------------------------------")
+    print("  ╔╦╗┌─┐┬ ┬┌─┐┬─┐  ┌─┐┌─┐  ╦ ╦┌─┐┌┐┌┌─┐┬")
+    print("   ║ │ ││││├┤ ├┬┘  │ │├┤   ╠═╣├─┤││││ ││")
+    print("   ╩ └─┘└┴┘└─┘┴└─  └─┘└    ╩ ╩┴ ┴┘└┘└─┘┴")
+    print("-----------------------------------------------")
+    return
+
+def lab28_task4_render_towers(towers):
+    characters = {
+        "left"  : "«",
+        "right" : "»",
+        "disk"  : "=",
+        "rod"   : "¦",
+        "base"  : "▀",
+        "space" : " ",
+    }
+    n = len(towers[0])
+    max_towers = 3
+    print()
+    for disk_idx in range(n):
+        for tower_idx in range(max_towers):
+            width = towers[tower_idx][disk_idx]
+            print(characters["space"] * (n - width + 1),end="")
+            if width != 0:
+                print(characters["left"],end="")
+                print(characters["disk"] * (width - 1),end="")
+            print(characters["rod"],end="")
+            if width != 0:
+                print(characters["disk"] * (width - 1),end="")
+                print(characters["right"],end="")
+            print(characters["space"] * (n - width + 5),end="")
+        print()
+    for tower_idx in range(max_towers):
+        print(characters["base"] * (n * 2 + 3),end="")
+        print(characters["space"] * 4,end="")
+    print()
+    for tower_idx in range(max_towers):
+        print(characters["space"] * n,end="")
+        print(f"[{tower_idx + 1}]",end="")
+        print(characters["space"] * (n + 4),end="")
+    print()
+    print()
+    return
+
+def lab28_task4_move_disk(towers,start_tower,end_tower):
+    lab28_task4_render_towers(towers)
+    if start_tower == end_tower:
+        return
+    n = len(towers[0])
+    disk = 0
+    for disk_idx in range(n):
+        if towers[start_tower - 1][disk_idx] != 0:
+            disk = towers[start_tower - 1][disk_idx]
+            towers[start_tower - 1][disk_idx] = 0
+            break
+    first_non_zero = n
+    for disk_idx in range(n):
+        if towers[end_tower - 1][disk_idx] != 0:
+            first_non_zero = disk_idx
+            break
+    towers[end_tower - 1][first_non_zero - 1] = disk
+    return
+
+def lab28_task4_hanoi(towers,n,source,dest,spare):
+    if n == 0:
+        lab28_task4_move_disk(towers,source,dest)
+    else:
+        lab28_task4_hanoi(towers,n - 1,source,spare,dest)
+        lab28_task4_move_disk(towers,source,dest)
+        lab28_task4_hanoi(towers,n - 1,spare,dest,source)
+    return
+
+def lab28_task4_start_towers(n):
+    t1 = []
+    t2 = []
+    t3 = []
+    for i in range(1,n + 1):
+        t1.append(i)
+    for _ in range(n):
+        t2.append(0)
+        t3.append(0)
+    towers = [t1,t2,t3]
+    return towers
+
+def lab28_task4():
+    task_header(28,4)
+    lab28_task4_title()
+    n = eval(input("Height of tower: "))
+    towers = lab28_task4_start_towers(n)
+    lab28_task4_hanoi(towers,n,source=1,dest=3,spare=2)
+    lab28_task4_render_towers(towers)
+    return
+
+# -------------------------------------------
 #            Auxiliary Functions
 # -------------------------------------------
 
@@ -3749,21 +4056,21 @@ def loop():
 --------------------------------------------------------
     [a] - Press A to run all tasks with dummy input
     [n] - Press N to run a specific task
-    [h] - List all available tasks
+    [h] - Press H to list all available tasks
     [q] - Press Q to quit the program
 --------------------------------------------------------
 
 >> """
     
     while True:
-        user_input = input(prompt)
-        if user_input.lower() == "a":
+        option = input(prompt).lower()
+        if option == "a":
             run_all()
-        elif user_input.lower() == "n":
+        elif option == "n":
             run_specific()
-        elif user_input.lower() == "h":
+        elif option == "h":
             list_all()
-        elif user_input.lower() == "q":
+        elif option == "q":
             break
         else:
             print("Error: Invalid option")
