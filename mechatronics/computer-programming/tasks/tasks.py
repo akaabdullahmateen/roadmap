@@ -6,6 +6,25 @@
 #############################################
 
 # -------------------------------------------
+#               Module Imports
+# -------------------------------------------
+
+import math
+import os
+import sys
+import time
+import random
+import string
+import io
+
+from functools import lru_cache,reduce
+
+if os.name == "nt":
+    import msvcrt
+else:
+    import select
+
+# -------------------------------------------
 #               Lab 1 - Task 1
 # -------------------------------------------
 
@@ -80,9 +99,10 @@ def lab2_task4():
 #               Lab 2 - Task 5
 # -------------------------------------------
 
-def lab2_task5():
+def lab2_task5(number=None):
     task_header(2,5)
-    number = eval(input("Enter any value you want: "))
+    if number == None:
+        number = eval(input("Enter any value you want: "))
     print(f"You entered: {number}, double of which is: {number * 2}")
     return
 
@@ -90,10 +110,12 @@ def lab2_task5():
 #               Lab 2 - Task 6
 # -------------------------------------------
 
-def lab2_task6():
+def lab2_task6(first_number=None,second_number=None):
     task_header(2,6)
-    first_number = eval(input("Enter first number: "))
-    second_number = eval(input("Enter second number: "))
+    if first_number == None:
+        first_number = eval(input("Enter first number: "))
+    if second_number == None:
+        second_number = eval(input("Enter second number: "))
     print(f"The product of the two numbers is: {first_number * second_number: .2f}")
     return
 
@@ -101,24 +123,25 @@ def lab2_task6():
 #               Lab 2 - Task 7
 # -------------------------------------------
 
-def lab2_task7():
+def lab2_task7(radius=None):
     task_header(2,7)
-    import math
     print("This program calculates the area and volume of a sphere.")
-    radius = eval(input("Enter the radius: "))
+    if radius == None:
+        radius = eval(input("Enter the radius: "))
     print(f"Area of the sphere is A: {4 * math.pi * radius ** 2}")
     print(f"Volume of the sphere is V: {(4 / 3) * math.pi * radius ** 3}")
-    del math
     return
 
 # -------------------------------------------
 #               Lab 3 - Task 1
 # -------------------------------------------
 
-def lab3_task1():
+def lab3_task1(first_number=None,second_number=None):
     task_header(3,1)
-    first_number = eval(input("Enter first number: "))
-    second_number = eval(input("Enter second number: "))
+    if first_number == None:
+        first_number = eval(input("Enter first number: "))
+    if second_number == None:
+        second_number = eval(input("Enter second number: "))
     print(f"{first_number} is {first_number / second_number * 100}% of {second_number}")
     return
 
@@ -126,9 +149,10 @@ def lab3_task1():
 #               Lab 3 - Task 2
 # -------------------------------------------
 
-def lab3_task2():
+def lab3_task2(number=None):
     task_header(3,2)
-    number = eval(input("Enter a floating point number: "))
+    if number == None:
+        number = eval(input("Enter a floating point number: "))
     print(f"Integer part: {int(number)}")
     print(f"Fractional part: {number - int(number)}")
     return
@@ -137,9 +161,10 @@ def lab3_task2():
 #               Lab 3 - Task 3
 # -------------------------------------------
 
-def lab3_task3():
+def lab3_task3(number=None):
     task_header(3,3)
-    number = eval(input("Enter a 3-digit number: "))
+    if number == None:
+        number = eval(input("Enter a 3-digit number: "))
     unit_digit = number % 10
     number //= 10
     tenth_digit = number % 10
@@ -152,9 +177,10 @@ def lab3_task3():
 #               Lab 4 - Task 1
 # -------------------------------------------
 
-def lab4_task1():
+def lab4_task1(time=None):
     task_header(4,1)
-    time = eval(input("Enter seconds: "))
+    if time == None:
+        time = eval(input("Enter seconds: "))
     minutes = time // 60
     seconds = time - minutes * 60
     print(f"{minutes} : {seconds}")
@@ -164,9 +190,10 @@ def lab4_task1():
 #               Lab 4 - Task 2
 # -------------------------------------------
 
-def lab4_task2():
+def lab4_task2(time=None):
     task_header(4,2)
-    time = eval(input("Enter seconds: "))
+    if time == None:
+        time = eval(input("Enter seconds: "))
     hours = time // 3600
     minutes = (time - hours * 3600) // 60
     seconds = time - hours * 3600 - minutes * 60
@@ -177,9 +204,10 @@ def lab4_task2():
 #               Lab 4 - Task 3
 # -------------------------------------------
 
-def lab4_task3():
+def lab4_task3(time=None):
     task_header(4,3)
-    time = eval(input("Enter seconds: "))
+    if time == None:
+        time = eval(input("Enter seconds: "))
     hours = time // 3600
     minutes = (time - hours * 3600) // 60
     seconds = time - hours * 3600 - minutes * 60
@@ -190,13 +218,12 @@ def lab4_task3():
 #               Lab 4 - Task 4
 # -------------------------------------------
 
-def lab4_task4():
+def lab4_task4(complex_number=None):
     task_header(4,4)
-    import math
-    complex_number = complex(input("Enter a complex number: "))
+    if complex_number == None:
+        complex_number = complex(input("Enter a complex number: "))
     magnitude = math.sqrt(complex_number.real ** 2 + complex_number.imag ** 2)
     print(f"The magnitude of the complex number is: {magnitude:.2f}")
-    del math
     return
 
 # -------------------------------------------
@@ -205,12 +232,10 @@ def lab4_task4():
 
 def lab4_task5():
     task_header(4,5)
-    import math
     complex_number = complex(input("Enter a complex number: "))
     magnitude_squared = complex_number * complex_number.conjugate()
     magnitude = math.sqrt(magnitude_squared.real)
     print(f"The magnitude of the complex number is: {magnitude:.2f}")
-    del math
     return
 
 # -------------------------------------------
@@ -219,14 +244,12 @@ def lab4_task5():
 
 def lab4_task6():
     task_header(4,6)
-    import math
     vector = complex(input("Enter a vector (as a complex number): "))
     magnitude_squared = vector * vector.conjugate()
     magnitude = math.sqrt(magnitude_squared.real)
     unit_real = vector.real / magnitude
     unit_imag = vector.imag / magnitude
     print(f"The unit vector is: ({unit_real:.2f}{unit_imag:+.2f}j)")
-    del math
     return
 
 # -------------------------------------------
@@ -293,14 +316,12 @@ def lab5_task4():
 
 def lab5_task5():
     task_header(5,5)
-    import math
     number = eval(input("Enter a number: "))
     if number < 0:
         square_root = complex(0,round(math.sqrt(abs(number)),2))
     else:
         square_root = round(math.sqrt(number),2)
     print(f"The square root of {number} is {square_root}")
-    del math
     return
 
 # -------------------------------------------
@@ -323,7 +344,6 @@ def lab5_task6():
 
 def lab5_task7():
     task_header(5,7)
-    import math
     number = eval(input("Enter a number: "))
     square_root = math.sqrt(number)
     squared_square_root = square_root * square_root
@@ -331,7 +351,6 @@ def lab5_task7():
         print(f"The number {number} is a perfect square")
     else:
         print(f"The number {number} is not a perfect square")
-    del math
     return
 
 # -------------------------------------------
@@ -366,7 +385,6 @@ def lab5_task8():
 
 def lab5_task9():
     task_header(5,9)
-    import math
     sides = eval(input("Enter sides of a triangle: "))
     if len(sides) != 3:
         print("The triangle is invalid")
@@ -380,7 +398,6 @@ def lab5_task9():
     s = 0.5 * (a + b + c)
     area = math.sqrt(s * (s - a) * (s - b) * (s - c))
     print(f"Area of the triangle is: {area:.2f}")
-    del math
     return
 
 # -------------------------------------------
@@ -615,11 +632,9 @@ def lab7_task2():
 # -------------------------------------------
 
 def lab7_task3_dist(x1,y1,x2,y2):
-    import math
     x_diff = abs(x2 - x1)
     y_diff = abs(y2 - y1)
     distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
-    del math
     return distance
 
 def lab7_task3():
@@ -635,10 +650,8 @@ def lab7_task3():
 # -------------------------------------------
 
 def lab7_task4_triAreaSides(a,b,c):
-    import math
     s = 0.5 * (a + b + c)
     area = math.sqrt(s * (s - a) * (s - b) * (s - c))
-    del math
     return area
 
 def lab7_task4():
@@ -693,18 +706,14 @@ def lab7_task5():
 # -------------------------------------------
 
 def lab8_task1_dist(x1,y1,x2,y2):
-    import math
     x_diff = abs(x2 - x1)
     y_diff = abs(y2 - y1)
     distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
-    del math
     return distance
 
 def lab8_task1_triAreaSides(a,b,c):
-    import math
     s = 0.5 * (a + b + c)
     area = math.sqrt(s * (s - a) * (s - b) * (s - c))
-    del math
     return area
 
 def lab8_task1_triAreaPoints(x1,y1,x2,y2,x3,y3):
@@ -727,18 +736,14 @@ def lab8_task1():
 # -------------------------------------------
 
 def lab8_task2_dist(x1,y1,x2,y2):
-    import math
     x_diff = abs(x2 - x1)
     y_diff = abs(y2 - y1)
     distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
-    del math
     return distance
 
 def lab8_task2_triAreaSides(a,b,c):
-    import math
     s = 0.5 * (a + b + c)
     area = math.sqrt(s * (s - a) * (s - b) * (s - c))
-    del math
     return area
 
 def lab8_task2_triAreaPoints(x1,y1,x2,y2,x3,y3):
@@ -769,18 +774,14 @@ def lab8_task2():
 # -------------------------------------------
 
 def lab8_task3_dist(x1,y1,x2,y2):
-    import math
     x_diff = abs(x2 - x1)
     y_diff = abs(y2 - y1)
     distance = math.sqrt(x_diff ** 2 + y_diff ** 2)
-    del math
     return distance
 
 def lab8_task3_triAreaSides(a,b,c):
-    import math
     s = 0.5 * (a + b + c)
     area = math.sqrt(s * (s - a) * (s - b) * (s - c))
-    del math
     return area
 
 def lab8_task3_triAreaPoints(x1,y1,x2,y2,x3,y3):
@@ -1034,9 +1035,7 @@ def lab10_task5():
 # -------------------------------------------
 
 def lab10_task6_isprime(n):
-    import math
     sqrt_n = math.ceil(math.sqrt(n))
-    del math
     for i in range(2,sqrt_n + 1):
         if n % i == 0:
             return False
@@ -1118,7 +1117,6 @@ def lab11_task3():
 
 def lab11_task4():
     task_header(11,4)
-    import math
     n = eval(input("Enter a number: "))
     for i in range(2,n + 1):
         is_prime = True
@@ -1129,7 +1127,6 @@ def lab11_task4():
         if is_prime:
             print(f"{i}",end=" ")
     print()
-    del math
     return
 
 # -------------------------------------------
@@ -1137,9 +1134,7 @@ def lab11_task4():
 # -------------------------------------------
 
 def lab11_task5_isprime(n):
-    import math
     limit = math.ceil(math.sqrt(n)) + 1
-    del math
     for i in range(2,limit):
         if n % i == 0:
             return False
@@ -1276,9 +1271,7 @@ def lab12_task6():
 # -------------------------------------------
 
 def lab12_task7_isprime(n):
-    import math
     limit = math.ceil(math.sqrt(n)) + 1
-    del math
     for i in range(2, limit):
         if n % i == 0:
             return False
@@ -1298,9 +1291,7 @@ def lab12_task7():
 # -------------------------------------------
 
 def lab12_task8_isprime(n):
-    import math
     limit = math.ceil(math.sqrt(n)) + 1
-    del math
     for i in range(2, limit):
         if n % i == 0:
             return False
@@ -1327,9 +1318,7 @@ def lab13_task1():
     task_header(13,1)
     n = eval(input("Enter a number: "))
     isprime = True
-    import math
     limit = math.ceil(math.sqrt(n)) + 1
-    del math
     for i in range(2, limit):
         if n % i == 0:
             isprime = False
@@ -1369,8 +1358,6 @@ def lab13_task2():
 
 def lab13_task3():
     task_header(13,3)
-    import time
-    import os
     ss = 0
     mm = 0
     while True:
@@ -1386,8 +1373,6 @@ def lab13_task3():
             mm += 1
         if mm == 60:
             mm = 0
-    del time
-    del os
     return
 
 # -------------------------------------------
@@ -1395,45 +1380,29 @@ def lab13_task3():
 # -------------------------------------------
 
 def lab13_task4_clear():
-    import os
     if os.name == "nt":
         os.system("cls")
     else:
         os.system("clear")
-    del os
     return
 
 def lab13_task4_kbhit():
-    import os    
     if os.name == "nt":
-        import msvcrt
         c = msvcrt.kbhit()
-        del msvcrt
         return c
     else:
-        import select
-        import sys
         dr,dw,de = select.select([sys.stdin],[],[],0)
-        del select
-        del sys
         return dr != []
 
 def lab13_task4_getch():
-    import os
     if os.name == "nt":
-        import msvcrt
         c = msvcrt.getch().decode("utf-8")
-        del msvcrt
     else:
-        import sys
         c = sys.stdin.read(1)
-        del sys
-    del os
     return c
 
 def lab13_task4():
     task_header(13,4)
-    import time
     ss = 0
     mm = 0
     paused = False
@@ -1459,7 +1428,6 @@ def lab13_task4():
                 mm = 0
             elif char == "q" or char == "Q":
                 break
-    del time
     return
 
 # -------------------------------------------
@@ -1516,9 +1484,7 @@ def lab14_task1():
 # -------------------------------------------
 
 def lab14_task2_isPerfSq(x):
-    import math
     squareroot = math.floor(math.sqrt(x))
-    del math
     if squareroot ** 2 == x:
         return True
     else:
@@ -1616,9 +1582,7 @@ def lab14_task5():
 
 def lab15_task1():
     task_header(15,1)
-    import random
     selected_number = random.randint(5,10)
-    del random
     print("An integer is selected between 5 and 10 (both inclusive)")
     print()
     chances = 0
@@ -1640,9 +1604,7 @@ def lab15_task1():
 
 def lab15_task2():
     task_header(15,2)
-    import random
     selected_number = random.randint(0,100)
-    del random
     print("An integer is selected between 0 and 100 (both inclusive)")
     print()
     chances = 0
@@ -1668,7 +1630,6 @@ def lab15_task2():
 def lab15_task3():
     task_header(15,3)
     trials = eval(input("Enter the number of trials: "))
-    import random
     count = 0
     for trial in range(1, trials + 1):
         print()
@@ -1685,7 +1646,6 @@ def lab15_task3():
         print("Congratulations: You won!")
     else:
         print("Sorry: You lost!")
-    del random
     return
 
 # -------------------------------------------
@@ -1694,7 +1654,6 @@ def lab15_task3():
 
 def lab15_task4():
     task_header(15,4)
-    import random
     score = 0
     for _ in range(10):
         operand_a = random.randint(1,15)
@@ -1707,7 +1666,6 @@ def lab15_task4():
             print("Wrong!")
         print()
     print(f"Score: {score} out of 10")
-    del random
     return
 
 # -------------------------------------------
@@ -1716,7 +1674,6 @@ def lab15_task4():
 
 def lab15_task5():
     task_header(15,5)
-    import random
     score = 0
     for _ in range(10):
         operand_a = random.randint(1,15)
@@ -1739,7 +1696,6 @@ def lab15_task5():
             print("Wrong!")
         print()
     print(f"Score: {score} out of 10")
-    del random
     return
 
 # -------------------------------------------
@@ -1748,7 +1704,6 @@ def lab15_task5():
 
 def lab15_task6():
     task_header(15,6)
-    import random
     for n in [10,100,1000,10000,100000]:
         count = 0
         for _ in range(n):
@@ -1759,7 +1714,6 @@ def lab15_task6():
         probability = count / n
         print(f"Iterations: {n}")
         print(f"\tProbability: {probability}")
-    del random
     return
 
 # -------------------------------------------
@@ -1770,10 +1724,8 @@ def lab16_task1():
     task_header(16,1)
     n = 10
     my_list = []
-    import random
     for _ in range(n):
         my_list.append(random.randint(1,20))
-    del random
     print(f"Generated list: {my_list}")
     element_sum = 0
     for i in range(len(my_list)):
@@ -1790,7 +1742,6 @@ def lab16_task2():
     task_header(16,2)
     my_list = []
     n = 10
-    import random
     for _ in range(n):
         my_list.append(random.randint(-20,20))
     print(f"Initial list:\t{my_list}")
@@ -1800,7 +1751,6 @@ def lab16_task2():
         elif my_list[i] < 0:
             my_list[i] = 0
     print(f"Final list:\t{my_list}")
-    del random
     return
 
 # -------------------------------------------
@@ -1811,12 +1761,9 @@ def lab16_task3():
     task_header(16,3)
     my_list = []
     n = 10
-    import random
     for _ in range(n):
         my_list.append(random.randint(2,100))
-    del random
     print(f"List elements:\t\t{my_list}")
-    import math
     count = 0
     prime_list = []
     for i in range(len(my_list)):
@@ -1831,7 +1778,6 @@ def lab16_task3():
             count += 1
     print(f"Prime elements:\t\t{prime_list}")
     print(f"Number of primes:\t{count}")
-    del math
     return
 
 # -------------------------------------------
@@ -1839,9 +1785,7 @@ def lab16_task3():
 # -------------------------------------------
 
 def lab16_task4_isprime(n):
-    import math
     limit = int(math.sqrt(n)) + 1
-    del math
     for i in range(2, limit):
         if n % i == 0:
             return False
@@ -1851,10 +1795,8 @@ def lab16_task4():
     task_header(16,4)
     my_list = []
     n = 10
-    import random
     for _ in range(n):
         my_list.append(random.randint(2,100))
-    del random
     print(f"List elements:\t\t{my_list}")
     count = 0
     prime_list = []
@@ -1873,12 +1815,10 @@ def lab16_task4():
 
 def lab16_task5():
     task_header(16,5)
-    import random
     my_list = []
     n = 10
     for _ in range(n):
         my_list.append(random.randint(1,100))
-    del random
     print(f"List elements: {my_list}")
     maximum = my_list[0]
     for i in range(1,len(my_list)):
@@ -1893,12 +1833,10 @@ def lab16_task5():
 
 def lab16_task6():
     task_header(16,6)
-    import random
     my_list = []
     n = 10
     for _ in range(n):
         my_list.append(random.randint(1,100))
-    del random
     print(f"List elements: {my_list}")
     maximum = my_list[0]
     minimum = my_list[0]
@@ -2016,9 +1954,7 @@ def lab17_task2():
 # -------------------------------------------
 
 def lab17_task3_isprime(n):
-    import math
     limit = int(math.sqrt(n)) + 1
-    del math
     for i in range(2,limit):
         if n % i == 0:
             return False
@@ -2028,10 +1964,8 @@ def lab17_task3():
     task_header(17,3)
     l = []
     n = 20
-    import random
     for _ in range(n):
         l.append(random.randint(1,50))
-    del random
     print(f"Randomly populated list: {l}")
     p = []
     for e in l:
@@ -2079,10 +2013,8 @@ def lab17_task5():
     task_header(17,5)
     List1 = []
     List2 = []
-    import random
     for _ in range(20):
         List1.append(random.randint(1,10))
-    del random
     for i in range(10):
         List2.append(List1.count(i + 1))
     print(f"List 1: {List1}")
@@ -2114,10 +2046,8 @@ def lab17_task7():
     task_header(17,7)
     my_list = []
     n = 10
-    import random
     for _ in range(n):
         my_list.append(random.randint(1,50))
-    del random
     print(f"Original list: {my_list}")
     last_value = my_list[-1]
     for i in range(-1, -len(my_list), -1):
@@ -2134,10 +2064,8 @@ def lab17_task8():
     task_header(17,8)
     binary_list = []
     n = 100
-    import random
     for _ in range(n):
         binary_list.append(random.choice([0,1]))
-    del random
     print(f"Binary list: {binary_list}")
     chain_count = 0
     maximum = 0
@@ -2159,10 +2087,8 @@ def lab17_task9():
     task_header(17,9)
     my_list = []
     n = 20
-    import random
     for _ in range(n):
         my_list.append(random.randint(1,50))
-    del random
     print(f"Original list: {my_list}")
     new_list = []
     for element in my_list:
@@ -2304,10 +2230,8 @@ def lab18_task5_countRange(iterable,value,start,end):
 
 def lab18_task5_randomList(size,low,high):
     randomList = []
-    import random
     for _ in range(size):
         randomList.append(random.randint(low,high))
-    del random
     return randomList
 
 def lab18_task5():
@@ -2355,7 +2279,6 @@ def lab18_task6():
 
 def lab18_task7():
     task_header(18,7)
-    import random
     player1_score = 0
     player2_score = 0
     step = 0
@@ -2381,7 +2304,6 @@ def lab18_task7():
             break
     print()
     print(f"The winner is {winner}")
-    del random
     return
 
 # -------------------------------------------
@@ -2417,10 +2339,8 @@ def lab19_task2_populate(n):
     l = []
     lowest = 0
     highest = 20
-    import random
     for _ in range(n):
         l.append(random.randint(lowest,highest))
-    del random
     return l
 
 def lab19_task2():
@@ -2453,13 +2373,11 @@ def lab19_task3_splitList(a,n):
     return nested_list
 
 def lab19_task3_populate(n):
-    import random
     l = []
     lowest = 0
     highest = 50
     for _ in range(n):
         l.append(random.randint(lowest,highest))
-    del random
     return l
 
 def lab19_task3():
@@ -2486,7 +2404,6 @@ def lab19_task4_mergeSubLists(l1,l2):
     return merged_list
 
 def lab19_task4_populate(n):
-    import random
     nested_list = []
     min_len = 1
     max_len = 5
@@ -2498,7 +2415,6 @@ def lab19_task4_populate(n):
         for _ in range(sublist_length):
             sublist.append(random.randint(min_val,max_val))
         nested_list.append(sublist)
-    del random
     return nested_list
 
 def lab19_task4():
@@ -2645,7 +2561,6 @@ def lab19_task6_print(matrix):
 
 def lab19_task6():
     task_header(19,6)
-    import random
     matrix = []
     n = 3
     low = 1
@@ -2655,7 +2570,6 @@ def lab19_task6():
         for _ in range(n):
             row.append(random.randint(low,high))
         matrix.append(row)
-    del random
     lab19_task6_print(matrix)
     print(f"Determinant: {lab19_task6_det3(matrix)}")
     return
@@ -2684,7 +2598,6 @@ def lab19_task7_dispMat(A,name):
     return
 
 def lab19_task7_populate(n):
-    import random
     matrix = []
     low = 1
     high = 9
@@ -2693,7 +2606,6 @@ def lab19_task7_populate(n):
         for _ in range(n):
             row.append(random.randint(low,high))
         matrix.append(row)
-    del random
     return matrix
 
 def lab19_task7():
@@ -2724,12 +2636,10 @@ def lab19_task8_displayGrid(grid):
     print()
 
 def lab19_task8_clear():
-    import os
     if os.name == "nt":
         os.system("cls")
     else:
         os.system("clear")
-    del os
     return
 
 def lab19_task8_fillSlot(grid,slot,mark):
@@ -2804,7 +2714,6 @@ def lab19_task8():
 # -------------------------------------------
 
 def lab20_task1_polyPerimeter(polygon):
-    import math
     perimeter = 0
     vertices = len(polygon)
     for i in range(vertices):
@@ -2815,7 +2724,6 @@ def lab20_task1_polyPerimeter(polygon):
         x1,y1 = polygon[i]
         x2,y2 = polygon[j]
         perimeter += math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
-    del math
     return perimeter
 
 def lab20_task1():
@@ -2918,9 +2826,7 @@ def lab21_task4():
     task_header(21,4)
     word = input("Enter a word: ")
     letters = list(word)
-    import random
     random.shuffle(letters)
-    del random
     shuffled_word = "".join(letters)
     print(f"Shuffled word: {shuffled_word}")
     return
@@ -2942,8 +2848,6 @@ def lab21_task5_prologue(checks):
 
 def lab21_task5():
     task_header(21,5)
-    import string
-    import os
     password_weak = True
     islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
     while password_weak:
@@ -2975,8 +2879,6 @@ def lab21_task5():
             password_weak = False
         else:
             password_weak = True
-    del os
-    del string
     return
 
 # -------------------------------------------
@@ -3032,12 +2934,10 @@ def lab21_task6():
 # -------------------------------------------
 
 def lab21_task7_randomDNA(n):
-    import random
     dna = []
     nucleotides = ["A","T","C","G"]
     for _ in range(n):
         dna.append(random.choice(nucleotides))
-    del random
     return dna
 
 def lab21_task7_ATContent(dna):
@@ -3129,9 +3029,7 @@ def lab22_task4():
     task_header(22,4)
     word = input("Enter a word: ")
     letters = list(word)
-    import random
     random.shuffle(letters)
-    del random
     shuffled_word = "".join(letters)
     print(f"Shuffled word: {shuffled_word}")
     return
@@ -3153,8 +3051,6 @@ def lab22_task5_prologue(checks):
 
 def lab22_task5():
     task_header(22,5)
-    import string
-    import os
     password_weak = True
     islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
     while password_weak:
@@ -3186,8 +3082,6 @@ def lab22_task5():
             password_weak = False
         else:
             password_weak = True
-    del os
-    del string
     return
 
 
@@ -3244,12 +3138,10 @@ def lab22_task6():
 # -------------------------------------------
 
 def lab22_task7_randomDNA(n):
-    import random
     dna = []
     nucleotides = ["A","T","C","G"]
     for _ in range(n):
         dna.append(random.choice(nucleotides))
-    del random
     return dna
 
 def lab22_task7_ATContent(dna):
@@ -3294,11 +3186,9 @@ def lab22_task7():
 # -------------------------------------------
 
 def lab23_task1_populate(n,min_v,max_v):
-    import random
     l = []
     for _ in range(n):
         l.append(random.randint(min_v,max_v))
-    del random
     return l
 
 def lab23_task1_findMax(l):
@@ -3329,12 +3219,10 @@ def lab23_task1():
 # -------------------------------------------
 
 def lab23_task2_populate(max_n,max_v):
-    import random
     l = []
     n = random.randint(5,max_n)
     for _ in range(n):
         l.append(random.randint(0,max_v))
-    del random
     return l
 
 def lab23_task2():
@@ -3531,7 +3419,6 @@ def lab24_task4_displayDictionary(words):
 
 def lab24_task4():
     task_header(24,4)
-    import string
     message = input("Enter a message: ")
     for p in string.punctuation:
         message = message.replace(p,"")
@@ -3685,7 +3572,6 @@ def lab26_task1():
 
 def lab26_task2():
     task_header(26,2)
-    import io
     try:
         f = open("sample.txt","r")
     except FileNotFoundError:
@@ -3707,7 +3593,6 @@ def lab26_task2():
 # -------------------------------------------
 
 def lab27_task1_pol2cart(r,theta,unit="degree"):
-    import math
     if unit.lower() == "radian":
         angle = theta
     else:
@@ -3733,7 +3618,6 @@ def lab27_task1():
 # -------------------------------------------
 
 def lab27_task2_cart2pol(x,y,unit="degree"):
-    import math
     r = math.sqrt(x ** 2 + y ** 2)
     angle = math.atan2(y,x)
     if unit.lower() == "radian":
@@ -3828,9 +3712,7 @@ def lab27_task4():
 # -------------------------------------------
 
 def lab27_task5_dist(v1,v2):
-    import math
     dist = math.sqrt((v2[1] - v1[1]) ** 2 + (v2[0] - v1[0]) ** 2)
-    del math
     return dist
 
 def lab27_task5_polyPerimeter(*vertices):
@@ -3861,7 +3743,6 @@ def lab27_task5():
 def lab28_task1():
     task_header(28,1)
     n = eval(input("n: "))
-    from functools import lru_cache
     @lru_cache(maxsize=1000)
     def lab28_task1_fibonacci(n):
         if n == 0:
@@ -3871,7 +3752,6 @@ def lab28_task1():
         else:
             return lab28_task1_fibonacci(n - 1) + lab28_task1_fibonacci(n - 2)
     print(f"Fibonacci(n): {lab28_task1_fibonacci(n)}")
-    del lru_cache
     return
 
 # -------------------------------------------
@@ -3898,7 +3778,6 @@ def lab28_task2():
 def lab28_task3():
     task_header(28,3)
     a,b = eval(input("(a,b): "))
-    from functools import lru_cache
     @lru_cache(maxsize=1000)
     def lab28_task3_gcd(a,b):
         if a < b:
@@ -3908,7 +3787,6 @@ def lab28_task3():
         else:
             return lab28_task3_gcd(a - b, b)
     print(f"GCD: {lab28_task3_gcd(a,b)}")
-    del lru_cache
     return
 
 # -------------------------------------------
@@ -3916,11 +3794,9 @@ def lab28_task3():
 # -------------------------------------------
 
 def lab28_task4_title():
-    print("-----------------------------------------------")
-    print("  ╔╦╗┌─┐┬ ┬┌─┐┬─┐  ┌─┐┌─┐  ╦ ╦┌─┐┌┐┌┌─┐┬")
-    print("   ║ │ ││││├┤ ├┬┘  │ │├┤   ╠═╣├─┤││││ ││")
-    print("   ╩ └─┘└┴┘└─┘┴└─  └─┘└    ╩ ╩┴ ┴┘└┘└─┘┴")
-    print("-----------------------------------------------")
+    print("-------------------------------------------")
+    print("              Tower of Hanoi")
+    print("-------------------------------------------")
     return
 
 def lab28_task4_render_towers(towers):
@@ -4005,9 +3881,1155 @@ def lab28_task4():
     lab28_task4_title()
     n = eval(input("Height of tower: "))
     towers = lab28_task4_start_towers(n)
+    if n == 0:
+        lab28_task4_render_towers(towers)
+        return
     lab28_task4_hanoi(towers,n,source=1,dest=3,spare=2)
     lab28_task4_render_towers(towers)
     return
+
+# -------------------------------------------
+#               Lab 29 - Task 1
+# -------------------------------------------
+
+def lab29_task1():
+    task_header(29,1)
+    student1={
+        'Reg'       :'2018-MC-01',
+        'Name'      :'Muhammad Usman',
+        'Sec'       :'A',
+        'Courses'   :['CP2','ES']
+        }
+    student2={
+        'Reg'       :'2018-MC-02',
+        'Name'      :'Ayesha Xobia',
+        'Sec'       :'B',
+        'Courses'   :['LS','ES','PD']
+        }
+    common_courses = lambda s1,s2: list(set(s1["Courses"]).intersection(s2["Courses"]))
+    print(f"Common courses: {common_courses(student1,student2)}")
+    return
+
+# -------------------------------------------
+#               Lab 29 - Task 2
+# -------------------------------------------
+
+def lab29_task2_get_students():
+    student1 = {
+        'Reg':'2018-MC-01',
+        'Name':'Muhammad Usman',
+        'Sec':'A',
+        'Courses':['CP','EM']
+    }
+    student2 = {
+        'Reg':'2018-MC-02',
+        'Name':'Tahir Mehmood',
+        'Sec':'A',
+        'Courses':['CP','DLD','EM']
+    }
+    student3 = {
+        'Reg':'2018-MC-03',
+        'Name':'Muhammad Bilal',
+        'Sec':'A',
+        'Courses':['VCA','ED','EM']
+    }
+    student4 = {
+        'Reg':'2018-MC-04',
+        'Name':'Ayesha Xobia',
+        'Sec':'A',
+        'Courses':['LA','PD','CP','ED','EM']
+    }
+    student5 = {
+        'Reg':'2018-MC-05',
+        'Name':'Zainab Naeem',
+        'Sec':'A',
+        'Courses':[]
+    }
+    student6 = {
+        'Reg':'2018-MC-06',
+        'Name':'Hira Asif',
+        'Sec':'A',
+        'Courses':['DLD']
+    }
+    students = [student1,student2,student3,student4,student5,student6]
+    return students
+
+def lab29_task2_print_students(students):
+    print("-------------------------------------------------------------------")
+    print("    Name       |    Reg     | Sec |    Courses   ")
+    print("-------------------------------------------------------------------")
+    for student in students:
+        name = student["Name"]
+        reg = student["Reg"]
+        sec = student["Sec"]
+        courses = student["Courses"]
+        print(f"{name:<14} | ",end="")
+        print(f"{reg:<10} | ",end="")
+        print(f"{sec:^3} | ",end="")
+        print(f"{courses}")
+    print("-------------------------------------------------------------------")
+    return
+
+def lab29_task2():
+    task_header(29,2)
+    students = lab29_task2_get_students()
+    students.sort(key = lambda student : len(student["Courses"]),reverse=True)
+    lab29_task2_print_students(students)    
+    return
+
+# -------------------------------------------
+#               Lab 29 - Task 3
+# -------------------------------------------
+
+def lab29_task3():
+    task_header(29,3)
+    l = [[4,2,1,3,7],[3,1,7],[8,5,9,11],[9,7]]
+    l.sort(key = lambda x:x[1])
+    print(l)
+    return
+
+# -------------------------------------------
+#               Lab 29 - Task 4
+# -------------------------------------------
+
+def lab29_task4_prologue():
+    print("*" * 60)
+    print("  1. Coffee     2. Tea        3. Coke       4.Orange juice")
+    print("*" * 60)
+    print()
+    print("This is a survey for the favorite beverage")
+    print()
+    print("Choose (1-4) from the above menu or 0 to exit the program")
+    print()
+    return
+
+def lab29_task4_results(votes):
+    participants = 0
+    for vote in votes.values():
+        participants += vote
+    print()
+    print(f"The total number of participants: {participants}")
+    print()
+    print(" Beverage        Votes")
+    print("***********************")
+    for beverage,vote in votes.items():
+        print(f" {beverage:<16} {vote}")
+    return
+
+def lab29_task4():
+    task_header(29,4)
+    lab29_task4_prologue()
+    count = 0
+    votes = {
+        "Coffee"        :0,
+        "Tea"           :0,
+        "Coke"          :0,
+        "Orange juice"  :0
+        }
+    while True:
+        choice = eval(input(f"Please input the favorite beverage of person #{count + 1}: "))
+        if choice == 0:
+            break
+        is_valid = False
+        if choice in [1,2,3,4]:
+            is_valid = True
+        if is_valid:
+            count += 1
+            if choice == 1:
+                votes["Coffee"] += 1
+            elif choice == 2:
+                votes["Tea"] += 1
+            elif choice == 3:
+                votes["Coke"] += 1
+            else:
+                votes["Orange juice"] += 1
+        else:
+            try:
+                raise ValueError("Error: Please enter a number in the range [1-4]")
+            except ValueError as e:
+                print(e)
+    votes = dict(sorted(votes.items(),key=lambda item: item[1],reverse=True))
+    lab29_task4_results(votes)
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 1
+# -------------------------------------------
+
+def lab30_task1_prologue():
+    print("*" * 60)
+    print("  1. Coffee     2. Tea        3. Coke       4.Orange juice")
+    print("*" * 60)
+    print()
+    print("This is a survey for the favorite beverage")
+    print()
+    print("Choose (1-4) from the above menu or 0 to exit the program")
+    print()
+    return
+
+def lab30_task1_results(votes):
+    participants = 0
+    for _,vote in votes:
+        participants += vote
+    print()
+    print(f"The total number of participants: {participants}")
+    print()
+    print(" Beverage        Votes")
+    print("***********************")
+    for beverage,vote in votes:
+        print(f" {beverage:<16} {vote}")
+    return
+
+def lab30_task1():
+    task_header(29,4)
+    lab30_task1_prologue()
+    count = 0
+    beverage_names = ["Coffee","Tea","Coke","Oranga juice"]
+    vote_counts = [0,0,0,0]
+    while True:
+        choice = eval(input(f"Please input the favorite beverage of person #{count + 1}: "))
+        if choice == 0:
+            break
+        is_valid = False
+        if choice in [1,2,3,4]:
+            is_valid = True
+        if is_valid:
+            count += 1
+            vote_counts[choice - 1] += 1
+        else:
+            try:
+                raise ValueError("Error: Please enter a number in the range [1-4]")
+            except ValueError as e:
+                print(e)
+    votes = list(zip(beverage_names,vote_counts))
+    votes.sort(key=lambda x:x[1],reverse=True)
+    lab30_task1_results(votes)
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 2
+# -------------------------------------------
+
+def lab30_task2_gpa1(grade_dict,credit_hours,grades_obtained,/):
+    gpa = 0
+    total_credits = 0
+    for credit_hour,grade_obtained in zip(credit_hours,grades_obtained):
+        gpa += grade_dict[grade_obtained] * credit_hour
+        total_credits += credit_hour
+    gpa /= total_credits
+    return gpa
+
+def lab30_task2_gpa2(grade_dict,credit_hours,grades_obtained,/):
+    gpa = 0
+    total_credits = 0
+    grade_points = []
+    for credit_hour in credit_hours:
+        total_credits += credit_hour
+    for grade_obtained in grades_obtained:
+        grade_points.append(grade_dict[grade_obtained])
+    for i in range(len(credit_hours)):
+        gpa += credit_hours[i] * grade_points[i]
+    gpa /= total_credits
+    return gpa
+
+def lab30_task2():
+    task_header(30,2)
+    letter_grades = ["A+","A","A-","B+","B","B-","C+","C","C-","D+","D","F"]
+    grade_points = [4.0,4.0,3.7,3.3,3.0,2.7,2.3,2.0,1.7,1.3,1.0,0]
+    grade_dict = dict(zip(letter_grades,grade_points))
+    credit_hours = [1,3,2,3,1,1]
+    grades_obtained = ["B+","C","A-","A","B+","A+"]
+    gpa = lab30_task2_gpa1(grade_dict,credit_hours,grades_obtained)
+    print(f"GPA (Approach 1): {gpa:.2f}")
+    gpa = lab30_task2_gpa2(grade_dict,credit_hours,grades_obtained)
+    print(f"GPA (Approach 2): {gpa:.2f}")
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 3
+# -------------------------------------------
+
+def lab30_task3_calcAssets1(products,stock,/):
+    dry_fruits = zip(products.items(),stock.items())
+    assets = 0
+    for (product_name,unit_price),(stock_name,available_stock) in dry_fruits:
+        if product_name == stock_name:
+            assets += (unit_price * available_stock)
+        else:
+            raise IndexError("different product and stock names")
+    return assets
+
+def lab30_task3_calcAssets2(products,stock,/):
+    assets = 0
+    for product_name,unit_price in products.items():
+        if product_name in stock:
+            assets += stock[product_name] * unit_price
+    return assets
+
+def lab30_task3():
+    task_header(30,3)
+    products = {'anjeer':2500,'pista':2700,'badaam':2000,'chalghoza':8000}
+    stock    = {'anjeer':100, 'pista':240, 'badaam':150, 'chalghoza':80}
+    assets1 = lab30_task3_calcAssets1(products,stock)
+    print(f"Assets (Approach 1): {assets1}")
+    assets2 = lab30_task3_calcAssets2(products,stock)
+    print(f"Assets (Approach 2): {assets2}")
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 4
+# -------------------------------------------
+
+def lab30_task4():
+    task_header(30,4)
+    points = [(2,1),(-3,0),(4,2),(2,-5)]
+    magnitudes = list(map(lambda t:round(math.sqrt(t[0]**2 + t[1]**2),2),points))
+    print(f"Points: {points}")
+    print(f"Magnitudes: {magnitudes}")
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 5
+# -------------------------------------------
+
+def lab30_task5_get_students():
+    student1 = {
+        'Reg'       :'2018-MC-01',
+        'Name'      :'Muhammad Usman',
+        'Sec'       :'A',
+        'Courses'   :['CP2','ES']}
+    student2 = {
+        'Reg'       :'2018-MC-02',
+        'Name'      :'Tahir Mehmood',
+        'Sec'       :'A',
+        'Courses'   :['ES','LA']}
+    student3 = {
+        'Reg'       :'2018-MC-51',
+        'Name'      :'Danish',
+        'Sec'       :'B',
+        'Courses'   :['MoM','CP2']}
+    student4 = {
+        'Reg'       :'2018-MC-52',
+        'Name'      :'Hafiz Muhammad Aqib Ali',
+        'Sec'       :'B',
+        'Courses'   :['LA','ES','MoM']}
+    students = [student1,student2,student3,student4]
+    return students
+
+def lab30_task5_print_students(students):
+    print("-------------------------------------------------------------------")
+    print("    Name       |    Reg     | Sec |    Courses   ")
+    print("-------------------------------------------------------------------")
+    for student in students:
+        name = student["Name"]
+        reg = student["Reg"]
+        sec = student["Sec"]
+        courses = student["Courses"]
+        print(f"{name:<14} | ",end="")
+        print(f"{reg:<10} | ",end="")
+        print(f"{sec:^3} | ",end="")
+        print(f"{courses}")
+    print("-------------------------------------------------------------------")
+    return
+
+def lab30_task5():
+    task_header(30,5)
+    students = lab30_task5_get_students()
+    cp_students = list(filter(lambda student: "CP2" in student["Courses"],students))
+    lab30_task5_print_students(cp_students)
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 6
+# -------------------------------------------
+
+def lab30_task6():
+    task_header(30,6)
+    nums = [5,4,2,1,7,8]
+    nums_factorials = list(map(math.factorial,nums))
+    even_factorials1 = filter(lambda x: x % 2 == 0,nums)
+    even_factorials1 = list(map(math.factorial,even_factorials1))
+    even_factorials2 = list(map(math.factorial,filter(lambda x: x % 2 == 0,nums)))
+    print(f"Numbers: {nums}")
+    print(f"Factorials of numbers: {nums_factorials}")
+    print(f"Factorials of even numbers (Approach 1): {even_factorials1}")
+    print(f"Factorials of even numbers (Approach 2): {even_factorials2}")
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 7
+# -------------------------------------------
+
+def lab30_task7_get_students():
+    student1 = {
+        'Reg'       :'2018-MC-01',
+        'Name'      :'Muhammad Usman',
+        'Sec'       :'A',
+        'Courses'   :['CP2','ES']}
+    student2 = {
+        'Reg'       :'2018-MC-02',
+        'Name'      :'Tahir Mehmood',
+        'Sec'       :'A',
+        'Courses'   :['ES','LA']}
+    student3 = {
+        'Reg'       :'2018-MC-51',
+        'Name'      :'Danish',
+        'Sec'       :'B',
+        'Courses'   :['MoM','CP2']}
+    student4 = {
+        'Reg'       :'2018-MC-52',
+        'Name'      :'Hafiz Muhammad Aqib Ali',
+        'Sec'       :'B',
+        'Courses'   :['LA','ES','MoM']}
+    students = [student1,student2,student3,student4]
+    return students
+
+def lab30_task7_dispStudent(st):
+    print('_____________________________________')
+    print(f"Registration No. : {st['Reg']}")
+    print(f"Name : {st['Name']}")
+    print(f"Section : {st['Sec']}")
+    print(f"Courses Registered : {st['Courses']}")
+    return
+
+def lab30_task7():
+    task_header(30,7)
+    students = lab30_task7_get_students()
+    cp_students1 = list(filter(lambda student: "CP2" in student["Courses"],students))
+    cp_students2 = map(lambda student: None if "CP2" not in student["Courses"] else student,students)
+    cp_students2 = list(filter(None,cp_students2))
+    print("Students registered in CP-II (Approach 1):")
+    for student in cp_students1:
+        lab30_task7_dispStudent(student)
+    print()
+    print("Students registered in CP-II (Approach 2):")
+    for student in cp_students2:
+        lab30_task7_dispStudent(student)
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 8
+# -------------------------------------------
+
+def lab30_task8_random_list(size,lowest,highest):
+    random_list = []
+    for _ in range(size):
+        random_list.append(random.randint(lowest,highest))
+    return random_list
+
+def lab30_task8_print(msg,n_list,factorial_sum,n):
+    print(f"{msg}\t: ",end="")
+    for i in range(0,n - 1):
+        print(f"{n_list[i]}! + ",end="")
+    print(f"{n_list[n - 1]}! = {factorial_sum}")
+    return
+
+def lab30_task8():
+    task_header(30,8)
+    n = 10
+    n_list = lab30_task8_random_list(size=n,lowest=1,highest=9)
+    m_list = map(math.factorial,n_list)
+    factorial_sum1 = sum(m_list)
+    lab30_task8_print("Using map()",n_list,factorial_sum1,n)
+    factorial_sum2 = reduce(lambda x,y: x + factorial(y),n_list,0)
+    lab30_task8_print("Using reduce()",n_list,factorial_sum2,n)
+    return
+
+# -------------------------------------------
+#               Lab 30 - Task 9
+# -------------------------------------------
+
+def lab30_task9_get_students():
+    student1 = {
+        'Reg'       :'2018-MC-01',
+        'Name'      :'Muhammad Usman',
+        'Sec'       :'A',
+        'Courses'   :['CP2','ES']}
+    student2 = {
+        'Reg'       :'2018-MC-02',
+        'Name'      :'Tahir Mehmood',
+        'Sec'       :'A',
+        'Courses'   :['ES','LA']}
+    student3 = {
+        'Reg'       :'2018-MC-51',
+        'Name'      :'Danish',
+        'Sec'       :'B',
+        'Courses'   :['MoM','CP2']}
+    student4 = {
+        'Reg'       :'2018-MC-52',
+        'Name'      :'Hafiz Muhammad Aqib Ali',
+        'Sec'       :'B',
+        'Courses'   :['LA','ES','MoM']}
+    students = [student1,student2,student3,student4]
+    return students
+
+def lab30_task9():
+    task_header(30,9)
+    students = lab30_task9_get_students()
+    courses = reduce(lambda cummul,s: cummul | set(s["Courses"]),students,set())
+    print(courses)
+    return
+
+# -------------------------------------------
+#               Lab 31 - Task 1
+# -------------------------------------------
+
+def lab31_task1_sumAllv1(nested_list):
+    item_sum = 0
+    for sublist in nested_list:
+        for item in sublist:
+            item_sum += item
+    return item_sum
+
+def lab31_task1_sumAllv2(nested_list):
+    flattened_list = [item for sublist in nested_list for item in sublist]
+    return sum(flattened_list)
+
+def lab31_task1_sumAllv3(nested_list):
+    generator_object = (item for sublist in nested_list for item in sublist)
+    return sum(generator_object)
+
+def lab31_task1():
+    task_header(31,1)
+    nums = [[2,6,2,11,9],[8,9,0,2],[12,6,14,8,24]]
+    print(f"Sum (Approach 1): {lab31_task1_sumAllv1(nums)}")
+    print(f"Sum (Approach 2): {lab31_task1_sumAllv2(nums)}")
+    print(f"Sum (Approach 3): {lab31_task1_sumAllv3(nums)}")
+    return
+
+# -------------------------------------------
+#               Lab 31 - Task 2
+# -------------------------------------------
+
+def lab31_task2_deepAdd(*iterables):
+    return reduce(lambda x,y: x + y,(item for iterable in iterables for item in iterable),0)
+
+def lab31_task2():
+    task_header(31,2)
+    col1 = [3,2,6,1]
+    col2 = (5,4)
+    col3 = {1,10,20}
+    col4 = {'A':200,'B':100}
+    print(lab31_task2_deepAdd(col1,col2,col3,col4.values()))
+    return
+
+# -------------------------------------------
+#               Lab 31 - Task 3
+# -------------------------------------------
+
+def lab31_task3_interleave1(itr1,itr2):
+    for item1,item2 in zip(itr1,itr2):
+        yield item1
+        yield item2
+    return
+
+def lab31_task3_interleave2(itr1,itr2):
+    return (item for pair in zip(itr1,itr2) for item in pair)
+
+def lab31_task3():
+    task_header(31,3)
+    x = [5,3,"Hello"]
+    y = [2,9,20]
+    g = lab31_task3_interleave1(x,y)
+    print(f"g (Approach 1): {g}")
+    print(f"list(g) (Approach 1): {list(g)}")
+    g = lab31_task3_interleave2(x,y)
+    print(f"g (Approach 2): {g}")
+    print(f"list(g) (Approach 2): {list(g)}")
+    return
+
+# -------------------------------------------
+#               Lab 31 - Task 4
+# -------------------------------------------
+
+def lab31_task4_makePairs1(iterable):
+    n = len(iterable)
+    for i in range(0,n,2):
+        yield(iterable[i],iterable[i + 1])
+
+def lab31_task4_makePairs2(iterable):
+    n = len(iterable)
+    return ((iterable[i],iterable[i + 1]) for i in range(0,n,2))
+
+def lab31_task4():
+    task_header(31,4)
+    x = [2,9,20,44]
+    g = lab31_task4_makePairs1(x)
+    print(f"g (Approach 1): {g}")
+    print(f"list(g) (Approach 1): {list(g)}")
+    g = lab31_task4_makePairs2(x)
+    print(f"g (Approach 1): {g}")
+    print(f"list(g) (Approach 1): {list(g)}")
+    return
+
+# -------------------------------------------
+#               Lab 31 - Task 5
+# -------------------------------------------
+
+def lab31_task5_fibonacci():
+    a = 1
+    b = 1
+    for _ in range(100):
+        yield a
+        a,b = b,a + b
+
+def lab31_task5():
+    task_header(31,5)
+    exhausted = False
+    fibonacci = lab31_task5_fibonacci()
+    i = 1
+    while not exhausted:
+        try:
+            x = next(fibonacci)
+            print(f"[{i}]: {x}")
+            i += 1
+        except StopIteration:
+            exhausted = True
+    return
+
+# -------------------------------------------
+#               Lab 32 - Task 1
+# -------------------------------------------
+
+class lab32_task1_student:
+    department = "Mechatronics and Control Engineering"
+    offered_courses = ["LA","CP","ES","VCA","PD"]
+
+    def __init__(self,name,reg,sec):
+        self.name = name
+        self.reg = reg
+        self.sec = sec
+        self.email = "".join(reg.split("-")).lower() + "@student.uet.edu.pk"
+        self.courses = []
+
+    def register_courses(self,*courses):
+        for course in courses:
+            if course in lab32_task1_student.offered_courses:
+                self.courses.append(course)
+                self.courses.sort()
+            else:
+                try:
+                    raise ValueError("course must be from the offered courses")
+                except ValueError as e:
+                    print(f"ValueError: {e}")
+
+def lab32_task1():
+    task_header(32,1)
+    student = lab32_task1_student("Yahya Mateen","2019-R-2018-MC-71","B")
+    courses = ["LA","CP","ES","VCA","PD"]
+    student.register_courses(*courses)
+    print(f"Courses registered successfully: {student.courses}")
+    return
+
+# -------------------------------------------
+#               Lab 32 - Task 2
+# -------------------------------------------
+
+class lab32_task2_student:
+    department = "Mechatronics and Control Engineering"
+    offered_courses = ["LA","CP","ES","VCA","PD","MOM","EC","FOTS","ISL","CS"]
+
+    def __init__(self,name,reg,sec):
+        self.name = name
+        self.reg = reg
+        self.sec = sec
+        self.email = "".join(reg.split("-")).lower() + "@student.uet.edu.pk"
+        self.courses = []
+
+    def register_courses(self,*courses):
+        for course in courses:
+            if course in lab32_task1_student.offered_courses:
+                self.courses.append(course)
+                self.courses.sort()
+            else:
+                try:
+                    raise ValueError("course must be from the offered courses")
+                except ValueError:
+                    pass
+
+def lab32_task2_print_students(students):
+    print("-------------------------------------------------------------------")
+    print("    Name       |    Reg     | Sec |    Courses   ")
+    print("-------------------------------------------------------------------")
+    for student in students:
+        name = student.name
+        reg = student.reg
+        sec = student.sec
+        courses = student.courses
+        print(f"{name:<14} | ",end="")
+        print(f"{reg:<10} | ",end="")
+        print(f"{sec:^3} | ",end="")
+        print(f"{courses}")
+    print("-------------------------------------------------------------------")
+    return
+
+def lab32_task2():
+    task_header(32,2)
+    student1 = lab32_task2_student("Yahya Mateen","2019-MC-71","B")
+    student2 = lab32_task2_student("Muhammad Ahsan","2019-MC-53","B")
+    student3 = lab32_task2_student("Ayesha Xobia","2020-MC-05","A")
+    student4 = lab32_task2_student("Hina Ijaz","2019-MC-67","B")
+    student5 = lab32_task2_student("Atif Aslam","2021-MC-71","A")
+    student1.register_courses("LA","ES")
+    student2.register_courses("PD")
+    student3.register_courses("CP","ES","PD","LA")
+    student4.register_courses("VCA","ES","PD","LA","MOM","ES")
+    student5.register_courses("LA","CP","PD")
+    students = [student1,student2,student3,student4,student5]
+    lab32_task2_print_students(students)
+    students.sort(key=lambda student: len(student.courses),reverse=True)
+    lab32_task2_print_students(students)
+    return
+
+# -------------------------------------------
+#               Lab 32 - Task 3
+# -------------------------------------------
+
+class lab32_task3_point:
+    def __init__(self,x=0,y=0):
+        self.x = x
+        self.y = y
+    
+    def reset(self):
+        self.move(0,0)
+
+    def move(self,x,y):
+        self.x = x
+        self.y = y
+    
+    def xTranslate(self,xdist):
+        self.x += xdist
+
+    def yTranslate(self,ydist):
+        self.y += ydist
+
+    def showPoint(self):
+        return f"({round(self.x,2)},{round(self.y,2)})"
+
+    def distOrigin(self):
+            return round(math.sqrt(self.x ** 2 + self.y ** 2),2)
+
+def lab32_task3():
+    task_header(32,3)
+    Point = lab32_task3_point
+    point = Point(5,6)
+    print(f"Point(5,6):           {point.showPoint()}")
+    point.reset()
+    print(f"reset():              {point.showPoint()}")
+    point.move(12,-5)
+    print(f"move(12,-5):          {point.showPoint()}")
+    point.xTranslate(5.6)
+    print(f"xTranslate(5.6):      {point.showPoint()}")
+    point.yTranslate(9.11)
+    print(f"yTranslate(9.11):     {point.showPoint()}")
+    print(f"Distance from origin: {point.distOrigin()}")
+    return
+
+# -------------------------------------------
+#               Lab 33 - Task 1
+# -------------------------------------------
+
+class lab33_task1_student:
+    department = "Mechatronics and Control Engineering"
+    offered_courses = ["LA","CP","ES","VCA","PD"]
+
+    def __init__(self,name,reg,sec):
+        self.name = name
+        self.reg = reg
+        self.sec = sec
+        self.email = "".join(reg.split("-")).lower() + "@student.uet.edu.pk"
+        self.courses = []
+
+    def register_courses(self,*courses):
+        for course in courses:
+            if course in lab33_task1_student.offered_courses:
+                self.courses.append(course)
+                self.courses.sort()
+            else:
+                try:
+                    raise ValueError("course must be from the offered courses")
+                except ValueError as e:
+                    print(f"ValueError: {e}")
+
+def lab33_task1():
+    task_header(33,1)
+    student = lab33_task1_student("Yahya Mateen","2019-R-2018-MC-71","B")
+    courses = ["LA","CP","ES","VCA","PD"]
+    student.register_courses(*courses)
+    print(f"Courses registered successfully: {student.courses}")
+    return
+
+# -------------------------------------------
+#               Lab 33 - Task 2
+# -------------------------------------------
+
+class lab33_task2_student:
+    department = "Mechatronics and Control Engineering"
+    offered_courses = ["LA","CP","ES","VCA","PD","MOM","EC","FOTS","ISL","CS"]
+
+    def __init__(self,name,reg,sec):
+        self.name = name
+        self.reg = reg
+        self.sec = sec
+        self.email = "".join(reg.split("-")).lower() + "@student.uet.edu.pk"
+        self.courses = []
+
+    def register_courses(self,*courses):
+        for course in courses:
+            if course in lab33_task1_student.offered_courses:
+                self.courses.append(course)
+                self.courses.sort()
+            else:
+                try:
+                    raise ValueError("course must be from the offered courses")
+                except ValueError:
+                    pass
+
+def lab32_task2_print_students(students):
+    print("-------------------------------------------------------------------")
+    print("    Name       |    Reg     | Sec |    Courses   ")
+    print("-------------------------------------------------------------------")
+    for student in students:
+        name = student.name
+        reg = student.reg
+        sec = student.sec
+        courses = student.courses
+        print(f"{name:<14} | ",end="")
+        print(f"{reg:<10} | ",end="")
+        print(f"{sec:^3} | ",end="")
+        print(f"{courses}")
+    print("-------------------------------------------------------------------")
+    return
+
+def lab33_task2():
+    task_header(33,2)
+    student1 = lab33_task2_student("Yahya Mateen","2019-MC-71","B")
+    student2 = lab33_task2_student("Muhammad Ahsan","2019-MC-53","B")
+    student3 = lab33_task2_student("Ayesha Xobia","2020-MC-05","A")
+    student4 = lab33_task2_student("Hina Ijaz","2019-MC-67","B")
+    student5 = lab33_task2_student("Atif Aslam","2021-MC-71","A")
+    student1.register_courses("LA","ES")
+    student2.register_courses("PD")
+    student3.register_courses("CP","ES","PD","LA")
+    student4.register_courses("VCA","ES","PD","LA","MOM","ES")
+    student5.register_courses("LA","CP","PD")
+    students = [student1,student2,student3,student4,student5]
+    lab32_task2_print_students(students)
+    students.sort(key=lambda student: len(student.courses),reverse=True)
+    lab32_task2_print_students(students)
+    return
+
+# -------------------------------------------
+#               Lab 32 - Task 3
+# -------------------------------------------
+
+class lab33_task3_point:
+    def __init__(self,x=0,y=0):
+        self.x = x
+        self.y = y
+    
+    def reset(self):
+        self.move(0,0)
+
+    def move(self,x,y):
+        self.x = x
+        self.y = y
+    
+    def xTranslate(self,xdist):
+        self.x += xdist
+
+    def yTranslate(self,ydist):
+        self.y += ydist
+
+    def showPoint(self):
+        return f"({round(self.x,2)},{round(self.y,2)})"
+
+    def distOrigin(self):
+            return round(math.sqrt(self.x ** 2 + self.y ** 2),2)
+
+def lab33_task3():
+    task_header(33,3)
+    Point = lab33_task3_point
+    p1 = Point(2,3)
+    p2 = Point()
+    p3 = Point(5,5)
+    print(p2.showPoint())
+    print(p3.showPoint())
+    p3.reset()
+    print(p3.showPoint())
+    p2.move(10,10)
+    print(p2.showPoint())
+    p2.xTranslate(-5)
+    print(p2.showPoint())
+    p2.yTranslate(5)
+    print(p2.showPoint())
+    return
+
+# -------------------------------------------
+#               Lab 33 - Task 4
+# -------------------------------------------
+
+class lab33_task4_point:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    
+    def move(self,x,y):
+        self.x = x
+        self.y = y
+
+    @property
+    def distOrigin(self):
+        return round(math.sqrt(self.x ** 2 + self.y ** 2),2)
+
+def lab33_task4():
+    task_header(33,4)
+    point = lab33_task4_point(5,6)
+    print(f"Distance from origin (5,6): {point.distOrigin}")
+    point.move(15,41)
+    print(f"Distance from origin (15,41): {point.distOrigin}")
+    return
+
+# -------------------------------------------
+#               Lab 34 - Task 1
+# -------------------------------------------
+
+class lab34_task1_point():
+    def __init__(self,x=0,y=0):
+        self.x = x
+        self.y = y
+
+    @property
+    def mag(self):
+        return round(math.sqrt(self.x ** 2 + self.y ** 2),2)
+
+    def reset(self):
+        self.move(0,0)
+
+    def move(self,newx,newy):
+        self.x = newx
+        self.y = newy
+
+    def movX(self,units):
+        self.x = units
+    
+    def movY(self,units):
+        self.y = units
+    
+    def showPoint(self):
+        return f"({self.x},{self.y})"
+
+def lab34_task1_addPoints(p1,p2):
+    return lab34_task1_point(p1.x + p2.x, p1.y + p2.y)
+
+def lab34_task1_rand(n,p,q):
+    Point = lab34_task1_point
+    l = []
+    for _ in range(n):
+        x = random.randint(p,q)
+        y = random.randint(p,q)
+        l.append(Point(x,y))
+    return l
+
+def lab34_task1_print(l,msg):
+
+    l_str = map(lambda p: p.showPoint(),l)
+    l_str = ", ".join(l_str)
+    print(f"{msg}: [{l_str}]")
+
+def lab34_task1():
+    task_header(34,1)
+    Point = lab34_task1_point
+    L1 = lab34_task1_rand(5,-10,10)
+    lab34_task1_print(L1,"L1")
+    L2 = lab34_task1_rand(5,-5,5)
+    lab34_task1_print(L2,"L2")
+    L3 = list(map(lambda p1,p2: Point(p1.x + p2.x, p1.y + p2.y), L1,L2))
+    lab34_task1_print(L3,"L3 (before sort)")
+    L3.sort(key=lambda p: p.mag)
+    lab34_task1_print(L3,"L3 (after sort)")
+    return
+
+# -------------------------------------------
+#               Lab 34 - Task 2
+# -------------------------------------------
+
+class lab34_task2_student:
+    department = "Mechatronics"
+    offered_courses = ["Proj","Mech","LA","ES","CP2","MOM","Isl/Pak"]
+    all_students = []
+    
+    def __init__(self,fname,lname, reg):
+        self.fname = fname
+        self.lname = lname
+        self.reg = reg
+        self.email = "".join(reg.replace("/","-").split("-")).lower() + "@student.uet.edu.pk"
+        self.courses = ["Proj"]
+        lab34_task2_student.all_students.append(self)
+
+    @property
+    def fullname(self):
+        return f"{self.fname} {self.lname}"
+
+    def register_course(self,*courses):
+        for course in courses:
+            if course in lab34_task2_student.offered_courses:
+                if course not in self.courses:
+                    self.courses.append(course)
+            else:
+                try:
+                    raise ValueError("course registration must be from offered courses")
+                except ValueError:
+                    pass
+        self.courses.sort()
+
+def lab34_task2():
+    task_header(34,2)
+    Student = lab34_task2_student
+    student1 = Student("Yahya","Mateen","2019-R/2018-MC-71")
+    print(f"Email: {student1.email}")
+    if "Proj" in student1.courses:
+        print("Proj was automatically registered on instantiation")
+    else:
+        print("Proj was not automatically registered on instantiation")
+    print(f"Full name (before fname change): {student1.fullname}")
+    student1.fname = "Abdullah"
+    print(f"Full name (after fname change): {student1.fullname}")
+    print(f"All students: {Student.all_students}")
+
+# -------------------------------------------
+#               Lab 34 - Task 3
+# -------------------------------------------
+
+class lab34_task3_student:
+    department = "Mechatronics and Control Engineering"
+    offered_courses = ["Proj","LA","CP","ES","VCA","PD","MOM","EC","FOTS","ISL","CS"]
+    all_students = []
+
+    def __init__(self,name,reg,sec):
+        self.name = name
+        self.reg = reg
+        self.sec = sec
+        self.courses = ["Proj"]
+        lab34_task3_student.all_students.append(self)
+
+    @property
+    def email(self):
+        return "".join(self.reg.replace("/","-").split("-")).lower() + "@student.uet.edu.pk"
+
+    def register_courses(self,*courses):
+        for course in courses:
+            if course in lab34_task3_student.offered_courses:
+                if course not in self.courses:
+                    self.courses.append(course)
+                    self.courses.sort()
+            else:
+                try:
+                    raise ValueError(f"{course} is not offered")
+                except ValueError:
+                    print(f"{course} is not offered")
+
+    def __str__(self):
+        return f"{self.name} - {self.reg} - {self.email}"
+    
+    def __repr__(self):
+        return f"Student({self.name},{self.reg},{self.sec})"
+
+def lab34_task3():
+    task_header(34,3)
+    Student = lab34_task3_student
+    student1 = Student("Yahya Mateen","2019-R/2018-MC-71","B")
+    student2 = Student("Ali Irfan","2020-R/2019-MC-53","B")
+    student3 = Student("Ayesha Xobia","2020-MC-01","A")
+    student4 = Student("Hina Ijaz","2019-MC-47","A")
+    student1.register_courses("LA","ES")
+    student2.register_courses("PD")
+    student3.register_courses("CP","ES","PD","LA")
+    student4.register_courses("VCA","ES","PD","LA","MOM","ES")
+    print("--------------")
+    print("Before sorting:")
+    print("--------------")
+    for student in Student.all_students:
+        print(student)
+    print(f"\nAll students: {Student.all_students}\n")
+    Student.all_students.sort(key=lambda student: len(student.courses),reverse=True)
+    print("--------------")
+    print("After sorting:")
+    print("--------------")
+    for student in Student.all_students:
+        print(student)
+    print(f"\nAll students: {Student.all_students}")
+    return
+
+# -------------------------------------------
+#               Lab 34 - Task 4
+# -------------------------------------------
+
+class lab34_task4_point():
+    def __init__(self,x=0,y=0):
+        self.x = x
+        self.y = y
+
+    @property
+    def mag(self):
+        return round(math.sqrt(self.x ** 2 + self.y ** 2),2)
+
+    def reset(self):
+        self.move(0,0)
+
+    def move(self,newx,newy):
+        self.x = newx
+        self.y = newy
+
+    def movX(self,units):
+        self.x = units
+    
+    def movY(self,units):
+        self.y = units
+    
+    def showPoint(self):
+        return f"({self.x},{self.y})"
+
+    def __str__(self):
+        return f"({self.x},{self.y})"
+    
+    def __repr__(self):
+        return f"Point({self.x},{self.y})"
+
+def lab34_task4_addPoints(p1,p2):
+    return lab34_task4_point(p1.x + p2.x, p1.y + p2.y)
+
+def lab34_task4_rand(n,p,q):
+    Point = lab34_task4_point
+    l = []
+    for _ in range(n):
+        x = random.randint(p,q)
+        y = random.randint(p,q)
+        l.append(Point(x,y))
+    return l
+
+def lab34_task4_print(l,msg):
+
+    l_str = map(lambda p: p.showPoint(),l)
+    l_str = ", ".join(l_str)
+    print(f"{msg}: [{l_str}]")
+
+def lab34_task4():
+    task_header(34,1)
+    Point = lab34_task4_point
+    L1 = lab34_task4_rand(5,-10,10)
+    lab34_task4_print(L1,"L1")
+    L2 = lab34_task4_rand(5,-5,5)
+    lab34_task4_print(L2,"L2")
+    L3 = list(map(lambda p1,p2: Point(p1.x + p2.x, p1.y + p2.y), L1,L2))
+    print(f"L3 (before sort): {L3}")
+    L3.sort(key=lambda p: p.mag)
+    print(f"L3 (after sort): {L3}")
+    return
+
+# -------------------------------------------
+#               Lab LL - Task T
+# -------------------------------------------
 
 # -------------------------------------------
 #            Auxiliary Functions
@@ -4022,24 +5044,32 @@ def task_header(lab_number, task_number):
     return
 
 def run_all():
-    tasks =[
-    "lab1_task1","lab1_task2","lab1_task3",
-    "lab2_task1","lab2_task2","lab2_task3","lab2_task4","lab2_task5","lab2_task6","lab2_task7"
-    "lab3_task1","lab3_task2","lab3_task3",
-    "lab4_task1","lab4_task2","lab4_task3","lab4_task4","lab4_task5","lab4_task6",
-    "lab5_task1","lab5_task2","lab5_task3","lab5_task4","lab5_task5","lab5_task6","lab5_task7","lab5_task8","lab5_task9","lab5_task10","lab5_task11",
-    "lab6_task1","lab6_task2","lab6_task3","lab6_task4","lab6_task5","lab6_task6",
-    "lab7_task1","lab7_task2","lab7_task3","lab7_task4","lab7_task5",
-    "lab8_task1","lab8_task2","lab8_task3",
-    "lab9_task1","lab9_task2","lab9_task3","lab9_task4","lab9_task5","lab9_task6","lab9_task7","lab9_task8","lab9_task9","lab9_task10",
-    ]
-    for task in tasks:
-        globals()[task]()
+    tasks = {
+    "lab1_task1":(),"lab1_task2":(),"lab1_task3":(),
+    "lab2_task1":(),"lab2_task2":(),"lab2_task3":(),"lab2_task4":(),"lab2_task5":(7,),"lab2_task6":(6,7),
+    "lab33_task2":()}
+    for name,args in tasks.items():
+        if not args:
+            globals()[name]()
+        else:
+            globals()[name](*args)
     return
 
+    # skip tasks that clear the console screen
+
 def run_specific():
-    lab_number, task_number = eval(input("\n>> Lab number and task number (lab, task): "))
-    globals()[f"lab{lab_number}_task{task_number}"]()
+    try:
+        lab_number, task_number = eval(input("\n>> Lab number and task number (lab, task): "))
+    except NameError:
+        pass
+    except:
+        pass
+    try:
+        globals()[f"lab{lab_number}_task{task_number}"]()
+    except UnboundLocalError:
+        pass
+    except:
+        pass
     return
 
 def list_all():
@@ -4073,12 +5103,16 @@ def loop():
         elif option == "q":
             break
         else:
-            print("Error: Invalid option")
-            return
+            try:
+                raise ValueError("invalid option")
+            except ValueError:
+                pass
 
 # -------------------------------------------
 #               Program Start
 # -------------------------------------------
 
 if __name__ == "__main__":
+#    sys.stdout = open("out.txt","w")
     loop()
+#    sys.stdout.close()

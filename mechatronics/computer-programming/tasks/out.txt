@@ -1,0 +1,10 @@
+
+--------------------------------------------------------
+    [a] - Press A to run all tasks with dummy input
+    [n] - Press N to run a specific task
+    [h] - Press H to list all available tasks
+    [q] - Press Q to quit the program
+--------------------------------------------------------
+
+>> 
+>> Lab number and task number (lab, task): 

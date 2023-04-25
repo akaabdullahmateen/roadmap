@@ -1106,12 +1106,2014 @@ finally:
     # so we are guaranteed that these statements WILL be executed
 ```
 
+- We can also raise our own exceptions. This is very useful when writing classes.
+
+```py
+# Without custom message
+if x == fatal_condition:
+    raise Exception
+
+# With custom message
+if x == fatal_condition:
+    raise Exception(f"The value {x} is not allowed")
+```
+
+- If the condition is met, the exception will be raised, and the program will terminate.
+- We can also raise some specific exceptions:
+
+```py
+# Raising a KeyError without a custom message
+if x == fatal_condition:
+    raise KeyError
+
+# Raising a TypeError without a custom message
+if x == fatal_condition:
+    raise TypeError
+
+# Raising a TypeError with a custom message
+if x == fatal_condition:
+    raise TypeError(f"The value {x} is not allowed")
+```
+
+- Lets consider the following user-defined function:
+
+```py
+def my_func(x,y):
+    return x*y
+```
+
+- Here, we take two arguments, `x` and `y`. We usually call this function with only the values for these arguments, such as `my_func(1,2)` means `x` will be `1` and `y` will be `2`.
+- But we can also specify the arguments through their names, such as `my_func(x=1,y=2)` means `x` will be `1` and `y` will be `2`.
+- The advantage of specifying the arguments through their names is that the order of the parameters do not matter. So `my_func(y=2,x=1)` and `my_func(x=1,y=2)` both mean the same thing. Also we can be sure, that if a new function parameter is inserted between the existing paramters in the function prototype, the arguments will still be correctly initialized, since we are not depending on their position, rather their names.
+- When we specify the arguments through their name, they are called Keyword Arguments, whereas, when we specify arguments without the names, then they are passed based on their position, and are hence called Positional Arguments.
+- Remeber that we can use keyword and positional arguments at the same time, so `my_func(1,y=2)` means that `x=1` and `y=2`. Just remember that even when keyword arguments are used, the positional arguments MUST BE IN THEIR CORRECT POSITION, although the keyword arguments can be in any position. So `my_func(1,x=2)` will raise an error, since the positional argument `1` already provided the value for `x`, and `x=2` provides another value, while there is no value for the `y` parameter. Also remember that all positional arguments must come before the keyword arguments. So `my_func(x=2,1)` is invalid.
+- A function can also have optional parameters. These are parameters with a default value. So if a value for them is specified, then that is value is used. Otheriwse, if no value is provided for them, then the default value is simply used.
+
+```py
+def my_func(required_paramter,optional_parameter=10):
+    return required_parameter * optional_parameter
+
+my_func(8)   # return 8 * 10
+my_func(8,9) # return 8 * 9
+```
+
+- We can also make the certain input arguments to be positional arguments only, and certain input arguments to be keyword arguments only. The general rule to remember is that, THE POSITIONAL ARGUMENTS MUST COME BEFORE THE KEYWORD arguments.
+- If we put a `/` slash as an argument, all arguments to the left of it are positional arguments only. If we put a `*` asterisk as an argument, all arguments to the right of it are keyword arguments only.
+
+```py
+# All arguments can be provided as either positional or keyword arguments
+# The only requirement is that the positional arguments must come before the keyword argument
+def my_func(height,width,ratio,volume,area,perimeter)
+
+# The arguments to the left of the slash are positional-only arguments.
+# this means that we must provide positional arguments for height and width
+def my_func(height,width,/,ratio,volume,area,perimeter)
+
+# The arguments to the right of asterisk must be keyword-only arguments
+# this means that we must provide keyword arguments for ratio,volume,area, and perimiter
+def my_func(height,width,*,ratio,volume,area,perimeter)
+
+# height and width must be positional-only arguments
+# ratio and volume can be either positional or keyword arguments
+# as long as the positional first requirement is fulfilled
+# area and perimter must be keyword-only arguments
+def my_func(height,width,/,ratio,volume,*,area,perimeter)
+```
+
+- We can unpack a list and pass it as arguments to a function using the starred notation.
+
+```py
+# A function that takes three arguments
+def my_func(arg1,arg2,arg3):
+    return
+
+# Lets say that this list contains the arguments in order
+args = [1,2,3]
+
+# We can pass these arguments as
+my_func(args[1],args[2],args[3])
+
+# But a better way is to use the starred notation
+my_func(*args)
+```
+
+- But the unpacking produces only as many arguments as there are elements in the list, common sense, right. So, if the list had only two arguments, we would get a TypeError.
+- In such a case, where the list does not contain all the arguments, we can pass the other arguments as normal.
+
+```py
+def my_func(arg1,arg2,arg3):
+    return
+
+args = [1,2]
+
+# Notice how we can pass the third argument as normal
+my_func(*args,3) # arg1 = 1, arg2 = 2, arg3 = 3
+
+# We can also use the unpacking in any other position of consecutive arguments
+my_func(3,*args) # arg1 = 3, arg2 = 1, arg3 = 2 
+```
+
+- We can also use the starred notation in the function prototype.
+
+```py
+def my_func(*args):
+    for arg in args:
+        print(arg)
+    return
+
+my_func(1)
+my_func(1,2)
+my_func(1,2,3)
+my_func(1,2,3,4)
+```
+
+- The `*args` will pack the passed arguments into a tuple, and inside the function, the `args` variable is a tuple, and it can be used like one.
+- Remember, that in the function prototype, the starred notation PACKS the arguments into a tuple, and in the function call, the starred notation UNPACKS the list into individual arguments. So, we can use the starred notation inside the function call to pass a list.
+
+```py
+def my_func(*args):
+    return
+
+l = [1,2,3,4]
+
+# This does not do what is intended
+# The list l is treated as a single element
+# So inside the function, args will be ([1,2,3,4])
+# instead of (1,2,3,4)
+my_func(l)
+
+# l will be unpacked into individual elements
+# which will then be packed into a tuple in the function
+# This does exactly what is intended
+# args will be (1,2,3,4)
+my_func(*l) # Success
+```
+
+- We can have single valued functions alongside one variable-length argument. But we can have only one variable-length argument. We can not have more than one variable length arguments as the interpreter can not decide how many elements should be assigned to each variable-length argument.
+
+```py
+def my_func(a,b,*x):
+    ans = 0
+    for i in x:
+        ans += x * x
+    ans = ans / a + b
+    return ans
+
+my_func(10,2,1,2,3,4) # a = 10, b = 2, x = (1,2,3,4)
+```
+
+- Similar to this, we can also have variable length keyword arguments.
+
+```py
+def my_func(**kwarg):
+    for k,v in kwarg.items():
+        print(f"{k} : {v}")
+    return
+
+my_func(A=1,B=2,C=3)
+```
+
+- We can observe that the keyword arguments (kwargs) are passed as a dictionary, with the keywords appearing as keys.
+- So `def my_func(*args)` packs positional arguments into a tuple, whereas, `def my_func(**kwargs)` packs the keyword arguments into a dictionary. Also, similar to unpacking the list into individual positional arguments in function calls with the single starred notation, we can unpack a dictionary into keyword argumetns in functioon calls with the double starred notation. See the example code below:
+
+```py
+def my_func1(*args):
+    return
+
+def my_func2(**kwargs):
+    return
+
+my_list = [1,2,3,4]
+my_dict = {"A":1,"B":2,"C":3,"D":4}
+
+my_func1(1,2,3,4)
+my_func1(*my_list)
+
+my_func2(A=1,B=2,C=3,D=4)
+my_func2(**my_dict)
+```
+
+- A function can have single valued, arbitrary length positional, and arbitrary length keyword arguments. But remember that the positioinal arguments must come before the keyword arguments. Also remember, that there can be only one arbitrary length positional argument, and only one arbitrary length keyword argument. So the general form is:
+
+```py
+# arg1,arg2,...,argn are single valued arguments
+# args is a tuple which packs arbitrary number of positional arguments
+# kwargs is a dictionary which packs arbitrary number of keyword arguments
+def my_func(arg1,arg2,argn,*args,**kwargs)
+
+my_func("Hello",4.5342,False,    # arg1,arg2,argn
+        "A",1,False,2.4,         # args
+        A=1.7,B="HELLO",C=False) # kwargs
+```
+
+- Arguments can be passed by value or passed by reference. Passing by value means that only their value is passed and not the variable itself. This means that the value is used to create a new variable for the function, and the function uses that variable, and not the original variable. so changes to this variable in the function are not reflected to the original variable. Whereas, passing by reference means that the variable itself is passed. This is done by passing a reference which points to the same underlying object. So the original variable and this passed reference, both point to the same underlying obejct. Therefore, changes to the variable in the function are reflected in the original variable.
+- Immutable data types like int, float, string, boolean etc, are always passed by value. Whereas, the mutable data types like list, tuples, dictionaries, etc are passed by reference by default.
+- Passing mutable data types by reference allows them to be modified by a user-defined function. So for eaxmple, functions like `removeLastEntry()` can work as intended, without copying the whole data container multiple times.
+- This passing by reference and passing by value can be verified by using the `id()` function. The `id(x)` function gives the memory address of the object `x`. So, if a variable is passed by value, the `id()` function will return different memory addresses for the original variable and variable inside the fnction. Whereas, if the variable is passed by reference, the originakl variable and the argument variable will have the same memory address.
+- However, there is one thing to note. If we use assignment on a passed variable (which is passed by reference), a new variable copy will be created with A DIFFERENT MEMORY ADDRESS. So a totally new variable will be created (just like when passing by value). However, this new variable is not created initially, but only after the assignment takes place. This is clear in the example below:
+
+```py
+def my_func1(arg):
+    print(id(arg))
+
+# x is a list which is a mutable data type
+# so x is passed by reference by default
+# so id(x) and id(arg) will both give the same memory address
+# since they both point to the same underlying object
+# only with different reference names (identifiers)
+x = [1,2,3]
+print(id(x))
+my_func1(x)
+
+# Lets look at this function
+def my_func2(arg):
+    # so far, the arg is not assigned, and because x was passed by reference
+    # id(arg) is the same as id(x)
+    print(id(arg))
+    # now, we used assignment on a passed variable
+    # this created a new object with the same name as arg
+    arg = [4,5,6]
+    # now id(arg) will be different than id(x)
+    print(id(arg))
+
+x = [1,2,3]
+print(id(x))
+my_func2(x)
+```
+
+- Calling the function itself from within the function is called recursion, and the function that calls itself is known as a recursive function.
+
+```py
+def recursive_function(x):
+  print(x)
+  recursive_function(x + 1)
+
+recursive_function(1)
+```
+
+- You can see that the recursive function will call itself for some time, before the program terminates due to the recursive depth limit. This is because, the above function does not a stopping condition for the recursion, and so the recursion is infinite. Such an infinite recursion will very quickly exhaust the computer memory, due to the function calls taking a lot of space in the stack. To prevent this, python implements a limit on how many times a single self-recursion can happen. This limit can be checked like this:
+
+```py
+import sys
+# Using this function from sys, you can view the maximum recursion depth
+print(sys.getrecursionlimit())
+
+# Using this function from sys, you can change the maximum recursion depth
+sys.setrecursionlimit(1500)
+```
+
+- To make recursion useful, we need to add a base case, a condition that will end the recursion after certain amount of self-calling the function.
+
+```py
+# This function will recurse 100 times if x = 0 initially
+# If f is called with arguments other than x=0,
+# the function will recurse until x is 99
+# so f(5) will recurse 94 times
+# f(99) will recurse 1 times
+# f(100) will resurse 0 times
+def f(x):
+  print(x)
+  if x < 100:
+    f(x + 1)
+
+f(0)
+```
+
+- Memorization is an optimization technique where the results of function calls are stored. This allows to use the cached result instead of wasting time calling the function again, if the same input occurs again.
+
+```py
+def fibo_recursive(n):
+  if n == 0:
+    return 1
+  if n == 1:
+    return 1
+  if(n > 1):
+    return fibo_recursive(n - 1) + fibo_recursive(n - 2)
+```
+
+- In the above function, you will notice that the function takes exponentially more time to compute larger values of n. This is because the function has an time complexity O(n^2).
+- This can be improved by noticing that once a value is found, it does not need to be calculated again. So we can just store the previously calculated results, and use these results to calculate the next value. We only calculate by recursively calling for a single depth, when a new value is required.
+
+```py
+fibo_dict = {} # key = n, value = F(n)
+def fibo_cache(n):
+  if n in fibo_dict:
+    return fibo_dict[n]
+  else:
+    if n == 0:
+      ans = 1
+    if n == 1:
+      ans = 1
+    if(n > 1):
+      ans = fibo_cache(n - 1) + fibo_cache(n - 2)
+    fibo_dict[n] = ans
+    return ans
+```
+
+- Instead of creating a dictionary and storing the function calls manually, the `lru_cache()` function decorator can be used. LRU means Least Recently Used. This is available in `functools` module. Decorators are used to add extra features to any function. The `lru_cache()` function decorator does the job of memorization all by itself. It stores the function calls result, and uses it when the same call is made. It takes some argumetns, such as `maxsize=128` which sets the size of memorization container. It also has `typed=False`, which treats different types separately. If `typed=True`, `f(3)` and `f(3.0)` are considered as separate calls, and so the results would be recalculted.
+
+```py
+from functools import lru_cache
+
+@lru_cache(maxsize=1000)
+def fibonacci(n):
+  if n == 0:
+    return 1
+  elif n == 1:
+    return 1
+  else:
+    return fibonacci(n - 1) + fibonacci(n - 2)
+```
+
+- Without memorization, the recursive fibonacci function has time compelxity O(2^n) which is very very bad. But with memorization, the time complexity becomes just O(n), which is really really good.
+- You can accurately measure the improvement in time by using the `timeit()` function from the `timeit` module. But you need to add `globals=globals()` because the `timeit()` executes code in its namespace and not the global namespace, so it does not know about the function `fibonacci()`. Therefore, we need to pass the argument `globals=globals()` to tell it to use the `globals()` namespace.
+
+```py
+import timeit
+
+timeit.timeit(fibonacci(10),globals=globals(),number=10)
+```
+
+- One thing to note is taht the memorization function decorator `lru_cache()` or any other memorization technique is not just limited to recursive functions. If a non-recursive function is called repeatedly with the same values, it can also be improved by adding memorization.
+- Anonymous functions or lamdba expressions are functions with no names. They are used to implement very simple, usually single expression functions, which are not meant to be used often.
+
+```py
+# Named function
+def unitDigit(x):
+  return x % 10
+
+# Lambda expression
+lambda x:x % 10
+```
+
+- The `lambda` is a keyword, not the function's name.
+- To call the lambda function, we enclose the lambda expression in parenthesis, and add the argument in another pair of parenthesis right next to it.
+
+```py
+# Calling a lambda expression
+(lambda x:x % 10)(19)
+
+# Lets see what happens when we do not add the parethesis around lambda
+lambda x:x % 10(19)
+# This makes the argument value 19 become a part of the expression
+# The above is equivalent to:
+lambda x:x % 10 *19
+
+# So we need to add the a pair of parenthesis around the lambda expression as well
+(lambda x:x % 10)(19)
+
+# To store the return value in some variable
+a = (lambda x:x % 10)(19) # a = 9
+```
+
+- One thing to note is taht we can assign the lambda expression to a variable
+
+```py
+# a variable assigned a lambda expression
+my_lambda = lambda x:x % 10
+
+# the variable is of type function since lambda expression is a function
+print(type(my_lambda)) # <class 'function'>
+
+# we can use this variable name like any other function name
+my_lambda(19) # evaluates to 9
+```
+
+- In the above example, it function looks like as if it is no more anonymous, since we now have a name for it `my_lambda`. No. The lambda expression is still anonymous, but it is assigned to an identifier `my_lambda`. And we are using this identifier as a vehicle to access the underlying lambda expression.
+
+```py
+my_lambda = lambda x:x % 10
+
+# This expression:
+my_lambda(19)
+# Simplifies to this:
+(lambda x:x % 10)(19)
+```
+
+- Lambda expressions can also take no argument or more than one input argument:
+
+```py
+# Lambda expression with no input argument
+x = lambda : print("Hello")
+x() # Hello
+
+# Lambda expression with two input arguments
+x = lambda a,b: (a + b) / 2
+x(10,15) # 12.5
+```
+
+- Use cases for lambda expressions:
+  - When a function is very simple. It contains only a single expression. Such a function can be converted to a lambda expression to save lines of code.
+  - When we need to pass a function as input argument of another function.
+  - The best use for lambda expressions is using it with some other built-in function like `map`, `sort`, `reduce`, `filter` etc.
+
+```py
+# This function returns a lambda, not a value
+# but to use that lambda
+# we need to pass the argument base to the function first
+def pow(base):
+  return lambda n: base ** n
+
+twoPow = pow(2) # lamdbda n:2 ** n
+threePow = pow(3) # lambda n:3 ** n
+
+# Now we can use the twoPow() lambda function
+twoPow(3) # 8
+
+# This whole sequence can be summarized as:
+pow(2)(3)
+# This evaluates to:
+# (lambda x:2**x)(3)
+```
+
+- However, the most common use of lambda functions is with the builtin functions `map`, `sort`, etc.
+- We can sort a list through either the list class `sort()` method or the builtin `sorted()` method.
+
+```py
+# The original list will be modified
+l = [6,4,7,2,4,1,2]
+l.sort()
+
+# The original list will not be modified
+# instead, the sorted list is returned and can be assigned to another variable
+l = [6,4,7,2,4,1,2]
+l = sorted(l)
+```
+
+- The tuples and sets can be sorted using the `sorted()` builtin method. They do not have class methods to sort, so we have to use the `sorted()` builtin mehtod. The thing to note is that the sorted() method will return a list for both of these cases, instead of tuple or set respecitvely. So if we are interested in getting a tuple or set, we need to cast them.
+
+```py
+t = (6,4,7,2,4,1,2)
+t = tuple(sorted(t))
+
+s = {6,4,7,2,4,1,2}
+s = set(sorted(s))
+```
+
+- Dictionaries can also be sorted using the `sorted()` builtin method. They also do not have a class method for sorting. There sorting can be done in a variety of ways:
+
+```py
+products={'walnuts':1500,'cashew':1800,'almond':2000,'pine nuts':8000}
+
+# Both of these will sort the keys
+# Only the keys will be sorted, and a list will be returned
+# No values are present
+s = sorted(products)
+s = sorted(products.keys())
+# ['almond', 'cashew', 'pine nuts', 'walnuts']
+
+# This will sort the values and values only
+# There will be no keys in the sorted list
+s = sorted(products.values())
+# [1500, 1800, 2000, 8000]
+
+# This will sort both the keys and values
+# But the sorting will be based on the keys
+s = sorted(products.items())
+```
+
+- To sort a list of lists, or a list of tuples, or a list of sets, we can also use the sorted method.
+
+```py
+l = [[10,4,3],[2,4,1,8],[3,2,1]]
+
+# Both of these will sort the nested list l
+# but depending on the first elements only
+# So the sorting is done based on l[0][0], l[1][0], l[2][0] etc
+l.sort()
+l = sorted(l)
+```
+
+- However, if we use the `sorted()` or `list.sort()` method on a list of dicitonaries, we will get an error, saying that the relational operator is not supported between dictionaries. This is because Python does not know how to compare the two dictionaries.
+- To sort a list of dictionaries, we have to use the optional keyword argument `key` in the `sorted()` method. The `key` argument takes a function. It then uses that function on each element, and the return value is used to compare, and hence sort.
+
+```py
+# In the following example, we are using the len() method as key argument
+# The len function is applied on each string element
+# The resulint number is compared
+# And the list is sorted based on those numbers representing lengths
+
+# This will sort the list "a" based on the lengths of the element strings
+a = ['Computer','Programming','Python','Pakistan','UET','Mechatronics']
+a = sorted(a,key=len)
+# This will also sort the list "a" based on the lengths of the element strings
+# But in reverse order, i.e., lengthier strings first.
+a = sorted(a,key=len,reverse=True)
+
+# Here the nums list is sorted based on their absolute magnitude
+nums = [5,-3,8,-2,0,7]
+nums = sorted(nums,key=abs)
+# The list class method sort() also has an optional keyword argument key
+nums.sort(key=abs)
+
+# Lets define a custom function to get the unit digit
+def uDigit(x):
+  return x % 10
+
+a = [2314,432,675,9983]
+
+# Both of these do the same thing
+a = sorted(a,key=uDigit)
+a.sort(key=uDigit)
+
+# However, we should note that a lambda expression will be more appropriate here
+a = sorted(a,key=lambda x:x%10)
+a.sort(key=lambda x:x%10)
+```
+
+- Now that we know how the `key` argument works, we can sort a list of dictionaries.
+
+```py
+student1 = {
+  'Reg':'2018-MC-01',
+  'Name':'Muhammad Usman',
+  'Sec':'A',
+  'Courses':['CP','ED','EM']
+}
+student2 = {
+  'Reg':'2018-MC-02',
+  'Name':'Tahir Mehmood',
+  'Sec':'A',
+  'Courses':['CP','DLD','EM']
+}
+student3 = {
+  'Reg':'2018-MC-03',
+  'Name':'Muhammad Bilal',
+  'Sec':'A',
+  'Courses':['VCA','ED','EM']
+}
+
+# A list of dictionaries
+allStudents = [student1,student2,student3]
+
+# This will sort based on the values of the Name key-value pairs in the students
+s = sorted(allStudents,key=lambda x:x["Name"])
+```
+
+- We can also do multilevel sorting using `key`. The idea is to sort based on the first criteria, if the first criteria is equal, sort based on the second criteria, and so on. This is possible, because the `key` argument function can return a sequence of values. If the first value in this sequence is same, the sorting is done based on the second value, and so on.
+
+```py
+a = [[1,2,3],[5,2,8,7],[1,3,1,7],[5,3,2],[8,2,1,5,1],[5,2,1]]
+
+# Sort based on first element of each sublist
+a = sorted(a,key=lambda x:x[0])
+
+# If the first element in equal
+# Sort based on second element of each sublist
+a = sorted(a,key=lambda x:(x[0],x[1]))
+
+# if both the first and second element are equal
+# sort based on the lenght of the sublist
+a = sorted(a,key=lambda x:(x[0],x[1],len(x)))
+
+# The negative sign will make the longer list sorted earlier
+a = sorted(a,key=lambda x:(x[0],x[1],-len(x)))
+```
+
+- The `zip()` function zips together two or more iterables, so that they can be iterated together in a single loop. It takes at least one iterable, but we can provide as many iterables as required. It returns a zip object.
+
+```py
+zip(*iterables,strict=False)
+```
+
+- The `help(zip)` says: The zip object yields n-length tuples, where `n` is the number of iterables passed as positional arguments to zip(). The i-th element in every tuple comes from the i-th iterable argument to zip(). The continues until the shortest argument is exhausted. If `strict=True`, and one of the arguments is exhausted before the others, raises a `ValueError`.
+- One thing to remember is that the zip object is an iterator, not an iterable. So the zip object can be used only once. Once used, the zip object will become empty, i.e., it is exhausted. We will see the difference between iterator and iterable later on.
+
+```py
+subjects = ["FOTS","CP","LA"]
+credit_hours = [3,2,4]
+z = zip(subjects,credits_hours)
+print(z) # <zip object at 0x7f0fc4c486c0>
+
+# We can convert the zip object to other data types, for example a list
+l = list(z)
+print(l) # [("FOTS",3),("CP",2),("LA",4)]
+
+# We can iterate over a zip object once before exhausting it
+# This loop will print the tuples of each subject-credit hours pairs
+for i in z:
+  print(i) # ("Subject",credit_hour)
+```
+
+- The `zip()` function is used when we want to process multiple iterables together. Without `zip()` we would have to process these iterables in a complex loop through a common index. The zip function makes this easy since it picks the corresponding elements from each iterable and creates a tuple of those elements, and then we can iterate over these tuples.
+- As said in the help message, if iterables are of unequal length, the zip function processes till the shortest iterable is exhausted, at which point, it either simply finsihes, or raises a ValueError, depedning on whether `strict=False` or `strict=True`.
+- However, it is possible to continue till the largest iterable is exhausted. This is possible because we can supply a fill value to be used for the missing elements when the shorter iterables are exhausted. To do this, we can use the `zip_longest()` function from the `itertools` module. The fill value is passed through the `fillvalue` argument. If we do not supply the `fillvalue` argument, `None` is used by default.
+
+```py
+from itertools import zip_longest
+
+subj = ['Mech','CP2','ES','MoM']
+ch   = (3,2,4)
+prof = ['Dr. Ali','Ahsan Naeem','Ahsan Masud','Dr. Baneen']
+
+z = zip_longest(subj,ch,prof,fillvalue='x')
+
+for s,c,p in z:
+  print(f"{s} has {c} Credit Hours and will be taught by {p}")
+
+# Mech has 3 Credit Hours and will be taught by Dr. Ali
+# CP2 has 2 Credit Hours and will be taught by Ahsan Naeem
+# ES has 4 Credit Hours and will be taught by Ahsan Masud
+# MoM has x Credit Hours and will be taught by Dr. Banee
+```
+
+- If we have multiple separate collections (or sequences) and we want to sort them based on one of them, we can zip them together using the `zip()` function, convert them into a list, and then, use the `sorted()` function or something else.
+
+```py
+subj = ['Mech','CP2','ES','MoM']
+ch   = (3,2,4)
+prof = ['Dr. Ali','Ahsan Naeem','Ahsan Masud','Dr. Baneen']
+
+l = list(zip(subj,ch,prof))
+
+# Sort based on the second element of each tuple, i.e, credit hours
+l.sort(key=lambda x:x[1])
+
+# Unpack each tuple from the list and iterate over them
+for s,c,p in z:
+  print(f"{s} has {c} Credit Hours and will be taught by {p}")
+```
+
+- The `zip()` function can be used to construct a dictionary from two iterables, considering that the first iterable contains the keys, and teh second iterable contains teh values.
+
+```py
+subj = ["LA","VCA","FOTS"]
+ch   = [3,4,2]
+my_dict = dict(zip(subj,ch))
+```
+
+- We can also zip two dictionaries together, in which, the corresponding key-value pairs are zipped together. This means that if the resulting tuples will be like this:
+  - ((key1_from_dict1,value1_from_dict1),(key1_from_dict2,value1_from_dict2))
+  - ((key2_from_dict1,value2_from_dict1),(key2_from_dict2,value2_from_dict2))
+  - ((key3_from_dict1,value3_from_dict1),(key3_from_dict2,value3_from_dict2))
+  - and so on
+  - basically a tuple of two tuples, where these subtuples are the corresponding key-value pairs from each dictionary
+
+```py
+student1 = {
+  'Reg':'2018-MC-01',
+  'Name':'Muhammad Usman',
+  'Sec':'A',
+  'Courses':['CP2','ES']}
+student2 = {
+  'Reg':'2018-MC-02',
+  'Name':'Tahir Mehmood',
+  'Sec':'A',
+  'Courses':['ES','LA']}
+
+# We have to use items() to get the key,value pair
+# if we just zip(student1,student2)
+# the resulint zipped object will only contain keys and no values 
+z = zip(student1.items(),student2.items())
+for (k1,v1),(k2,v2) in z:
+  print(f"{k1} of first student is {v1}")
+  print(f"{k2} of second student is {v2}")
+```
+
+- We also have a builtin `map()` method. Its signature is given below:
+
+```py
+map(func,*iterables)
+```
+
+- The `map()` method takes an arbitrary number of iterables and computes the given function using the corresponding elements from the iterables, and returns a map object. The map object is an iterator just like zip object, so it can also only be used once before being exhausted.
+- The number of iterables that should be provided to the `map()` method depends on the number of arguments of the given function. If this mapping function takes one argument, only one iterable should be provied, if that mapping function takes two argumetn, only two iterables should be provided. If that mapping function takes three arguments, three iterables should be provieded.
+- Lets consider this expression: `map(my_func,list1,list2)` and lets assume `my_func` is defined as a function `lambda x,y: x + y`. Now `map()` goes over each pair of corresponding values from the `list1` and `list2`, applies the `my_func(x,y)` on these values (`x = list1[i]` and `y = list2[i]`), and then the produced value is added to the map object. Lets see some examples:
+
+```py
+import math
+nums = [1,4,9,16,25]
+
+m = map(math.sqrt,nums)
+print(list(m)) # [1,2,3,4,5]
+
+list1 = [1,2,3,4,5]
+list2 = [-1,2,-3,4,-5]
+
+m = map(lambda x,y:x+y,list1,list2)
+print(list(m)) # [0,4,0,8,0]
+```
+
+- And similar to zip(), the map() also continues until one of the iterables is exhausted. This means that when the shortest iterable is exhausted, the map() terminates. So the resulting map object only has a length equal to the lenght of shortest iterable provided.
+- Besides, zip() and map(), there is another very useful builtin method called `filter()`. Data sets often need to be filtered based on some criteria. The filter() prototype looks like this:
+
+```py
+filter(func or None,iterable)
+```
+
+- The filter() returns an iterator yielding those items in the iterable for which `func(item)` is `True`. If the function is `None`, return those items that are `True`.
+- The filter() returns a filter object, which is an iterator just like map object and zip object.
+- For example, if the argument function is `lambda x: True if x%2 == 0 else False`, then only the even numbers in the iterable will be yielded to the filter object. And all odd numbers will be rejected.
+- One thing to remember here is that, Python treats all values other falsey values to be truish, so we do not necessarily have to return a boolean value, but is a good practice to do so. These are the falsey values:
+  - Sequences: empty lists `[]`, tuples `()`, sets `set()`, dictionaries `{}`, strings `""`, ranges `range(0)`.
+  - Numbers: zero integer `0`, zero float `0.0`, zero complex `0j`
+  - Constans: `False` and `None`
+
+```py
+nums = [1,2,3,4,5]
+
+# filter out odd numbers and yield only even numbers
+even_nums = filter(lambda x: x % 2 == 0, nums)
+list(f) # [2,4]
+
+# filter out even numbers, and yield only odd numbers
+odd_nums = filter(lambda x: x % 2 == 1, nums)
+list(f) # [1,3,5]
+```
+
+- Often we need to remove missing values from a dataset. To do that, we can simply use `filter(None,iterable)`. This works because missing values like empty sets, empty lists, 0 numbers, `None` etc are treated as False, and hence removed when `None` is passed as the function argument to the filter() method.
+- However, sometimes, `0` is considered a valuable information and not a missing value. To let the filter method allow `0` in the output filter object, we can explicitly tell it to consider `0` as `True`.
+
+```py
+filter(lambda x: True if x == 0 else x,iterable)
+```
+
+- However, this approach will also allow `False` value in the iterable, since `False == 0`. But we do not want it. So what do we do? Remember that the equality operator `==` checks for equivalence of values, and since `False` is converted to `0` when converted from boolean to a number. But the `is` operator checks for the object representation in memory. So `False is not 0`.
+
+```py
+filter(lambda x: True if x is 0 else x,iterable)
+```
+
+- There is one more very useful function that operates on iterables called `reduce()` available in `functools` modeule. The `reduce()` method has the following prototype:
+
+```py
+reduce(func,iterable[,initial])
+```
+
+- The reduce() method takes an iterable and reduces it to a single value, by applying the argument function cummutatively on two items from the iterable. For example, `reduce(lambda x, y: x+y, [1,2,3,4,5])` calculates the sum of the given list as `((((1+2)+3)+4)+5)`. If the optional `initial` argument is given, it is placed before the items of the iterable in the calculation, and serves as the default value when the iterable is empty.
+- The calculation is done as follows:
+  - Initially, the function `func(x,y)` is applied on the first two items of the iterable.
+  - The function is then called again with the result obtained in the previous step as the first argument, and the next value from the iterable as the second argument.
+  - This process keeps repeating until the last item in the iterable is processed.
+
+```py
+from functools import reduce
+
+nums = [1,2,3,4,5]
+
+# The following three examples can be achieved by builtin methods:
+# 1. sum(nums)
+# 2. min(nums)
+# 3. max(nums)
+
+# Calculates the sum of every element in the sequence
+reduce(lambda x,y: x + y, nums) # 15
+# ((((1+2)+3)+4)+5) = 15
+# 1+2+3+4+5
+
+# Calculates the minimum value in the sequence
+reduce(lambda x,y: x if x < y else y, nums) # 1
+# ((1 if 1 < 2 else 2) if (1 if 1 < 2 else 2) < 3 else 3) if ((1 if 1 < 2 else 2) if (1 if 1 < 2 else 2) < 3 else 3) < 4 else 5
+
+# Calculates the maximum value in the sequence
+reduce(lambda x,y: x if x > y else y, nums) # 5
+# ((1 if 1 > 2 else 2) if (1 if 1 > 2 else 2) > 3 else 3) if ((1 if 1 > 2 else 2) if (1 if 1 > 2 else 2) > 3 else 3) > 4 else 5
+
+# These examples can be elegantly achieved by reduce()
+# Doing them otherwise is complex
+
+# Calculates the product of every element in the sequence
+reduce(lambda x,y: x * y, nums) # 120
+# ((((1*2)*3)*4)*5) = 120
+# 1*2*3*4*5
+
+reduce(lambda x,y: x + math.factorial(y), nums, 0) # 153
+# (((((0+1!)+2!)+3!)+4!)+5!)
+# 1!+2!+3!+4!+5!
+```
+
+- There is no tuple comprehension, and if we try to code what seems to be a tuple comprehension, we instead get a generator object.
+
+```py
+nums = (5,4,1,2,3)
+x = (i * i for i in nums)
+type(x) # <generator object <genexpr> at 0x0000ffffff7f>
+```
+
+- Generator objects are also an iterator, just like zip, map, and filter.
+- Generator objects unlike list comprehensions, are much more memory efficient. This is because unlike lists, they do not store their contents in memory and do not calculate each element at definition. Instead they only yield each element successively. As we iterate over a generator object, the next element is calculated on the fly, and yielded. When the complete collection is exhausted, the generator object is left empty with nothing stored.
+
+```py
+nums = (5,3,4,6,8)
+
+# List comprehension
+sqNums1 = [i * i for i in nums]
+
+# Generator expression
+sqNums2 = (i * i for i in nums)
+```
+
+- The generator object `sqNums2` only holds the rule (squaring the numbers and a reference to the `nums` tuple). They do not calculate or store any squared number.
+- When we iterate over the generator object, an element is picked from the `nums` tuple, and the rule is applied to yield an element, that we can access. The generated element is used and discarded. In next iteration, the same procedure occurs and so on, till the last element is processed, at which point, the generator object is exhausted, with no value stored. So generator objects are one time usable. Therefore, generators are known as lazy single-use iterable.
+
+```py
+from sys import getsizeof
+
+sqNumbers = [n * n for n in range(10_000_000)]
+print(f"Size of list: {getsizeof(sqNumbers)} bytes")
+# Size of list: 89,095,160 bytes
+
+sqNumbers = (n * n for n in range(10_000_000))
+print(f"Size of generator: {getsizeof(sqNumbers)} bytes")
+# Size of generator: 104 bytes
+```
+
+- Some things to note are that:
+  - Generators are iterators (iterators are also iterables)
+  - Generators do not know how many elements are inside, so we can not use the `len()` function on them.
+  - Generators are single use iterators. Once used, we can not get the elements again. Once the generator is completely used, it is called as being exhausted.
+  - Because generators are single use, they are generally used immediately after creating them.
+- Generators are used when we need to process a sequence without needing access to individual elements arbitrarily, and we do not need those elements afterwards. Such a use is very common. For example, we might be interested in calculting the sum of all fibonacci numbers till 1000. We are only interested in their sum. And we do not want to use these fibonacci numbers after calculating their sum. So creating a list of these fib numbers and calculating their sum is a waste of memory. So we should use a generator expression.
+- There are two ways to create a generator: generator expressions and generator functions.
+- Iterable vs iterator: An iterable is a data type that can be directly iterated over, using a `for` loop for eaxmple. Iterators can also be iterated over directly, but only once. Once the iterator has produced all its elements, it will be exhausted and become empty.
+- Iterable is an object that has an `__iter__` method which returns an iterator, or which has an `__getitem__` method that can take take sequential indexes from zero (and raises an `IndexError` when the indices are no longer valid). So an iterable is an object that you can get an iterator from.
+- An iterator is an object with a `__next__` (Python 3) or `next` (Python 2) method. Whenever an iterator is iterated over, using a `for` loop for example. the `__next__` method is called autiomatically.
+- generator object, zip object, map object, filter object are all iterators. Whereas, list, tuples, sets, and dictionaries are iterables.
+- An iterator has a state that remembers where it is during iteration. During each iteration, it updates the state to point at the next value. When the iteration is done, it signals when it is done by raising `StopIteration`. An iterator also has `__iter__` method that returns itself. So an iterator is self-iterable. Whereas, an iterable returns an iterator that is a separate object.
+- Because an iterator depends on the `__next__` method to iterate, it can not be indexed arbitrarily. It can only be accessed sequentially. Whereas, an iterable uses the `__getitem__` method which can access an arbitrary element through an index value.
+- So an iterator uses `__next__` method for sequential access. Whereas an iterable uses the `__getitem__` method for arbitrary access. The `__next__` method raises the `StopIteration` exception to signal the end of an iteration. Whereas, the `__getitem__` method raises the `IndexError` exception to signal the end of an iteration, that the larger indexes are not valid.
+- However, an iterable can produce an iterator as well, thorugh the `__iter__` method. Which returns an iterator. This iterator is then used for a sequential iteration, and behaves the same way as any other iterator. An iterator also has an `__iter__` method, but `__iter__` returns itself. So an iterator is referred to as a self-iterable.
+- Any object of a class that follows the iterator protocol is an iterator. The iterator protocol requires the class to has two methods: `__iter__` and `__next__`.
+- Iterators are designed to be one time usable only. That is to say that they can not be reset. Once they raise the `StopIteration` exception, they will continue to do so.
+- Iterables on the other hand are not themselves iterators, rather they create a new iterator each time we use them. So alhough the iterator produced from an iterable by using the `__iter__` method is one time usable only. The iterable itself is not, as the next time we use the iterable, it simply generates a new iterator, which can be used to iterate over again. So iterables can be used as many times as required.
+- The following syntax is an example of a generator expression. It looks very similar to list comprehension, and it is designed to look like a list comprehension. Generator expressions werre introduced to be an alternative for list comphrehensions. A memory-efficient and time-efificnet alternative. They do not precalculate and store their elements from the rule specified for them. Rather they just store the rule. Whereas, the list comphrehension calculates each element and store them in memory, on definition. Thus, generator expressioons are used when we just want to iterate over a list for some reason, without the need for arbitrary access of the elements themselves after that particular use is over.
+
+```py
+# Generator expression
+g = (i for i in range(10))
+
+from sys import getsizeof
+getsizeof(g) # 104 bytes
+
+# Generator objects are iterators, so they have follow the iterator protocol
+g.__iter__() == g # True
+
+g.__next__() # 0
+g.__next__() # 1
+# ... so on
+g.__next__() # 9
+g.__next__() # StopIteration
+
+l = [i for i in range(10)]
+getsizeof(l) # 184 bytes
+# this looks small, but we have seen the value for range(10_000_000))
+
+# List objects are iterables, so they can generate an iterator
+# and have the __getitem__(idx) method
+itr = l.__iter__()
+
+itr.__next__() # 0
+itr.__next__() # 1
+# ... so on
+itr.__next__() # 9
+itr.__next__() # StopIteration
+
+# Arbitrary access is possible on iterables because they have __getitem__(idx) method
+l.__getitem__(5) # 5
+```
+
+- Generator expressions can be used directly as an input to a function that requires an iteratable input. Remember that iterators are also iterables.
+
+```py
+# Generator objects can be assigned to an identifier
+# and that identifier can be used as an argument to sum(iterable)
+g = (i for i in range(10))
+sum(g)
+
+# Generator object can be directly used as an argument to sum(iterable)
+sum((i for i in range(10)))
+
+# And we can even eliminate the parenthesis around the generator object
+sum(i for i in range(10))
+
+# Similarly, lists created from list comprehension can be assigned to an identifier
+# and these list identifiers can be used as argument to sum(iterable)
+l = [i for i in range(10)]
+sum(l)
+
+# List comprehension objects can be directly used as an argument to sum(iterable)
+# But we can not eliminate the square brackets around the list comprehension
+# as that would lead to ambiguity
+sum([i for i in range(10)])
+```
+
+- Generator objects are most commonly used in two ways:
+  - they are iterated over in a loop, for example the `for` loop
+  - they are used as an argument to a function that requires an iterable argument
+- If we partly use a generator object, the next time we access it, we only access from that point onwards. It is as if, the used elements were never there.
+
+```py
+g = (i for i in range(10))
+
+# Lets use the first 3 elements inside the generator object
+g.__next__() # 0
+g.__next__() # 1
+g.__next__() # 2
+
+# Now when we use them, we can only access the rest of the elements
+# 0,1,2 are not accessible anymore
+# the generator object can only iterate from 3 to 9
+sum(g) # 42
+# Notice that the sum is 42 (= 3+4+5+6+7+8+9)
+# instead of 45 (= 0+1+2+3+4+5+6+7+8+9)
+```
+
+- We can also cast a generator object to other iterables like a list, tuple, or set. But note that doing so would violate the very purpose they were designed for. We create generator objects as a memory-efficient, time-efficient single-use alternative to lists, tuples, etc. But if we cast them to a list, or tuple etc, datatype, although we can, it violates that very principle.
+
+```py
+g = (i for i in range(10))
+# Casting to list
+g_obj_casted_to_list = list(g)
+
+g = (i for i in range(10))
+# Casting to tuple
+g_obj_casted_to_tuple = tuple(g)
+```
+
+- Besides generator expressions, generator objects can be created using generator functions. Generator functions use a special keyword `yield`, and they behave differently than normal functions.
+
+```py
+def count(n):
+  while True:
+    yield n
+    n += 1
+
+# Main program
+a = count(0) # <generator object count at 0x7fd7e0c135a0>
+
+a.__next__() # 0
+a.__next__() # 1
+a.__next__() # 2
+# ... so on
+```
+
+- This function `count(n)` returns a generator object. The statement `a = count(0)` created the generator object. Now, we can use it as any other generator object.
+- The generator function contains the `yield` keyword. The `yield` keyword is like a `return` statement, but behaves slightly different.
+- The generator function is called by using the `__next__()` or `next` methods. When the generator function reaches the `yield` keyword, the interpreter returns back to the calling site with the value that is yielded (just like a `return n` statement). But when the `next()` is executed again, the interpreted continues from the next line of the `yield` statement rather than restarting from the function entry. In our example, since we were in a `while` loop, the interpreter jumps to the next line of the yield statement, which incremented `n` and goes on to the next iteration of the while loop, yields the new value of `n`. And returns to the calling site again. The `next` method will keep going until the loop inside the function is valid. If we were instead to have a `for` loop with a fixed number of iterations. Imagine the `for` loop has 5 iterations. On the 5th iteration we would continue from the next line of yield statement, just like all previous iterations, nothing fancy so far. But when we execute the `next()`, the 6th time (remember tha the `for` loop only allowed 5 iterations), the interpreter would jump to the next line of the yield statement, execute those lines until the end of the function. And when the function ends, instead of returning, it would raise the `StopIteration` exception. And when we execute `next()` once more, we would still get only the `StopIteration` exception.
+
+```py
+def func():
+  print("Function entry")
+  for i in range(5):
+    yield i
+    print("Next line of yield statement")
+  print("Function end")
+
+g = func()
+
+print(g.__next__())
+# Function entry
+# 0
+
+print(g.__next__())
+# Next line of yield statement
+# 1
+
+print(g.__next__())
+# Next line of yield statement
+# 2
+
+print(g.__next__())
+# Next line of yield statement
+# 3
+
+print(g.__next__())
+# Next line of yield statement
+# 4
+
+print(g.__next__())
+# Next line of yield statement
+# Function end
+# StopIteration
+
+print(g.__next__())
+# StopIteration
+```
+
+- Because of the behavior of the `yield` statement, the generator functions need a loop to be useful. Although, of very little use, we can write a generator function without any loop.
+
+```py
+def func():
+  print("Function entry")
+  yield
+  print("Function end")
+
+g = func()
+
+g.__next__()
+# Function entry
+
+g.__next__()
+# Function end
+# StopIteration
+
+g.__next__()
+# StopIteration
+```
+
+- Because of the behavior of the yield statement, generator functions are also sometimes called pause-able functions. Since they can be paused and resumed.
+- Although normal functions can be considered `NoneType` if they do not contain any exectuable code, however, functions with `yield` statement are always considered as generator functions, and produce a generator object, even if they do not have any executable code.
+
+```py
+# Regular function # 1
+def func():
+  return
+
+a = func()
+print(a) # None
+type(a) # <class 'NoneType'>
+
+# Regular function # 2
+
+def func():
+  if 1 == 2:
+    return 1
+
+a = func()
+print(a) # None
+type(a) # <class 'NoneType'>
+
+# Generator function # 1
+def func():
+  yield
+
+a = func()
+print(a) # <generator object func at 0x7fd7e0c135a0>
+type(a) # <class 'generator'>
+
+# Generator function # 2
+def func():
+  if 1 == 2:
+    yield 1
+
+a = func()
+print(a) # <generator object func at 0x7fd7e0b1c4a0>
+type(a) # <class 'generator'>
+```
+
+- The generator function can have the `return` keyword. But they behave differently compared to non-genreator functions. When the `return` is encountered, the generator function terminates and raises the `StopIteration` exception. Which means, that the generator object is exhausted. So to "return" a value from a genrator function, always ue the `yield` statement. Since using a `return` statement would instead terminate the function and raise the `StopIteration` exception, wihtout actually returning anyhting.
+
+```py
+# This function shows why you should not use the return
+# and yield statements together in a generator function
+def func():
+  return 1
+  yield 1
+
+a = func()
+
+next(a)
+# StopIteration: 1
+
+# This happens because the return 1 statement is interpreted as:
+# raise StopIteration: 1
+
+next(a)
+# StopIteration
+
+# This happens because just like any iterator,
+# once a StopIteration is raised, it will continue to raise it
+# but this time (and from now on) without the message
+# that we gave with the return value statement
+```
+
+- Also the `return value` will not return the value, instead the `value` is used as the message for the `StopIteration` exception.
+
+```py
+# The following function
+def gen_func():
+  yield 1
+  return value
+
+# is equivalent to this function
+def gen_func():
+  yield 1
+  raise StopIteration(value)
+```
+
+- An important thing to note that the generator functions create a generator object. And these genrator objects behave like any other generator object.
+
+```py
+def func(n):
+  for i in range(10):
+    yield n
+    n += 1
+
+g = func(0)
+next(g) # 0
+next(g) # 1
+list(g) # [2,3,4,5,6,7,8,9]
+next(g) # StopIteration
+```
+
+- A regular (non-generator) function can return a generator expression. That means, that when the function is called, it returns a generator object, just like a genrator function returns a genrator object. But that does not make it a generator fucntion. A function is not called a generator function just because it returns a generator object. Rather if it contains a `yield` statement.
+
+```py
+# Non-generator function that does not return generator object
+def sqNums1(aList):
+  return [i * i for i in aList]
+
+# A generator function that returns a generator object
+def sqNums2(aList):
+  for i in aList:
+    yield i * i
+
+# A non-generator function that returns a generator object
+def sqNums3(aList):
+  return (i * i for i in aList)
+```
+
+- Also a generator function can contain more than one `yield` statements. The first `yield` statement will make the execution jump back to the calling site. When the `next()` is exewucted, the execution continues from the next line of the previous `yield` statement. And if it encounters another `yield` statement, it again returns to the calling site. Now if the `next()` is executed again, the execution continues from the next line of this `yield` statement, and so on.
+
+```py
+def func():
+  for i in range(5):
+    yield i
+    yield i * 2
+
+g = func()
+
+next(g) # 0 (i)
+next(g) # 0 (i * 2)
+next(g) # 1 (i)
+next(g) # 2 (i * 2)
+next(g) # 3 (i)
+next(g) # 6 (i * 2)
+next(g) # 4 (i)
+next(g) # 8 (i * 2)
+next(g) # StopIteration
+```
+
+- Object oriented programming is a programming paradigm where we create objects. Objects are created from abstract data types called classes that encapsulate data and functions together.
+- There are primarily two methods of programming today: procedural and object-oriented. Procedural programming is focused on creating procedures or functions, whereas, object-oriented programming is focused on creating objects. The programming we did so far was procedural, since we were mainly focused on writing standalone functions to do everything.
+- Object is a software entity that contains both data and procedures. The data contained in an object is called the object's data attributes. Whereas, the procedures contained in an object are called methods. The data attributes are simply variables that reference data, and the methods are functions that perform operations on these data attributes. The object is conceptually a self-contained unit that consists of data attributes and methods that operate on these data attributes.
+- To define an object, we must first define a class of which type the object shall be.
+
+```py
+class Student:
+  pass
+
+student1 = Student() # <__main__.Student object at 0x7f1d65440dc0>
+type(student1) # <class '__main__.Student'>
+isinstance(student1,Student) # True
+```
+
+- The definition of an object (sometimes called an instance of the class) is more properly called **intantiation**.
+- The assigning of the data attributes to the object is called **initialization**.
+- The reason you see `__main__` before the class names in the above output, is because Python creates a module named as `__module__` in which the class is defined. However, you do not need to worry about it, as it is created and managed automatically behind the scenes.
+- Once an object is created, we can add different attributes to it as shown here:
+
+```py
+# class definition
+class Student:
+  pass
+
+student1 = Student() # object instantiation
+
+# We can add data attributes after instantiation using dot notation
+student1.reg = "2018-MC-01"
+student1.name = "Mr. Shawn Johnson"
+student1.sec = "B"
+
+# Now we can access these attributes using the dot notation
+student1.reg # "2018-MC-01"
+student1.name # "Mr. Shawn Johson"
+student1.sec # "B"
+```
+
+- However, adding all these attributes for every object we create of our class is very time consuming. A better approach would be to create a class method that does this automatically for us.
+
+```py
+# class definition
+class Student:
+  def initialize(obj,n,r,s):
+    obj.name = n
+    obj.reg = r
+    obj.sec = s
+
+student1 = Student() # instantiation
+
+# we can call the class method to set the data attributes automatically
+Student.initialize(student1,"Mr. Shawn Johnson","2018-MC-71","B")
+# note that the method initialize() is called on the Student class
+```
+
+- Methods defined in a class have bindings (they are bound or connected to something). Based on the type of binding, methods are of three types:
+  - Instance methods: A method bound with the instance (object) of a class. By default a method defined in a class is an instance method
+  - Class method: A method bound with the class. We will see these later.
+  - Static method: A method defined in a class, but is bound to neither the class nor any instance of it, is called a static method. We will see these later as well.
+- So, a method defined in a class, is by default, an instance method. When we call an instance method on an instance, the instance is passed as the first argument automatically. So we can simplify our example code as:
+
+```py
+# notice that although the method initialize() takes 4 arguments
+# we provided only 3
+# the first argument is automatically provided as the instance itself
+# which in this case is student1
+student1.initialize("Mr. Shawn Johnson","2018-MC-71","B")
+```
+
+- However, there are a few naming conventions that we need to follow:
+  - The first argument of an instance method is named `self`.
+  - The rest of the arguments should have the same name as the data attributes they are used to assign with.
+- With these two naming conventions applied, our above code looks like this:
+
+```py
+class Student:
+  def initialize(self,name,reg,sec):
+    self.name = name
+    self.reg = reg
+    self.sec = sec
+
+student1 = Student()
+student1.initialize("Mr. Shawn Johnson","2018-MC-71","B")
+```
+
+- Python has a special method or a magic method called `__init__()`, known as a constructor in other programming languages. Lets replace the name of our `initialize()` method with this magic function name.
+
+```py
+class Student:
+  def __init__(self,name,reg,sec):
+    self.name = name
+    self.reg = reg
+    self.sec = sec
+
+student1 = Student()
+student1.initialize("Mr. Shawn Johnson","2018-MC-71","B")
+```
+
+- With the magic method `__init__()` we can instantiate and initialize our object at the same time. We can pass in the initializing arguments at the time of instantiation. And the magic method gets called automatically.
+
+```py
+class Student:
+  def __init__(self,name,reg,sec):
+    self.name = name
+    self.reg = reg
+    self.sec = sec
+
+student1 = Student("Mr. Shawn Johnson","2018-MC-71","B")
+```
+
+- Even with the `__init__()` class constructor, we can still add more data attributes, and modify existing data attributes later using the dot notation.
+
+```py
+class Student:
+  def __init__(self,name,reg,sec):
+    self.name = name
+    self.reg = reg
+    self.sec = sec
+
+student1 = Student("Mr. Shawn Johnson","2018-MC-71","B")
+
+# modifying an existing data attribute
+student1.sec = "A"
+# adding a new data attribute
+student1.email = "example@example.com"
+```
+
+- We can use the data attributes inside class methods.
+
+```py
+class Student:
+  def __init__(self,name,reg,sec):
+    self.name = name
+    self.reg = reg
+    self.sec = sec
+    self.email = reg + "@student.uet.edu.pk"
+
+# we do not need to pass the email argument
+# as that will be created automatically from the reg argumetn
+student1 = Student("Mr. Shawn Johnson","2018-MC-71","B")
+```
+
+- Besides instance attributes, we can define class attributes as well. These class attributes will be assigned to all instances of the class without manually doing it. We can however modify its value later (after instantiation) to suit our needs, wihtout affecting other instances of that class.
+
+```py
+class Student:
+  department = "Mechatronics"
+  
+  def __init__(self,name,reg,sec):
+    self.name = name
+    self.reg = reg
+    self.sec = sec
+    self.email = "".join(reg.split("-")).lower() + "@student.uet.edu.pk"
+
+student1 = Student("Yahya Mateen","2019-R-2018-MC-71","B")
+student2 = Student("Dr. Ali Raza","2010-MC-01","B")
+
+student1.department # "Mechatronics"
+student2.department # "Mechatronics"
+
+student1.department = "Computer Science"
+
+student1.department # "Computer Science"
+student2.department # "Mechatronics"
+```
+
+- We can define more instance methods in a similar way as we define regular functions. With one important change. We must pass `self` as the first argument of the method. This `self` argument will be initialized with the reference of the instance itself. So we can apply changes to the object (instance) through this parameter.
+
+```py
+def Student:
+  department = "Mechatronics"
+  offered_subjects = ["LA","ES","CP","PD","VCA"]
+  
+  def __init__(self,name,reg,sec):
+    self.name = name
+    self.reg = reg
+    self.sec = sec
+    self.email = "".join(reg.split("-")).lower() + "@student.uet.edu.pk"
+    self.subjects = []
+
+  def register_subject(self,*subjects):
+    for subject in subjects:
+      if subject in Student.offered_subjects:
+        self.subjects.append(subject)
+      else:
+        raise ValueError("subjects should be from the offered subjects list")
+
+student1 = Student("Yahya Mateen","2019-R-2018-MC-71","B")
+student1.register_subject("LA","ISL","CP","PD")
+student1.subjects # ["LA","CP","PD"]
+```
+
+- The class attributes are accessible through either the class or the instance.
+
+```py
+def MyClass:
+  myattribute = 5
+
+  def __init__(self):
+    pass
+
+  def myfunc(self):
+    MyClass.myattribute # 5
+    self.myattribute # 5
+```
+
+- Initially on instantiation, the `self.myattribute` and `MyClass.myattribute` both will have the same value. But if we change the value of `self.myattribute` for an object, the `MyClass.myattribute` will still remain the same.
+- Every class and instance of it has a magic attribute called `__dict__` that contains all the class/instance attributes and methods as a dictionary.
+
+```py
+class Student:
+  department = "Mechatronics"
+
+  def __init__(self,name):
+    self.name = name
+  
+  def change_name(self,new_name):
+    self.name = new_name
+
+student1 = Student("Mr. Earl")
+
+Student.__dict__()
+# {
+#   '__module__': '__main__',
+#   'department': 'Mechatronics',
+#   '__init__': <function Student.__init__ at 0x7f1a5cbb7ac0>,
+#   'change_name': <function Student.change_name at 0x7f1a5cbb7b50>,
+#   '__dict__': <attribute '__dict__' of 'Student' objects>,
+#   '__weakref__': <attribute '__weakref__' of 'Student' objects>,
+#   '__doc__': None
+# }
+student1.__dict__()
+# {
+#   'name': 'Mr. Earl'
+# }
+```
+
+- Some things to note is that, the instance of a class does not contain the class methods. Also, the `department` attribute is missing from the instance `student1`. How? If you type `student1.department`, it correctly returns the value `"Mechatronics"`. So what is happening here? Actually, the `department` attribute is a class attribute, and not the instance attribute. When we try to access the department attribute, the interpreter searches for this attribute in the instance namespace. If it does not find it, it searches for it in its parent class namespace, and from there, it gets the value `"Mechatronics"`. So no, `department` is not an instance attribute. Atleast not now. If we however, change the department attribute for the instance, it becomes an instance attribute and starts to show up in the instance `__dict__` as well.
+
+```py
+class Student:  
+  department = "Mechatronics"
+
+  def __init__(self,name):
+    self.name = name
+  
+  def change_name(self,new_name):
+    self.name = new_name
+
+student1 = Student("Mr. Earl")
+student1.department = "Computer Science"
+
+Student.__dict__()
+# {
+#   '__module__': '__main__',
+#   'department': 'Mechatronics',
+#   '__init__': <function Student.__init__ at 0x7f1a5cbb7ac0>,
+#   'change_name': <function Student.change_name at 0x7f1a5cbb7b50>,
+#   '__dict__': <attribute '__dict__' of 'Student' objects>,
+#   '__weakref__': <attribute '__weakref__' of 'Student' objects>,
+#   '__doc__': None
+# }
+student1.__dict__()
+# {
+#   'name': 'Mr. Earl'
+#   'department': 'Computer Science'
+# }
+```
+
+- In our student class we created an instance attribute `email` which we initialized with a value created from `reg` and appending the domain name next to it. However, if we change the `reg` value, the `email` attribute is not automatiocally updated. So what do we do?
+
+```py
+# Approach 0: do nothing
+class Student:
+  def __init__(self,reg):
+    self.reg = reg
+    self.email = "".joing(self.reg.split("-")).lower() + "@student.uet.edu.pk"
+
+# Approach 1: create an setEmail function
+# that updates the email to reflect changes in the reg attribute
+# however, we need to call this function manually
+# to update the email everytime reg changes
+class Student:
+  def __init__(self,reg):
+    self.reg = reg
+    self.email = "".joing(self.reg.split("-")).lower() + "@student.uet.edu.pk"
+
+  def setEmail(self):
+    self.email = "".joing(self.reg.split("-")).lower() + "@student.uet.edu.pk"
+
+# Approach 2: make email a method rather than an attribute
+# whenever we need the email, we call this method to get the latest value
+# however, technically, the email is no longer an attribute, rather a method
+class Student:
+  def __init__(self,reg):
+    self.reg = reg
+
+  def email(self):
+    return ("".joing(self.reg.split("-")).lower() + "@student.uet.edu.pk")
+
+# Approach 3: make email a method and add the @property function decorator
+# this makes the email method behave like an attribute
+# so we can simply call Student.email instead of Student.email()
+class Student:
+  def __init__(self,reg):
+    self.reg = reg
+
+  @property
+  def email(self):
+    return ("".joing(self.reg.split("-")).lower() + "@student.uet.edu.pk")
+```
+
+- When we try to print an object or use an object as a string, the default conversion is not very useful. It just tells the class name with its memory address.
+- To change that we can define two special methods `__str__()` and `__repr__()`. Both of these need to return a string. These strings will then be used where a string representation is needed for example in a `print()` statement.
+- The difference between these two is that the `__str__()` is intended for user readability, whereas `__repr__()` is intended for uniqueness and completeness in debugging purposes for developers.
+- Conventionally, the string from `__str__()` should describe the user-friendly information about the object. It can be anything that you deem appropriate.
+- Conventionally, the string from `__repr__()` should be such that `eval(repr(c)) == c` is True. Thus, the `__repr__()` needs to return the instantiating constructor of the object, such that if we copy paste this string, it should be evaluated to produce the an exact copy of the object.
+- By default, any function that expects a string argument, will choose the `__str__()` return value, but if there is not `__str__()` method, it will go for the `__repr__()` method. If even that is not defined, it will use the default `__str__()`, which just returns the class name and memory location. The default `__str__()` and `__repr__()` both return the same string. It has a class name and memory location.
+- To use the `__repr__()` string representation instead of the `__str__()`, we need to explicitly call `__repr__()`, or use a expressions that explicitly uses `__repr__()` such as `repr()` or `%r` format etc.
+- However, there is an interesting situation where the `__repr__()` is used by default instead of `__str__()`, and that is a container. The `__str__()` of a container is the `__repr__()` of its objects.
+- So if we have a list of objects. The list will contain the `__repr__()` of its children objects.
+- This is because, the `__str__()` representation of the objects will cause a lot of trouble, as the strings could contain characters that would interfere with the delimiters of the container itself. So `__repr__()` is used as a safe alternative.
+
+```py
+class Student:
+  pass
+
+std1 = Student()
+
+# If we do not define our own __str__() and __repr__() methods
+# the defaults are used
+# the default __str__() and __repr__() both return the same string
+print(std1)            # <__main__.X object at 0x7f52592e4dc0>
+print(std1.__str__())  # <__main__.X object at 0x7f52592e4dc0>
+print(std1.__repr__()) # <__main__.X object at 0x7f52592e4dc0>
+
+class Student:
+  def __str__(self):
+    return "__str__()"
+
+  def __repr__(self):
+    return "__repr__()"
+
+std1 = Student()
+
+# Any function that expects a string argument
+# will prefer __str__() over __repr__()
+# however, if it does not find a __str__() definition
+# it will use the __repr__()
+print(std1)            # __str__()
+print(std1.__str__())  # __str__()
+print(std1.__repr__()) # __repr__()
+
+# but there are some functions and expressions
+# that explicitly need the __repr__()
+# if __repr__() is not defined
+# instead of trying __str__()
+# they will rather chose the default __repr__() method
+# this means that if the __repr__() was not defined in our class
+# instead of "__str__()", we would get "<__main__.Student object at 0x7f5259215ff0>"
+repr(std1)             # __repr__()
+"%r" % std1            # __repr__()
+
+l = [Student(),Student()]
+
+# The __str__() of a container consists of __repr__() of its objects
+# this is because if python instead used __str__() of the container's objects
+# the __str__() of the container could be a total mess
+# for example, imagine if the __str__() used the quotation marks in its return value
+# the same rule applies here as repr() and %r
+# if __repr__() is not available, it will choose the default __repr__()
+# instead of going for the __str__(), even if it is defined
+print(l) # [__repr__(), __repr__()]
+
+# Conventionally, the __str__() should return a user readable string
+# even if it is ambiguous, as it is solely used for readability
+# not for debugging
+# however, the __repr__() should return a string such that
+# eval(repr(c)) == c
+def Student:
+  def __init__(self,name,reg):
+    self.name = name
+    self.reg = reg
+
+  def __str__(self):
+    return f"{name} - {reg}"
+
+  def __repr__(self):
+    return f"Student({self.name},{self.reg})"
+```
+
+- Encapsulation in object-oriented programming is a mechanism of restricting direct access to some componenets of an object, so users can not access state of the object and alter that.
+- In class programming, there are three types of attributes:
+  - public: class attributes that are accessible everywhere (outside and inside the class). The way we have used the attributes so far, are all public attributes.
+  - private: class attribute that are accesssible only within the class and not outisde the class.
+  - protected. class attributes that are accessible within the class and other classes that inherit from that class, but not outisde the class.
+- Unlike many other programming languages, all attributes in python are actually public. Encapsulation in python is used as a convention rather than enforcement. This is because python is built on trust, and allows outside users to access apparently private attributes.
+- Private names help to prevent access from outside code. For eaxmple, consider the following code used to decide a lottery winner.
+
+```py
+import random
+
+class Lottery:
+  def __init__(self):
+    self.participants = []
+    self.winner = None
+
+  def add_participant(self,p):
+    self.participant.append(p)
+  
+  def select_winner(self):
+    self.winner = random.choice(self.participant)
+  
+  def get_winner(self):
+    return self.winner
+
+my_lottery = Lottery()
+# We assume the numbers 1,2,...,100 are ID numbers of participants
+my_lottery.add_participant(1)
+my_lottery.add_participant(2)
+# ... so on
+my_lottery.add_participant(100)
+
+# Intended usage
+my_lottery.select_winner()
+winner = my_lottery.get_winner()
+
+# Exploitation
+my_lottery.winner = 5 # Lets assume 5 is the ID number of the hacker himself
+winner = my_lottery.get_winner()
+```
+
+- So we need a way to prevent sensitive attributes from being modified by code outside the class. Python does not have a true private concept. Instead, it uses naming conventions to indicate privateness.
+- Single leading underscore `_x` indicate that a name is meant to be private. This is merely a hint that the name is intended to be used internally only, and does not modify the program behavior in any way.
+
+```py
+import random
+
+class Lottery:
+  def __init__(self):
+    self.participants = []
+    self._winner = None
+
+  def add_participant(self,p):
+    self.participant.append(p)
+  
+  def select_winner(self):
+    self._winner = random.choice(self.participant)
+  
+  def get_winner(self):
+    return self._winner
+
+my_lottery = Lottery()
+# We assume the numbers 1,2,...,100 are ID numbers of participants
+my_lottery.add_participant(1)
+my_lottery.add_participant(2)
+# ... so on
+my_lottery.add_participant(100)
+
+# Intended usage
+my_lottery.select_winner()
+winner = my_lottery.get_winner()
+
+# Note: Exploitation is possible,
+# but a single leading underscore indicates that this is not intended to be modified
+# so although exploitation is possible, accidents would not happen 
+# Exploitation
+my_lottery._winner = 5 # Lets assume 5 is the ID number of the hacker himself
+winner = my_lottery.get_winner()
+```
+
+- Double leading underscore `__x` does not only indicates the name is private, but it also mangles its name, so outside access is difficult. IT STILL DOES NOT MAKE IT PRIVATE, IT JUST MAKES IT HARDER TO ACCESS THE NAME FROM OUTSIDE THE CLASS. It does so by name mangling. So `__x` is transformed to `_ClassName__x`. This has one other benefit. It prevents name clashes between derived classes and parent classes having the same attributes. This is possible because in the mangled name the `_ClassName__` prefix would be differnt. From outside the class, `my_object.__x` would not work and raise an `AttributeError`, but `_ClassName__x` would work.
+- However, there is one thing that we need to remeber here. you can add more attributes to the object. So the access `my_lottery.__winner = 5` is not changing the `__winner` that we have defined as a private name inside the class. Because that private name (the one we are concerned with) is mangled to `_Lottery__winner`. So `my_lottery.__winner = 5` will add a new attribute with name `__winner` to the `my_lottery` instance, rather than raising an error. So if we attempt to view the `my_lottery.__dict__`, we will see two so called winners: `_Lottery__winner` and `__winner`. The class code that uses `self.__winner` is also changed to reference the mangled name instead of `__winner`. So adding a new attribute woudl not have any effect.
+
+```py
+import random
+
+class Lottery:
+  def __init__(self):
+    self.participants = []
+    self.__winner = None
+
+  def add_participant(self,p):
+    self.participant.append(p)
+  
+  def select_winner(self):
+    self.__winner = random.choice(self.participant)
+  
+  def get_winner(self):
+    return self.__winner
+
+my_lottery = Lottery()
+# We assume the numbers 1,2,...,100 are ID numbers of participants
+my_lottery.add_participant(1)
+my_lottery.add_participant(2)
+# ... so on
+my_lottery.add_participant(100)
+
+# Intended usage
+my_lottery.select_winner()
+winner = my_lottery.get_winner()
+
+# Exploitation attempt
+my_lottery.__winner
+# AttributeError: 'Lottery' object has no attribute '__winner'
+my_lottery.__winner = 5
+winner = my_lottery.get_winner() # None since we didnot call select_winner() yet
+
+my_lottery._Lottery__winner = 5 # This would work however, but please don't
+```
+
+- Getter and setter methods:
+- python provides builtin methods called `getattr(instance_name,attribute_name)` and `setattr(instance_name,attribute_name,attribute_value)`, to get and set attributes respectively. Although these two methods are not used often, they are useful when the attribute we have to access, is in the form of a variable as a string.
+
+```py
+my_attr = input("Enter the attribute you want to access: ")
+my_object.my_attr # AttributeError: 'Lottery' object has no attribute 'my_attr'
+my_object.my_attr = 4 # AttributeError: 'Lottery' object has no attribute 'my_attr'
+```
+
+- However, `getattr` and `setattr` will work in this scenario.
+
+```py
+my_attr = input("Enter the attribute you want to access: ")
+getattr(my_object,my_attr) # Works correctly as expected
+setattr(my_object,my_attr,4) # Works correctly as expected
+```
+
+- Another advantage is that, in case the attribute does not exist, the dot notation would produce an attribute error, but `getattr` allows us to pass a default value as the third argument. This will be returned to the user, BUT WILL NOT CHANGE THE ATTRIBUTE VALUE.
+
+```py
+my_attr = "some_attr" # Lets assume my_object does not have this attribute
+my_object.my_attr # AttributeError
+
+getattr(my_object,my_attr) # AttributeError
+getattr(my_object,my_attr,5) # 5
+# This 5 is just returned as a default value
+# and the my_attr is neither created nor modified
+```
+
+- There is also a buultin function `hasattr(instance_name,attribute_name)` that checks if the object has the given attribute. If it does, it returns `True`, otherwise `False`.
+
+```py
+if hasattr(my_object,my_attr):
+  print(my_object.my_attr) # We can access it without worrying
+else:
+  print("Oops! The attribute does not exist") # We can handle it properly
+```
+
+- However, mostly we define our own getters and setters methods. The getters are also called accessors and setters are also called mutators. There are three common ways to do it. The best appraoch is given at last, and not so good approach is given first.
+
+```py
+class MyClass:
+  # Notice that the __x is defined as a "private" name
+  def __init__(self,x):
+    self.__x = x
+  
+  def get_x(self):
+    return self.__x
+  
+  def set_x(self,new_x):
+    self.__x = x
+
+my_object = MyClass(5) # initial value 5
+my_object.get_x() # 5
+my_object.set_x(7) # Will set __x to 7
+```
+
+- The advatange of using getter instaed of dot notation is that, is that it provides a formal channel to access a private attribute. And it can modify that private value if required as appropriate.
+- The advantage of using setter instead of dot notation is that, we can add validation rules beforing blindly modifying a private name. We can check for things like, correct data type, acceptable length, pattern etc.
+
+```py
+class MyClass:
+  def __init__(self,x):
+    self.__x = x
+
+# If there was some error in initializing __x
+# and so __x is None
+# we can return 0 intead of None as a default value
+# so the client-side code does not crash with an unexpected value of None
+  def get_x(self):
+    if self.__x == None:
+      return 0
+    else:
+      return self.__x
+  
+# Notice how we can validate the new_x before blindly assigning it to __x
+  def set_x(self,new_x):
+    if isinstance(new_x,int) and x > 0 and x < 1000:
+      self.__x = new_x
+    else:
+      raise ValueError("x should be an integer between 0 and 1000")
+```
+
+- Lets add one more private attribute:
+
+```py
+class MyClass:
+  def __init__(self,x,y):
+    self.__x = x
+    self.__y = y
+
+  def get_x(self):
+    if self.__x == None:
+      ret_x = 0
+    else:
+      ret_x = self.__x
+    
+  def get_y(self):
+    if self.__y == None:
+      ret_y = 0
+    else:
+      ret_y = self.__y
+  
+  def set_x(self,new_x):
+    if isinstance(new_x,int) and x > 0 and x < 1000:
+      self.__x = new_x
+    else:
+      raise ValueError("value should be an integer between 0 and 1000")
+
+  def set_y(self,new_y):
+    if isinstance(new_y,int) and y > 0 and y < 1000:
+      self.__y = new_y
+    else:
+      raise ValueError("value should be an integer between 0 and 1000")
+```
+
+- The code has become lengthly and unmanageable. We are reusing the same validation rules. So its a good idea to create separate validation methods.
+
+```py
+class MyClass:
+  def __init__(self,x,y):
+    self.__x = x
+    self.__y = y
+
+  def safe_get(self,z):
+    if z == None:
+      return 0
+    else:
+      return z
+
+  def isvalid(self,z):
+    if isinstace(z,int) and z > 0 and z < 1000:
+      return True
+    else:
+      raise ValueError("value should be an integer between 0 and 1000")
+
+  def get_x(self):
+    return self.safe_get(self.__x)
+  
+  def get_y(self):
+    return self.safe_get(self.__y)
+
+  def set_x(self,new_x):
+    if self.isvalid(new_x):
+      self.__x = new_x
+
+  def set_y(self,new_y):
+    if self.isvalid(new_y):
+      self.__y = new_y
+```
+
+- We can add these safety validation rules to our constructor as well, by reusing the setters.
+
+```py
+class MyClass:
+  def __init__(self,x,y):
+    self.set_x(x)
+    self.set_y(y)
+
+# full code not shown
+```
+
+- One last improvement here, before we move to the second approach. Notice that the `isvalid` method does not need the instance or the class. It might as well be a standalone function outside the class. Therefore, we should declare it as a static method. To do that, we add the `@staticmethod` function decorator. Static methods are used with reference to their class. So `ClassName.static_method()`. Also, because it is now a static method, we can not pass the first argument as `self`, as we would not be calling it on the instance. The final code is this:
+
+```py
+class MyClass:
+  def __init__(self,x,y):
+    self.set_x(x)
+    self.set_y(y)
+
+  def safe_get(self,z):
+    if z == None:
+      return 0
+    else:
+      return z
+
+  @staticmethod
+  def isvalid(z):
+    if isinstace(z,int) and z > 0 and z < 1000:
+      return True
+    else:
+      raise ValueError("value should be an integer between 0 and 1000")
+
+  def get_x(self):
+    return self.safe_get(self.__x)
+  
+  def get_y(self):
+    return self.safe_get(self.__y)
+
+  def set_x(self,new_x):
+    if MyClass.isvalid(new_x):
+      self.__x = new_x
+
+  def set_y(self,new_y):
+    if MyClass.isvalid(new_y):
+      self.__y = new_y
+
+my_object = MyClass(4,5)
+my_object.get_x()
+my_object.set_x(9)
+```
+
+- Approach 2: We can use the `property(fget,fset,fdel,doc)` method. It will set the `fget` as the getter, `fset` as the setter, `fdel` as the deleter, and the `doc` as the docstring for the attribute.
+- We use it as: `attribute_name = property(fget,fset,fdel,doc)`. This will allows the attribute name to be used with the dot notation. This maintains compatibility with old code that might be using dot notation instead of formal getter, setter, deleters.
+- In this appraoch, we make two attributes with the same name. One private to be used internally `__x`, and the other `x` to be used externally with the dot notation. Also, we make the getter and setter themselves private if we need to, by using the leading double underscores.
+- if we dont define the getter, `fget` will be set to `None`, similarly, if we do not define setter, `fset` will be set to `None`, and similarly if we dont define deleter, `fdel` will be set to `None`. So, we can define arbitrarily any of these three, and can use what we have defined, without the necessity to define all three.
+
+```py
+class MyClass:
+  def __init__(self,x):
+    self.x = x
+  
+  def __get_x(self):
+    return self.__x
+
+  def __set_x(self,new_x):
+    if (MyClass.isvalid(new_x)):
+      self.__x = new_x
+  
+  def __del_x(self):
+    del x
+
+  x = property(__get_x,__set_x,__del_x)
+
+  @staticmethod
+  def isvalid(z):
+    if isinstance(z,int) and z > 0 and z < 1000:
+      return True
+    else:
+      raise ValueError("value must be an integer between 0 and 1000")
+
+my_object = MyClass(4)
+my_object.x # 4, calls __get_x()
+my_object.x = 5 # sets __x to 5, calls __set_x()
+# remember, that x is an artificial construct, the concerned name is __x
+del my_object.x # deletes __x, calls __del_x()
+```
+
+- Third approach uses the `@property` function decorator. For getter, we simply use the `@property` function decorator, for setter, we use `@attribute_name.setter`, for deleter, we ue `@attribute_name.deleter`.
+- The important thing to note is that all three methods, getter, setter, and deleter must have the same names, which is the name that we will use to access the attribute from outside using dot notation.
+- Also, as with the `property()` method, we need to keep an internal private name, and the same name but without leading double underscores for external use. The internal private name is what we will process. The external name is what will be used to call the getter, setter, and deleter as appropriate.
+- Also since, the setter and deleter function decorators depend on the name of the getter, we must define getter method to be able to define setter and deleter. getter however can be defined alone, without a setter or deleter, as it doesnot depend on them anyway.
+
+```py
+class MyClass:
+  def __init__(self,x):
+    self.x = x
+  
+  @property
+  def x(self):
+    return self.__x
+  
+  @x.setter
+  def x(self,new_x):
+    if (MyClass.isvalid(new_x)):
+      self.__x = new_x
+  
+  @x.deleter
+  def x(self):
+    del x
+
+  @staticmethod
+  def isvalid(z):
+    if isinstance(z,int) and z > 0 and z < 1000:
+      return True
+    else:
+      raise ValueError("value must be an integer between 0 and 1000")
+
+my_object = MyClass(4)
+my_object.x # 4, calls @property x
+my_object.x = 5 # sets __x to 4, calls @x.setter x
+del my_object.x # deletes __x, calls @x.deleter x
+```
+
+- Lastly, we need to rediscuss, that we had different types of methods, that decides how they are called:
+  - instance method: a method defined without any function decorator inside a class is an isntance method. Instance methods takes the first argument as `self`, which is the instance or object on which that method is called. If we call an isntance method through the class name such as `MyClass.func()`, we need to explicitly give the object reference as an argument. So `MyClass.func(my_object)`. If we however call an instance method on an object, the first argument of `self` is automatically passed, so we only need to write: `my_object.func()`. instance methods process attributes of the instance, so we usually almost always calls them on instances and not trhough the class name.
+  - class methods: a method that is called through the class rather than an instance. since these methods are bound to the class rather than the instance, i,.e, they process class attributes (not instance attributes), they also take a first argument conventionaly called `cls`. If we call a class method through the class, we automatically pass the class as the first argument, much like, `self` is passed as the first argument automatically when called on the instance. To define a class method, we need to use the `@classmethod` function decorator.
+  - static methods. a method that is not bound to either an instance or the class. it can be used freely. such a method might as well be not defined in the class at all, and rather be an external function. but because there functionality is closely tied to the class or instance of that class, they are defined in the class. unlike instance methods which takes the first argument of `self` (which is an isntance reference), and class methods which takes the first argument `cls` (whiuch is the class reference), static methods takes neither of such arguments. They only take regular arguments like regular functions. To defined a static method, we need to use the `@staticmethod` function decorator. static methods can be called through either the instance or the class. but it is common to call them through the class, as it clearly indicates that there is no bound between the instance and the method.
+
+```py
+class MyClass:
+  def instance_func(self):
+    return
+  
+  @classmethod
+  def class_func(cls):
+    return
+  
+  @staticmethod
+  def static_func():
+    return
+```
+
+- To sum up:
+
+```py
+class MyClass:
+  # class attributes
+  __c = "value"
+
+  # constructor
+  def __init__(self,x):
+    self.x = x
+
+  # getter,setter,deleter
+  @property
+  def x(self):
+    return self.__x
+
+  @x.setter
+  def x(self,new_x):
+    if MyClass.isvalid(new_x):
+      self.__x = new_x
+
+  @x.deleter
+  def x(self):
+    del self.__x
+
+  # static methods
+  @staticmethod
+  def isvalid(z):
+    if isinstance(z,int):
+      return True
+    else:
+      raise ValueError("value must be an integer")
+
+  # instance methods
+  def hello(self):
+    print("Hello, World!")
+    return
+
+  # class methods
+  @classmethod
+  def get_c(cls):
+    return cls.__c
+
+  # magic methods
+  def __str__(self):
+    return f"[x: {self.x}]"
+
+  def __repr__(self):
+    return f"MyClass({self.x})"
+```
+
 ## Confusions
 
 - For taking a numeral from a user why is `eval()` used, when we can equivalently use `int()` or `float()` to convert input string to a number as needed.
-- Which method is preferred to create empty lists. `a = []` or `a = list()` and why.
-- What is list comprehension?
+- Which method is preferred to create empty lists. `a = []` or `a = list()`.
 - Why does the lab manuals and Python's own documentation use single quotes as delimiters for string such as `'Hello'` rather than double quotes?
-- What does `zip()` function do?
-- Where is lab manual 21 and lab manual 22 duplicates? Is it a mistake?
 - Why is there not a lab manual 26?
+- Function decorators???
+
+## Extra
+
+Google Python Style Guide has the following naming conventions:
+
+module_name, package_name, ClassName, method_name, ExceptionName, function_name, GLOBAL_CONSTANT_NAME, global_var_name, instance_var_name, function_parameter_name, local_var_name
+
+The PEP has the following naming conventions:
+
+Function names should be lowercase, with words separated by underscores as necessary to improve readability. Variable names follow the same convention as function names.
+
+mixedCase is allowed only in contexts where that's already the prevailing style (e.g. threading.py), to retain backwards compatibility.
