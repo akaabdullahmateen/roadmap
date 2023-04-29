@@ -4,14 +4,6 @@
 ## Table of contents
 
 - [Introduction](#introduction)
-- [Objects](#objects)
-  - [Vectors](#vectors)
-  - [Lists](#lists)
-  - [Arrays](#arrays)
-  - [Matrices](#matrices)
-  - [Factors](#factors)
-  - [Data frames](#data-frames)
-- [Attributes](#attributes)
 - [Lexical analysis](#lexical-analysis)
   - [Comments](#comments)
   - [Literals](#literals)
@@ -21,6 +13,14 @@
     - [Complex literals](#complex-literals)
     - [String literals](#string-literals)
     - [Special constants](#special-constants)
+- [Objects](#objects)
+  - [Vectors](#vectors)
+  - [Lists](#lists)
+  - [Arrays](#arrays)
+  - [Matrices](#matrices)
+  - [Factors](#factors)
+  - [Data frames](#data-frames)
+- [Attributes](#attributes)
 - [Expressions](#expressions)
   - [Arithmetic operators](#arithmetic-operators)
 - [Keyboard shortcuts](#keyboard-shortcuts)
@@ -30,37 +30,11 @@
 
 R is a system for statistical computation and graphics. It provides, among other things, a programming language, high level graphics, interfaces to other languages, and debugging facilities.
 
-## Objects
-
-An **object** is a specialized data structures provided by the R language to store data. There are no elementary data types in R, so all values are stored as R objects.
-
-The data type of an R object can be seen through the `typeof()` function, which returns the underlying type of an R object.
-
-In R, the language constructs, expressions, symbols, and functions are themselves objects, and can be manipulated in the same way as any other object.
-
-### Vectors
-
-A vector consists of an ordered collection of values of the same type. Single entities, such as `4.2`, are also vectors of length 1. There are six types of atomic vectors: *logical*, *integer*, *double*, *complex*, *character*, and *raw*.
-
-### Lists
-
-A list consists of an ordered collection of values of any type; the elements can be a mix of objects, structures, or even lists.
-
-### Arrays
-
-### Matrices
-
-### Factors
-
-### Data frames
-
-## Attributes
-
 ## Lexical analysis
 
 ### Comments
 
-A **comment** is an annotation in the R code that is ignored by the parser. Any text from a `#` character to the end of the line is considered a comment, unless the `#` character is inside a quoted string. R does not support multiline comments.
+Any text from a `#` character to the end of the line is considered a comment, unless the `#` character is inside a quoted string. R does not support multiline comments.
 
 ```r
 # This is a comment
@@ -71,12 +45,13 @@ s <- "# This is not a comment"
 ### Literals
 
 #### Logical literals
+
 Logical literals represent the two Boolean values: True and False.
 
-| Boolean value | Logical literals               |
-| ------------- | ------------------------------ |
-| True          | `TRUE`, `True`, `true`, `t`    |
-| False         | `FALSE,` `False`, `false`, `f` |
+| Boolean value | Logical literals |
+| ------------- | ---------------- |
+| True          | `TRUE`, `T`      |
+| False         | `FALSE`, `F`     |
 
 #### Numeric literals
 
@@ -91,7 +66,7 @@ Numeric literals represent real numbers. Decimal numbers can optionally contain 
 
 #### Integer literals
 
-Integer literals are created by adding the qualifier `L` at the end of a number. However, if the number is not a valid integer, a numeric value is created instead.
+Integer literals are created by adding the qualifier `L` at the end of a number. However, if the number is not a valid integer, a numeric value is created instead. Note that the leading minus sign is a unary operator, and is not considered part of the numeric or integer literal.
 
 | Format              | Example  | Interpretation             |
 | ------------------- | -------- | -------------------------- |
@@ -99,20 +74,16 @@ Integer literals are created by adding the qualifier `L` at the end of a number.
 | Scientific notation | `1.1e6L` | $1.1\times10^6$            |
 | Hexadecimal number  | `0x2FL`  | $2\times16^1+15\times16^0$ |
 
-!!! note
-
-    The leading plus or minus sign is a unary operator, and is not considered part of the numeric or integer literal.
-
 #### Complex literals
 
 Complex literals represent pure imaginary numbers. They are created by adding `i` at the end of a number. Complex numbers of the form $a + b\iota$ are expressions rather than complex literals.
 
-| Format                  | Example     | Interpretation |
-| ----------------------- | ----------- | -------------- |
-| Decimal number          | `12.34i`    | $12.34\iota$   |
-| Scientific notation     | `1.123e-2i` | $0.01123\iota$ |
-| Hexadecimal number      | `0x1FFi`    | $511\iota$     |
-| Binary exponential form | `0xf.1p-4i` | $0.9414062i$   |
+| Format                  | Example     | Interpretation   |
+| ----------------------- | ----------- | ---------------- |
+| Decimal number          | `12.34i`    | $12.34\iota$     |
+| Scientific notation     | `1.123e-2i` | $0.01123\iota$   |
+| Hexadecimal number      | `0x1FFi`    | $511\iota$       |
+| Binary exponential form | `0xf.1p-4i` | $0.9414062\iota$ |
 
 #### String literals
 
@@ -133,6 +104,32 @@ There are some special constants in R, which are reserved keywords with special 
 | Not Available | `NA`     | Logical | Indicates missing data values    |
 | Infinity      | `Inf`    | Numeric | Indicates real positive infinity |
 | Not-a-Number  | `NaN`    | Numeric | Indicates IEEE NaN               |
+
+## Objects
+
+An **object** is a specialized data structure provided by the R language to store data. There are no elementary data types in R, so all values are stored as R objects.
+
+The data type of an R object can be seen through the `typeof()` function, which returns the underlying type of an R object.
+
+In R, the language constructs, expressions, symbols, and functions are themselves objects, and can be manipulated in the same way as any other object.
+
+### Vectors
+
+A vector consists of an ordered collection of values of the same type. Single entities, such as `4.2`, are vectors of length 1. There are six types of atomic vectors: *logical*, *integer*, *double*, *complex*, *character*, and *raw*.
+
+### Lists
+
+A list consists of an ordered collection of values of any type; the elements can be a mix of objects, structures, or even lists.
+
+### Arrays
+
+### Matrices
+
+### Factors
+
+### Data frames
+
+## Attributes
 
 ## Expressions
 

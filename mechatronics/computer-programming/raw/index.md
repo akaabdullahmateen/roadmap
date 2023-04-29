@@ -3098,6 +3098,102 @@ class MyClass:
     return f"MyClass({self.x})"
 ```
 
+- Instance methods can also take other objects are arguments. This is really useful for operator overloading.
+
+```py
+class MyClass:
+  _s = []
+  def __init__(self,v):
+    self.v = v
+  
+  @property
+  def v(self):
+    return self.__v
+
+  @v.setter
+  def v(self,val):
+    if type(self).isvalid(val):
+      self.__v = val
+
+  @v.deleter
+  def v(self):
+    del self.__v
+
+  @staticmethod
+  def isvalid(val):
+    if isinstance(val,int):
+      return True
+    else:
+      raise ValueError("value must be an integer")
+
+  @classmethod
+  def isempty(cls):
+    return len(cls._s) == 0
+
+  def __str__(self):
+    return f"(v: {self.v})"
+
+  def __repr__(self):
+    return f"({type(self)}({self.v}))"
+
+  def __add__(self,other):
+    if self.v is not None and other.v is not None:
+      return self.v + other.v
+    else:
+      raise ValueError(f"can not add {type(self.v)} and {type(other.v)}")
+```
+
+- Polymorphism: (*Poly* means *many* and *morph* means *shape*), so polymorphism means that multiple methods (or operators) have the same name but different definitions, and so behave differently depending on some factors. There are three types of polymorphism:
+  - Method overloading, operator overloading, and method overriding
+- Method overloading is when different functions have the same name but different input arguments (possibly different number of input arguments, or different types of input argumnets). Other languages like C/C++ and Java have method overloading, but Python does not support method overloading.
+- Operator overloading is when an operator such as `+`, or `*` is overloaded to behave differently for operands of different data types. This is possible because `x.__operator__(y)` is called. So we can add a custom dunder method in our class.
+- Method overriding. subclasses of a class can have methods of the same name as their parent class, and can override them with different behavior.
+
+- Magic methods:
+  - String reprsentation
+    - `__str__(self) -> str` : neat pretty readble string representation of object
+    - `__repr__(self) -> str` : string such that `eval(repr(c)) == c`.
+  - Comparison:
+    - `__lt__(self,other) -> bool` : less than
+    - `__gt__(self,other) -> bool` : greater than
+    - `__le__(self,other) -> bool` : less than or equal to
+    - `__ge__(self,other) -> bool` : greater than or equal to
+    - `__eq__(self,other) -> bool` : equal to
+    - `__ne__(self,other) -> bool` : not equal to
+    - Note: these are a lot of operators to define, with repeated logic. If we have one ordering comparison such as `<` and a equal-to test `==`, we should be able to derive all others.
+    - To do that, we can use the `total_ordering` class decorator from `functools` module. It requires that the class define one of `__lt__()`, `__le__()`, `__gt__()`, or `__ge__()`, in addition to the `__eq__()` method.
+
+```py
+from functools import total_ordering
+
+@total_ordering
+class MyClass:
+  def __lt__(self,other):
+    return self.x < other.y
+
+  def __eq__(self,other):
+    return self.x == other.x
+
+# Possible implementation:
+
+# def __gt__(self,other):
+#   return not self.__lt__(self,other) and not self.__eq__(self,other)
+
+# def __le__(self,other):
+#   return self.__lt__(self,other) or self.__eq__(self,other)
+
+# def __ge__(self,other):
+#   return self.__gt__(self,other) or self.__eq__(self,other)
+```
+
+- Magic methods (continued):
+  - Comparison: however, careful that the previous code would now behave unexpectedly where it uses the `==` operator, such as `self.groupmember == None`. Here, it would call `self.__eq__(self,None)`. And try to do nasty stuff on `other=None`, which will raise an exception. To be safe from these side effects of operator overloading, use the `is` oeprator instead of `==`.
+  - Length of object:
+    - `__len__(self) -> int` : the length of the object. This will allow to use the builtin wrapper function `len(x)` which interanlly calls `x.__len__()`
+  - Absolute value:
+    - `__abs__(self) -> any` : the absolute value of the object. allows to use the builtin `abs(x)` on any object `x`.
+  - 
+
 ## Confusions
 
 - For taking a numeral from a user why is `eval()` used, when we can equivalently use `int()` or `float()` to convert input string to a number as needed.

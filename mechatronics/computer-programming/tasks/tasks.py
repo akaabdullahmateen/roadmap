@@ -5028,6 +5028,415 @@ def lab34_task4():
     return
 
 # -------------------------------------------
+#               Lab 35 - Task 1
+# -------------------------------------------
+
+class lab35_task1_student:
+    department = "Mechatronics"
+    compulsory_course = "*Project*"
+    offered_courses = [compulsory_course,"LA","ES","PD","VCA","CP","EDC","CS","EC"]
+    all_students = []
+    def __init__(self,fname,lname,reg):
+        self.fname = fname
+        self.lname = lname
+        self.fullname = f"{fname} {lname}"
+        self.reg = reg
+        self.courses = []
+        self.courses.append(type(self).compulsory_course)
+        self.__groupmember = None
+        type(self).all_students.append(self)
+
+    @property
+    def fname(self):
+        return self.__fname
+    
+    @fname.setter
+    def fname(self,name):
+        if type(self).isvalidname(name):
+            self.__fname = name
+
+    @property
+    def lname(self):
+        return self.__lname
+    
+    @lname.setter
+    def lname(self,name):
+        if type(self).isvalidname(name):
+            self.__lname = name
+
+    @property
+    def reg(self):
+        return self.__reg
+    
+    @reg.setter
+    def reg(self,regid):
+        if type(self).isvalidreg(regid):
+            self.__reg = regid
+
+    @property
+    def fullname(self):
+        return f"{self.fname} {self.lname}"
+
+    @fullname.setter
+    def fullname(self,name):
+        first_name,last_name = name.split()
+        self.fname = first_name
+        self.lname = last_name
+
+    @property
+    def email(self):
+        return "".join(self.reg.replace("/","-").split("-")).lower() + "@student.uet.edu.pk"
+
+    @property
+    def groupmember(self):
+        return self.__groupmember
+    
+    @groupmember.setter
+    def groupmember(self,other):
+        if self.groupmember == None and other.groupmember == None:
+            self.__groupmember = other
+            other.__groupmember = self
+        else:
+            culprit = self if not self.groupmember == None else other 
+            try:
+                raise ValueError(f"{culprit} already has a group member")    
+            except ValueError as e:
+                print(e)
+
+    @groupmember.deleter
+    def groupmember(self):
+        other = self.groupmember
+        if other == None:
+            return
+        if other.groupmember == self:
+            self.__groupmember = None
+            other.__groupmember = None
+        else:
+            try:
+                raise ValueError(f"{other} is not a group member of {self}")
+            except ValueError as e:
+                print(e)
+
+    def register_courses(self,*courses):
+        for course in courses:
+            if course in type(self).offered_courses:
+                if course not in self.courses:
+                    self.courses.append(course)
+            else:
+                try:
+                    raise ValueError(f"{course} is not an offered course")
+                except ValueError as e:
+                    print(e)
+
+    @staticmethod
+    def isvalidname(name):
+        if isinstance(name,str) and name.isalpha():
+            return True
+        else:
+            try:
+                raise ValueError("name must be a string of only alphabets")
+            except ValueError as e:
+                print(e)
+
+    @staticmethod
+    def isvalidyear(year):
+        try:
+            year = int(year)
+        except ValueError:
+            return False
+        except:
+            return False
+        else:
+            return year < 2024 and year > 1950
+
+    @staticmethod
+    def isvalidroll(roll):
+        try:
+            roll = int(roll)
+        except ValueError:
+            return False
+        except:
+            return False
+        else:
+            return roll > 0 and roll < 200
+    
+    @classmethod
+    def isvalidreg(cls,regid):
+        if "/" in regid:
+            prefix,regid = regid.split("/")
+            year,tag = prefix.split("-")
+            if not cls.isvalidyear(year) or not tag == "R":
+                return False
+        year,tag,roll = regid.split("-")
+        if cls.isvalidyear(year) and tag == "MC" and cls.isvalidroll(roll):
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        return f"{self.fullname} {self.reg}"
+    
+    def __repr__(self):
+        return f"{type(self)}({self.fname},{self.lname},{self.reg})"
+
+def lab35_task1_test(student):
+    print(f"__str__(): {student}")
+    print(f"__repr__(): {student.__repr__()}")
+    print(f"@fname.getter: {student.fname}")
+    print(f"@lname.getter: {student.lname}")
+    print(f"@fullname.getter: {student.fullname}")
+    print(f"@reg.getter: {student.reg}")
+    print(f"self.email: {student.email}")
+    print(f"self.courses: {student.courses}")
+    print(f"@groupmember.getter: {student.groupmember}")
+    student.fname = "Mr"
+    print(f"@fname.setter: {student.fname}")
+    student.lname = "Abdullah"
+    print(f"@lname.setter: {student.lname}")
+    student.fullname = "Yahya Mateen"
+    print(f"@fullname.setter: {student.fullname}")
+    print(f"@fname.getter: {student.fname}")
+    print(f"@lname.getter: {student.lname}")
+    student.reg = "2018-MC-71"
+    print(f"@reg.setter: {student.reg}")
+    print(f"self.email: {student.email}")
+    student.register_courses("LA","PD")
+    print(f"self.courses: {student.courses}")
+    other = lab35_task1_student("Test","Student","2020-MC-01")
+    student.groupmember = other
+    print(f"@groupmember.setter: {student.groupmember}")
+    del student.groupmember
+    print(f"@groupmember.deleter: {student.groupmember}")
+    return
+
+def lab35_task1_get_student_lists():
+    Student = lab35_task1_student
+    girl1 = Student("Hina","Xobia","2020-MC-43")
+    girl2 = Student("Zainab","Furqan","2017-MC-88")
+    girl3 = Student("Ayesha","Khan","2021-MC-15")
+    girl4 = Student("Tania","Itifaq","2018-MC-04")
+    boy1 = Student("Yahya","Mateen","2019-R/2018-MC-71")
+    boy2 = Student("Atif","Aslam","2019-MC-54")
+    boy3 = Student("Mufti","Zubair","2019-MC-78")
+    boy4 = Student("Ali","Zulqernain","2018-MC-61")
+    girls = [girl1,girl2,girl3,girl4]
+    boys = [boy1,boy2,boy3,boy4]
+    return girls,boys
+
+def lab35_task1_make_groups(g,b):
+    for girl,boy in zip(g,b):
+        girl.groupmember = boy
+
+def lab35_task1_print_lists(g,b):
+    print("------------------")
+    print("      Girls")
+    print("------------------")
+    for girl in g:
+        print(girl)
+    print()
+    print("------------------")
+    print("      Boys")
+    print("------------------")
+    for boy in b:
+        print(boy)
+    print()
+    print("------------------")
+    print("  Group members")
+    print("------------------")
+    for girl,boy in zip(g,b):
+        print(f"{girl} is matched with {girl.groupmember}")
+
+def lab35_task1():
+    task_header(35,1)
+    girls,boys = lab35_task1_get_student_lists()
+    lab35_task1_make_groups(girls,boys)
+    lab35_task1_print_lists(girls,boys)
+    return
+
+# -------------------------------------------
+#               Lab 35 - Task 2
+# -------------------------------------------
+
+class lab35_task2_student:
+    department = "Mechatronics"
+    compulsory_course = "*Project*"
+    offered_courses = [compulsory_course,"LA","ES","PD","VCA","CP","EDC","CS","EC"]
+    all_students = []
+    
+    def __init__(self,fname,lname,reg):
+        self.fname = fname
+        self.lname = lname
+        self.fullname = f"{fname} {lname}"
+        self.reg = reg
+        self.courses = []
+        self.courses.append(type(self).compulsory_course)
+        self.__groupmember = None
+        type(self).all_students.append(self)
+
+    @property
+    def fname(self):
+        return self.__fname
+    
+    @fname.setter
+    def fname(self,name):
+        if type(self).isvalidname(name):
+            self.__fname = name
+
+    @property
+    def lname(self):
+        return self.__lname
+    
+    @lname.setter
+    def lname(self,name):
+        if type(self).isvalidname(name):
+            self.__lname = name
+
+    @property
+    def reg(self):
+        return self.__reg
+    
+    @reg.setter
+    def reg(self,regid):
+        if type(self).isvalidreg(regid):
+            self.__reg = regid
+
+    @property
+    def fullname(self):
+        return f"{self.fname} {self.lname}"
+
+    @fullname.setter
+    def fullname(self,name):
+        first_name,last_name = name.split()
+        self.fname = first_name
+        self.lname = last_name
+
+    @property
+    def email(self):
+        return "".join(self.reg.replace("/","-").split("-")).lower() + "@student.uet.edu.pk"
+
+    @property
+    def groupmember(self):
+        return self.__groupmember
+    
+    @groupmember.setter
+    def groupmember(self,other):
+        if self.groupmember == None and other.groupmember == None:
+            self.__groupmember = other
+            other.__groupmember = self
+        else:
+            culprit = self if not self.groupmember == None else other 
+            try:
+                raise ValueError(f"{culprit} already has a group member")    
+            except ValueError as e:
+                print(e)
+
+    @groupmember.deleter
+    def groupmember(self):
+        other = self.groupmember
+        if other == None:
+            return
+        if other.groupmember == self:
+            self.__groupmember = None
+            other.__groupmember = None
+        else:
+            try:
+                raise ValueError(f"{other} is not a group member of {self}")
+            except ValueError as e:
+                print(e)
+
+    def register_courses(self,*courses):
+        for course in courses:
+            if course in type(self).offered_courses:
+                if course not in self.courses:
+                    self.courses.append(course)
+            else:
+                try:
+                    raise ValueError(f"{course} is not an offered course")
+                except ValueError as e:
+                    print(e)
+
+    @staticmethod
+    def isvalidname(name):
+        if isinstance(name,str) and name.isalpha():
+            return True
+        else:
+            try:
+                raise ValueError("name must be a string of only alphabets")
+            except ValueError as e:
+                print(e)
+
+    @staticmethod
+    def isvalidyear(year):
+        try:
+            year = int(year)
+        except ValueError:
+            return False
+        except:
+            return False
+        else:
+            return year < 2024 and year > 1950
+
+    @staticmethod
+    def isvalidroll(roll):
+        try:
+            roll = int(roll)
+        except ValueError:
+            return False
+        except:
+            return False
+        else:
+            return roll > 0 and roll < 200
+    
+    @classmethod
+    def unregistered_subjects(cls):
+        registered_courses = set()
+        for student in cls.all_students:
+            registered_courses.update(student.courses)
+        return list(set(cls.offered_courses).difference(registered_courses))
+
+    @classmethod
+    def without_groupmembers(cls):
+        return list(filter(lambda student: student.groupmember == None, cls.all_students))
+
+    @classmethod
+    def isvalidreg(cls,regid):
+        if "/" in regid:
+            prefix,regid = regid.split("/")
+            year,tag = prefix.split("-")
+            if not cls.isvalidyear(year) or not tag == "R":
+                return False
+        year,tag,roll = regid.split("-")
+        if cls.isvalidyear(year) and tag == "MC" and cls.isvalidroll(roll):
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        return f"{self.fullname} {self.reg}"
+    
+    def __repr__(self):
+        return f"{type(self)}({self.fname},{self.lname},{self.reg})"
+
+def lab35_task2_initialize():
+    Student = lab35_task2_student
+    student1 = Student("Yahya","Mateen","2019-R/2018-MC-71")
+    student2 = Student("Hina","Xobia","2020-MC-43")
+    student3 = Student("Atif","Aslam","2019-MC-54")
+    student4 = Student("Zainab","Furqan","2017-MC-88")
+    student1.register_courses("PD","CP","ES","EDC")
+    student2.register_courses("CP")
+    student3.register_courses("PD","CP")
+    student4.register_courses("LA","ES","CS")
+    return
+
+def lab35_task2():
+    task_header(35,2)
+    lab35_task2_initialize()
+    Student = lab35_task2_student
+    print(f"Unregistered courses: {Student.unregistered_subjects()}")
+    return
+
+# -------------------------------------------
 #               Lab LL - Task T
 # -------------------------------------------
 
