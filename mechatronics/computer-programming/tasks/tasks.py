@@ -17,7 +17,7 @@ import random
 import string
 import io
 
-from functools import lru_cache,reduce
+from functools import lru_cache,reduce,total_ordering
 
 if os.name == "nt":
     import msvcrt
@@ -99,10 +99,9 @@ def lab2_task4():
 #               Lab 2 - Task 5
 # -------------------------------------------
 
-def lab2_task5(number=None):
+def lab2_task5():
     task_header(2,5)
-    if number == None:
-        number = eval(input("Enter any value you want: "))
+    number = eval(input("Enter any value you want: "))
     print(f"You entered: {number}, double of which is: {number * 2}")
     return
 
@@ -110,12 +109,10 @@ def lab2_task5(number=None):
 #               Lab 2 - Task 6
 # -------------------------------------------
 
-def lab2_task6(first_number=None,second_number=None):
+def lab2_task6():
     task_header(2,6)
-    if first_number == None:
-        first_number = eval(input("Enter first number: "))
-    if second_number == None:
-        second_number = eval(input("Enter second number: "))
+    first_number = eval(input("Enter first number: "))
+    second_number = eval(input("Enter second number: "))
     print(f"The product of the two numbers is: {first_number * second_number: .2f}")
     return
 
@@ -123,11 +120,10 @@ def lab2_task6(first_number=None,second_number=None):
 #               Lab 2 - Task 7
 # -------------------------------------------
 
-def lab2_task7(radius=None):
+def lab2_task7():
     task_header(2,7)
     print("This program calculates the area and volume of a sphere.")
-    if radius == None:
-        radius = eval(input("Enter the radius: "))
+    radius = eval(input("Enter the radius: "))
     print(f"Area of the sphere is A: {4 * math.pi * radius ** 2}")
     print(f"Volume of the sphere is V: {(4 / 3) * math.pi * radius ** 3}")
     return
@@ -136,12 +132,10 @@ def lab2_task7(radius=None):
 #               Lab 3 - Task 1
 # -------------------------------------------
 
-def lab3_task1(first_number=None,second_number=None):
+def lab3_task1():
     task_header(3,1)
-    if first_number == None:
-        first_number = eval(input("Enter first number: "))
-    if second_number == None:
-        second_number = eval(input("Enter second number: "))
+    first_number = eval(input("Enter first number: "))
+    second_number = eval(input("Enter second number: "))
     print(f"{first_number} is {first_number / second_number * 100}% of {second_number}")
     return
 
@@ -149,10 +143,9 @@ def lab3_task1(first_number=None,second_number=None):
 #               Lab 3 - Task 2
 # -------------------------------------------
 
-def lab3_task2(number=None):
+def lab3_task2():
     task_header(3,2)
-    if number == None:
-        number = eval(input("Enter a floating point number: "))
+    number = eval(input("Enter a floating point number: "))
     print(f"Integer part: {int(number)}")
     print(f"Fractional part: {number - int(number)}")
     return
@@ -161,10 +154,9 @@ def lab3_task2(number=None):
 #               Lab 3 - Task 3
 # -------------------------------------------
 
-def lab3_task3(number=None):
+def lab3_task3():
     task_header(3,3)
-    if number == None:
-        number = eval(input("Enter a 3-digit number: "))
+    number = eval(input("Enter a 3-digit number: "))
     unit_digit = number % 10
     number //= 10
     tenth_digit = number % 10
@@ -177,10 +169,9 @@ def lab3_task3(number=None):
 #               Lab 4 - Task 1
 # -------------------------------------------
 
-def lab4_task1(time=None):
+def lab4_task1():
     task_header(4,1)
-    if time == None:
-        time = eval(input("Enter seconds: "))
+    time = eval(input("Enter seconds: "))
     minutes = time // 60
     seconds = time - minutes * 60
     print(f"{minutes} : {seconds}")
@@ -190,10 +181,9 @@ def lab4_task1(time=None):
 #               Lab 4 - Task 2
 # -------------------------------------------
 
-def lab4_task2(time=None):
+def lab4_task2():
     task_header(4,2)
-    if time == None:
-        time = eval(input("Enter seconds: "))
+    time = eval(input("Enter seconds: "))
     hours = time // 3600
     minutes = (time - hours * 3600) // 60
     seconds = time - hours * 3600 - minutes * 60
@@ -204,10 +194,9 @@ def lab4_task2(time=None):
 #               Lab 4 - Task 3
 # -------------------------------------------
 
-def lab4_task3(time=None):
+def lab4_task3():
     task_header(4,3)
-    if time == None:
-        time = eval(input("Enter seconds: "))
+    time = eval(input("Enter seconds: "))
     hours = time // 3600
     minutes = (time - hours * 3600) // 60
     seconds = time - hours * 3600 - minutes * 60
@@ -218,10 +207,9 @@ def lab4_task3(time=None):
 #               Lab 4 - Task 4
 # -------------------------------------------
 
-def lab4_task4(complex_number=None):
+def lab4_task4():
     task_header(4,4)
-    if complex_number == None:
-        complex_number = complex(input("Enter a complex number: "))
+    complex_number = complex(input("Enter a complex number: "))
     magnitude = math.sqrt(complex_number.real ** 2 + complex_number.imag ** 2)
     print(f"The magnitude of the complex number is: {magnitude:.2f}")
     return
@@ -5437,8 +5425,365 @@ def lab35_task2():
     return
 
 # -------------------------------------------
-#               Lab LL - Task T
+#               Lab 37 - Task 1
 # -------------------------------------------
+
+@total_ordering
+class lab37_task1_point:
+    def __init__(self,x,y):
+        self.__x = x
+        self.__y = y
+    
+    @property
+    def x(self):
+        return self.__x
+    
+    @x.setter
+    def x(self,n_x):
+        if type(self).isvalid(n_x):
+            self.__x = n_x
+    
+    @property
+    def y(self):
+        return self.__y
+    
+    @y.setter
+    def y(self,n_y):
+        if type(self).isvalid(n_y):
+            self.__y = n_y
+
+    @staticmethod
+    def isvalid(n):
+        try:
+            int(n)
+        except Exception:
+            return False
+        else:
+            return True
+
+    def __abs__(self):
+        return math.sqrt(self.x ** 2 + self.y ** 2)
+
+    def __neg__(self):
+        return type(self)(-self.x,-self.y)
+    
+    def __add__(self,other):
+        return type(self)(self.x + other.x, self.y + other.y)
+
+    def __sub__(self,other):
+        return type(self)(self.x - other.x, self.y - other.y)
+
+    def __iadd__(self,other):
+        self.x += other.x
+        self.y += other.y
+        return self
+
+    def __isub__(self,other):
+        self.x -= other.x
+        self.y -= other.y
+        return self
+
+    def __truediv__(self,other):
+        return type(self)(self.x / other, self.y / other)
+
+    def __idiv__(self,other):
+        self.x /= other
+        self.y /= other
+        return self
+
+    def __gt__(self,other):
+        return abs(self) > abs(other)
+
+    def __eq__(self,other):
+        return abs(self) == abs(other)
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+
+    def __str__(self):
+        return f"({self.x},{self.y})"
+
+    def __repr__(self):
+        return f"Point({self.x},{self.y})"
+
+def lab37_task1():
+    task_header(37,1)
+    Point = lab37_task1_point
+    p1 = Point(5,7)
+    p2 = Point(-13,6)
+    n = 2.5
+    print("---------------------")
+    print("        DATA         ")
+    print("---------------------")
+    print(f"p1       : {p1}")
+    print(f"p2       : {p2}")
+    print(f"n        : {n}")
+    print(f"add(x)   : {p1.x + p2.x}")
+    print(f"sub(x)   : {p1.x - p2.x}")
+    print(f"add(y)   : {p1.y + p2.y}")
+    print(f"sub(y)   : {p1.y - p2.y}")
+    print("---------------------")
+    print("       TESTING       ")
+    print("---------------------")
+    print(f"abs(p1)  : {abs(p1):.2f}")
+    print(f"-p1      : {-p1}")
+    print(f"p1 + p2  : {p1 + p2}")
+    print(f"p1 - p2  : {p1 - p2}")
+    p1_dup = Point(p1.x,p1.y)
+    p1_dup += p2
+    print(f"p1 += p2 : {p1_dup}")
+    p1_dup = Point(p1.x,p1.y)
+    p1_dup -= p2
+    print(f"p1 -= p2 : {p1_dup}")
+    print(f"p1 / n   : {p1 / n}")
+    p1_dup = Point(p1.x,p1.y)
+    p1_dup /= n
+    print(f"p1 /= n  : {p1_dup}")
+    print(f"p1 < p2  : {p1 < p2}")
+    print(f"p1 <= p2 : {p1 <= p2}")
+    print(f"p1 > p2  : {p1 > p2}")
+    print(f"p1 >= p2 : {p1 >= p2}")
+    print(f"p1 == p2 : {p1 == p2}")
+    print(f"p1 != p2 : {p1 != p2}")
+    for v in p1:
+        print(f"__iter__(p1)  : {v}")
+    print("---------------------")
+    return
+
+# -------------------------------------------
+#               Lab 37 - Task 2
+# -------------------------------------------
+
+@total_ordering
+class lab37_task2_point:
+    def __init__(self,x,y):
+        self.__x = x
+        self.__y = y
+    
+    @property
+    def x(self):
+        return self.__x
+    
+    @x.setter
+    def x(self,n_x):
+        if type(self).isvalid(n_x):
+            self.__x = n_x
+    
+    @property
+    def y(self):
+        return self.__y
+    
+    @y.setter
+    def y(self,n_y):
+        if type(self).isvalid(n_y):
+            self.__y = n_y
+
+    @staticmethod
+    def isvalid(n):
+        try:
+            int(n)
+        except Exception:
+            return False
+        else:
+            return True
+
+    def __abs__(self):
+        return math.sqrt(self.x ** 2 + self.y ** 2)
+
+    def __neg__(self):
+        return type(self)(-self.x,-self.y)
+    
+    def __add__(self,other):
+        return type(self)(self.x + other.x, self.y + other.y)
+
+    def __sub__(self,other):
+        return type(self)(self.x - other.x, self.y - other.y)
+
+    def __iadd__(self,other):
+        self.x += other.x
+        self.y += other.y
+        return self
+
+    def __isub__(self,other):
+        self.x -= other.x
+        self.y -= other.y
+        return self
+
+    def __truediv__(self,other):
+        return type(self)(self.x / other, self.y / other)
+
+    def __idiv__(self,other):
+        self.x /= other
+        self.y /= other
+        return self
+
+    def __gt__(self,other):
+        return abs(self) > abs(other)
+
+    def __eq__(self,other):
+        return abs(self) == abs(other)
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+
+    def __str__(self):
+        return f"({self.x},{self.y})"
+
+    def __repr__(self):
+        return f"Point({self.x},{self.y})"
+
+def lab37_task2_populate(n,low,high):
+    Point = lab37_task2_point
+    points = []
+    for _ in range(n):
+        x = random.randint(low,high)
+        y = random.randint(low,high)
+        points.append(Point(x,y))
+    return points
+
+def lab37_task2_print(points,msg):
+    idx = 0
+    print("-----------------------")
+    print(f" {msg}")
+    print("-----------------------")
+    for point in points:
+        print(f"{idx}: {point}\t@ {abs(point):.2f}")
+        idx += 1
+    print("-----------------------")
+
+def lab37_task2():
+    task_header(37,2)
+    points = lab37_task2_populate(10,-5,5)
+    lab37_task2_print(points,"BEFORE")
+    points = filter(lambda p: abs(p) >= 2 and abs(p) <= 3, points)
+    lab37_task2_print(points,"AFTER")
+    return
+
+# -------------------------------------------
+#               Lab 37 - Task 3
+# -------------------------------------------
+
+@total_ordering
+class lab37_task3_point:
+    def __init__(self,x,y):
+        self.__x = x
+        self.__y = y
+    
+    @property
+    def x(self):
+        return self.__x
+    
+    @x.setter
+    def x(self,n_x):
+        if type(self).isvalid(n_x):
+            self.__x = n_x
+    
+    @property
+    def y(self):
+        return self.__y
+    
+    @y.setter
+    def y(self,n_y):
+        if type(self).isvalid(n_y):
+            self.__y = n_y
+
+    @staticmethod
+    def isvalid(n):
+        try:
+            int(n)
+        except Exception:
+            return False
+        else:
+            return True
+
+    def __abs__(self):
+        return math.sqrt(self.x ** 2 + self.y ** 2)
+
+    def __neg__(self):
+        return type(self)(-self.x,-self.y)
+    
+    def __add__(self,other):
+        return type(self)(self.x + other.x, self.y + other.y)
+
+    def __sub__(self,other):
+        return type(self)(self.x - other.x, self.y - other.y)
+
+    def __iadd__(self,other):
+        self.x += other.x
+        self.y += other.y
+        return self
+
+    def __isub__(self,other):
+        self.x -= other.x
+        self.y -= other.y
+        return self
+
+    def __truediv__(self,other):
+        return type(self)(self.x / other, self.y / other)
+
+    def __idiv__(self,other):
+        self.x /= other
+        self.y /= other
+        return self
+
+    def __mul__(self,other):
+        if type(other) == type(self):
+            dot_product = 0
+            for (a,b) in zip(self,other):
+                dot_product += (a * b)
+            return dot_product
+        return type(self)(self.x * other,self.y * other)
+    
+    def __rmul__(self,other):
+        return type(self)(self.x * other,self.y * other)
+
+    def __gt__(self,other):
+        return abs(self) > abs(other)
+
+    def __eq__(self,other):
+        return abs(self) == abs(other)
+
+    def __iter__(self):
+        yield self.x
+        yield self.y
+
+    def __str__(self):
+        return f"({self.x},{self.y})"
+
+    def __repr__(self):
+        return f"Point({self.x},{self.y})"
+
+def lab37_task3_populate(n,low,high):
+    Point = lab37_task3_point
+    points = []
+    for _ in range(n):
+        x = random.randint(low,high)
+        y = random.randint(low,high)
+        points.append(Point(x,y))
+    return points
+
+def lab37_task3_print(points,msg):
+    idx = 0
+    print("---------------")
+    print(f" {msg}")
+    print("---------------")
+    for point in points:
+        print(f"{idx}: {point}")
+        idx += 1
+    print("---------------")
+
+def lab37_task3():
+    task_header(37,3)
+    points = lab37_task3_populate(10,-5,5)
+    lab37_task3_print(points,"LIST")
+    points = list(map(lambda p: -(p * 5),points))
+    lab37_task3_print(points,"SCALED")
+    fix_p = lab37_task3_point(5,10)
+    dot_products = list(map(lambda p: (p * fix_p),points))
+    lab37_task3_print(dot_products,"DOT PRODUCTS")
+    return
 
 # -------------------------------------------
 #            Auxiliary Functions
@@ -5452,65 +5797,31 @@ def task_header(lab_number, task_number):
     print()
     return
 
-def run_all():
-    tasks = {
-    "lab1_task1":(),"lab1_task2":(),"lab1_task3":(),
-    "lab2_task1":(),"lab2_task2":(),"lab2_task3":(),"lab2_task4":(),"lab2_task5":(7,),"lab2_task6":(6,7),
-    "lab33_task2":()}
-    for name,args in tasks.items():
-        if not args:
-            globals()[name]()
-        else:
-            globals()[name](*args)
-    return
-
-    # skip tasks that clear the console screen
-
 def run_specific():
     try:
         lab_number, task_number = eval(input("\n>> Lab number and task number (lab, task): "))
-    except NameError:
-        pass
-    except:
+    except Exception:
         pass
     try:
         globals()[f"lab{lab_number}_task{task_number}"]()
-    except UnboundLocalError:
-        pass
-    except:
+    except Exception:
         pass
     return
-
-def list_all():
-    v_bar = "│"
-    h_bar = "─"
-    joint = "├"
-    elbow = "└"
-    
-    # TODO: Print a tree like structure
-    # that shows all the available tasks for each lab session
 
 def loop():
     prompt = """
 --------------------------------------------------------
-    [a] - Press A to run all tasks with dummy input
     [n] - Press N to run a specific task
-    [h] - Press H to list all available tasks
     [q] - Press Q to quit the program
 --------------------------------------------------------
 
 >> """
-    
     while True:
         option = input(prompt).lower()
-        if option == "a":
-            run_all()
-        elif option == "n":
+        if option == "n":
             run_specific()
-        elif option == "h":
-            list_all()
         elif option == "q":
-            break
+            exit()
         else:
             try:
                 raise ValueError("invalid option")
@@ -5522,6 +5833,4 @@ def loop():
 # -------------------------------------------
 
 if __name__ == "__main__":
-#    sys.stdout = open("out.txt","w")
     loop()
-#    sys.stdout.close()
