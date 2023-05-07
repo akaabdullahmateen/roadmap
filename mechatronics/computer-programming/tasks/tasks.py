@@ -16,6 +16,8 @@ import time
 import random
 import string
 import io
+import requests
+import json
 
 from functools import lru_cache,reduce,total_ordering
 
@@ -2768,13 +2770,9 @@ def lab20_task2():
 
 def lab21_task1():
     task_header(21,1)
-    user_string = input("Enter a message: ")
-    vowels = "aeiou"
-    vowels_count = 0
-    for char in user_string:
-        if char.lower() in vowels:
-            vowels_count += 1
-    print(f"There are {vowels_count} vowels in the entered message")
+    n = eval(input("Enter an integer: "))
+    factors = [i for i in range(1,n + 1) if n % i == 0]
+    print(f"factors: {factors}")
     return
 
 # -------------------------------------------
@@ -2783,12 +2781,10 @@ def lab21_task1():
 
 def lab21_task2():
     task_header(21,2)
-    user_string = input("Enter a message: ")
-    words_count = 0
-    for char in user_string:
-        if char.lower().isspace():
-            words_count += 1
-    print(f"There are {words_count + 1} words in the entered message")
+    nums = [i for i in range(15)]
+    squared_nums = [i * i for i in nums if i % 2 == 0]
+    print(f"nums: {nums}")
+    print(f"squared_nums: {squared_nums}")
     return
 
 # -------------------------------------------
@@ -2797,13 +2793,10 @@ def lab21_task2():
 
 def lab21_task3():
     task_header(21,3)
-    user_string = input("Enter a message: ")
-    words = user_string.split(" ")
-    count = 0
-    for word in words:
-        if len(word) == 4:
-            count += 1
-    print(f"There are {count} words with exactly 4 letters")
+    nested_list = [[4,3,-2,0,1],[6,8,2,9],[5,3,4,-7],[2,9]]
+    print(f"nested_list: {nested_list}")
+    sum_list = [sum(inner_list) for inner_list in nested_list]
+    print(f"sum_list: {sum_list}")
     return
 
 # -------------------------------------------
@@ -2812,157 +2805,106 @@ def lab21_task3():
 
 def lab21_task4():
     task_header(21,4)
-    word = input("Enter a word: ")
-    letters = list(word)
-    random.shuffle(letters)
-    shuffled_word = "".join(letters)
-    print(f"Shuffled word: {shuffled_word}")
+    s1 = ('Ahmad','Anwar','MCT-UET-01',['CP','LA'])
+    s2 = ('Ali','Jamal','MCT-UET-02',['LA'])
+    s3 = ('Muneeb','Akhtar','MCT-UET-03',['Phy','CP','LA'])
+    s4 = ('Rizwan','Khan','MCT-UET-04',['Statistics','Phy'])
+    s5 = ('Akhtar','Hussain','MCT-UET-05',['Phy','LA'])
+    s6 = ('Nasir','Saeed','MCT-UET-06',['Phy','Statistics','LA'])
+    s7 = ('Bilal','Akram','MCT-UET-07',['Hist','CP','LA'])
+    s8 = ('Hamid','Salman','MCT-UET-08',['CP','Phy'])
+    s9 = ('Naveed','Majeed','MCT-UET-09',['CP','LA','Hist'])
+    s10 = ('Kashif','Lateef','MCT-UET-10',['LA','Phy','Hist'])
+    all_students = [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]
+    cp_students = [s[2] for s in all_students if "CP" in s[3]]
+    three_courses = [f"{s[0]} {s[1]}" for s in all_students if len(s[3]) == 3]
+    courses_count = [len(s[3]) for s in all_students]
+    print("-------------------------------------------")
+    for student in all_students:
+        print(student)
+    print("-------------------------------------------")
+    print(f"cp_students: {cp_students}")
+    print(f"three_courses: {three_courses}")
+    print(f"courses_count: {courses_count}")
     return
 
 # -------------------------------------------
 #               Lab 21 - Task 5
 # -------------------------------------------
 
-def lab21_task5_prologue(checks):
-    print("-------------------------------------------------------------")
-    print("            Enter a strong password - [q] to quit            ")
-    print("-------------------------------------------------------------")
-    print(f"  [{checks[0]}] Password must be between 8 and 32 characters           ")
-    print(f"  [{checks[1]}] Password must contain at least one lowercase letter    ")
-    print(f"  [{checks[2]}] Password must contain at least one uppercase letter    ")
-    print(f"  [{checks[3]}] Password must contain at least one numeric digit       ")
-    print(f"  [{checks[4]}] Password must contain at least one special character   ")
-    print("-------------------------------------------------------------")
+def lab21_task5_mag(x,y):
+    return math.sqrt(x ** 2 + y ** 2)
 
 def lab21_task5():
     task_header(21,5)
-    password_weak = True
-    islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
-    while password_weak:
-        os.system("cls" if os.name == "nt" else "clear")
-        checks = [
-                "\u2713" if islong else "x",
-                "\u2713" if haslower else "x",
-                "\u2713" if hasupper else "x",
-                "\u2713" if hasnumeric else "x",
-                "\u2713" if hasspecial else "x"
-        ]
-        lab21_task5_prologue(checks)
-        password = input("\n>> ")
-        if password == "q":
-            break
-        islong,haslower,hasupper,hasnumeric,hasspecial = False,False,False,False,False
-        if len(password) > 8 and len(password) < 32:
-            islong = True
-        for character in password:
-            if character.islower():
-                haslower = True
-            elif character.isupper():
-                hasupper = True
-            elif character.isdecimal():
-                hasnumeric = True
-            elif character in string.punctuation:
-                hasspecial = True
-        if islong and haslower and hasupper and hasnumeric and hasspecial:
-            password_weak = False
-        else:
-            password_weak = True
+    mag = lab21_task5_mag
+    x = [1,-1,5,0,3,10,5,-4]
+    y = [2,-1,7,4,10,4,0,-5]
+    points = [(i,j) for (i,j) in zip(x,y) if mag(i,j) <= 3]
+    print(f"x: {x}")
+    print(f"y: {y}")
+    print(f"points: {points}")
     return
 
 # -------------------------------------------
 #               Lab 21 - Task 6
 # -------------------------------------------
 
-def lab21_task6_extract(player):
-    player = player.strip()
-    raw = player.split(":")
-    name = raw[0].strip()
-    score = raw[1].split("-")
-    overs = float(score[0].strip())
-    maidens = float(score[1].strip())
-    runs = float(score[2].strip())
-    wickets = float(score[3].strip())
-    return name,overs,maidens,runs,wickets
-
-def lab21_task6_reference(players):
-    r_player = players[0]
-    r_overs = r_player[1]
-    r_runs = r_player[3]
-    r_economy = r_runs / r_overs
-    return r_player[0],r_economy,r_player[2],r_player[4]
-
 def lab21_task6():
     task_header(21,6)
-    bowling = """Wasim Akram : 10-0-49-3
-                Aaqib Javed: 10- 2-27-2
-                Mushtaq Ahmed:10- 1-41-3
-                Ijaz Ahmed:3-0-13-0
-                Imran Khan:6.2-0-43- 1
-                Aamer Sohail : 10-0-49 -0"""
-    players = [lab21_task6_extract(player) for player in bowling.split("\n")]
-    r_name,r_economy,r_maidens,r_wickets = lab21_task6_reference(players)
-    best_economy = [r_economy,r_name]
-    most_wickets = [r_wickets,r_name]
-    total_maidens = r_maidens
-    for index in range(1,len(players)):
-        name,overs,maidens,runs,wickets = players[index]
-        economy = runs / overs
-        if economy < best_economy[0]:
-            best_economy = [economy,name]
-        total_maidens += maidens
-        if wickets > most_wickets[0]:
-            most_wickets = [wickets,name]
-    print(f"Bowler with the best economy: {best_economy[1]}")
-    print(f"Total maiden overs bowled by Pakistan: {total_maidens}")
-    print(f"Bowlers who took the best wickets: {most_wickets[1]}")
+    points = [(1, 2),(-1, -1),(5, 7),(0, 4),(3, 10),(10, 4),(5, 0),(-4, -5)]
+    x = [point[0] for point in points]
+    y = [point[1] for point in points]
+    print(f"points: {points}")
+    print(f"x: {x}")
+    print(f"y: {y}")
     return
 
 # -------------------------------------------
 #               Lab 21 - Task 7
 # -------------------------------------------
 
-def lab21_task7_randomDNA(n):
-    dna = []
-    nucleotides = ["A","T","C","G"]
-    for _ in range(n):
-        dna.append(random.choice(nucleotides))
-    return dna
-
-def lab21_task7_ATContent(dna):
-    a_content = 0
-    t_content = 0
-    for nucleotide in dna:
-        if nucleotide.upper() == "A":
-            a_content += 1
-        elif nucleotide.upper() == "T":
-            t_content += 1
-    at_content = a_content / t_content
-    return at_content
-
-def lab21_task7_reverseComplement(dna):
-    complement = []
-    for nucleotide in dna:
-        if nucleotide.upper() == "A":
-            complement.append("T")
-        elif nucleotide.upper() == "T":
-            complement.append("A")
-        elif nucleotide.upper() == "C":
-            complement.append("G")
-        elif nucleotide.upper() == "G":
-            complement.append("C")
-        else:
-            print("Error: Unexpected nucleotide detected")
-    return complement
-
 def lab21_task7():
     task_header(21,7)
-    n = 20
-    dna = lab21_task7_randomDNA(n)
-    at_content = lab21_task7_ATContent(dna) * 100
-    complement = lab21_task7_reverseComplement(dna)
-    print(f"DNA sequence:       {dna}")
-    print(f"Reverse complement: {complement}")
-    print(f"AT content:         {at_content} %")
+    s1 = ('Ahmad','Anwar','MCT-UET-01',['CP','LA'])
+    s2 = ('Ali','Jamal','MCT-UET-02',['LA'])
+    s3 = ('Muneeb','Akhtar','MCT-UET-03',['Phy','CP','LA'])
+    s4 = ('Rizwan','Khan','MCT-UET-04',['Statistics','Phy'])
+    s5 = ('Akhtar','Hussain','MCT-UET-05',['Phy','LA'])
+    s6 = ('Nasir','Saeed','MCT-UET-06',['Phy','Statistics','LA'])
+    s7 = ('Bilal','Akram','MCT-UET-07',['Hist','CP','LA'])
+    s8 = ('Hamid','Salman','MCT-UET-08',['CP','Phy'])
+    s9 = ('Naveed','Majeed','MCT-UET-09',['CP','LA','Hist'])
+    s10 = ('Kashif','Lateef','MCT-UET-10',['LA','Phy','Hist'])
+    all_students = [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]
+    subjects = [subject for student in all_students for subject in student[3]]
+    print("-------------------------------------------")
+    for student in all_students:
+        print(student)
+    print("-------------------------------------------")
+    print(f"subjects (with duplicates): {subjects}")
+    subjects = list(set(subjects))
+    print(f"subjects (no duplicates): {subjects}")    
+    return
+
+# -------------------------------------------
+#               Lab 21 - Task 8
+# -------------------------------------------
+
+def lab21_task8_mag(i,j,k):
+    return math.sqrt(i ** 2 + j ** 2 + k ** 2)
+
+def lab21_task8():
+    task_header(21,8)
+    mag = lab21_task8_mag
+    x = [round(10 * random.random(),2) for _ in range(10)]
+    y = [round(10 * random.random(),2) for _ in range(10)]
+    z = [round(10 * random.random(),2) for _ in range(10)]
+    print(f"x: {x}")
+    print(f"y: {y}")
+    print(f"z: {z}")
+    points = [(i,j,k) for (i,j,k) in zip(x,y,z) if j >= 0 and mag(i,j,k) <= 10]
+    print(f"points: {points}")
     return
 
 # -------------------------------------------
@@ -3519,6 +3461,44 @@ def lab24_task7():
     message = input("Enter a message: ")
     code = lab24_task7_MorseCodeGenerator(message)
     print(f"Morse code: {code}")
+    return
+
+# -------------------------------------------
+#               Lab 25 - Task 1
+# -------------------------------------------
+
+def lab25_task1():
+    task_header(25,1)
+    url = "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2018/worldcup.standings.json"
+    r = requests.get(url)
+    data = r.json()
+    teams_count = reduce(lambda c,group: c + len(group["standings"]),data["groups"],0)
+    print(f"Number of teams: {teams_count}")
+    country_names = [team["team"]["name"] \
+        for group in data["groups"] for team in group["standings"] \
+        if team["pos"] == 1]
+    print(f"Countries with first position: {country_names}")
+    country_codes = [team["team"]["code"] \
+        for group in data["groups"] for team in group["standings"] \
+        if team["goals_for"] > team["goals_against"]]
+    print(f"Countries with higher goals for than goals against: {country_codes}")
+    goals_for = [reduce(lambda c,team: c + team["goals_for"],group["standings"], 0) \
+        for group in data["groups"]]
+    goals_against = [reduce(lambda c,team: c + team["goals_against"],group["standings"], 0) \
+        for group in data["groups"]]
+    group_names = [group["name"] for group in data["groups"]]
+    group_scores = {n:{"goals_for":f,"goals_against":a} \
+        for (n,f,a) in zip(group_names,goals_for,goals_against)}
+    print(f"Group scores:")
+    json_str = json.dumps(group_scores,indent=4)
+    print(json_str)
+    with open("group_scores.json","w") as f:
+        json.dump(group_scores,f,indent=4)
+        f.close()
+    drawn_groups = sorted(data["groups"],
+        key=lambda group:reduce(lambda c,team:c + team["drawn"],group["standings"],0),
+        reverse=True)
+    print(f"Group with most drawn matches: {drawn_groups[0]['name']}")
     return
 
 # -------------------------------------------

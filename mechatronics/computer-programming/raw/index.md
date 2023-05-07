@@ -3192,17 +3192,484 @@ class MyClass:
     - `__len__(self) -> int` : the length of the object. This will allow to use the builtin wrapper function `len(x)` which interanlly calls `x.__len__()`
   - Absolute value:
     - `__abs__(self) -> any` : the absolute value of the object. allows to use the builtin `abs(x)` on any object `x`.
-  - 
+  - Iterable:
+    - The `__iter__(self) -> iterator` : is a method that can be defined to return an iterator which can be used to iterate over the object. There are multiple ways to define this:
+      - If there is an iterable inside the object that we would want to iterate over any way, just return its iterator
+      - If there is a custom sequence in which we want to iterate, we can define a generator function with `yield`.
+      - Or, we can return a generator expression, that will be used for iteration.
+
+```py
+class MyClass:
+  def __init__(self):
+    self.mylist = [1,2,3,4,5]
+
+  # Return a generator expression
+  def __iter__(self):
+    return (x for x in self.mylist)
+
+  # Return an iterator for an iterable attribute
+  def __iter__(self):
+    return iter(self.mylist)
+
+  # Create a generator function yielding custom values
+  def __iter__(self):
+    yield mylist[0]
+    yield mylist[1]
+    yield mylist[2]
+    yield mylist[3]
+    yield mylist[4]
+
+# We can now iterate over an object of this class
+myobject = MyClass
+
+for i in myobject:
+  print(i) # 1\n2\n3\n4\n5\n
+```
+
+- Magic methods (continued):
+  - Mathematical and logical operators:
+    - Likewise, we have so many of mathematical operators `__add__(self,other)`, and logical opertaors `__and__(self,other)`, and in-placed opertors `__iadd__(self,other)` (+=), unary operators `__pos__(self)` (+x), etc.
+
+- If the magic methods for mathematical and logical operators etc do not support certain operands, they should return `NotImplemented`. For example, if we create a class for a point object, and we define the `__mul__(self,other)` function. And if we call it as `p1 * "Hello"` where `p1` is a valid point object, it should return `NotImplemented`. This should happen because the said expression invokes `type(p1).__mul__(p1,"Hello")`. But `__mul__(self,other)` can not handle `other` as a string object. So the `NotImplemented` singleton signals python to ask someone else for help. Which in this case, would be to look for the said operation in the class of `"Hello"` or `str`, instead of our own class. Maybe the `str` class defines the multiplication operation between strings and our class.
+- So it might happen that the right operand class implements a method that can handle the the type of the two different operands. To facilitate this, the reflection methods are called with reflected (swapped operands).
+
+```py
+class MyClass:
+  def __init__(self,v):
+    self.v = v
+
+  def __mul__(self,other):
+    if type(other) != type(self):
+      return NotImplemented
+    return self.v * other.v
+
+  def __rmul__(self,other):
+    return self.v * n
+
+my_object = MyClass(5)
+n = 6
+
+my_object * n
+# TypeError: unsupported operand type(s) for *: 'MyClass' and 'int'
+
+# Sequence of operations:
+# ----------------------
+# my_object * n
+# type(my_object).__mul__(my_object,n)
+# if type(other) != type(self): return NotImplemented
+# NotImplemented
+# <runtime reflects the operands and looks for __rmul__(self,other)>
+# type(n).__rmul__(n,my_object)
+# <int raise TypeError because it can not handle my_object>
+# TypeError: unsupported operand type(s) for *: 'MyClass' and 'int'
+
+n * my_object
+# 30
+
+# Sequence of operations:
+# ----------------------
+# n * my_object
+# type(n).__mul__(n,my_object)
+# <int returns NotImplemented>
+# <runtime reflects the operands and looks for __rmul__(self,other)>
+# type(my_object).__rmul__(my_object,n)
+# return self.v * n
+# return 5 * 6
+# 30
+```
+
+- Lets create an `Author` class.
+
+```py
+class Author:
+  def __init__(self,name,age):
+    self.name = name
+    self.age = age
+    self.books = []
+
+  def __str__(self):
+    return f"{self.name} - {self.age}"
+```
+
+- The `books` property is empty at initialization. This property will be a list of books, so lets create a `Book`.
+
+```py
+class Book:
+  def __init__(self,title,year,author=None):
+    self.title = title
+    self.year = year
+    if authors == None:
+      self.authors = []
+    else:
+      self.authors = authors
+  
+  def __str__(self):
+    return f"{self.title} - {self.year}"
+```
+
+- If we now add the authors to the book, like this:
+
+```py
+author1 = Author("JK Rowling", 56)
+author2 = Author("Allama Iqbal", 48)
+book1 = Book("Harry Porter",2002,[author1])
+book2 = Book("Shikwa",1920,[author2])
+
+print(book1.authors)
+# Prints the authors list with the correct author in it
+print(author1.books)
+# Prints an empty list
+```
+
+- As you can see, there is no cyclic link between the author and the book. If a book gets an author, the author should also get that book.
+- We can solve this by creating getters and setters for the `Book` class that will handle the cyclic linking.
+
+```py
+class Book:
+  def __init__(self,title,year,author=None):
+    self.title = title
+    self.year = year
+    if authors == None:
+      self.authors = []
+    else:
+      self.authors = authors
+  
+  def __str__(self):
+    return f"{self.title} - {self.year}"
+
+  @property
+  def authors(self):
+    return self.__authors
+  
+  @authors.setter
+  def authors(self,new_authors):
+    for a in new_authors:
+      if isinstance(a,Author):
+        a.books.append(self)
+        self.__authors = new_authors
+      else:
+        raise TypeError
+```
+
+- Now when we set an author for a book, that author will automatically have its books property updated as well.
+
+- `Enum` is a class for enumeration available from `enum` module. It allows to enumerate constants with a name.
+
+```py
+from enum import Enum
+
+class Colors(Enum):
+  RED = 1
+  BLUE = 2
+  GREEN = 3
+
+# call notation
+Colors.RED # <Colors.RED: 1>
+# index notation
+Colors["RED"] # <Colors.RED: 1>
+
+# access through value
+Colors(1) # <Colors.RED: 1>
+
+my_red = Colors.RED
+my_red.name  # "RED"
+my_red.value # 1
+
+# __members__ allows to access all members
+Colors.__members__
+# mappingproxy({
+#  'RED': <Colors.RED: 1>,
+#  'BLUE': <Colors.BLUE: 2>,
+#  'GREEN': <Colors.GREEN: 3>})
+```
+
+- Each object of an enumeration class is called its member. Each member has two properties `name` and `value`. The `name` is a string that denotes the name for that constant e.g. `RED`. And the `value` is the value for that name, e.g., `1`.
+- The members of an Enumeration class can be accessed through either call notation or the index notation.
+- Lets create an `Instructor` class to see an example use case:
+
+```py
+class Instructor:
+  roles = [
+    "Professor",
+    "Associate Professor",
+    "Assistant Professor",
+    "Lecturer",
+    "Teaching Fellow"]
+  
+  def __init__(self,name,role):
+    self.name = name
+    self.role = role
+
+  @property
+  def role(self):
+    return self.__role
+
+  @role.setter
+  def role(self,new_role):
+    if new_role in type(self).roles:
+      self.__role = new_role
+    else:
+      raise ValueError("Invalid role selected")
+
+instructor = Instructor("Dr. Ali Raza", "Professor")
+instructor.role # Professor
+```
+
+- We can clearly see that the role names can become frustrating, as we need to remember them all, and type them correctly, and because they are long names, it takes a lot of typing.
+- An easy solution would be create an enumeration class, that assigns short names to these long values.
+
+```py
+from enum import Enum
+
+class Role(Enum):
+  PROF   = "Professor"
+  ASSOC  = "Associate Professor"
+  ASSIST = "Assistant Professor"
+  LECT   = "Lecturer"
+  TF     = "Teaching Fellow"
+```
+
+- Now, we can easily initialize instructor objects.
+
+```py
+class Instructor:
+  def __init__(self,name,role):
+    self.name = name
+    self.role = role
+
+  @property
+  def role(self):
+    return self.__role.value
+
+  @role.setter
+  def role(self,new_role):
+    self.__role = new_role
+
+instructor = Instructor("Dr. Ali Raza", Role.PROF)
+instructor.role.value # Professor
+```
+
+- Classes can inherit from other classes. The derived class is called the child class, whereas the base class is called the parent class.
+
+```py
+def ParentClass:
+  pass
+
+def ChildClass(ParentClass):
+  pass
+```
+
+- The child class inherits all of the properties and methods of the parent class, and can define its own properties and methods.
+- If we define methods or properties in the child class with the same name as that in the parent class, they will override. This is a form of polymorphism, known as method overriding.
+- Basically, Python uses the Method Resolution Order to find a method. Which is the order in which different classes are searched for the said method.
+
+```py
+ChildClass.__mro__
+# (
+# <class '__main__.ChildClass'>,
+# <class '__main__.ParentClass'>,
+# <class 'object'>
+# )
+```
+
+- It can be seen that the name is first searched for in the child class, then its immediate parent, and then its parent (if any), and so on, until it reaches the `builtins.object`
+- The child classes reuses many of the properties of the parent class. So to repeat the same code in the `__init__` and its getters and setters is a tiring process, so we can simply use the parents `__init__`.
+
+```py
+class Parent:
+  def __init__(self,name):
+    self.name = name
+
+class Child(Parent):
+  def __init__(self,name,age):
+    Parent.__init__(self,name)
+    self.age = age
+```
+
+- However, we can use the `super()` method.
+
+```py
+class Parent:
+  def __init__(self,name):
+    self.name = name
+
+class Child(Parent):
+  def __init__(self,name,age):
+    super().__init__(name)
+    self.age = age
+```
+
+- The `super()` method returns a proxy object that represents the immediate parents class. With this syntax, we do not pass `self`, as that is automatically done, just like anyother instance methods in python. This is because we are not longer using the Class method syntax.
+- However, sometimes we have a long chain of inheritance and the MRO is not doing what is intended. See the following code.
+
+```py
+class GrandParent:
+  def get_pronouns(self):
+    return "He/Him"
+
+class Parent:
+  def get_pronouns(self):
+    return "They/Them"
+
+class Child:
+  pass
+```
+
+- Here we do not want our woke parent's pronouns, instead we want the regular he/him pronouns from the grandparent. But if we use `Child.get_pronouns()` the MRO will get us the `Parent` class `get_pronouns` method. So we need to explicitly mention the class from which we need to refer:
+
+```py
+class GrandParent:
+  def get_pronouns(self):
+    return "He/Him"
+
+class Parent:
+  def get_pronouns(self):
+    return "They/Them"
+
+class Child:
+  def get_pronouns(self):
+    GrandParent.get_pronouns(self)
+```
+
+- Remember that, since this is a class method syntax, we need to pass the `self` ourselves.
+
+- list comprehension:
+- List comprehension (and similarly, set comprehension and dictionary comprehension - there is no tuple comprehension however) allows to create a list from another list using a succint syntax.
+
+```py
+nums = [14,67,18,42,51,69]
+l = []
+for i in nums:
+  l.append(i * i)
+```
+
+- This can be written elegantly and pythonic as:
+
+```py
+nums = [14,67,18,42,51,69]
+l = [i * i for i in nums]
+```
+
+- The syntax is:
+
+```py
+list = [expression for element in iterable]
+```
+
+- We can also add conditionals:
+
+```py
+l = [i * i for i in nums if i % 2 == 0]
+```
+
+- The conditional syntax now becomes:
+
+```py
+list = [expression for element in iterable if condition]
+```
+
+- The `if-else` conditional is placed before the `for` expression, unlike the only `if` conditional which is placed after the `for` expression.
+
+```py
+list = [expression if condition else expression for element in iterable]
+```
+
+- We can also add nested for loops. The sequence is: outer for loop followed by inner for loop and so on.
+
+```py
+list = [expression for subcontainer in iterable for element in subcontainer]
+```
+
+- The simplest use case is to flatten out a nested list:
+
+```py
+nested_list = [[3,4,1],[1,5,7,2,3],[2,8]]
+flattened_list = [i for sublist in nested_list for i in sublist]
+```
+
+- JSON (JavaScript Object Notation)
+- JSON is a very common file format, that is used to exchange data as name-value pairs. similar to python dictionaries.
+- Python supports JSON using the `json` module.
+- See the following example JSON file:
+
+```json
+{
+ "name": "Ahmed",
+ "age": 30,
+ "city": "Lahore"
+}
+```
+
+- For contrast, the following is an equivalent python dictionaries:
+
+```py
+{
+ "name": "Ahmed",
+ "age": 30,
+ "city": "Lahore"
+}
+```
+
+- As you can see, the syntax is very similar. However, there are a few differences:
+  - In JSON, `false` is used instead of `False` (as in Python), and similary `true` instead of `True`.
+  - In JSON, `null` is used to represent `None` (as in Python).
+- However, the `json` module handles these automatically, and we do not need to do anything manually.
+
+- JSON can be parsed from a string or a file.
+
+```py
+import json
+my_json = '{"name": "Ahmed", "age": 30, "city": "Lahore"}'
+
+# Parsing JSON string into a dictionary
+my_dict = json.loads(my_json)
+
+# Generating JSON string from a dictionary
+my_json = json.dumps(my_dict)
+
+# Parsing JSON file into a dictionary
+with open("in.json","r") as f:
+  my_dict = json.load(f)
+
+# Generating JSON file from a dictionary
+with open("out.json","w") as f:
+  json.dumps(my_dict,f)
+  # We can provide an optional indent argument to indent the output json
+  json.dumps(my_dict,f,indent=4)
+```
+
+- To import JSON file from a website, we can use the `get(url)` method from the `requests` module (not available by default, we have to install it using pip).
+
+```py
+import requests
+
+url = "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2018/worldcup.standings.json"
+
+r = requests.get(url) # this returns a requests object containing HTTP response
+my_dict = r.json() # this returns a dictionary NOT a json string
+```
 
 ## Confusions
 
 - For taking a numeral from a user why is `eval()` used, when we can equivalently use `int()` or `float()` to convert input string to a number as needed.
 - Which method is preferred to create empty lists. `a = []` or `a = list()`.
 - Why does the lab manuals and Python's own documentation use single quotes as delimiters for string such as `'Hello'` rather than double quotes?
-- Why is there not a lab manual 26?
 - Function decorators???
+- What keyboard shortcut do you use to comment out selected lines of code?
+- What extensions to install to use Python on VS Code + any other settings?
+- What does the `|` mean when used with dictionaries. For example, what is this piece of code doing?
 
-## Extra
+```py
+data = {
+"Lahore": ["Badshahi Mosque", "Lahore Fort", "Shalimar Gardens"],
+"Karachi": ["Mazar-e-Quaid", "Clifton Beach", "Frere Hall"],
+"Islamabad": ["Faisal Mosque", "Margalla Hills", "Rawal Lake"]
+}
+new_data = {"Peshawar": ["Peshawar Museum", "Bala Hisar Fort", "Qissa Khwani Bazaar"]}
+data = data | new_data
+```
+
+## Styling
 
 Google Python Style Guide has the following naming conventions:
 
