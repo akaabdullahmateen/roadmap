@@ -322,7 +322,18 @@ If the system's *steady state response* is to be tested, the input signal would 
 
 ### Definition
 
-A *control system* consists of *subsystems* and *processes* (or *plants*) assembled for the purpose of obtaining a *desired output* with *desired performance*, given a *specified input*.
+A control system 
+
+A control system automatically adjusts the output to match a desired value, set through the input.
+
+- the input signal represents the desired output value, called the set point
+- the input transducer which converts the input to a form required by the controller.
+- the controller which drives the process
+- the output of the process, called the process variable
+- the output transducer which measures the process variable
+- The disturbances are added to the controller and process outputs via summing junctions
+- the input is also called the reference
+- the output is also called the controller variable
 
 Control systems have the following advantages:
 
@@ -337,17 +348,16 @@ There are two major configurations of control systems: *open loop* and *closed l
 
 #### Open loop systems
 
-The generic architecture of an open loop system is shown in the figure below. It starts with a subsystem called an *input transducer*, which converts the form of input to that used by the *controller*. The controller drives a *process* or *plant*. The input is sometimes called the *reference*, while the output can be called the *controller variable*. Other signals, such as *disturbances*, are shown added to the controller and process outputs via *summing junctions*, which yield the algebraic sum of their input signals using associated signs.
 
 <div style="display:flex;align-items:center;justify-content:center;margin:24px">
 <img style="width:512px;border:4px solid #9146ff;border-radius:12px" src="./assets/system-configurations/open-loop.png">
 </div>
 
-The distinguishing characteristic of an open loop system is that it can not compensate for any disturbances that add to the controller's driving signal (Disturbance 1 in the figure). The output of an open loop system is corrupted not only by signals that add to the controller's commands but also by disturbances at the output ("Disturbance 2 in the figure). The system can not correct these disturbances either.
+In open loop system, the control action of the controller is independent of the process output.
+
+In closed loop system, the control action of the controller is dependent on the process output. A closed loop system has a feedback loop which ensures the controller exerts a control action to give a process output the same as the reference input or set point.
 
 #### Closed loop systems
-
-The generic architecture of a closed loop system in shown in the figure below. The input transducer converts the form of input to the form used by the controller. An *output transducer*, or *sensor*, measures the output response and converts it into the form used by the controller.
 
 The first summing junction algebraically adds the signal from the input to the signal from the output, which arrives via the *feedback path*, the return path from the output to the summing junction. The result is generally called the *actuating signal*. However, in systems where both the input and output transducers have *unity gain* (that is, the transducer amplifies the input by 1), the actuating signal's value is equal to the actual difference between the input and the output. Under this condition, the actuating signal is called the *error*.
 
@@ -356,6 +366,10 @@ The first summing junction algebraically adds the signal from the input to the s
 </div>
 
 The closed loop system compensates for disturbances by measuring the output response, feeding that measurement back through a feedback path, and comparing that response to the input at the summing junction.
+
+### Characteristics
+
+
 
 ## Miscellaneous
 
