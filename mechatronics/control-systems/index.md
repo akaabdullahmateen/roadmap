@@ -27,7 +27,9 @@
   - [System configurations](#system-configurations)
     - [Open loop systems](#open-loop-systems)
     - [Closed loop systems](#closed-loop-systems)
+  - [Characteristics](#characteristics)
 - [Miscellaneous](#miscellaneous)
+  - [Mathematical models](#mathematical-models)
   - [PID controller](#pid-controller)
 
 ## Introduction
@@ -137,7 +139,7 @@ y(t) &= \int^{\infty}_{-\infty} u(\tau) h(t - \tau) d\tau \\
 \end{aligned}
 $$
 
-All physical systems respond to input only after the input is applied. In math terms, this means that $u(t) = 0$ and $h(t) = 0$ for all $t < 0$.
+All physical systems respond to input only after the input is applied. In mathematical notation, this means that $u(t) = 0$ and $h(t) = 0$ for all $t < 0$.
 
 $$
 \begin{aligned}
@@ -209,7 +211,7 @@ $$
 
 ### Convolution theorem
 
-The convolution theorem states that the Laplace transform of a convolution of two functions is the pointwise product of their Laplace transforms. For an LTI system with impulse response $h(t)$, input signal $x(t)$, and output response $y(t)$, the convolution theorem implies:
+The convolution theorem states that the Laplace transform of the convolution of two functions is the pointwise product of their Laplace transforms. For an LTI system with impulse response $h(t)$, input signal $x(t)$, and output response $y(t)$, the convolution theorem implies:
 
 $$
 \begin{equation}
@@ -238,7 +240,7 @@ h(t) = \frac{y(t)}{x(t)} &= \frac{b_m D^m + b_{m - 1} D^{m - 1} + \dots + b_0}{a
 \end{aligned}
 $$
 
-The transfer function $H(s)$ is obtained by applying Laplace transform to the differential equations describing the system ($\mathcal{L}\lbrace\frac{d^n}{dt^n}f(t)\rbrace = s^n F(s)$), assuming zero initial conditions.
+The transfer function $H(s)$ is obtained by applying Laplace transform $\mathcal{L}\lbrace\frac{d^n}{dt^n}f(t)\rbrace = s^n F(s)$ to the differential equations describing the system, assuming zero initial conditions.
 
 $$
 \begin{aligned}
@@ -359,7 +361,7 @@ In closed loop system, the control action of the controller is dependent on the 
 
 #### Closed loop systems
 
-The first summing junction algebraically adds the signal from the input to the signal from the output, which arrives via the *feedback path*, the return path from the output to the summing junction. The result is generally called the *actuating signal*. However, in systems where both the input and output transducers have *unity gain* (that is, the transducer amplifies the input by 1), the actuating signal's value is equal to the actual difference between the input and the output. Under this condition, the actuating signal is called the *error*.
+The first summing junction algebraically adds the signal from the input to the signal from the output, which arrives via the *feedback path*, the return path from the output to the summing junction. The result is generally called the *actuating signal*. However, in systems where both the input and output transducers have *unity gain* (that is, the transducer amplifies the input by unity), the actuating signal's value is equal to the actual difference between the input and the output. Under this condition, the actuating signal is called the *error*.
 
 <div style="display:flex;align-items:center;justify-content:center;margin:24px">
 <img style="width:512px;border:4px solid #9146ff;border-radius:12px" src="./assets/system-configurations/closed-loop.png">
@@ -372,6 +374,10 @@ The closed loop system compensates for disturbances by measuring the output resp
 
 
 ## Miscellaneous
+
+### Mathematical models
+
+Mathematical models describes the dynamic behavior of physical systems by ordinary differential equations. Linearization approximations allows to use Laplace methods on nonlinear systems. The transfer functions are organized into block diagrams or signal flow graphs to graphically depict the interconnections. 
 
 ### PID controller
 
