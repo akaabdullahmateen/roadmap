@@ -21,6 +21,8 @@
   - [Representing Rotations](#representing-rotations)
     - [Rotation in the plane](#rotation-in-the-plane)
     - [Rotations in three dimensions](#rotations-in-three-dimensions)
+- [Chapter 7: Path planning and collision avoidance](#chapter-7-path-planning-and-collision-avoidance)
+  - [The configuration space](#the-configuration-space)
 
 ## Chapter 1: Introduction
 
@@ -440,3 +442,16 @@ $$
 
 Similar to the rotation matrices in two dimensions, matrices in this form are orthogonal with determinant equal to $1$. In this case, $3 \times 3$ rotation matrices belong to the group $SO(3)$. The properties listed above for the rotation matrix in $SO(2)$ also apply to rotation matrices in $SO(3)$.
 
+## Chapter 7: Path planning and collision avoidance
+
+In previous chapters, we have studied the geometry of robotic arms, developing solutions for both the forward and inverse kinematics problems. The solutions to these problems depend only on the intrinsic geometry of the robot, and they do not reflect any constraints imposed by the workspace in which the robot operates. In particular, they do not take into account the possibility of collision between the robot and objects in the workspace. In this chapter, we address the problem of planning collision free paths for the robot. We will assume that the initial and final configurations of the robot are specified, and that the problem is to find a collision free path for the robot that connects them.
+
+The description of this problem is deceptively simple, yet the path planning problem is among the most difficult problems in computer science. The computational complexity of the best known complete path planning algorithm grows exponentially with the number of internal degrees of freedom of the robot. For this reason, for robot systems with more than a few degrees of freedom, complete algorithms are not used in practice.
+
+In this chapter, we treat the path planning problem as a search problem. The algorithms we describe are not guaranteed to find a solution to all problems, but they are quite effective in a wide range of practical applications. Furthermore, these algorithms are fairly easy to implement, and require only moderate computation time for most problems.
+
+We begin in Section 7.1 by introducing the notion of configuration space, and describing how obstacles in the workspace can be mapped into the configuration space. We then introduce path planning methods that use artificial potential fields in Sections 7.2 and 7.3. The corresponding algorithms use gradient descent search to find a collision-free path to the goal, and, as with all gradient descent methods, these algorithms can become trapped in local minima in the potential field. Therefore, in Section 7.4, we describe how random motions can be used to escape local minima. In Section 7.5, we describe another randomized method known as the Probabilistic Roadmap (PRM) method. Finally, since each of these methods generates a sequence of configurations, we describe in Chapter 8 how polynomial splines can be used to generate smooth trajectories from a sequence of configurations. As in previous chapters, we will restrict our attention in this chapter to the geometric aspects of the problem.
+
+### The configuration space
+
+In Chapter 3, we learnt that the forward kinematic map can be used to determine the position and orientation of the end effector frame given the vector of joint variables. Furthermore, the $A_i$ matrices can be used to infer the position and orientation of the reference frame for any link of the robot. Since each link of the robot is assumed to be a rigid body, the $A_i$ matrices can therefore be used to infer the position of any point on the robot, given the values of the joint variables. In the path planning literature, a complete specification of the location of every point on the robot is referred to as a configuration, and the set of all possible configurations is referred to as the configuration space. For our purposes, the vector of joint variables, $\bold{q}$, provides a convenient representation of a configuration. We will denote the configuration space by $\mathcal{Q}$.

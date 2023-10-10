@@ -350,7 +350,6 @@ There are two major configurations of control systems: *open loop* and *closed l
 
 #### Open loop systems
 
-
 <div style="display:flex;align-items:center;justify-content:center;margin:24px">
 <img style="width:512px;border:4px solid #9146ff;border-radius:12px" src="./assets/system-configurations/open-loop.png">
 </div>
