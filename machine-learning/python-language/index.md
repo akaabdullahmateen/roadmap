@@ -37,6 +37,16 @@
   - [Operators](#operators)
   - [Delimiters](#delimiters)
 - [Data model](#data-model)
+  - [Objects, values, and types](#objects-values-and-types)
+  - [Standard type hierarchy](#standard-type-hierarchy)
+    - [None](#none)
+    - [NotImplemented](#notimplemented)
+    - [Ellipsis](#ellipsis)
+    - [`numbers.Number`](#numbersnumber)
+      - [`numbers.Integral`](#numbersintegral)
+      - [`numbers.Real` (`float`)](#numbersreal-float)
+      - [`numbers.Complex` (`complex`)](#numberscomplex-complex)
+    - [Sequences](#sequences)
 
 ## Introduction
 
@@ -220,7 +230,7 @@ Operators are special symbols, combinations of symbols, or keywords that designa
 ```
 ### Delimiters
 
-The following tokens serve as delimiters in the grammar:
+A delimiter is a sequence of one or more characters that specifies the boundary between various sections in plain text or other data streams. The following tokens serve as delimiters in the grammar:
 
 ```py
 (        )        [        ]        {        }        ->
@@ -244,3 +254,68 @@ $        ?        `
 ```
 
 ## Data model
+
+### Objects, values, and types
+
+Objects are Python's abstraction for data. All data in a Python program is represented by objects or by relations between objects. Every object has an identity, a type, and a value.
+
+An object's identity never changes once it has been created. However, multiple names can reference the same underlying object, thereby sharing the same identity. This happens because Python caches immutable objects for increased performance and memory efficiency. The `is` operator compares the identity of two objects. The `id()` function returns an integer representing its identity; in CPython, this is the memory address.
+
+An object's type determines the operations that the object supports, and also defines the possible values for objects of that type. The `type()` function returns an object's type, which is an object itself. Like an object's identity, an object's type is also immutable.
+
+The value of some object can change. Objects whose value can change are said to be mutable; objects whose value is unchangeable once they are created are called immutable. The value of an immutable container object that contains a reference to a mutable object can change when the latter's value is changed, however, the container is still considered immutable, because the collection of objects it contains cannot be changed. An object's immutability is determined by its type.
+
+Objects are never explicitly destroyed, however, when they become unreachable, they may be garbage-collected. An implementation is allowed to postpone garbage collection or omit it altogether. CPython currently uses a reference-counting scheme with optional delayed detection of cyclically linked garbage, which collects most objects as soon as they become unreachable, but is not guaranteed to collect garbage containing circular references. Note that catching an exception with a `try...except` statement may keep objects alive.
+
+Some objects contain references to external resources such as open files or windows. But since garbage collection is not guaranteed to happen, such objects also provide an explicit way to release the external resource, usually with a `close()` method. Programs are strongly recommended to explicitly close such objects. The `try...finally` statement and the `with` statement provide convenient ways to do this.
+
+Some objects contain references to other objects; these are called containers. Examples of containers are tuples, lists, and dictionaries. The references are part of a container's value.
+
+### Standard type hierarchy
+
+Below is a list of types that are built into Python. Extension modules and future versions of Python can define additional types.
+
+#### None
+
+This type has a single value. There is a single object with this value. This object is accessed through the builtin name `None`. It is used to signify the absence of a value in many situations, such as it is returned from functions that do not explicitly return anything. Its truth value is false.
+
+#### NotImplemented
+
+This type has a single value. There is a single object with this value. This object is accessed through the built-in name `NotImplemented`. Numeric methods and rich comparison methods should return this value if they do not implement the operation for the operands provided. The interpreter will then try the reflected operation, or some other fallback, depending on the operator.) It should not be evaluated in a boolean context.
+
+#### Ellipsis
+
+This type has a single value. There is a single object with this value. This object is accessed through the literal `...` or the built-in name `Ellipsis`. Its truth value is true.
+
+#### `numbers.Number`
+
+These are created by numeric literals and returned as results by arithmetic operators and arithmetic builtin functions. Numeric objects are immutable. The string representations of the numeric classes, computed by `__repr__()` and `__str__()`, have the following properties:
+
+- They are valid numeric literals; when passed to their class constructor, produce an object having the value of the original number.
+- The representation is in base 10, whenever possible.
+- Leading zeroes are not shown, possibly except when there is a single zero before a decimal point.
+- Trailing zeroes are not shown, possibly except when there is a single zero after a decimal point.
+- A sign is shown only when the number is negative.
+
+Python distinguishes between integers, floating-point numbers, and complex numbers:
+
+##### `numbers.Integral`
+
+These represent elements from the mathematical set of integers (positive and negative). There are two types of integers:
+
+Integers (`int`)
+: These represent numbers in an unlimited range, subject to available (virtual) memory only. For the purpose of shift and mask operations, a binary representation is assumed, and negative numbers are represented in a variant of 2's complement which gives the illusion of an infinite string of sign bits extended to the left.
+
+Boolean (`bool`)
+: These represent the truth values. The two objects representing the values `False` and `True` are the only Boolean objects. The Boolean type is a subtype of the integer type, and Boolean values behave like the values 0 and 1 respectively, in almost all contexts; the exception being that when converted to a string, the strings `"False"` and `"True"` are returned, respectively.
+
+##### `numbers.Real` (`float`)
+
+These represent machine-level double-precision floating-point numbers. The machine architecture and Python implementation decides the accept range and handling of overflow. Python does not support single-precision floating-point numbers; the savings in processor and memory usage that are usually the reason for using these are dwarfed by the overhead of using objects in Python, so there is no reason to complicate the language with two kinds of floating-point numbers.
+
+##### `numbers.Complex` (`complex`)
+
+These represent complex numbers as a pair of machine-level double-precision floating-point numbers. The real and imaginary parts of a complex number `z` can be retrieved through the read-only attributes `z.real` and `z.imag`.
+
+#### Sequences
+
