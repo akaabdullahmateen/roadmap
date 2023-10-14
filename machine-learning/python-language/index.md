@@ -64,6 +64,22 @@
       - [Class instances](#class-instances)
     - [Modules](#modules)
     - [Custom classes](#custom-classes)
+    - [Class instances](#class-instances-1)
+    - [File objects](#file-objects)
+    - [Internal types](#internal-types)
+  - [Special method names](#special-method-names)
+    - [Basic customization](#basic-customization)
+      - [`object.__new__(cls[, ...])`](#object__new__cls-)
+      - [`object.__init__(self[, ...])`](#object__init__self-)
+      - [`object.__del__(self)`](#object__del__self)
+      - [`object.__repr__(self)`](#object__repr__self)
+      - [`object.__str__(self)`](#object__str__self)
+      - [`object.__bytes__(self)`](#object__bytes__self)
+      - [`object.__format__(self, format_spec)`](#object__format__self-format_spec)
+      - [Rich comparison methods](#rich-comparison-methods)
+      - [`object.__hash__(self)`](#object__hash__self)
+      - [`object.__bool__(self)`](#object__bool__self)
+    - [Customizing attribute access](#customizing-attribute-access)
 
 ## Introduction
 
@@ -492,3 +508,145 @@ Because of the way CPython clears module dictionaries, the module dictionary wil
 #### Custom classes
 
 Custom classes are typically created by class definitions. A class has a namespace implemented by a dictionary object. Class attribute references are translated to lookups in this dictionary; that is, `C.x` is translated to `C.__dict__["x]`, although there are a number of hooks which allow for other means of locating attributes. When the attribute name is not found there, the attribute search continues in the base classes. This search of the base classes uses the C3 method resolution order which behaves correctly even in the presence of diamond inheritance structures where there are multiple inheritance paths leading to a common ancestor.
+
+When a class attribute reference, of class `C`, would yield a class method object, it is transformed into an instance method object whose `__self__` attribute is `C`. When it would yield a static method object, it is transformed into the object wrapped by the static method object.
+
+Class attribute assignments update the class's dictionary, and never the dictionary of a base class. A class object can be called to yield a class instance. A class object has some special attributes:
+
+| Attribute | Description |
+| - | - |
+| `__name__` | The class name |
+| `__module__` | The name of the module in which the class was defined |
+| `__dict__` | The dictionary containing the class's namespace |
+| `__bases__` | A tuple containing the base classes, in the order of their occurrence in the base class list |
+| `__doc__` | The class's documentation string, or `None` if unavailable |
+| `__annotations__` | A dictionary containing variable annotations collected during class body execution |
+| `__type_params__` | A tuple containing the type parameters of a generic class |
+
+#### Class instances
+
+A class instance is created by calling a class object. A class instance has a namespace implemented as a dictionary which is the first place in which attribute references are searched. When an attribute is not found there, and the instance's class has an attribute by that name, the search continues with the class attributes. If a class attribute is found that is a user-defined function object, it is transformed into an instance method object whose `__self__` attribute is the instance. Static method and class method objects are also transformed. If no class attribute is found, and the object's class has a `__getattr__()` method, then it is called to satisfy the lookup.
+
+Attribute assignment and deletions update the instance's dictionary, and never a class's dictionary. If the class has a `__setattr__()` or `__delattr__()` method, then it is called instead of updating the instance dictionary directly.
+
+Class instances can pretend to be numbers, sequences, or mappings if they have methods with certain special names. Class instances have some special attributes:
+
+| Attribute | Description |
+| - | - |
+| `__dict__` | The attribute dictionary |
+| `__class__` | The instance's class |
+
+#### File objects
+
+A file object represents an open file. Various shortcuts are available to create file objects; such as the builtin `open()` function, `os.popen()` method, `os.fdopen()` method, and the `makefile()` method of socket objects.
+
+The objects `sys.stdin`, `sys.stdout`, and `sys.stderr` are initialized to file objects corresponding to the interpreter's standard input, output, and error streams. They are all open in text mode and therefore follow the interface defined by the `io.TextIOBase` abstract class.
+
+#### Internal types
+
+A few types used internally by the interpreter are exposed to the user. Their definitions may change with future versions of the interpreter. These are the code objects, frame objects, traceback objects, slice objects, static method objects, and class method objects.
+
+### Special method names
+
+A class can implement certain operations that are invoked by special syntax (such as arithmetic operations, subscripting, or slicing) by defining methods with special names. This is Python's approach to operator overloading, allowing classes to define their own behavior with respect to language operators. For example, if a class defines a method named `__getitem__()`, and `x` is an instance of this class, then `x[i]` is roughly equivalent to `type(x).__getitem__(x,i)`. Except where mentioned, attempts to execute an operation raise an exception when no appropriate method is defined, typically `AttributeError` or `TypeError`.
+
+Setting a special method to `None` indicates that the corresponding operation is not available. For example, if a class sets `__iter__()` to `None`, the class is not iterable, so calling `iter()` on its instances will raise `TypeError`, without falling back to `__getitem__()`.
+
+When implementing a class that emulates any builtin type, it is important that the emulation only be implemented to the degree that it makes sense for the object being modelled. For example, some sequences may work well with retrieval of individual elements, but extracting a slice may not make sense.
+
+#### Basic customization
+
+##### `object.__new__(cls[, ...])`
+
+The `__new__()` method is called to create a new instance of the class. It is special-cased so it does not need to be declared. The `__new__()` method is a static method that takes the class (of which an instance was requested) as its first argument. The remaining arguments are those passed to the object constructor expression (the call to the class). The return value of `__new__()` should be the new object instance, which is usually an instance of `cls`.
+
+Typical implementations create a new instance of the class by invoking the superclass's `__new__()` method using `super.__new__(cls[, ...])` with appropriate arguments and then modifying the newly created instance as necessary before returning it.
+
+If `__new__()` is invoked during object construction and it returns an instance of `cls`, then the new instance's `__init__()` method will be invoked like `__init__(self[, ...])`, where `self` is the new instance and the remaining arguments are the same as were passed to the object's constructor. If `__new__()` does not return an instance of `cls`, then the new instance's `__init__()` method will not be invoked.
+
+The `__new__()` method is intended mainly to allow subclasses, of immutable types, to customize instance creation. It is also commonly overridden in custom metaclasses in order to customize class creation.
+
+##### `object.__init__(self[, ...])`
+
+The `__init__()` method is called after the instance has been created by `__new__()`, but before it is returned to the caller. The arguments are those passed to the class constructor expression. If a base class has an `__init__()` method, the derived class's `__init__()` method must explicitly call it to ensure proper initialization of the base class part of the instance; for example, `super.__init__([args...])`.
+
+Because `__new__()` and `__init__()` work together in constructing objects, `__init__()` must not return anything other than `None`; doing otherwise would cause a `TypeError` to be raised at runtime.
+
+##### `object.__del__(self)`
+
+The `__del__()` method is called when the instance is about to be destroyed. This is also called a finalizer or (improperly) a destructor. If a base class has a `__del__()` method, the derived class's `__del__()` method must explicitly call it to ensure proper deletion of the base class part of the instance.
+
+It is possible, but not recommended, for the `__del__()` to postpone destruction of the instance by creating a new reference to it. This is called object resurrection. It is implementation-dependent whether `__del__()` is called a second time when a resurrected object is about to be destroyed; the current CPython implementation only calls it once. It is not guaranteed that the `__del__()` method is called for an object that still exists when the interpreter exits.
+
+Note that `del x` does not directly call `x.__del__()`; the statement `del x` decrements the reference count for `x` by one, while the method `x.__del__()` is only called when `x` reference count reaches zero.
+
+In CPython, it is possible for a reference cycle to prevent the reference count of an object from going to zero. In this case, the cycle will be later detected and deleted by the cyclic garbage collector. A common cause of reference cycles is when an exception has been caught in a local variable. The frame’s locals then reference the exception, which references its own traceback, which references the locals of all frames caught in the traceback.
+
+Due to the precarious circumstances under which `__del__()` methods are invoked, exceptions that occur during their execution are ignored, and a warning is printed to `sys.stderr` instead.
+
+##### `object.__repr__(self)`
+
+The `__repr__()` method is called by the `repr()` function to compute the official string representation of an object. If at all possible, this should look like a valid Python expression that could be used to recreate an object with the same value, given an appropriate environment. If this is not possible, a string of the form `<...some useful description...>` should be returned. The return value must be a string object.
+
+If a class defined `__repr__()` but not `__str__()`, then `__repr__()` is also used when an informal string representation of instances of that class is required. This is typically used for debugging, so it is important that the representation is informative and unambiguous.
+
+##### `object.__str__(self)`
+
+The `__str__()` method is called by the `str()`, `print()`, and `format()` functions to compute the informal or nicely printable string representation of an object. The return value must be a string object.
+
+This method differs from `__repr__()` in that there is no expectation that `__str__()` return a valid Python expression; instead, a more convenient or concise representation can be used. The default implementation defined by the builtin type `object` calls `object.__repr__()`.
+
+##### `object.__bytes__(self)`
+
+The `__bytes__()` method is called by `bytes()` to compute a byte-string representation of an object. This should return a `bytes` object.
+
+##### `object.__format__(self, format_spec)`
+
+The `__format__()` method is called by the `format()` builtin function, evaluation of formatted string literals, and the `str.format()` method, to produce a formatted string representation of an object. The `format_spec` argument is a string that contains a description of the formatting options desired. The interpretation of the `format_spec` argument is dependent on the type implementing `__format__()`, however most classes will either delegate formatting to one of the builtin types, or use a similar formatting option syntax. The return value must be a string object.
+
+##### Rich comparison methods
+
+The rich comparison methods implement operator overloading for mathematical comparison operators; for example, `x < y` calls `x.__lt__(y)`. These methods are listed in the table below:
+
+| Method | Comparison operator |
+| - | - |
+| `object.__lt__(self,other)` | `x <  y` |
+| `object.__le__(self,other)` | `x <= y` |
+| `object.__eq__(self,other)` | `x == y` |
+| `object.__ne__(self,other)` | `x != y` |
+| `object.__gt__(self,other)` | `x >  y` |
+| `object.__ge__(self,other)` | `x >= y` |
+
+A rich comparison method may return the singleton `NotImplemented` if it does not implement the operation for a given pair of arguments. By convention, `False` and `True` are returned for a successful comparison. However, these methods can return any value, so if the comparison operator is used in a Boolean context, Python will call `bool()` on the value to determine if the result is true or false.
+
+By default, `object` implements `__eq__()` by using `is`, returning `NotImplemented` in the case of false comparison; that is, `True if x is y else NotImplemented`. For `__ne__()`, by default it delegates to `__eq__()` and inverts the result unless it is `NotImplemented`. There are no other implied relationships among the comparison operators or default implementations; for example, the truth of `x < y or x == y` does not imply `x <= y`. To automatically generate ordering operations from a single root operation, use `functools.total_ordering()`.
+
+There are no swapped-argument versions of these methods, to be used when the left argument does not support the operation but the right argument does. Rather, `__lt__()` and `__gt__()`, `__le__()` and `__ge__()` are reflection of each other, and `__eq__()` and `__ne__()` are their own reflection. If the operands are of different types, and right operand’s type is a direct or indirect subclass of the left operand’s type, the reflected method of the right operand has priority, otherwise the left operand’s method has priority. Virtual subclassing is not considered.
+
+##### `object.__hash__(self)`
+
+The `__hash__()` method is called by the builtin `hash()` function, and for operations on members of hashed collections, including `set`, `frozenset`, and `dict`. The `__hash__()` method should return an integer. The only required property is that objects which compare equal have the same hash value. It is advised to mix together the hash values of the components of the object that also play a part in comparison of objects by packing them into a tuple and hashing the tuple.
+
+```py
+def __hash__(self):
+    return hash((self.name, self.nick, self.color))
+```
+
+Note that the `hash()` method truncates the value returned from an object's custom `__hash__()` method to the size of a `Py_ssize_t`. This is typically 8 bytes on 64-bit builds and 4 bytes on 32-bit builds.
+
+If a class does not define and `__eq__()` method, it should not define a `__hash__()` method either. If it defines `__eq__()` but not `__hash__()`, its instances will not be usable as items in hashable collections. If a class defines mutable objects and implements an `__eq__()` method, it should not implement `__hash__()`, since the implementation of hashable collections requires that a key's hash value is immutable.
+
+User-defined classes have `__eq__()` and `__hash__()` methods by default; with them, all objects compare unequal (except with themselves) and `x.__hash__()` returns an appropriate value such that `x == y` implies both that `x is y` and `hash(x) == hash(y)`.
+
+A class that overrides `__eq__()` and does not define `__hash__()` will have its `__hash__()` implicitly set to `None`. When the `__hash__()` method of a class is `None`, instances of the class will raise an appropriate `TypeError` when a program attempts to retrieve their hash value, and will also be correctly identified as unhashable when checking `isinstance(obj, collections.abc.Hashable)`.
+
+If a class that overrides `__eq__()` needs to retain the implementation of `__hash__()` from a parent class, the interpreter must be told this explicitly by setting `__hash__ = <ParentClass>.__hash__`. If a class that does not override `__eq__()` wishes to suppress hash support, it should include `__hash__ = None` in the class definition. A class which defines its own `__hash__()` that explicitly raises a `TypeError` would be incorrectly identified as hashable by an `isinstance(obj, collections.abc.Hashable)` call.
+
+By default, the `__hash__()` values of `str` and `bytes` objects are modified with an unpredictable random value. Although they remain constant within an individual Python process, they are not predictable between repeated invocations of Python.
+
+##### `object.__bool__(self)`
+
+The `__bool__()` method is called to implement truth value testing and the builtin function `bool()`. It should return `True` or `False`. When this method is not defined, `__len__()`, if defined, is called, and the object is considered true if its returned value is nonzero. If a class has neither `__len__()` nor `__bool__()`, all its instances are considered true.
+
+#### Customizing attribute access
+
