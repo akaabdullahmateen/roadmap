@@ -3,4 +3,158 @@
 <!-- omit in toc -->
 ## Table of contents
 
-- [Arithmetic conversions](#arithmetic-conversions)
+
+- Type casting
+- Math module
+- Multiline statement
+- Mini formatting language
+- Complex number
+- round() function
+- Escape sequences
+- Data types
+- Variables
+- Variable naming
+- Keywords
+- Mathematical operators
+- input() function
+- print() function
+- String properties
+- Relational operators
+- if-else statement
+- Indentation
+- Logical operators
+- Comments
+- Numbers
+- Multiple assignment
+- Formatted string (f-string)
+- Functions
+- for loops
+- range() function
+- while loop
+- break statement
+- continue statement
+- pass statement
+- else statement in loop
+- clear screen function
+- sleep function
+- keyboard hit function
+- get character function
+- as keyword
+- JSON
+- Parsing JSON
+- Generating JSON
+- JSON files
+- requests module
+- Execution flow
+- Function arguments
+- Function return
+- Boolean variables
+- Local and global variables
+- Variable scope
+- Enclosing variable scope
+- LEGB rule
+- Custom module
+- Lists
+- Two-dimensional lists
+- Nested to flat list
+- List slicing
+- in operator
+- Sets
+- Set methods
+- Set operators
+- Set comprehension
+- LIst comprehension
+- Random module
+- List operators
+- List methods
+- Builtin Python functions for lists
+- Exception handling
+- LBYL vs EAFTP
+- try/except block
+- else/finally with try block
+- Raising an exception
+- Keyword arguments
+- Positional arguments
+- Default values for parameters
+- Position-only arguments
+- Keyword-only arguments
+- *args variable length argument
+- **kwargs variable length keyword arguments
+- Pass-by-value and pass-by-reference
+- zip() function
+- map() function
+- filter() function
+- reduce() function
+- Tuples
+- Packing and unpacking tuples
+- Singleton tuple
+- Strings
+- Indexing and slicing strings
+- Builtin Python functions for strings
+- String methods
+- in keyword to access characters or substrings
+- String to list and vice versa
+- Lambda expressions
+- Sorting lists
+- Sorting tuple
+- Sorting set
+- Sorting dictionary
+- Sorting a list of tuples,sets,dictionary,or inner lists
+- Using key in sorting
+- Multilevel sorting
+- Magic methods: __str__() and __repr__()
+- Recursive functions
+- Memoization
+- lru_cache function decorator
+- timeit module for execution time
+- Maximum recursion depth
+- Dictionary
+- Keys in dictionary
+- Dictionary methods
+- Iterating through dictionary
+- Empty dictionary
+- 2D dictionary or list of dictionary
+- Dictionary comprehension
+- Method bindings
+- Instance methods
+- Class methods
+- Static methods
+- Naming conventions
+- Magic method __init__()
+- Dot notation
+- Data attributes of class
+- __dict__ attribute of class and instance
+- __weakref__
+- @property decorator
+- List comprehension
+- If-else with list comprehension
+- Nested for loops for list comprehension
+- Generators
+- Iterable vs iterator
+- Generator expressions
+- Generator functions
+- Data encapsulation
+- private, public, protected
+- single leading underscore
+- double leading underscore
+- name mangling
+- getters and setters
+- property() function decorator
+- @property decorator
+- Deleter method
+- Multiple inheritance
+- Method overriding
+- method resolution order
+- Class inheritance
+- Enumeration class
+- enumerate() function
+- enum.Enum
+- polymorphism
+- method overloading
+- operator overloading
+- method overriding
+- magic methods
+- functools module
+- total_ordering from functools for rich comparison
+- NotImplemented and reflection functions
+- super() method
